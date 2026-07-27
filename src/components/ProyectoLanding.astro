@@ -1,0 +1,266 @@
+---
+interface Solucion {
+  nombre: string;
+  descripcion: string;
+}
+
+interface Caracteristica {
+  titulo: string;
+  descripcion: string;
+}
+
+interface Props {
+  eyebrow: string;
+  headline: string;
+  subtitle: string;
+  solucionesHeading: string;
+  solucionesIntro: string;
+  soluciones: Solucion[];
+  caracteristicasHeading: string;
+  caracteristicas: Caracteristica[];
+}
+
+const {
+  eyebrow,
+  headline,
+  subtitle,
+  solucionesHeading,
+  solucionesIntro,
+  soluciones,
+  caracteristicasHeading,
+  caracteristicas,
+} = Astro.props;
+---
+<section class="hero">
+  <p class="eyebrow">{eyebrow}</p>
+  <h1>{headline}<span class="accent-dot">.</span></h1>
+  <p class="subtitle">{subtitle}</p>
+</section>
+
+<section class="soluciones">
+  <h2 class="reveal-heading">{solucionesHeading}</h2>
+  <p class="intro">{solucionesIntro}</p>
+  <div class="soluciones-grid">
+    {soluciones.map((s) => (
+      <div class="solucion-card reveal">
+        <h3>{s.nombre}</h3>
+        <p>{s.descripcion}</p>
+      </div>
+    ))}
+  </div>
+</section>
+
+<section class="caracteristicas">
+  <p class="eyebrow">Características</p>
+  <h2 class="reveal-heading">{caracteristicasHeading}</h2>
+  <div class="caracteristicas-grid">
+    {caracteristicas.map((c) => (
+      <div class="caracteristica-card reveal">
+        <h3>{c.titulo}</h3>
+        <p>{c.descripcion}</p>
+      </div>
+    ))}
+  </div>
+</section>
+
+<section class="cta-section">
+  <h2 class="reveal-heading">¿Hablamos de tu próximo proyecto?</h2>
+  <a class="cta" href="/contacto">Contactar</a>
+</section>
+
+<noscript>
+  <style>
+    .reveal { opacity: 1 !important; transform: none !important; }
+    .reveal-heading::after { width: 48px !important; }
+  </style>
+</noscript>
+
+<script>
+  const observer = new IntersectionObserver(
+    (entries) => {
+      for (const entry of entries) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      }
+    },
+    { threshold: 0.15 }
+  );
+  document.querySelectorAll('.reveal, .reveal-heading').forEach((el) => observer.observe(el));
+</script>
+
+<style>
+  .hero {
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+    padding: 7rem 2rem 5rem;
+    background: #0a0a0a;
+    color: #fff;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse at 75% 20%, rgba(255, 255, 255, 0.1), transparent 55%),
+      linear-gradient(115deg, transparent 40%, rgba(255, 255, 255, 0.06) 48%, transparent 56%);
+    background-size: 140% 140%;
+    animation: heroShimmer 18s ease-in-out infinite alternate;
+    pointer-events: none;
+  }
+  .hero > * { position: relative; z-index: 1; }
+  @keyframes heroShimmer {
+    from { background-position: 0% 0%, 0% 0%; }
+    to { background-position: 15% 10%, 10% 5%; }
+  }
+
+  .hero .eyebrow,
+  .hero h1,
+  .hero .subtitle {
+    opacity: 0;
+    animation: fadeInUp 0.7s ease forwards;
+  }
+  .hero .eyebrow { animation-delay: 0.05s; }
+  .hero h1 { animation-delay: 0.2s; }
+  .hero .subtitle { animation-delay: 0.35s; }
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: none; }
+  }
+
+  .eyebrow {
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    font-size: 0.8rem;
+    color: #999;
+    margin: 0 0 1rem;
+  }
+  .hero h1 {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    margin: 0 0 1.5rem;
+    font-weight: 800;
+  }
+  .accent-dot { color: var(--color-primary); }
+  .hero .subtitle {
+    color: #ccc;
+    font-size: 1.1rem;
+    font-weight: 300;
+    max-width: 720px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+
+  /* Título de sección con línea de acento que crece al entrar en pantalla */
+  .reveal-heading {
+    position: relative;
+    padding-bottom: 0.85rem;
+  }
+  .reveal-heading::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    width: 0;
+    height: 3px;
+    background: var(--color-primary);
+    transition: width 0.6s ease 0.15s;
+  }
+  .reveal-heading.is-visible::after { width: 48px; }
+
+  /* Tarjetas: fade + slide-up al entrar en pantalla, en cascada */
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .reveal.is-visible { opacity: 1; transform: none; }
+  .soluciones-grid .reveal:nth-child(1) { transition-delay: 0s; }
+  .soluciones-grid .reveal:nth-child(2) { transition-delay: 0.08s; }
+  .soluciones-grid .reveal:nth-child(3) { transition-delay: 0.16s; }
+  .soluciones-grid .reveal:nth-child(4) { transition-delay: 0.24s; }
+  .caracteristicas-grid .reveal:nth-child(1) { transition-delay: 0s; }
+  .caracteristicas-grid .reveal:nth-child(2) { transition-delay: 0.08s; }
+  .caracteristicas-grid .reveal:nth-child(3) { transition-delay: 0.16s; }
+
+  .soluciones { padding: 5rem 2rem; text-align: center; }
+  .soluciones h2 { font-size: 1.75rem; margin: 0 0 1rem; }
+  .soluciones .intro { color: var(--color-muted); max-width: 640px; margin: 0 auto 3rem; font-size: 1.05rem; }
+  .soluciones-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem;
+    text-align: left;
+    counter-reset: solucion;
+  }
+  .solucion-card {
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    padding: 1.75rem;
+    counter-increment: solucion;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  }
+  .solucion-card::before {
+    content: counter(solucion, decimal-leading-zero);
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: var(--color-primary);
+    margin-bottom: 0.75rem;
+  }
+  .solucion-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+    border-color: var(--color-primary);
+  }
+  .solucion-card h3 { margin: 0 0 0.75rem; font-size: 1.1rem; }
+  .solucion-card p { margin: 0; color: var(--color-muted); line-height: 1.5; }
+
+  .caracteristicas { background: #f7f7f7; padding: 5rem 2rem; text-align: center; }
+  .caracteristicas .eyebrow { color: var(--color-muted); }
+  .caracteristicas h2 { font-size: 1.75rem; margin: 0 0 3rem; }
+  .caracteristicas-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.5rem;
+    text-align: left;
+  }
+  .caracteristica-card {
+    background: #fff;
+    border-radius: 8px;
+    padding: 1.75rem;
+    border: 1px solid var(--color-border);
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  }
+  .caracteristica-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.06);
+    border-color: var(--color-primary);
+  }
+  .caracteristica-card h3 { margin: 0 0 0.75rem; font-size: 1.05rem; color: var(--color-primary); }
+  .caracteristica-card p { margin: 0; color: var(--color-muted); line-height: 1.5; }
+
+  .cta-section { text-align: center; padding: 5rem 2rem; }
+  .cta-section h2 { font-size: 1.75rem; margin: 0 0 2rem; }
+  .cta {
+    display: inline-block;
+    background: var(--color-primary);
+    color: var(--color-primary-text);
+    padding: 0.9rem 2.5rem;
+    border-radius: 999px;
+    text-decoration: none;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-size: 0.85rem;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .cta:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(46, 110, 247, 0.35);
+    box-shadow: 0 10px 20px color-mix(in srgb, var(--color-primary) 45%, transparent);
+  }
+</style>

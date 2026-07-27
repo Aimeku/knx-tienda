@@ -1,0 +1,51 @@
+---
+export const prerender = true;
+import Base from '../../layouts/Base.astro';
+import ProyectoLanding from '../../components/ProyectoLanding.astro';
+
+const soluciones = [
+  {
+    nombre: 'Smart Homes y Domótica',
+    descripcion: 'Aporta un valor diferencial a tus desarrollos con viviendas inteligentes diseñadas para la comodidad y el ahorro energético.',
+  },
+  {
+    nombre: 'Iluminación',
+    descripcion: 'Soluciones cableadas e inalámbricas (IoT) optimizadas para una integración fluida, compatibles con KNX, Z-Wave, ZigBee, Bluetooth y Wi-Fi, además de protocolos propios. Diseños que realzan los espacios, mejoran la eficiencia y reducen costos operativos.',
+  },
+  {
+    nombre: 'Sonido',
+    descripcion: 'Sistemas de audio de alta calidad para zonas comunes y residenciales, mejorando la experiencia de los futuros propietarios.',
+  },
+  {
+    nombre: 'Seguridad',
+    descripcion: 'Soluciones avanzadas para el control de accesos y la protección de los espacios, garantizando tranquilidad y confianza en cada desarrollo.',
+  },
+];
+
+const caracteristicas = [
+  {
+    titulo: 'Optimización de la inversión',
+    descripcion: 'Nuestras soluciones tecnológicas están diseñadas para maximizar el valor de cada desarrollo sin aumentar costes innecesarios.',
+  },
+  {
+    titulo: 'Eficiencia y sostenibilidad',
+    descripcion: 'Trabajamos con tecnología de última generación la cual optimiza el consumo energético y reduce los costes de mantenimiento a largo plazo.',
+  },
+  {
+    titulo: 'Implementación sin complicaciones',
+    descripcion: 'Adaptamos nuestras soluciones a cada promotora, para una integración sencilla y efectiva.',
+  },
+];
+---
+<Base title="Promotoras / Constructoras | AVCI Smart Homes" description="Domótica para promotoras y constructoras: soluciones que aumentan el valor y la eficiencia de tus desarrollos inmobiliarios.">
+  <ProyectoLanding
+    eyebrow="Domótica para constructoras"
+    headline="Innovación y eficiencia para tus proyectos inmobiliarios"
+    subtitle="Sabemos que como promotora buscas incorporar tecnología que eleve el atractivo de tus proyectos, mejore la experiencia de los futuros propietarios y aporte eficiencia y sostenibilidad. Te ofrecemos soluciones innovadoras que aumentan el valor de cada desarrollo y lo diferencian en el mercado."
+    solucionesHeading="Soluciones tecnológicas para proyectos inmobiliarios"
+    solucionesIntro="Nos especializamos en integrar tecnología eficiente que mejora la rentabilidad y el valor de cada promoción. Te ayudamos a incorporar:"
+    soluciones={soluciones}
+    caracteristicasHeading="¿Por qué nuestras soluciones destacan?"
+    caracteristicas={caracteristicas}
+  />
+</Base>

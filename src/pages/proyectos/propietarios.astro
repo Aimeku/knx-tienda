@@ -1,6 +1,7 @@
 ---
 export const prerender = true;
 import Base from '../../layouts/Base.astro';
+import ProyectoLanding from '../../components/ProyectoLanding.astro';
 
 const soluciones = [
   {
@@ -37,131 +38,14 @@ const caracteristicas = [
 ];
 ---
 <Base title="Propietarios | AVCI Smart Homes" description="Domótica para particulares: automatiza iluminación, sonido y seguridad de tu hogar o negocio.">
-  <section class="hero">
-    <p class="eyebrow">Domótica para particulares</p>
-    <h1>Vive la comodidad de un espacio inteligente<span class="accent-dot">.</span></h1>
-    <p class="subtitle">
-      Cada espacio tiene necesidades diferentes, y elegir la tecnología adecuada puede marcar la
-      diferencia en comodidad, eficiencia y seguridad. Te ayudamos a encontrar la solución más
-      conveniente para tu hogar o negocio, con sistemas inteligentes que se adaptan a tu estilo de vida
-      y te ofrecen control total sobre tu entorno.
-    </p>
-  </section>
-
-  <section class="soluciones">
-    <h2>Soluciones tecnológicas para tu hogar</h2>
-    <p class="intro">
-      Incorporamos tecnología intuitiva y fácil de usar para que disfrutes de un espacio más confortable,
-      seguro y eficiente. Descubre cómo podemos transformar tu vivienda o negocio con:
-    </p>
-    <div class="soluciones-grid">
-      {soluciones.map((s) => (
-        <div class="solucion-card">
-          <h3>{s.nombre}</h3>
-          <p>{s.descripcion}</p>
-        </div>
-      ))}
-    </div>
-  </section>
-
-  <section class="caracteristicas">
-    <p class="eyebrow">Características</p>
-    <h2>¿Por qué elegirnos?</h2>
-    <div class="caracteristicas-grid">
-      {caracteristicas.map((c) => (
-        <div class="caracteristica-card">
-          <h3>{c.titulo}</h3>
-          <p>{c.descripcion}</p>
-        </div>
-      ))}
-    </div>
-  </section>
-
-  <section class="cta-section">
-    <h2>¿Hablamos de tu próximo proyecto?</h2>
-    <a class="cta" href="/contacto">Contactar</a>
-  </section>
-
-  <style>
-    .hero {
-      text-align: center;
-      padding: 7rem 2rem 5rem;
-      background:
-        radial-gradient(ellipse at 75% 20%, rgba(255, 255, 255, 0.08), transparent 55%),
-        linear-gradient(115deg, transparent 40%, rgba(255, 255, 255, 0.05) 48%, transparent 56%),
-        #0a0a0a;
-      color: #fff;
-    }
-    .eyebrow {
-      text-transform: uppercase;
-      letter-spacing: 0.15em;
-      font-size: 0.8rem;
-      color: #999;
-      margin: 0 0 1rem;
-    }
-    .hero h1 {
-      font-size: clamp(2rem, 5vw, 3.5rem);
-      margin: 0 0 1.5rem;
-      font-weight: 800;
-    }
-    .accent-dot { color: var(--color-primary); }
-    .hero .subtitle {
-      color: #ccc;
-      font-size: 1.1rem;
-      font-weight: 300;
-      max-width: 720px;
-      margin: 0 auto;
-      line-height: 1.6;
-    }
-
-    .soluciones { padding: 5rem 2rem; text-align: center; }
-    .soluciones h2 { font-size: 1.75rem; margin: 0 0 1rem; }
-    .soluciones .intro { color: var(--color-muted); max-width: 640px; margin: 0 auto 3rem; font-size: 1.05rem; }
-    .soluciones-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 1.5rem;
-      text-align: left;
-    }
-    .solucion-card {
-      border: 1px solid var(--color-border);
-      border-radius: 8px;
-      padding: 1.75rem;
-    }
-    .solucion-card h3 { margin: 0 0 0.75rem; font-size: 1.1rem; }
-    .solucion-card p { margin: 0; color: var(--color-muted); line-height: 1.5; }
-
-    .caracteristicas { background: #f7f7f7; padding: 5rem 2rem; text-align: center; }
-    .caracteristicas .eyebrow { color: var(--color-muted); }
-    .caracteristicas h2 { font-size: 1.75rem; margin: 0 0 3rem; }
-    .caracteristicas-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 1.5rem;
-      text-align: left;
-    }
-    .caracteristica-card {
-      background: #fff;
-      border-radius: 8px;
-      padding: 1.75rem;
-      border: 1px solid var(--color-border);
-    }
-    .caracteristica-card h3 { margin: 0 0 0.75rem; font-size: 1.05rem; color: var(--color-primary); }
-    .caracteristica-card p { margin: 0; color: var(--color-muted); line-height: 1.5; }
-
-    .cta-section { text-align: center; padding: 5rem 2rem; }
-    .cta-section h2 { font-size: 1.75rem; margin: 0 0 2rem; }
-    .cta {
-      display: inline-block;
-      background: var(--color-primary);
-      color: var(--color-primary-text);
-      padding: 0.9rem 2.5rem;
-      border-radius: 999px;
-      text-decoration: none;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      font-size: 0.85rem;
-    }
-  </style>
+  <ProyectoLanding
+    eyebrow="Domótica para particulares"
+    headline="Vive la comodidad de un espacio inteligente"
+    subtitle="Cada espacio tiene necesidades diferentes, y elegir la tecnología adecuada puede marcar la diferencia en comodidad, eficiencia y seguridad. Te ayudamos a encontrar la solución más conveniente para tu hogar o negocio, con sistemas inteligentes que se adaptan a tu estilo de vida y te ofrecen control total sobre tu entorno."
+    solucionesHeading="Soluciones tecnológicas para tu hogar"
+    solucionesIntro="Incorporamos tecnología intuitiva y fácil de usar para que disfrutes de un espacio más confortable, seguro y eficiente. Descubre cómo podemos transformar tu vivienda o negocio con:"
+    soluciones={soluciones}
+    caracteristicasHeading="¿Por qué elegirnos?"
+    caracteristicas={caracteristicas}
+  />
 </Base>

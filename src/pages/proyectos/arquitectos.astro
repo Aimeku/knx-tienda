@@ -1,0 +1,51 @@
+---
+export const prerender = true;
+import Base from '../../layouts/Base.astro';
+import ProyectoLanding from '../../components/ProyectoLanding.astro';
+
+const soluciones = [
+  {
+    nombre: 'Smart Homes y Domótica',
+    descripcion: 'Sistemas cableados e inalámbricos que se integran de forma discreta y eficiente, sin afectar el diseño arquitectónico.',
+  },
+  {
+    nombre: 'Iluminación',
+    descripcion: 'Soluciones cableadas e inalámbricas (IoT) diseñadas para una integración fluida, compatibles con KNX, Z-Wave, ZigBee, Bluetooth y Wi-Fi, además de protocolos propios. Diseños de luz que resaltan la identidad del espacio y optimizan el consumo energético.',
+  },
+  {
+    nombre: 'Sonido',
+    descripcion: 'Sistemas de audio de alta calidad, discretos y personalizables, para entornos residenciales y comerciales.',
+  },
+  {
+    nombre: 'Seguridad',
+    descripcion: 'Soluciones avanzadas que garantizan protección sin alterar la estética, asegurando un equilibrio entre funcionalidad y diseño.',
+  },
+];
+
+const caracteristicas = [
+  {
+    titulo: 'Diseño y tecnología en equilibrio',
+    descripcion: 'Nuestras soluciones se integran sin afectar la armonía y estética de cada proyecto.',
+  },
+  {
+    titulo: 'Calidad y eficiencia garantizadas',
+    descripcion: 'Tecnología que optimiza el consumo energético y mejora la funcionalidad del espacio.',
+  },
+  {
+    titulo: 'Adaptación a cada proyecto',
+    descripcion: 'Colaboramos contigo para implementar soluciones a medida que se ajusten a tu visión.',
+  },
+];
+---
+<Base title="Arquitectos | AVCI Smart Homes" description="Domótica para arquitectos: soluciones que se integran sin interferir en el diseño arquitectónico.">
+  <ProyectoLanding
+    eyebrow="Domótica para arquitectos"
+    headline="Tecnología que complementa tu visión"
+    subtitle="Sabemos que cada proyecto arquitectónico tiene necesidades únicas, y elegir la tecnología adecuada es clave para lograr un diseño funcional, eficiente y estéticamente impecable. Te ofrecemos asesoramiento y soluciones avanzadas que se adaptan a cada espacio, garantizando una integración perfecta y sin interferencias visuales."
+    solucionesHeading="Soluciones inteligentes para arquitectos"
+    solucionesIntro="Nos especializamos en dotar a tus diseños de tecnología avanzada que realza la estética y mejora la funcionalidad de cada espacio. Te ayudamos a integrar:"
+    soluciones={soluciones}
+    caracteristicasHeading="¿Por qué elegirnos como tu aliado?"
+    caracteristicas={caracteristicas}
+  />
+</Base>
