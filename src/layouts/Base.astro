@@ -24,24 +24,13 @@ const proyectos = [
   <title>{title}</title>
 </head>
 <body>
-  <div class="top-bar">
-    <div class="top-bar-inner">
-      <a href="/cuenta">Iniciar Sesión</a>
-      <span class="divider">|</span>
-      <a href="/registro">Registrarse</a>
-    </div>
-  </div>
-
   <header class="site-header">
     <a href="/" class="logo">
       <img src="/logo-avci.png" alt="AVCI Smart Homes" />
     </a>
     <nav>
       <div class="nav-item has-dropdown">
-        <button class="nav-trigger" aria-haspopup="true">
-          Proyectos
-          <svg class="caret" width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </button>
+        <button class="nav-trigger" aria-haspopup="true">Proyectos</button>
         <div class="mega-menu">
           {proyectos.map((p) => (
             <a href={`/proyectos/${p.slug}`}>{p.nombre}</a>
@@ -49,10 +38,7 @@ const proyectos = [
         </div>
       </div>
       <div class="nav-item has-dropdown">
-        <button class="nav-trigger" aria-haspopup="true">
-          Tienda
-          <svg class="caret" width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </button>
+        <button class="nav-trigger" aria-haspopup="true">Tienda</button>
         <div class="mega-menu">
           {categorias.map((c) => (
             <a href={`/productos?categoria=${c.slug}`}>{c.nombre}</a>
@@ -63,15 +49,21 @@ const proyectos = [
       <a href="/contacto" class="nav-item">Contacto</a>
     </nav>
     <div class="header-icons">
-      <a href="/cuenta" class="icon-link" aria-label="Mi cuenta">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 12C14.4853 12 16.5 9.98528 16.5 7.5C16.5 5.01472 14.4853 3 12 3C9.51472 3 7.5 5.01472 7.5 7.5C7.5 9.98528 9.51472 12 12 12Z" stroke="currentColor" stroke-width="1.5"/><path d="M3.5 20.5C4.94486 16.9942 8.19921 14.5 12 14.5C15.8008 14.5 19.0551 16.9942 20.5 20.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+      <a href="/contacto" class="icon-link" aria-label="Ayuda">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.5"/><path d="M9.5 9.5C9.5 8.11929 10.6193 7 12 7C13.3807 7 14.5 8.11929 14.5 9.5C14.5 10.8807 13.3807 11.6 12 12.5V13.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="12" cy="16.5" r="0.75" fill="currentColor"/></svg>
       </a>
+      <div class="nav-item has-dropdown">
+        <button class="icon-link nav-trigger" aria-haspopup="true" aria-label="Mi cuenta">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 12C14.4853 12 16.5 9.98528 16.5 7.5C16.5 5.01472 14.4853 3 12 3C9.51472 3 7.5 5.01472 7.5 7.5C7.5 9.98528 9.51472 12 12 12Z" stroke="currentColor" stroke-width="1.5"/><path d="M3.5 20.5C4.94486 16.9942 8.19921 14.5 12 14.5C15.8008 14.5 19.0551 16.9942 20.5 20.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </button>
+        <div class="mega-menu account-menu">
+          <a href="/cuenta">Iniciar sesión</a>
+          <a href="/registro">Registrarse</a>
+        </div>
+      </div>
       <a href="/carrito" class="icon-link cart-link" aria-label="Carrito">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M3 4H5L6.5 15.5H18.5L20 7H6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="9" cy="20" r="1.25" fill="currentColor"/><circle cx="17" cy="20" r="1.25" fill="currentColor"/></svg>
         <span class="cart-badge" id="cart-badge">0</span>
-      </a>
-      <a href="/productos" class="icon-link" aria-label="Buscar">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="10.5" cy="10.5" r="6.5" stroke="currentColor" stroke-width="1.5"/><path d="M20 20L15.5 15.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
       </a>
     </div>
   </header>
@@ -98,6 +90,8 @@ const proyectos = [
       --color-text: #0a0a0a;
       --color-border: #e5e5e5;
       --color-muted: #6b6b6b;
+      --color-primary: #e8b923;
+      --color-primary-text: #0a0a0a;
     }
     * { box-sizing: border-box; }
     body {
@@ -106,34 +100,20 @@ const proyectos = [
       color: var(--color-text);
       background: var(--color-bg);
     }
-    .top-bar {
-      background: #000;
-      color: #fff;
-      font-size: 0.8rem;
-    }
-    .top-bar-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0.5rem 2rem;
-      display: flex;
-      justify-content: flex-end;
-      gap: 0.5rem;
-    }
-    .top-bar a { color: #fff; text-decoration: none; }
-    .top-bar .divider { opacity: 0.4; }
 
     .site-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 1rem 2rem;
+      gap: 2rem;
+      padding: 1.25rem 2.5rem;
       border-bottom: 1px solid var(--color-border);
       max-width: 1400px;
       margin: 0 auto;
       position: relative;
     }
     .logo img {
-      height: 48px;
+      height: 40px;
       display: block;
       /* el PNG es blanco sobre transparente: se invierte para verse en la cabecera clara */
       filter: invert(1);
@@ -142,33 +122,29 @@ const proyectos = [
     .site-header nav {
       display: flex;
       align-items: center;
-      gap: 2rem;
+      gap: 2.5rem;
     }
     .nav-item {
       position: relative;
       text-decoration: none;
       color: var(--color-text);
-      font-weight: 700;
-      letter-spacing: 0.03em;
-      text-transform: uppercase;
-      font-size: 0.9rem;
+      font-weight: 600;
+      font-size: 1rem;
     }
     .nav-trigger {
-      display: flex;
-      align-items: center;
-      gap: 0.4rem;
       background: none;
       border: none;
       cursor: pointer;
       font: inherit;
       color: inherit;
-      text-transform: inherit;
-      letter-spacing: inherit;
       padding: 0.5rem 0;
+      border-bottom: 2px solid transparent;
     }
-    .has-dropdown:hover .caret,
-    .has-dropdown:focus-within .caret { transform: rotate(180deg); }
-    .caret { transition: transform 0.15s; }
+    .nav-item:hover .nav-trigger,
+    .nav-item.has-dropdown:hover > .nav-trigger,
+    a.nav-item:hover {
+      border-bottom-color: var(--color-primary);
+    }
 
     .mega-menu {
       display: none;
@@ -179,7 +155,7 @@ const proyectos = [
       transform: translateX(-50%);
       background: #fff;
       box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
-      min-width: 260px;
+      min-width: 240px;
       padding: 0.75rem 0;
       z-index: 20;
     }
@@ -190,29 +166,29 @@ const proyectos = [
     .mega-menu a {
       text-decoration: none;
       color: var(--color-text);
-      text-transform: uppercase;
-      font-weight: 600;
-      font-size: 0.85rem;
-      letter-spacing: 0.02em;
-      padding: 0.85rem 1.5rem;
+      font-weight: 500;
+      font-size: 0.9rem;
+      padding: 0.75rem 1.5rem;
       white-space: nowrap;
     }
     .mega-menu a:hover { background: #f5f5f5; }
     .mega-menu .ver-todo { border-top: 1px solid var(--color-border); margin-top: 0.25rem; color: var(--color-muted); }
+    .account-menu { right: 0; left: auto; transform: none; min-width: 180px; }
 
-    .header-icons { display: flex; align-items: center; gap: 1.25rem; }
+    .header-icons { display: flex; align-items: center; gap: 1.5rem; }
     .icon-link {
       position: relative;
       display: flex;
       color: var(--color-text);
       text-decoration: none;
     }
+    .header-icons .nav-trigger.icon-link { padding: 0; border-bottom: none; }
     .cart-badge {
       position: absolute;
       top: -8px;
       right: -10px;
-      background: #6b6b6b;
-      color: #fff;
+      background: var(--color-primary);
+      color: var(--color-primary-text);
       font-size: 0.65rem;
       font-weight: 700;
       min-width: 16px;
