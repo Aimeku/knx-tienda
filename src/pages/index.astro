@@ -1,16 +1,7 @@
 ---
 export const prerender = true;
 import Base from '../layouts/Base.astro';
-
-const categorias = [
-  { nombre: 'Actuadores', slug: 'actuadores' },
-  { nombre: 'Paneles Táctiles KNX', slug: 'paneles-tactiles-knx' },
-  { nombre: 'Fuentes de alimentación', slug: 'fuentes-de-alimentacion' },
-  { nombre: 'Gateways', slug: 'gateways' },
-  { nombre: 'Interfaces y acopladores', slug: 'interfaces-y-acopladores' },
-  { nombre: 'Sensores', slug: 'sensores' },
-  { nombre: 'Servidores', slug: 'servidores' },
-];
+import { categorias } from '../lib/categorias';
 ---
 <Base title="AVCI Smart Homes | Tienda KNX">
   <section class="hero">

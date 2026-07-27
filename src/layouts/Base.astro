@@ -1,9 +1,19 @@
 ---
+import { categorias } from '../lib/categorias';
+
 interface Props {
   title: string;
   description?: string;
 }
 const { title, description = 'Tienda online de productos KNX para domótica.' } = Astro.props;
+
+const proyectos = [
+  { nombre: 'Integradores PRO', slug: 'integradores-pro' },
+  { nombre: 'Diseñadores', slug: 'disenadores' },
+  { nombre: 'Propietarios', slug: 'propietarios' },
+  { nombre: 'Arquitectos', slug: 'arquitectos' },
+  { nombre: 'Promotoras / Constructoras', slug: 'promotoras-constructoras' },
+];
 ---
 <!doctype html>
 <html lang="es">
@@ -27,11 +37,42 @@ const { title, description = 'Tienda online de productos KNX para domótica.' } 
       <img src="/logo-avci.png" alt="AVCI Smart Homes" />
     </a>
     <nav>
-      <a href="/productos">Tienda</a>
-      <a href="/contacto">Contacto</a>
+      <div class="nav-item has-dropdown">
+        <button class="nav-trigger" aria-haspopup="true">
+          Proyectos
+          <svg class="caret" width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="mega-menu">
+          {proyectos.map((p) => (
+            <a href={`/proyectos/${p.slug}`}>{p.nombre}</a>
+          ))}
+        </div>
+      </div>
+      <div class="nav-item has-dropdown">
+        <button class="nav-trigger" aria-haspopup="true">
+          Tienda
+          <svg class="caret" width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="mega-menu">
+          {categorias.map((c) => (
+            <a href={`/productos?categoria=${c.slug}`}>{c.nombre}</a>
+          ))}
+          <a href="/productos" class="ver-todo">Ver todo el catálogo</a>
+        </div>
+      </div>
+      <a href="/contacto" class="nav-item">Contacto</a>
     </nav>
     <div class="header-icons">
-      <a href="/carrito" class="cart-link">Carrito</a>
+      <a href="/cuenta" class="icon-link" aria-label="Mi cuenta">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 12C14.4853 12 16.5 9.98528 16.5 7.5C16.5 5.01472 14.4853 3 12 3C9.51472 3 7.5 5.01472 7.5 7.5C7.5 9.98528 9.51472 12 12 12Z" stroke="currentColor" stroke-width="1.5"/><path d="M3.5 20.5C4.94486 16.9942 8.19921 14.5 12 14.5C15.8008 14.5 19.0551 16.9942 20.5 20.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+      </a>
+      <a href="/carrito" class="icon-link cart-link" aria-label="Carrito">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M3 4H5L6.5 15.5H18.5L20 7H6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="9" cy="20" r="1.25" fill="currentColor"/><circle cx="17" cy="20" r="1.25" fill="currentColor"/></svg>
+        <span class="cart-badge" id="cart-badge">0</span>
+      </a>
+      <a href="/productos" class="icon-link" aria-label="Buscar">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="10.5" cy="10.5" r="6.5" stroke="currentColor" stroke-width="1.5"/><path d="M20 20L15.5 15.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+      </a>
     </div>
   </header>
 
@@ -43,6 +84,13 @@ const { title, description = 'Tienda online de productos KNX para domótica.' } 
     <img src="/logo-avci.png" alt="AVCI Smart Homes" class="footer-logo" />
     <p>&copy; {new Date().getFullYear()} AVCI Smart Homes. Todos los derechos reservados.</p>
   </footer>
+
+  <script>
+    const carrito = JSON.parse(localStorage.getItem('carrito') || '[]');
+    const total = carrito.reduce((s: number, i: any) => s + (i.cantidad || 1), 0);
+    const badge = document.getElementById('cart-badge');
+    if (badge) badge.textContent = String(total);
+  </script>
 
   <style is:global>
     :root {
@@ -82,10 +130,22 @@ const { title, description = 'Tienda online de productos KNX para domótica.' } 
       border-bottom: 1px solid var(--color-border);
       max-width: 1400px;
       margin: 0 auto;
+      position: relative;
     }
-    .logo img { height: 48px; display: block; }
-    .site-header nav { display: flex; gap: 2rem; }
-    .site-header nav a {
+    .logo img {
+      height: 48px;
+      display: block;
+      /* el PNG es blanco sobre transparente: se invierte para verse en la cabecera clara */
+      filter: invert(1);
+    }
+
+    .site-header nav {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+    }
+    .nav-item {
+      position: relative;
       text-decoration: none;
       color: var(--color-text);
       font-weight: 700;
@@ -93,11 +153,75 @@ const { title, description = 'Tienda online de productos KNX para domótica.' } 
       text-transform: uppercase;
       font-size: 0.9rem;
     }
-    .cart-link {
+    .nav-trigger {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: none;
+      border: none;
+      cursor: pointer;
+      font: inherit;
+      color: inherit;
+      text-transform: inherit;
+      letter-spacing: inherit;
+      padding: 0.5rem 0;
+    }
+    .has-dropdown:hover .caret,
+    .has-dropdown:focus-within .caret { transform: rotate(180deg); }
+    .caret { transition: transform 0.15s; }
+
+    .mega-menu {
+      display: none;
+      flex-direction: column;
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #fff;
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
+      min-width: 260px;
+      padding: 0.75rem 0;
+      z-index: 20;
+    }
+    .has-dropdown:hover .mega-menu,
+    .has-dropdown:focus-within .mega-menu {
+      display: flex;
+    }
+    .mega-menu a {
       text-decoration: none;
       color: var(--color-text);
+      text-transform: uppercase;
       font-weight: 600;
-      font-size: 0.9rem;
+      font-size: 0.85rem;
+      letter-spacing: 0.02em;
+      padding: 0.85rem 1.5rem;
+      white-space: nowrap;
+    }
+    .mega-menu a:hover { background: #f5f5f5; }
+    .mega-menu .ver-todo { border-top: 1px solid var(--color-border); margin-top: 0.25rem; color: var(--color-muted); }
+
+    .header-icons { display: flex; align-items: center; gap: 1.25rem; }
+    .icon-link {
+      position: relative;
+      display: flex;
+      color: var(--color-text);
+      text-decoration: none;
+    }
+    .cart-badge {
+      position: absolute;
+      top: -8px;
+      right: -10px;
+      background: #6b6b6b;
+      color: #fff;
+      font-size: 0.65rem;
+      font-weight: 700;
+      min-width: 16px;
+      height: 16px;
+      border-radius: 999px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 3px;
     }
 
     main { max-width: 1400px; margin: 0 auto; }
@@ -109,7 +233,7 @@ const { title, description = 'Tienda online de productos KNX para domótica.' } 
       padding: 3rem 2rem;
       margin-top: 4rem;
     }
-    .footer-logo { height: 40px; margin-bottom: 1rem; filter: invert(1); }
+    .footer-logo { height: 40px; margin-bottom: 1rem; }
     .site-footer p { font-size: 0.85rem; margin: 0; }
   </style>
 </body>
