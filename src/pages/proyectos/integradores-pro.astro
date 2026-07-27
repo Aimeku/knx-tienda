@@ -1,0 +1,167 @@
+---
+export const prerender = true;
+import Base from '../../layouts/Base.astro';
+
+const soluciones = [
+  {
+    nombre: 'Smart Homes y Domótica',
+    descripcion: 'Sistemas cableados e inalámbricos que garantizan compatibilidad y personalización para cada proyecto.',
+  },
+  {
+    nombre: 'Iluminación',
+    descripcion: 'Soluciones cableadas e inalámbricas (IoT) diseñadas para una integración fluida, compatibles con KNX, Z-Wave, ZigBee, Bluetooth y Wi-Fi, además de protocolos propios.',
+  },
+  {
+    nombre: 'Sonido',
+    descripcion: 'Soluciones de audio de alta calidad para proyectos residenciales o comerciales.',
+  },
+  {
+    nombre: 'Seguridad',
+    descripcion: 'Sistemas avanzados y confiables que priorizan la protección sin comprometer la funcionalidad.',
+  },
+];
+
+const caracteristicas = [
+  {
+    titulo: 'Compatibilidad Total',
+    descripcion: 'Nuestras soluciones están diseñadas para integrarse con los principales sistemas y plataformas del mercado.',
+  },
+  {
+    titulo: 'Calidad Garantizada',
+    descripcion: 'Trabajamos con tecnología de vanguardia, asegurando durabilidad y rendimiento en cada instalación.',
+  },
+  {
+    titulo: 'Flexibilidad en Implementación',
+    descripcion: 'Adaptamos nuestros sistemas a las especificaciones y requerimientos de cada proyecto, sin complicaciones.',
+  },
+];
+---
+<Base title="Integradores PRO | AVCI Smart Homes" description="Soluciones KNX y domótica para integradores de sistemas: smart homes, iluminación, sonido y seguridad.">
+  <section class="hero">
+    <p class="eyebrow">Integradores de sistemas</p>
+    <h1>Tecnología que potencia tus proyectos<span class="accent-dot">.</span></h1>
+    <p class="subtitle">
+      Sabemos que como integrador de sistemas buscas soluciones confiables, fáciles de implementar y con
+      la capacidad de adaptarse a proyectos de cualquier envergadura. Te ofrecemos herramientas que se
+      integran sin complicaciones, respaldadas por innovación, calidad y compatibilidad con los
+      principales estándares del sector.
+    </p>
+  </section>
+
+  <section class="soluciones">
+    <h2>Soluciones diseñadas para integradores de sistemas</h2>
+    <p class="intro">
+      Nos convertimos en tu socio estratégico para garantizar el éxito de tus proyectos tecnológicos.
+      Te ayudamos a integrar:
+    </p>
+    <div class="soluciones-grid">
+      {soluciones.map((s) => (
+        <div class="solucion-card">
+          <h3>{s.nombre}</h3>
+          <p>{s.descripcion}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section class="caracteristicas">
+    <p class="eyebrow">Características</p>
+    <h2>¿Por qué elegirnos como tu aliado?</h2>
+    <div class="caracteristicas-grid">
+      {caracteristicas.map((c) => (
+        <div class="caracteristica-card">
+          <h3>{c.titulo}</h3>
+          <p>{c.descripcion}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section class="cta-section">
+    <h2>¿Hablamos de tu próximo proyecto?</h2>
+    <a class="cta" href="/contacto">Contactar</a>
+  </section>
+
+  <style>
+    .hero {
+      text-align: center;
+      padding: 7rem 2rem 5rem;
+      background:
+        radial-gradient(ellipse at 75% 20%, rgba(255, 255, 255, 0.08), transparent 55%),
+        linear-gradient(115deg, transparent 40%, rgba(255, 255, 255, 0.05) 48%, transparent 56%),
+        #0a0a0a;
+      color: #fff;
+    }
+    .eyebrow {
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      font-size: 0.8rem;
+      color: #999;
+      margin: 0 0 1rem;
+    }
+    .hero h1 {
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      margin: 0 0 1.5rem;
+      font-weight: 800;
+    }
+    .accent-dot { color: var(--color-primary); }
+    .hero .subtitle {
+      color: #ccc;
+      font-size: 1.1rem;
+      font-weight: 300;
+      max-width: 720px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    .soluciones { padding: 5rem 2rem; text-align: center; }
+    .soluciones h2 { font-size: 1.75rem; margin: 0 0 1rem; }
+    .soluciones .intro { color: var(--color-muted); max-width: 640px; margin: 0 auto 3rem; font-size: 1.05rem; }
+    .soluciones-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+      text-align: left;
+    }
+    .solucion-card {
+      border: 1px solid var(--color-border);
+      border-radius: 8px;
+      padding: 1.75rem;
+    }
+    .solucion-card h3 { margin: 0 0 0.75rem; font-size: 1.1rem; }
+    .solucion-card p { margin: 0; color: var(--color-muted); line-height: 1.5; }
+
+    .caracteristicas { background: #f7f7f7; padding: 5rem 2rem; text-align: center; }
+    .caracteristicas .eyebrow { color: var(--color-muted); }
+    .caracteristicas h2 { font-size: 1.75rem; margin: 0 0 3rem; }
+    .caracteristicas-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5rem;
+      text-align: left;
+    }
+    .caracteristica-card {
+      background: #fff;
+      border-radius: 8px;
+      padding: 1.75rem;
+      border: 1px solid var(--color-border);
+    }
+    .caracteristica-card h3 { margin: 0 0 0.75rem; font-size: 1.05rem; color: var(--color-primary); }
+    .caracteristica-card p { margin: 0; color: var(--color-muted); line-height: 1.5; }
+
+    .cta-section { text-align: center; padding: 5rem 2rem; }
+    .cta-section h2 { font-size: 1.75rem; margin: 0 0 2rem; }
+    .cta {
+      display: inline-block;
+      background: var(--color-primary);
+      color: var(--color-primary-text);
+      padding: 0.9rem 2.5rem;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      font-size: 0.85rem;
+    }
+  </style>
+</Base>
