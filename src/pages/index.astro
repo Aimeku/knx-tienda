@@ -1,16 +1,87 @@
 ---
 export const prerender = true;
 import Base from '../layouts/Base.astro';
+
+const categorias = [
+  { nombre: 'Actuadores', slug: 'actuadores' },
+  { nombre: 'Paneles Táctiles KNX', slug: 'paneles-tactiles-knx' },
+  { nombre: 'Fuentes de alimentación', slug: 'fuentes-de-alimentacion' },
+  { nombre: 'Gateways', slug: 'gateways' },
+  { nombre: 'Interfaces y acopladores', slug: 'interfaces-y-acopladores' },
+  { nombre: 'Sensores', slug: 'sensores' },
+  { nombre: 'Servidores', slug: 'servidores' },
+];
 ---
-<Base title="Tu Empresa KNX | Domótica KNX">
+<Base title="AVCI Smart Homes | Tienda KNX">
   <section class="hero">
-    <h1>Soluciones KNX para tu instalación</h1>
-    <p>Actuadores, sensores, pantallas táctiles y pasarelas KNX al mejor precio.</p>
-    <a class="cta" href="/productos">Ver catálogo</a>
+    <p class="eyebrow">Empresa de domótica</p>
+    <h1>Tu casa, a un solo toque</h1>
+    <p class="subtitle">Actuadores, sensores, paneles táctiles y pasarelas KNX al mejor precio.</p>
+    <a class="cta" href="/productos">Descubrir</a>
+  </section>
+
+  <section class="categorias">
+    <h2>Explora por categoría</h2>
+    <div class="cat-grid">
+      {categorias.map((c) => (
+        <a class="cat-card" href={`/productos?categoria=${c.slug}`}>
+          {c.nombre}
+        </a>
+      ))}
+    </div>
   </section>
 
   <style>
-    .hero { text-align: center; padding: 4rem 0; }
-    .cta { display: inline-block; margin-top: 1.5rem; background: var(--color-primary); color: white; padding: 0.75rem 2rem; border-radius: 6px; text-decoration: none; }
+    .hero {
+      text-align: center;
+      padding: 6rem 2rem;
+      background: #0a0a0a;
+      color: #fff;
+    }
+    .eyebrow {
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      font-size: 0.8rem;
+      color: #999;
+      margin: 0 0 1rem;
+    }
+    .hero h1 {
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      margin: 0 0 1rem;
+      font-weight: 800;
+    }
+    .subtitle { color: #ccc; margin: 0 0 2rem; font-size: 1.1rem; }
+    .cta {
+      display: inline-block;
+      background: #fff;
+      color: #000;
+      padding: 0.9rem 2.5rem;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      font-size: 0.85rem;
+    }
+
+    .categorias { padding: 4rem 2rem; }
+    .categorias h2 { text-align: center; font-size: 1.5rem; margin-bottom: 2rem; }
+    .cat-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+    }
+    .cat-card {
+      display: block;
+      text-align: center;
+      padding: 1.5rem 1rem;
+      border: 1px solid var(--color-border);
+      border-radius: 4px;
+      text-decoration: none;
+      color: var(--color-text);
+      font-weight: 600;
+      transition: background 0.15s;
+    }
+    .cat-card:hover { background: #f7f7f7; }
   </style>
 </Base>

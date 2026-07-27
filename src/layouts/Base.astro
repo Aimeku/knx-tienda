@@ -14,12 +14,25 @@ const { title, description = 'Tienda online de productos KNX para domótica.' } 
   <title>{title}</title>
 </head>
 <body>
+  <div class="top-bar">
+    <div class="top-bar-inner">
+      <a href="/cuenta">Iniciar Sesión</a>
+      <span class="divider">|</span>
+      <a href="/registro">Registrarse</a>
+    </div>
+  </div>
+
   <header class="site-header">
-    <a href="/" class="logo">Tu Empresa KNX</a>
+    <a href="/" class="logo">
+      <img src="/logo-avci.png" alt="AVCI Smart Homes" />
+    </a>
     <nav>
-      <a href="/productos">Catálogo</a>
-      <a href="/carrito">Carrito</a>
+      <a href="/productos">Tienda</a>
+      <a href="/contacto">Contacto</a>
     </nav>
+    <div class="header-icons">
+      <a href="/carrito" class="cart-link">Carrito</a>
+    </div>
   </header>
 
   <main>
@@ -27,34 +40,77 @@ const { title, description = 'Tienda online de productos KNX para domótica.' } 
   </main>
 
   <footer class="site-footer">
-    <p>&copy; {new Date().getFullYear()} Tu Empresa KNX</p>
+    <img src="/logo-avci.png" alt="AVCI Smart Homes" class="footer-logo" />
+    <p>&copy; {new Date().getFullYear()} AVCI Smart Homes. Todos los derechos reservados.</p>
   </footer>
 
   <style is:global>
     :root {
       --color-bg: #ffffff;
-      --color-text: #1a1a1a;
-      --color-primary: #0f4c81;
-      --color-border: #e2e2e2;
+      --color-text: #0a0a0a;
+      --color-border: #e5e5e5;
+      --color-muted: #6b6b6b;
     }
     * { box-sizing: border-box; }
     body {
       margin: 0;
-      font-family: system-ui, sans-serif;
+      font-family: 'Helvetica Neue', Arial, sans-serif;
       color: var(--color-text);
       background: var(--color-bg);
     }
+    .top-bar {
+      background: #000;
+      color: #fff;
+      font-size: 0.8rem;
+    }
+    .top-bar-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0.5rem 2rem;
+      display: flex;
+      justify-content: flex-end;
+      gap: 0.5rem;
+    }
+    .top-bar a { color: #fff; text-decoration: none; }
+    .top-bar .divider { opacity: 0.4; }
+
     .site-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
       padding: 1rem 2rem;
       border-bottom: 1px solid var(--color-border);
+      max-width: 1400px;
+      margin: 0 auto;
     }
-    .site-header nav a { margin-left: 1.5rem; text-decoration: none; color: var(--color-text); }
-    .logo { font-weight: 700; text-decoration: none; color: var(--color-primary); }
-    main { padding: 2rem; max-width: 1100px; margin: 0 auto; }
-    .site-footer { padding: 2rem; text-align: center; color: #777; }
+    .logo img { height: 48px; display: block; }
+    .site-header nav { display: flex; gap: 2rem; }
+    .site-header nav a {
+      text-decoration: none;
+      color: var(--color-text);
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      font-size: 0.9rem;
+    }
+    .cart-link {
+      text-decoration: none;
+      color: var(--color-text);
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+
+    main { max-width: 1400px; margin: 0 auto; }
+
+    .site-footer {
+      background: #000;
+      color: #ccc;
+      text-align: center;
+      padding: 3rem 2rem;
+      margin-top: 4rem;
+    }
+    .footer-logo { height: 40px; margin-bottom: 1rem; filter: invert(1); }
+    .site-footer p { font-size: 0.85rem; margin: 0; }
   </style>
 </body>
 </html>
