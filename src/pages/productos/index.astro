@@ -1,0 +1,42 @@
+---
+export const prerender = true; // página estática, buena para SEO
+
+import Base from '../../layouts/Base.astro';
+import { supabase } from '../../lib/supabase';
+
+const { data: productos } = await supabase
+  .from('productos')
+  .select('id, nombre, slug, precio, precio_oferta, imagen_principal')
+  .eq('activo', true)
+  .order('nombre');
+---
+<Base title="Catálogo | Tu Empresa KNX">
+  <h1>Catálogo de productos KNX</h1>
+
+  <div class="grid">
+    {productos?.map((p) => (
+      <a class="card" href={`/productos/${p.slug}`}>
+        {p.imagen_principal && <img src={p.imagen_principal} alt={p.nombre} />}
+        <h2>{p.nombre}</h2>
+        <p class="precio">
+          {p.precio_oferta ? (
+            <><span class="antes">{p.precio.toFixed(2)}€</span> {p.precio_oferta.toFixed(2)}€</>
+          ) : (
+            <>{p.precio.toFixed(2)}€</>
+          )}
+        </p>
+      </a>
+    ))}
+  </div>
+
+  {(!productos || productos.length === 0) && <p>Todavía no hay productos publicados.</p>}
+
+  <style>
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1.5rem; }
+    .card { border: 1px solid var(--color-border); border-radius: 8px; padding: 1rem; text-decoration: none; color: inherit; }
+    .card img { width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 4px; }
+    .card h2 { font-size: 1rem; margin: 0.5rem 0 0.25rem; }
+    .precio { font-weight: 600; color: var(--color-primary); }
+    .antes { text-decoration: line-through; color: #999; font-weight: 400; margin-right: 0.5rem; }
+  </style>
+</Base>

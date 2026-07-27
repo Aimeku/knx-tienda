@@ -1,0 +1,16 @@
+---
+export const prerender = true;
+import Base from '../layouts/Base.astro';
+---
+<Base title="Tu Empresa KNX | Domótica KNX">
+  <section class="hero">
+    <h1>Soluciones KNX para tu instalación</h1>
+    <p>Actuadores, sensores, pantallas táctiles y pasarelas KNX al mejor precio.</p>
+    <a class="cta" href="/productos">Ver catálogo</a>
+  </section>
+
+  <style>
+    .hero { text-align: center; padding: 4rem 0; }
+    .cta { display: inline-block; margin-top: 1.5rem; background: var(--color-primary); color: white; padding: 0.75rem 2rem; border-radius: 6px; text-decoration: none; }
+  </style>
+</Base>

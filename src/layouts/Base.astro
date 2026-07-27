@@ -1,0 +1,60 @@
+---
+interface Props {
+  title: string;
+  description?: string;
+}
+const { title, description = 'Tienda online de productos KNX para domótica.' } = Astro.props;
+---
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content={description} />
+  <title>{title}</title>
+</head>
+<body>
+  <header class="site-header">
+    <a href="/" class="logo">Tu Empresa KNX</a>
+    <nav>
+      <a href="/productos">Catálogo</a>
+      <a href="/carrito">Carrito</a>
+    </nav>
+  </header>
+
+  <main>
+    <slot />
+  </main>
+
+  <footer class="site-footer">
+    <p>&copy; {new Date().getFullYear()} Tu Empresa KNX</p>
+  </footer>
+
+  <style is:global>
+    :root {
+      --color-bg: #ffffff;
+      --color-text: #1a1a1a;
+      --color-primary: #0f4c81;
+      --color-border: #e2e2e2;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: system-ui, sans-serif;
+      color: var(--color-text);
+      background: var(--color-bg);
+    }
+    .site-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      border-bottom: 1px solid var(--color-border);
+    }
+    .site-header nav a { margin-left: 1.5rem; text-decoration: none; color: var(--color-text); }
+    .logo { font-weight: 700; text-decoration: none; color: var(--color-primary); }
+    main { padding: 2rem; max-width: 1100px; margin: 0 auto; }
+    .site-footer { padding: 2rem; text-align: center; color: #777; }
+  </style>
+</body>
+</html>

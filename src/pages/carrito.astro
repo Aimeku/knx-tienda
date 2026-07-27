@@ -1,0 +1,60 @@
+---
+export const prerender = true;
+import Base from '../layouts/Base.astro';
+---
+<Base title="Carrito | Tu Empresa KNX">
+  <h1>Tu carrito</h1>
+  <div id="carrito-contenido"></div>
+
+  <div id="checkout-form" style="display:none; margin-top: 2rem;">
+    <label>
+      Email para el pedido:
+      <input type="email" id="email-input" required />
+    </label>
+    <button id="pagar-btn">Pagar con tarjeta</button>
+  </div>
+
+  <script>
+    function render() {
+      const carrito = JSON.parse(localStorage.getItem('carrito') || '[]');
+      const cont = document.getElementById('carrito-contenido')!;
+      const form = document.getElementById('checkout-form')!;
+
+      if (carrito.length === 0) {
+        cont.innerHTML = '<p>Tu carrito está vacío.</p>';
+        form.style.display = 'none';
+        return;
+      }
+
+      const total = carrito.reduce((s: number, i: any) => s + i.precio * i.cantidad, 0);
+      cont.innerHTML = `
+        <ul>
+          ${carrito.map((i: any) => `<li>${i.nombre} x${i.cantidad} — ${(i.precio * i.cantidad).toFixed(2)}€</li>`).join('')}
+        </ul>
+        <p><strong>Total: ${total.toFixed(2)}€</strong></p>
+      `;
+      form.style.display = 'block';
+    }
+
+    render();
+
+    document.getElementById('pagar-btn')?.addEventListener('click', async () => {
+      const email = (document.getElementById('email-input') as HTMLInputElement).value;
+      if (!email) { alert('Introduce tu email'); return; }
+
+      const carrito = JSON.parse(localStorage.getItem('carrito') || '[]');
+      const res = await fetch('/api/checkout', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ items: carrito, email }),
+      });
+      const data = await res.json();
+      if (data.url) {
+        localStorage.removeItem('carrito');
+        window.location.href = data.url;
+      } else {
+        alert('Error al iniciar el pago');
+      }
+    });
+  </script>
+</Base>

@@ -1,0 +1,85 @@
+---
+export const prerender = true;
+
+import Base from '../../layouts/Base.astro';
+import { supabase } from '../../lib/supabase';
+
+export async function getStaticPaths() {
+  const { data: productos } = await supabase.from('productos').select('slug').eq('activo', true);
+  return (productos ?? []).map((p) => ({ params: { slug: p.slug } }));
+}
+
+const { slug } = Astro.params;
+
+const { data: producto } = await supabase
+  .from('productos')
+  .select('*, producto_imagenes(url, orden), producto_variantes(id, nombre, precio_extra, stock)')
+  .eq('slug', slug)
+  .single();
+
+if (!producto) {
+  return Astro.redirect('/404');
+}
+---
+<Base title={`${producto.nombre} | Tu Empresa KNX`} description={producto.descripcion_corta}>
+  <div class="ficha">
+    <div class="imagenes">
+      {producto.imagen_principal && <img src={producto.imagen_principal} alt={producto.nombre} />}
+    </div>
+
+    <div class="info">
+      <h1>{producto.nombre}</h1>
+      <p class="sku">Ref. {producto.sku}</p>
+      <p class="precio">{(producto.precio_oferta ?? producto.precio).toFixed(2)}€</p>
+
+      {producto.descripcion_larga && <p>{producto.descripcion_larga}</p>}
+
+      {producto.producto_variantes?.length > 0 && (
+        <label>
+          Variante:
+          <select id="variante-select">
+            {producto.producto_variantes.map((v: any) => (
+              <option value={v.id} data-extra={v.precio_extra}>{v.nombre}</option>
+            ))}
+          </select>
+        </label>
+      )}
+
+      {producto.datasheet_url && (
+        <p><a href={producto.datasheet_url} target="_blank">Descargar ficha técnica (PDF)</a></p>
+      )}
+
+      <button id="add-to-cart" data-id={producto.id} data-nombre={producto.nombre} data-precio={producto.precio_oferta ?? producto.precio}>
+        Añadir al carrito
+      </button>
+    </div>
+  </div>
+
+  <style>
+    .ficha { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+    .imagenes img { width: 100%; border-radius: 8px; }
+    .sku { color: #888; }
+    .precio { font-size: 1.5rem; font-weight: 700; color: var(--color-primary); }
+    button { background: var(--color-primary); color: white; border: none; padding: 0.75rem 1.5rem; border-radius: 6px; cursor: pointer; font-size: 1rem; }
+    @media (max-width: 700px) { .ficha { grid-template-columns: 1fr; } }
+  </style>
+
+  <script>
+    // Carrito simple guardado en localStorage; se envía a Stripe en /carrito.
+    document.getElementById('add-to-cart')?.addEventListener('click', (e) => {
+      const btn = e.currentTarget as HTMLButtonElement;
+      const item = {
+        id: btn.dataset.id,
+        nombre: btn.dataset.nombre,
+        precio: Number(btn.dataset.precio),
+        cantidad: 1,
+      };
+      const carrito = JSON.parse(localStorage.getItem('carrito') || '[]');
+      const existente = carrito.find((i: any) => i.id === item.id);
+      if (existente) existente.cantidad += 1;
+      else carrito.push(item);
+      localStorage.setItem('carrito', JSON.stringify(carrito));
+      alert('Producto añadido al carrito');
+    });
+  </script>
+</Base>
