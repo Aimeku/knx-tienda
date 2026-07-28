@@ -5,7 +5,7 @@ export const prerender = false;
 
 import Base from '../../layouts/Base.astro';
 import { supabase } from '../../lib/supabase';
-import type { Especificacion, Producto, ProductoVariante } from '../../lib/supabase';
+import type { Documento, Especificacion, Producto, ProductoVariante } from '../../lib/supabase';
 
 const { slug } = Astro.params;
 
@@ -47,6 +47,15 @@ const filasInfoAdicional: Especificacion[] = [
     valor: opciones.map((o) => etiquetaValor(o)).join(', '),
   })),
 ];
+
+// documentos es la forma nueva (varios documentos con nombre); datasheet_url es el
+// campo antiguo de un solo PDF, se usa como respaldo si documentos está vacío.
+const documentos: Documento[] =
+  producto.documentos && producto.documentos.length > 0
+    ? producto.documentos
+    : producto.datasheet_url
+      ? [{ titulo: 'Ficha técnica (PDF)', url: producto.datasheet_url }]
+      : [];
 ---
 <Base title={`${producto.nombre} | AVCI Smart Homes`} description={producto.descripcion_corta ?? undefined}>
   <div class="ficha">
@@ -88,10 +97,6 @@ const filasInfoAdicional: Especificacion[] = [
           </div>
         </div>
       ))}
-
-      {producto.datasheet_url && (
-        <p><a href={producto.datasheet_url} target="_blank">Descargar ficha técnica (PDF)</a></p>
-      )}
 
       <div class="compra">
         <input type="number" id="cantidad" value="1" min="1" />
@@ -162,8 +167,12 @@ const filasInfoAdicional: Especificacion[] = [
     </div>
 
     <div class="tab-panel" data-panel="documentacion" hidden>
-      {producto.datasheet_url ? (
-        <p><a href={producto.datasheet_url} target="_blank">Descargar ficha técnica (PDF)</a></p>
+      {documentos.length > 0 ? (
+        <ul class="documentos">
+          {documentos.map((d) => (
+            <li><a href={d.url} target="_blank" rel="noopener">{d.titulo}</a></li>
+          ))}
+        </ul>
       ) : (
         <p class="vacio">Todavía no hay documentación disponible para este producto.</p>
       )}
@@ -287,6 +296,16 @@ const filasInfoAdicional: Especificacion[] = [
     .info-adicional td { text-align: left; padding: 0.85rem 1rem; font-weight: 400; }
     .info-adicional th { color: var(--color-text); font-weight: 700; width: 40%; }
     .info-adicional td { color: #444; }
+
+    .documentos { list-style: none; padding: 0; margin: 0; }
+    .documentos li { padding: 0.6rem 0; border-bottom: 1px solid #e5e5e5; }
+    .documentos li:last-child { border-bottom: none; }
+    .documentos a {
+      color: var(--color-primary);
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .documentos a:hover { text-decoration: underline; }
 
     @media (max-width: 700px) {
       .ficha { grid-template-columns: 1fr; }

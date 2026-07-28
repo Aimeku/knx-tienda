@@ -20,6 +20,11 @@ export type Especificacion = {
   valor: string | string[];
 };
 
+export type Documento = {
+  titulo: string;
+  url: string;
+};
+
 export type ProductoVariante = {
   id: string;
   nombre: string;
@@ -46,6 +51,7 @@ export type Producto = {
   imagen_principal: string | null;
   especificaciones: Especificacion[] | null;
   info_adicional: Especificacion[] | null;
+  documentos: Documento[] | null;
 };
 
 export type Categoria = {
