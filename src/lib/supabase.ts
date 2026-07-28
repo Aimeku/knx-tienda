@@ -15,6 +15,20 @@ export const supabaseAdmin = createClient(SUPABASE_URL, SUPABASE_SERVICE_ROLE_KE
   auth: { persistSession: false },
 });
 
+export type Especificacion = {
+  titulo: string;
+  valor: string | string[];
+};
+
+export type ProductoVariante = {
+  id: string;
+  nombre: string;
+  sku_variante: string | null;
+  precio_extra: number;
+  stock: number;
+  atributos: Record<string, string> | null;
+};
+
 export type Producto = {
   id: string;
   categoria_id: string | null;
@@ -30,6 +44,7 @@ export type Producto = {
   activo: boolean;
   datasheet_url: string | null;
   imagen_principal: string | null;
+  especificaciones: Especificacion[] | null;
 };
 
 export type Categoria = {

@@ -22,8 +22,17 @@ export const tiendaMenu = [
   },
   {
     grupo: 'Sonido',
-    categorias: [],
+    categorias: [
+      { nombre: 'Altavoces de techo', slug: 'altavoces-techo' },
+      { nombre: 'Altavoces de pie', slug: 'altavoces-pie' },
+      { nombre: 'Altavoces de pared', slug: 'altavoces-pared' },
+      { nombre: 'Altavoces de exterior', slug: 'altavoces-exterior' },
+      { nombre: 'Amplificadores', slug: 'amplificadores' },
+    ],
   },
 ];
 
 export const categorias = tiendaMenu.flatMap((g) => g.categorias);
+
+// Marcas que siempre aparecen como filtro, aunque todavía no haya productos publicados con ellas.
+export const marcasBase = ['Vimar', 'Interra', 'Sonos'];

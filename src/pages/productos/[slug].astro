@@ -3,6 +3,7 @@ export const prerender = true;
 
 import Base from '../../layouts/Base.astro';
 import { supabase } from '../../lib/supabase';
+import type { Especificacion, Producto, ProductoVariante } from '../../lib/supabase';
 
 export async function getStaticPaths() {
   const { data: productos } = await supabase.from('productos').select('slug').eq('activo', true);
@@ -13,70 +14,293 @@ const { slug } = Astro.params;
 
 const { data: producto } = await supabase
   .from('productos')
-  .select('*, producto_imagenes(url, orden), producto_variantes(id, nombre, precio_extra, stock)')
+  .select('*, producto_variantes(id, nombre, sku_variante, precio_extra, stock, atributos)')
   .eq('slug', slug)
-  .single();
+  .single<Producto & { producto_variantes: ProductoVariante[] }>();
 
 if (!producto) {
   return Astro.redirect('/404');
 }
+
+const variantes = producto.producto_variantes ?? [];
+
+// Agrupa las variantes por atributo (ej. "canales", "inputs") para pintar un selector
+// de botones por cada uno, sin dar por hecho qué atributos tiene este producto en concreto.
+const clavesAtributos = [...new Set(variantes.flatMap((v) => Object.keys(v.atributos ?? {})))];
+const opcionesPorAtributo = clavesAtributos.map((clave) => ({
+  clave,
+  opciones: [...new Set(variantes.map((v) => v.atributos?.[clave]).filter((v): v is string => Boolean(v)))],
+}));
+
+const etiquetasGrupo: Record<string, string> = { canales: 'Canales', inputs: 'Inputs' };
+const etiquetasValor: Record<string, string> = { con: 'Con Inputs', sin: 'Sin inputs' };
+const etiquetaGrupo = (clave: string) => etiquetasGrupo[clave] ?? clave.charAt(0).toUpperCase() + clave.slice(1);
+const etiquetaValor = (valor: string) => etiquetasValor[valor] ?? valor.charAt(0).toUpperCase() + valor.slice(1);
+
+const especificaciones: Especificacion[] = producto.especificaciones ?? [];
+const parrafosDescripcion = (producto.descripcion_larga ?? '').split('\n\n').filter(Boolean);
 ---
-<Base title={`${producto.nombre} | Tu Empresa KNX`} description={producto.descripcion_corta}>
+<Base title={`${producto.nombre} | AVCI Smart Homes`} description={producto.descripcion_corta ?? undefined}>
   <div class="ficha">
     <div class="imagenes">
-      {producto.imagen_principal && <img src={producto.imagen_principal} alt={producto.nombre} />}
+      {producto.imagen_principal ? (
+        <>
+          <img src={producto.imagen_principal} alt={producto.nombre} />
+          <a class="zoom" href={producto.imagen_principal} target="_blank" rel="noopener" aria-label="Ver imagen completa">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="10.5" cy="10.5" r="6.5" stroke="currentColor" stroke-width="1.5"/><path d="M20 20L15.5 15.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </a>
+        </>
+      ) : (
+        <div class="sin-imagen" />
+      )}
     </div>
 
     <div class="info">
       <h1>{producto.nombre}</h1>
-      <p class="sku">Ref. {producto.sku}</p>
-      <p class="precio">{(producto.precio_oferta ?? producto.precio).toFixed(2)}€</p>
+      <p class="precio-oculto">Inicia sesión para ver los precios</p>
 
-      {producto.descripcion_larga && <p>{producto.descripcion_larga}</p>}
-
-      {producto.producto_variantes?.length > 0 && (
-        <label>
-          Variante:
-          <select id="variante-select">
-            {producto.producto_variantes.map((v: any) => (
-              <option value={v.id} data-extra={v.precio_extra}>{v.nombre}</option>
+      {opcionesPorAtributo.map(({ clave, opciones }) => (
+        <div class="grupo-atributo">
+          <h2>{etiquetaGrupo(clave)}</h2>
+          <div class="opciones">
+            {opciones.map((valor, i) => (
+              <>
+                <input
+                  type="radio"
+                  name={`atributo-${clave}`}
+                  id={`atributo-${clave}-${valor}`}
+                  value={valor}
+                  class="radio-opcion"
+                  checked={i === 0}
+                />
+                <label for={`atributo-${clave}-${valor}`}>{etiquetaValor(valor)}</label>
+              </>
             ))}
-          </select>
-        </label>
-      )}
+          </div>
+        </div>
+      ))}
 
       {producto.datasheet_url && (
         <p><a href={producto.datasheet_url} target="_blank">Descargar ficha técnica (PDF)</a></p>
       )}
 
-      <button id="add-to-cart" data-id={producto.id} data-nombre={producto.nombre} data-precio={producto.precio_oferta ?? producto.precio}>
-        Añadir al carrito
-      </button>
+      <div class="compra">
+        <input type="number" id="cantidad" value="1" min="1" />
+        <button
+          id="add-to-cart"
+          data-id={producto.id}
+          data-nombre={producto.nombre}
+          data-precio={producto.precio_oferta ?? producto.precio}
+          data-variantes={JSON.stringify(variantes)}
+        >
+          Añadir al carrito
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="tabs">
+    <div class="tab-botones" role="tablist">
+      <button type="button" class="tab-boton activo" data-tab="descripcion">Descripción</button>
+      <button type="button" class="tab-boton" data-tab="info-adicional">Información adicional</button>
+      <button type="button" class="tab-boton" data-tab="valoraciones">Valoraciones</button>
+      <button type="button" class="tab-boton" data-tab="documentacion">Documentación</button>
+    </div>
+
+    <div class="tab-panel" data-panel="descripcion">
+      {parrafosDescripcion.map((parrafo) => <p>{parrafo}</p>)}
+
+      {especificaciones.length > 0 && (
+        <>
+          <h2>Características técnicas generales</h2>
+          <ul class="especificaciones">
+            {especificaciones.map((e) => (
+              <li>
+                <strong>{e.titulo}:</strong>
+                {Array.isArray(e.valor) ? (
+                  <ul>
+                    {e.valor.map((linea) => <li>{linea}</li>)}
+                  </ul>
+                ) : (
+                  <span> {e.valor}</span>
+                )}
+              </li>
+            ))}
+          </ul>
+        </>
+      )}
+    </div>
+
+    <div class="tab-panel" data-panel="info-adicional" hidden>
+      <p class="vacio">Todavía no hay información adicional para este producto.</p>
+    </div>
+
+    <div class="tab-panel" data-panel="valoraciones" hidden>
+      <p class="vacio">Este producto todavía no tiene valoraciones.</p>
+    </div>
+
+    <div class="tab-panel" data-panel="documentacion" hidden>
+      {producto.datasheet_url ? (
+        <p><a href={producto.datasheet_url} target="_blank">Descargar ficha técnica (PDF)</a></p>
+      ) : (
+        <p class="vacio">Todavía no hay documentación disponible para este producto.</p>
+      )}
     </div>
   </div>
 
   <style>
-    .ficha { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
-    .imagenes img { width: 100%; border-radius: 8px; }
-    .sku { color: #888; }
-    .precio { font-size: 1.5rem; font-weight: 700; color: var(--color-primary); }
-    button { background: var(--color-primary); color: white; border: none; padding: 0.75rem 1.5rem; border-radius: 6px; cursor: pointer; font-size: 1rem; }
-    @media (max-width: 700px) { .ficha { grid-template-columns: 1fr; } }
+    .ficha { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; padding: 2rem; }
+    .imagenes { position: relative; }
+    .imagenes img { width: 100%; border-radius: 8px; display: block; }
+    .imagenes .sin-imagen { width: 100%; aspect-ratio: 1; background: #f5f5f5; border-radius: 8px; }
+    .zoom {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      display: flex;
+      color: var(--color-text);
+      background: #fff;
+      border-radius: 999px;
+      padding: 0.5rem;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    }
+
+    .info h1 { font-size: 2.25rem; margin: 0 0 1rem; }
+    .precio-oculto {
+      display: inline-block;
+      color: var(--color-muted);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      font-size: 1rem;
+      background: #f5f5f5;
+      padding: 0.75rem 1rem;
+      border-radius: 6px;
+      margin: 0 0 1.5rem;
+    }
+
+    .grupo-atributo { margin-bottom: 1.5rem; }
+    .grupo-atributo h2 { font-size: 1.05rem; margin: 0 0 0.75rem; }
+    .opciones { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+    .radio-opcion { position: absolute; opacity: 0; pointer-events: none; }
+    .radio-opcion + label {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 3rem;
+      padding: 0.6rem 1.1rem;
+      border: 1px solid var(--color-border);
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 0.95rem;
+    }
+    .radio-opcion:checked + label {
+      border-color: var(--color-primary);
+      color: var(--color-primary);
+      font-weight: 600;
+    }
+    .radio-opcion:focus-visible + label { outline: 2px solid var(--color-primary); outline-offset: 2px; }
+
+    .compra { display: flex; gap: 1rem; margin-top: 1.5rem; }
+    .compra input[type='number'] {
+      width: 4.5rem;
+      padding: 0.75rem;
+      border: 1px solid var(--color-border);
+      border-radius: 6px;
+      font: inherit;
+    }
+    .compra button {
+      background: var(--color-muted);
+      color: #fff;
+      border: none;
+      padding: 0.75rem 2rem;
+      border-radius: 999px;
+      cursor: pointer;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      font-size: 0.85rem;
+    }
+
+    .tabs { padding: 0 2rem 3rem; }
+    .tab-botones { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 0; }
+    .tab-boton {
+      background: #fff;
+      border: 1px solid var(--color-text);
+      color: var(--color-text);
+      padding: 1rem 1.5rem;
+      border-radius: 8px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      font-size: 0.85rem;
+      cursor: pointer;
+    }
+    .tab-boton.activo { background: var(--color-text); color: #fff; }
+    .tab-panel {
+      background: #f5f5f5;
+      padding: 2rem;
+      border-radius: 8px;
+      margin-top: 1.5rem;
+      line-height: 1.7;
+      color: #333;
+    }
+    .tab-panel h2 { color: var(--color-text); font-size: 1.75rem; margin: 2rem 0 1rem; }
+    .especificaciones { list-style: none; padding: 0; margin: 0; }
+    .especificaciones > li { padding: 0.5rem 0; border-bottom: 1px solid #e5e5e5; }
+    .especificaciones ul { margin: 0.4rem 0 0 1rem; padding: 0; list-style: disc; }
+    .especificaciones ul li { border: none; padding: 0.15rem 0; }
+    .vacio { color: var(--color-muted); font-style: italic; margin: 0; }
+
+    @media (max-width: 700px) {
+      .ficha { grid-template-columns: 1fr; }
+    }
   </style>
 
   <script>
-    // Carrito simple guardado en localStorage; se envía a Stripe en /carrito.
+    // Pestañas de la ficha (Descripción / Información adicional / Valoraciones / Documentación).
+    document.querySelectorAll<HTMLButtonElement>('.tab-boton').forEach((boton) => {
+      boton.addEventListener('click', () => {
+        document.querySelectorAll<HTMLButtonElement>('.tab-boton').forEach((b) => b.classList.remove('activo'));
+        document.querySelectorAll<HTMLElement>('.tab-panel').forEach((p) => { p.hidden = true; });
+        boton.classList.add('activo');
+        const panel = document.querySelector<HTMLElement>(`[data-panel="${boton.dataset.tab}"]`);
+        if (panel) panel.hidden = false;
+      });
+    });
+
+    // Añadir al carrito: si el producto tiene variantes (canales, inputs...), busca la que
+    // coincide con las opciones seleccionadas y usa su SKU/precio; si no, usa el producto tal cual.
     document.getElementById('add-to-cart')?.addEventListener('click', (e) => {
       const btn = e.currentTarget as HTMLButtonElement;
+      const cantidadInput = document.getElementById('cantidad') as HTMLInputElement | null;
+      const cantidad = Math.max(1, Number(cantidadInput?.value) || 1);
+
+      const variantes: Array<{ id: string; nombre: string; precio_extra: number; atributos: Record<string, string> | null }> =
+        JSON.parse(btn.dataset.variantes || '[]');
+
+      let variante = null;
+      if (variantes.length > 0) {
+        const seleccion: Record<string, string> = {};
+        document.querySelectorAll<HTMLInputElement>('.radio-opcion:checked').forEach((input) => {
+          const clave = input.name.replace('atributo-', '');
+          seleccion[clave] = input.value;
+        });
+        variante = variantes.find((v) =>
+          Object.entries(seleccion).every(([clave, valor]) => v.atributos?.[clave] === valor)
+        ) ?? null;
+      }
+
       const item = {
-        id: btn.dataset.id,
-        nombre: btn.dataset.nombre,
-        precio: Number(btn.dataset.precio),
-        cantidad: 1,
+        id: variante ? `${btn.dataset.id}-${variante.id}` : btn.dataset.id,
+        nombre: variante ? `${btn.dataset.nombre} – ${variante.nombre}` : btn.dataset.nombre,
+        precio: Number(btn.dataset.precio) + (variante?.precio_extra ?? 0),
+        cantidad,
       };
+
       const carrito = JSON.parse(localStorage.getItem('carrito') || '[]');
       const existente = carrito.find((i: any) => i.id === item.id);
-      if (existente) existente.cantidad += 1;
+      if (existente) existente.cantidad += item.cantidad;
       else carrito.push(item);
       localStorage.setItem('carrito', JSON.stringify(carrito));
       alert('Producto añadido al carrito');

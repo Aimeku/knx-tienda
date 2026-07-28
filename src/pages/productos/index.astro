@@ -4,7 +4,7 @@ export const prerender = false;
 
 import Base from '../../layouts/Base.astro';
 import { supabase } from '../../lib/supabase';
-import { tiendaMenu, categorias as categoriasPlano } from '../../lib/categorias';
+import { tiendaMenu, categorias as categoriasPlano, marcasBase } from '../../lib/categorias';
 
 const categoriasSeleccionadas = Astro.url.searchParams.getAll('categoria');
 const marcasSeleccionadas = Astro.url.searchParams.getAll('marca');
@@ -19,7 +19,7 @@ const { data: marcasFilas } = await supabase
   .select('marca')
   .eq('activo', true)
   .not('marca', 'is', null);
-const marcasDisponibles = [...new Set((marcasFilas ?? []).map((p) => p.marca).filter(Boolean))].sort();
+const marcasDisponibles = [...new Set([...marcasBase, ...(marcasFilas ?? []).map((p) => p.marca).filter(Boolean)])].sort();
 
 let consulta = supabase
   .from('productos')
