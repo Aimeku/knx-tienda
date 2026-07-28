@@ -45,6 +45,7 @@ export type Producto = {
   datasheet_url: string | null;
   imagen_principal: string | null;
   especificaciones: Especificacion[] | null;
+  info_adicional: Especificacion[] | null;
 };
 
 export type Categoria = {

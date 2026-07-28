@@ -39,6 +39,17 @@ const etiquetaValor = (valor: string) => etiquetasValor[valor] ?? valor.charAt(0
 
 const especificaciones: Especificacion[] = producto.especificaciones ?? [];
 const parrafosDescripcion = (producto.descripcion_larga ?? '').split('\n\n').filter(Boolean);
+
+// Tabla de "Información adicional": Marca y Canales/Inputs se derivan de datos que ya
+// existen (marca del producto, opciones de variante) para no duplicarlos a mano.
+const filasInfoAdicional: Especificacion[] = [
+  ...(producto.marca ? [{ titulo: 'Marca', valor: producto.marca }] : []),
+  ...(producto.info_adicional ?? []),
+  ...opcionesPorAtributo.map(({ clave, opciones }) => ({
+    titulo: etiquetaGrupo(clave),
+    valor: opciones.map((o) => etiquetaValor(o)).join(', '),
+  })),
+];
 ---
 <Base title={`${producto.nombre} | AVCI Smart Homes`} description={producto.descripcion_corta ?? undefined}>
   <div class="ficha">
@@ -58,6 +69,7 @@ const parrafosDescripcion = (producto.descripcion_larga ?? '').split('\n\n').fil
     <div class="info">
       <h1>{producto.nombre}</h1>
       <p class="precio-oculto">Inicia sesión para ver los precios</p>
+      {producto.descripcion_corta && <p class="descripcion-corta">{producto.descripcion_corta}</p>}
 
       {opcionesPorAtributo.map(({ clave, opciones }) => (
         <div class="grupo-atributo">
@@ -132,7 +144,20 @@ const parrafosDescripcion = (producto.descripcion_larga ?? '').split('\n\n').fil
     </div>
 
     <div class="tab-panel" data-panel="info-adicional" hidden>
-      <p class="vacio">Todavía no hay información adicional para este producto.</p>
+      {filasInfoAdicional.length > 0 ? (
+        <table class="info-adicional">
+          <tbody>
+            {filasInfoAdicional.map((fila) => (
+              <tr>
+                <th>{fila.titulo}</th>
+                <td>{Array.isArray(fila.valor) ? fila.valor.join(', ') : fila.valor}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      ) : (
+        <p class="vacio">Todavía no hay información adicional para este producto.</p>
+      )}
     </div>
 
     <div class="tab-panel" data-panel="valoraciones" hidden>
@@ -176,6 +201,12 @@ const parrafosDescripcion = (producto.descripcion_larga ?? '').split('\n\n').fil
       background: #f5f5f5;
       padding: 0.75rem 1rem;
       border-radius: 6px;
+      margin: 0 0 1.5rem;
+    }
+    .descripcion-corta {
+      display: block;
+      color: #444;
+      line-height: 1.6;
       margin: 0 0 1.5rem;
     }
 
@@ -251,6 +282,14 @@ const parrafosDescripcion = (producto.descripcion_larga ?? '').split('\n\n').fil
     .especificaciones ul { margin: 0.4rem 0 0 1rem; padding: 0; list-style: disc; }
     .especificaciones ul li { border: none; padding: 0.15rem 0; }
     .vacio { color: var(--color-muted); font-style: italic; margin: 0; }
+
+    .info-adicional { width: 100%; border-collapse: collapse; background: #fff; }
+    .info-adicional tr:not(:last-child) th,
+    .info-adicional tr:not(:last-child) td { border-bottom: 1px solid #e5e5e5; }
+    .info-adicional th,
+    .info-adicional td { text-align: left; padding: 0.85rem 1rem; font-weight: 400; }
+    .info-adicional th { color: var(--color-text); font-weight: 700; width: 40%; }
+    .info-adicional td { color: #444; }
 
     @media (max-width: 700px) {
       .ficha { grid-template-columns: 1fr; }
