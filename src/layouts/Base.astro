@@ -1,5 +1,5 @@
 ---
-import { categorias } from '../lib/categorias';
+import { tiendaMenu } from '../lib/categorias';
 
 interface Props {
   title: string;
@@ -39,11 +39,22 @@ const proyectos = [
       </div>
       <div class="nav-item has-dropdown">
         <button class="nav-trigger" aria-haspopup="true">Tienda</button>
-        <div class="mega-menu">
-          {categorias.map((c) => (
-            <a href={`/productos?categoria=${c.slug}`}>{c.nombre}</a>
-          ))}
-          <a href="/productos" class="ver-todo">Ver todo el catálogo</a>
+        <div class="mega-menu mega-menu--tienda">
+          <div class="tienda-grid">
+            {tiendaMenu.map((grupo) => (
+              <div class="tienda-columna">
+                <h3>{grupo.grupo}</h3>
+                {grupo.categorias.length > 0 ? (
+                  grupo.categorias.map((c) => (
+                    <a href={`/productos?categoria=${c.slug}`}>{c.nombre}</a>
+                  ))
+                ) : (
+                  <p class="vacio">Próximamente</p>
+                )}
+              </div>
+            ))}
+          </div>
+          <a href="/productos" class="ver-todo-tienda">Ver todo el catálogo →</a>
         </div>
       </div>
       <a href="/contacto" class="nav-item">Contacto</a>
@@ -186,6 +197,61 @@ const proyectos = [
     .has-dropdown:focus-within .account-menu {
       transform: translateY(0);
     }
+
+    /* Panel de "Tienda": a todo el ancho de la ventana, con columnas por grupo */
+    .mega-menu.mega-menu--tienda {
+      display: block;
+      position: fixed;
+      top: 81px;
+      left: 0;
+      right: 0;
+      width: 100%;
+      min-width: 0;
+      padding: 2.5rem 2.5rem 2rem;
+      transform: translateY(8px);
+    }
+    .has-dropdown:hover .mega-menu.mega-menu--tienda,
+    .has-dropdown:focus-within .mega-menu.mega-menu--tienda {
+      transform: translateY(0);
+    }
+    .tienda-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem 3rem;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    .tienda-columna h3 {
+      text-transform: uppercase;
+      font-weight: 700;
+      font-size: 0.95rem;
+      margin: 0 0 0.75rem;
+      padding-bottom: 0.6rem;
+      border-bottom: 1px solid var(--color-border);
+    }
+    .mega-menu--tienda .tienda-columna a {
+      display: block;
+      padding: 0.4rem 0;
+      white-space: normal;
+    }
+    .tienda-columna .vacio {
+      margin: 0;
+      color: var(--color-muted);
+      font-size: 0.85rem;
+      font-style: italic;
+    }
+    .ver-todo-tienda {
+      display: block;
+      text-align: right;
+      max-width: 1400px;
+      margin: 2rem auto 0;
+      padding-top: 1rem;
+      border-top: 1px solid var(--color-border);
+      color: var(--color-muted);
+      text-decoration: none;
+      font-size: 0.85rem;
+    }
+    .ver-todo-tienda:hover { color: var(--color-primary); }
 
     .header-icons { display: flex; align-items: center; gap: 1.5rem; }
     .icon-link {
