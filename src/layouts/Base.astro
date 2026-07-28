@@ -95,6 +95,30 @@ const proyectos = [
     if (badge) badge.textContent = String(total);
   </script>
 
+  <script>
+    // El panel de "Tienda" está anclado a la ventana (position: fixed), separado
+    // del botón que lo abre, así que el :hover de CSS se pierde si el ratón
+    // cruza ese hueco en diagonal. Este margen de tolerancia evita que se cierre.
+    document.querySelectorAll<HTMLElement>('.has-dropdown').forEach((item) => {
+      let closeTimer: ReturnType<typeof setTimeout>;
+      const menu = item.querySelector<HTMLElement>(':scope > .mega-menu');
+
+      const open = () => {
+        clearTimeout(closeTimer);
+        item.classList.add('is-open');
+      };
+      const scheduleClose = () => {
+        clearTimeout(closeTimer);
+        closeTimer = setTimeout(() => item.classList.remove('is-open'), 350);
+      };
+
+      item.addEventListener('mouseenter', open);
+      item.addEventListener('mouseleave', scheduleClose);
+      menu?.addEventListener('mouseenter', open);
+      menu?.addEventListener('mouseleave', scheduleClose);
+    });
+  </script>
+
   <style is:global>
     :root {
       --color-bg: #ffffff;
@@ -175,7 +199,8 @@ const proyectos = [
       transition: opacity 0.18s ease, transform 0.18s ease, visibility 0.18s;
     }
     .has-dropdown:hover .mega-menu,
-    .has-dropdown:focus-within .mega-menu {
+    .has-dropdown:focus-within .mega-menu,
+    .has-dropdown.is-open .mega-menu {
       opacity: 1;
       visibility: visible;
       pointer-events: auto;
@@ -194,7 +219,8 @@ const proyectos = [
     .mega-menu .ver-todo { border-top: 1px solid var(--color-border); margin-top: 0.25rem; color: var(--color-muted); }
     .account-menu { right: 0; left: auto; min-width: 180px; transform: translateY(8px); }
     .has-dropdown:hover .account-menu,
-    .has-dropdown:focus-within .account-menu {
+    .has-dropdown:focus-within .account-menu,
+    .has-dropdown.is-open .account-menu {
       transform: translateY(0);
     }
 
@@ -211,7 +237,8 @@ const proyectos = [
       transform: translateY(8px);
     }
     .has-dropdown:hover .mega-menu.mega-menu--tienda,
-    .has-dropdown:focus-within .mega-menu.mega-menu--tienda {
+    .has-dropdown:focus-within .mega-menu.mega-menu--tienda,
+    .has-dropdown.is-open .mega-menu.mega-menu--tienda {
       transform: translateY(0);
     }
     .tienda-grid {
