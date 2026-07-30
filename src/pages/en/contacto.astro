@@ -1,0 +1,228 @@
+---
+export const prerender = true;
+import Base from '../../layouts/Base.astro';
+---
+<Base title="Contact | AVCI Smart Homes" description="Tell us about your KNX smart home project and we'll help you find the right solution.">
+  <section class="contacto">
+    <div class="panel-info">
+      <p class="eyebrow">KNX smart home for any project</p>
+      <h1>Tell us what you need and we'll make it happen<span class="accent-dot">.</span></h1>
+      <p class="subtitle">
+        Whether you're a systems integrator, architect, designer, homeowner or developer, at AVCI
+        we help you find the smart home solution that best fits your project. Get in touch and
+        we'll get back to you as soon as possible.
+      </p>
+      <p class="pregunta">Ready to start your project?</p>
+      <a class="cta" href="#formulario-contacto">Get in touch</a>
+    </div>
+
+    <form class="panel-form" id="formulario-contacto">
+      <div class="grid-2">
+        <input type="text" name="nombre" placeholder="Name" aria-label="Name" required />
+        <input type="tel" name="telefono" placeholder="Phone" aria-label="Phone" required />
+      </div>
+      <input type="email" name="email" placeholder="Email address" aria-label="Email address" required />
+
+      <label class="campo-label" for="tecnologia">Technology type</label>
+      <select id="tecnologia" name="tecnologia">
+        <option value="cableado">Wired (KNX)</option>
+        <option value="inalambrico">Wireless (IoT)</option>
+        <option value="no-seguro">Not sure, advise me</option>
+      </select>
+
+      <input type="text" name="objetivo" placeholder="Control objective (lighting, climate, security...)" aria-label="Control objective" />
+
+      <label class="campo-label" for="tipo-proyecto">Project type</label>
+      <select id="tipo-proyecto" name="tipoProyecto">
+        <option value="vivienda-nueva">New home</option>
+        <option value="reforma">Renovation</option>
+        <option value="negocio">Office / Business</option>
+        <option value="promocion">Real estate development</option>
+        <option value="otro">Other</option>
+      </select>
+
+      <input type="text" name="ubicacion" placeholder="Location" aria-label="Location" />
+      <textarea name="mensaje" placeholder="Anything else you'd like us to know?" aria-label="Message" rows="4"></textarea>
+
+      <label class="privacidad">
+        <input type="checkbox" name="privacidad" required />
+        I have read and accept the <a href="/privacidad">privacy policy</a>
+      </label>
+
+      <p class="confirmacion" hidden>
+        Thank you, we've received your message. We'll get back to you as soon as possible.
+      </p>
+
+      <button type="submit" class="enviar">
+        Send
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M3 11L21 3L13 21L11 13L3 11Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+      </button>
+    </form>
+  </section>
+
+  <script>
+    const form = document.getElementById('formulario-contacto') as HTMLFormElement | null;
+    const confirmacion = form?.querySelector('.confirmacion') as HTMLElement | null;
+
+    form?.addEventListener('submit', (e) => {
+      e.preventDefault();
+      // TODO: conectar con el servicio de envío (email/CRM) cuando esté definido.
+      if (confirmacion) confirmacion.hidden = false;
+      form.reset();
+    });
+  </script>
+
+  <style>
+    .contacto {
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      min-height: calc(100vh - 82px);
+    }
+    @media (max-width: 900px) {
+      .contacto { grid-template-columns: 1fr; }
+    }
+
+    .panel-info {
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 1.5rem;
+      padding: 4rem 3rem;
+      background: #0a0a0a;
+      color: #fff;
+    }
+    .panel-info::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at 25% 25%, rgba(255, 255, 255, 0.1), transparent 55%),
+        linear-gradient(135deg, transparent 40%, rgba(255, 255, 255, 0.06) 48%, transparent 56%);
+      pointer-events: none;
+    }
+    .panel-info > * { position: relative; z-index: 1; }
+
+    .panel-info .eyebrow {
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      font-size: 0.8rem;
+      color: #999;
+      margin: 0;
+    }
+    .panel-info h1 {
+      font-size: clamp(1.75rem, 4vw, 3rem);
+      font-weight: 800;
+      margin: 0;
+      line-height: 1.15;
+    }
+    .accent-dot { color: #fff; }
+    .panel-info .subtitle {
+      color: #ccc;
+      font-size: 1.05rem;
+      font-weight: 300;
+      line-height: 1.6;
+      max-width: 480px;
+      margin: 0;
+    }
+    .panel-info .pregunta {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin: 1rem 0 0;
+    }
+    .panel-info .cta {
+      display: inline-block;
+      align-self: flex-start;
+      background: var(--color-primary);
+      color: var(--color-primary-text);
+      padding: 0.9rem 2.5rem;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      font-size: 0.85rem;
+    }
+
+    .panel-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      padding: 4rem 3rem;
+    }
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    @media (max-width: 480px) {
+      .grid-2 { grid-template-columns: 1fr; }
+    }
+
+    .panel-form input[type='text'],
+    .panel-form input[type='tel'],
+    .panel-form input[type='email'],
+    .panel-form select,
+    .panel-form textarea {
+      width: 100%;
+      border: 1px solid var(--color-border);
+      border-radius: 6px;
+      padding: 0.9rem 1rem;
+      font: inherit;
+      color: var(--color-text);
+      background: #fff;
+    }
+    .panel-form input:focus,
+    .panel-form select:focus,
+    .panel-form textarea:focus {
+      outline: none;
+      border-color: var(--color-primary);
+    }
+    .panel-form textarea { resize: vertical; }
+    .campo-label {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--color-muted);
+      margin-bottom: -0.5rem;
+    }
+
+    .privacidad {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.6rem;
+      font-size: 0.85rem;
+      color: var(--color-muted);
+    }
+    .privacidad input { accent-color: var(--color-primary); margin-top: 0.2rem; }
+    .privacidad a { color: var(--color-text); }
+
+    .confirmacion {
+      background: #eef4ff;
+      color: var(--color-text);
+      border: 1px solid var(--color-primary);
+      border-radius: 6px;
+      padding: 0.85rem 1rem;
+      font-size: 0.9rem;
+      margin: 0;
+    }
+
+    .enviar {
+      align-self: flex-start;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: var(--color-primary);
+      color: var(--color-primary-text);
+      border: none;
+      cursor: pointer;
+      padding: 0.9rem 2rem;
+      border-radius: 999px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      font-size: 0.85rem;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .enviar:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px rgba(10, 10, 10, 0.35);
+    }
+  </style>
+</Base>

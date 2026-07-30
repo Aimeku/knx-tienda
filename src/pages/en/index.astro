@@ -1,0 +1,126 @@
+---
+export const prerender = true;
+import Base from '../../layouts/Base.astro';
+import { categorias } from '../../lib/categorias';
+---
+<Base title="AVCI Smart Homes | KNX Store" description="Online store for KNX smart home products.">
+  <section class="hero">
+    <div class="hero-slides">
+      <img src="https://keewlcnfppadsjmujlju.supabase.co/storage/v1/object/public/Fotos%20principales/1.png" alt="" class="hero-slide is-active" />
+      <img src="https://keewlcnfppadsjmujlju.supabase.co/storage/v1/object/public/Fotos%20principales/2.png" alt="" class="hero-slide" />
+      <img src="https://keewlcnfppadsjmujlju.supabase.co/storage/v1/object/public/Fotos%20principales/3.png" alt="" class="hero-slide" />
+    </div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <p class="eyebrow">KNX smart home company</p>
+      <h1>Your home, just one touch away<span class="accent-dot">.</span></h1>
+      <p class="subtitle">Actuators, sensors, touch panels and KNX gateways at the best price.</p>
+      <a class="cta" href="/productos">Discover</a>
+    </div>
+  </section>
+
+  <section class="categorias">
+    <h2>Browse by category</h2>
+    <div class="cat-grid">
+      {categorias.map((c) => (
+        <a class="cat-card" href={`/productos?categoria=${c.slug}`}>
+          {c.nombre}
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <script>
+    // Hero photo carousel: switches image every 5 seconds with a fade.
+    const slides = document.querySelectorAll<HTMLElement>('.hero-slide');
+    let slideActual = 0;
+    if (slides.length > 1) {
+      setInterval(() => {
+        slides[slideActual].classList.remove('is-active');
+        slideActual = (slideActual + 1) % slides.length;
+        slides[slideActual].classList.add('is-active');
+      }, 5000);
+    }
+  </script>
+
+  <style>
+    .hero {
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      min-height: 85vh;
+      padding: 7rem 2rem;
+      color: #fff;
+      /* rompe el max-width de <main> para ocupar todo el ancho de la ventana */
+      width: 100vw;
+      margin-left: calc(50% - 50vw);
+      margin-right: calc(50% - 50vw);
+    }
+    .hero-slides { position: absolute; inset: 0; }
+    .hero-slide {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0;
+      transition: opacity 1.2s ease;
+    }
+    .hero-slide.is-active { opacity: 1; }
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(0, 0, 0, 0.35) 0%, rgba(0, 0, 0, 0.55) 100%);
+    }
+    .hero-content { position: relative; z-index: 1; max-width: 720px; }
+    .eyebrow {
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      font-size: 0.8rem;
+      color: #ddd;
+      margin: 0 0 1rem;
+    }
+    .hero h1 {
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      margin: 0 0 1rem;
+      font-weight: 800;
+    }
+    .accent-dot { color: #fff; }
+    .subtitle { color: #eee; margin: 0 0 2.5rem; font-size: 1.15rem; font-weight: 300; }
+    .cta {
+      display: inline-block;
+      background: var(--color-primary);
+      color: var(--color-primary-text);
+      padding: 0.9rem 2.5rem;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      font-size: 0.85rem;
+    }
+
+    .categorias { padding: 4rem 2rem; }
+    .categorias h2 { text-align: center; font-size: 1.5rem; margin-bottom: 2rem; }
+    .cat-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+    }
+    .cat-card {
+      display: block;
+      text-align: center;
+      padding: 1.5rem 1rem;
+      border: 1px solid var(--color-border);
+      border-radius: 4px;
+      text-decoration: none;
+      color: var(--color-text);
+      font-weight: 600;
+      transition: background 0.15s;
+    }
+    .cat-card:hover { background: #f7f7f7; border-color: var(--color-primary); }
+  </style>
+</Base>

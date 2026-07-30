@@ -1,0 +1,52 @@
+---
+export const prerender = true;
+import Base from '../../../layouts/Base.astro';
+import ProyectoLanding from '../../../components/ProyectoLanding.astro';
+
+const soluciones = [
+  {
+    nombre: 'Smart Homes & Automation',
+    descripcion: 'Intelligent systems that stay hidden within the design and enhance the user experience.',
+  },
+  {
+    nombre: 'Lighting',
+    descripcion: 'Wired and wireless (IoT) solutions compatible with KNX, Z-Wave, ZigBee, Bluetooth and Wi-Fi, as well as proprietary protocols. Lighting designs that highlight textures, volumes and atmospheres, creating immersive, functional spaces.',
+  },
+  {
+    nombre: 'Sound',
+    descripcion: 'High-quality, discreetly integrated audio systems, adapted to each design concept without intrusive elements.',
+  },
+  {
+    nombre: 'Security',
+    descripcion: 'Advanced solutions that combine protection and style without intrusive elements.',
+  },
+];
+
+const caracteristicas = [
+  {
+    titulo: 'Technology integrated with no visual impact',
+    descripcion: "Solutions designed to blend in perfectly without interfering with the project's aesthetic concept.",
+  },
+  {
+    titulo: 'Guaranteed quality and efficiency',
+    descripcion: "State-of-the-art systems that optimise the space's functionality without losing elegance.",
+  },
+  {
+    titulo: 'Flexibility and customisation',
+    descripcion: 'We guide you in choosing the most suitable systems and materials to achieve the perfect balance between functionality and design.',
+  },
+];
+---
+<Base title="Designers | AVCI Smart Homes" description="Technology that blends seamlessly into interior design: automation, lighting, sound and security.">
+  <ProyectoLanding
+    lang="en"
+    eyebrow="Interior designers"
+    headline="Technology that enhances every space"
+    subtitle="Every space tells a story, and every detail matters to the final result. We know you're looking for solutions that blend subtly into your designs without altering their essence. We offer innovative technology that enhances the sensory experience, ensuring aesthetics, functionality and customisation in every project."
+    solucionesHeading="Technology solutions for interior design"
+    solucionesIntro="We specialise in integrating technology subtly and harmoniously to elevate the experience of every space. We help you incorporate:"
+    soluciones={soluciones}
+    caracteristicasHeading="Why choose us as your partner?"
+    caracteristicas={caracteristicas}
+  />
+</Base>

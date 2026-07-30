@@ -1,0 +1,52 @@
+---
+export const prerender = true;
+import Base from '../../../layouts/Base.astro';
+import ProyectoLanding from '../../../components/ProyectoLanding.astro';
+
+const soluciones = [
+  {
+    nombre: 'Smart Homes & Automation',
+    descripcion: 'Add a distinctive value to your developments with smart homes designed for comfort and energy savings.',
+  },
+  {
+    nombre: 'Lighting',
+    descripcion: 'Wired and wireless (IoT) solutions optimised for seamless integration, compatible with KNX, Z-Wave, ZigBee, Bluetooth and Wi-Fi, as well as proprietary protocols. Designs that enhance spaces, improve efficiency and reduce operating costs.',
+  },
+  {
+    nombre: 'Sound',
+    descripcion: 'High-quality audio systems for common and residential areas, improving the experience of future homeowners.',
+  },
+  {
+    nombre: 'Security',
+    descripcion: 'Advanced solutions for access control and space protection, ensuring peace of mind and trust in every development.',
+  },
+];
+
+const caracteristicas = [
+  {
+    titulo: 'Investment optimisation',
+    descripcion: 'Our technology solutions are designed to maximise the value of every development without unnecessary extra costs.',
+  },
+  {
+    titulo: 'Efficiency and sustainability',
+    descripcion: 'We work with state-of-the-art technology that optimises energy consumption and reduces long-term maintenance costs.',
+  },
+  {
+    titulo: 'Hassle-free implementation',
+    descripcion: 'We adapt our solutions to each developer, for simple and effective integration.',
+  },
+];
+---
+<Base title="Developers / Contractors | AVCI Smart Homes" description="Smart home automation for developers and contractors: solutions that increase the value and efficiency of your real estate developments.">
+  <ProyectoLanding
+    lang="en"
+    eyebrow="Smart home automation for contractors"
+    headline="Innovation and efficiency for your real estate projects"
+    subtitle="We know that as a developer you want to incorporate technology that boosts the appeal of your projects, improves the experience of future homeowners and adds efficiency and sustainability. We offer innovative solutions that increase the value of every development and set it apart in the market."
+    solucionesHeading="Technology solutions for real estate projects"
+    solucionesIntro="We specialise in integrating efficient technology that improves the profitability and value of every development. We help you incorporate:"
+    soluciones={soluciones}
+    caracteristicasHeading="Why our solutions stand out"
+    caracteristicas={caracteristicas}
+  />
+</Base>

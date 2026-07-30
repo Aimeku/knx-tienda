@@ -1,4 +1,6 @@
 ---
+import { defaultLang, localizedHref, useTranslations, type Lang } from '../i18n/ui';
+
 interface Solucion {
   nombre: string;
   descripcion: string;
@@ -18,6 +20,7 @@ interface Props {
   soluciones: Solucion[];
   caracteristicasHeading: string;
   caracteristicas: Caracteristica[];
+  lang?: Lang;
 }
 
 const {
@@ -29,7 +32,10 @@ const {
   soluciones,
   caracteristicasHeading,
   caracteristicas,
+  lang = defaultLang,
 } = Astro.props;
+
+const t = useTranslations(lang);
 ---
 <section class="hero">
   <p class="eyebrow">{eyebrow}</p>
@@ -51,7 +57,7 @@ const {
 </section>
 
 <section class="caracteristicas">
-  <p class="eyebrow">Características</p>
+  <p class="eyebrow">{t('proyecto.caracteristicas')}</p>
   <h2 class="reveal-heading">{caracteristicasHeading}</h2>
   <div class="caracteristicas-grid">
     {caracteristicas.map((c) => (
@@ -64,8 +70,8 @@ const {
 </section>
 
 <section class="cta-section">
-  <h2 class="reveal-heading">¿Hablamos de tu próximo proyecto?</h2>
-  <a class="cta" href="/contacto">Contactar</a>
+  <h2 class="reveal-heading">{t('proyecto.ctaHeading')}</h2>
+  <a class="cta" href={localizedHref('/contacto', lang)}>{t('proyecto.contactar')}</a>
 </section>
 
 <noscript>

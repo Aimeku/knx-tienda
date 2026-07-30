@@ -1,0 +1,52 @@
+---
+export const prerender = true;
+import Base from '../../../layouts/Base.astro';
+import ProyectoLanding from '../../../components/ProyectoLanding.astro';
+
+const soluciones = [
+  {
+    nombre: 'Smart Homes & Automation',
+    descripcion: 'Wired and wireless systems that integrate discreetly and efficiently, without affecting the architectural design.',
+  },
+  {
+    nombre: 'Lighting',
+    descripcion: 'Wired and wireless (IoT) solutions designed for seamless integration, compatible with KNX, Z-Wave, ZigBee, Bluetooth and Wi-Fi, as well as proprietary protocols. Lighting designs that highlight the space’s identity and optimise energy consumption.',
+  },
+  {
+    nombre: 'Sound',
+    descripcion: 'High-quality, discreet and customisable audio systems for residential and commercial settings.',
+  },
+  {
+    nombre: 'Security',
+    descripcion: 'Advanced solutions that guarantee protection without altering the aesthetics, ensuring a balance between functionality and design.',
+  },
+];
+
+const caracteristicas = [
+  {
+    titulo: 'Design and technology in balance',
+    descripcion: 'Our solutions integrate without affecting the harmony and aesthetics of each project.',
+  },
+  {
+    titulo: 'Guaranteed quality and efficiency',
+    descripcion: "Technology that optimises energy consumption and improves the space's functionality.",
+  },
+  {
+    titulo: 'Adapted to every project',
+    descripcion: 'We work with you to implement tailor-made solutions that fit your vision.',
+  },
+];
+---
+<Base title="Architects | AVCI Smart Homes" description="Smart home automation for architects: solutions that integrate without interfering with the architectural design.">
+  <ProyectoLanding
+    lang="en"
+    eyebrow="Smart home automation for architects"
+    headline="Technology that complements your vision"
+    subtitle="We know that every architectural project has unique needs, and choosing the right technology is key to achieving a functional, efficient and aesthetically flawless design. We offer guidance and advanced solutions that adapt to every space, ensuring seamless integration with no visual interference."
+    solucionesHeading="Smart solutions for architects"
+    solucionesIntro="We specialise in equipping your designs with advanced technology that enhances aesthetics and improves the functionality of every space. We help you integrate:"
+    soluciones={soluciones}
+    caracteristicasHeading="Why choose us as your partner?"
+    caracteristicas={caracteristicas}
+  />
+</Base>

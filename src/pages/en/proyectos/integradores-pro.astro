@@ -1,0 +1,52 @@
+---
+export const prerender = true;
+import Base from '../../../layouts/Base.astro';
+import ProyectoLanding from '../../../components/ProyectoLanding.astro';
+
+const soluciones = [
+  {
+    nombre: 'Smart Homes & Automation',
+    descripcion: 'Wired and wireless systems that guarantee compatibility and customisation for every project.',
+  },
+  {
+    nombre: 'Lighting',
+    descripcion: 'Wired and wireless (IoT) solutions designed for seamless integration, compatible with KNX, Z-Wave, ZigBee, Bluetooth and Wi-Fi, as well as proprietary protocols.',
+  },
+  {
+    nombre: 'Sound',
+    descripcion: 'High-quality audio solutions for residential or commercial projects.',
+  },
+  {
+    nombre: 'Security',
+    descripcion: 'Advanced, reliable systems that prioritise protection without compromising functionality.',
+  },
+];
+
+const caracteristicas = [
+  {
+    titulo: 'Full Compatibility',
+    descripcion: "Our solutions are designed to integrate with the market's leading systems and platforms.",
+  },
+  {
+    titulo: 'Guaranteed Quality',
+    descripcion: 'We work with cutting-edge technology, ensuring durability and performance in every installation.',
+  },
+  {
+    titulo: 'Implementation Flexibility',
+    descripcion: 'We adapt our systems to the specifications and requirements of each project, hassle-free.',
+  },
+];
+---
+<Base title="Integrators PRO | AVCI Smart Homes" description="KNX and smart home solutions for systems integrators: smart homes, lighting, sound and security.">
+  <ProyectoLanding
+    lang="en"
+    eyebrow="Systems integrators"
+    headline="Technology that powers your projects"
+    subtitle="We know that as a systems integrator you're looking for reliable, easy-to-implement solutions that can scale to projects of any size. We offer tools that integrate without hassle, backed by innovation, quality and compatibility with the industry's leading standards."
+    solucionesHeading="Solutions designed for systems integrators"
+    solucionesIntro="We become your strategic partner to guarantee the success of your technology projects. We help you integrate:"
+    soluciones={soluciones}
+    caracteristicasHeading="Why choose us as your partner?"
+    caracteristicas={caracteristicas}
+  />
+</Base>

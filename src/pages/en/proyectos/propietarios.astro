@@ -1,0 +1,52 @@
+---
+export const prerender = true;
+import Base from '../../../layouts/Base.astro';
+import ProyectoLanding from '../../../components/ProyectoLanding.astro';
+
+const soluciones = [
+  {
+    nombre: 'Smart Homes & Automation',
+    descripcion: 'Automate your space and control lighting, temperature and devices from your phone or by voice.',
+  },
+  {
+    nombre: 'Lighting',
+    descripcion: 'Wired and wireless (IoT) solutions compatible with KNX, Z-Wave, ZigBee, Bluetooth and Wi-Fi, as well as proprietary protocols. Lighting designs that create personalised atmospheres and optimise energy consumption.',
+  },
+  {
+    nombre: 'Sound',
+    descripcion: 'Immersive, discreet audio systems, adapted to any space for a better experience.',
+  },
+  {
+    nombre: 'Security',
+    descripcion: 'Cameras, smart locks and advanced sensors that protect your home or premises and give you peace of mind at all times.',
+  },
+];
+
+const caracteristicas = [
+  {
+    titulo: 'We adapt to you',
+    descripcion: 'We advise you so you can choose the best solution for the needs of your home or business.',
+  },
+  {
+    titulo: 'Efficiency',
+    descripcion: 'Optimise energy consumption and cut costs without giving up comfort.',
+  },
+  {
+    titulo: 'Security and peace of mind',
+    descripcion: 'Control and protect your home or business from anywhere, with reliable technology.',
+  },
+];
+---
+<Base title="Homeowners | AVCI Smart Homes" description="Smart home automation for individuals: automate the lighting, sound and security of your home or business.">
+  <ProyectoLanding
+    lang="en"
+    eyebrow="Smart home automation for individuals"
+    headline="Experience the comfort of a smart space"
+    subtitle="Every space has different needs, and choosing the right technology can make all the difference in comfort, efficiency and security. We help you find the most convenient solution for your home or business, with smart systems that adapt to your lifestyle and give you full control over your environment."
+    solucionesHeading="Technology solutions for your home"
+    solucionesIntro="We bring intuitive, easy-to-use technology so you can enjoy a more comfortable, secure and efficient space. Discover how we can transform your home or business with:"
+    soluciones={soluciones}
+    caracteristicasHeading="Why choose us?"
+    caracteristicas={caracteristicas}
+  />
+</Base>
