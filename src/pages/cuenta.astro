@@ -1,0 +1,132 @@
+---
+export const prerender = true;
+import Base from '../layouts/Base.astro';
+---
+<Base title="Mi cuenta | AVCI Smart Homes" description="Inicia sesión o crea una cuenta en AVCI Smart Homes.">
+  <section class="cuenta">
+    <div class="tarjeta">
+      <div class="tabs" role="tablist">
+        <button type="button" class="tab activo" data-tab="login">Iniciar sesión</button>
+        <button type="button" class="tab" data-tab="registro">Crear cuenta</button>
+      </div>
+
+      <form class="panel" data-panel="login">
+        <input type="email" name="email" placeholder="Correo electrónico" aria-label="Correo electrónico" required />
+        <input type="password" name="password" placeholder="Contraseña" aria-label="Contraseña" required />
+        <p class="confirmacion" hidden>Función en construcción: el inicio de sesión estará disponible próximamente.</p>
+        <button type="submit" class="enviar">Iniciar sesión</button>
+      </form>
+
+      <form class="panel" data-panel="registro" hidden>
+        <input type="text" name="nombre" placeholder="Nombre" aria-label="Nombre" required />
+        <input type="email" name="email" placeholder="Correo electrónico" aria-label="Correo electrónico" required />
+        <input type="password" name="password" placeholder="Contraseña" aria-label="Contraseña" required />
+        <label class="privacidad">
+          <input type="checkbox" name="privacidad" required />
+          He leído y acepto la <a href="/privacidad">política de privacidad</a>
+        </label>
+        <p class="confirmacion" hidden>Función en construcción: la creación de cuenta estará disponible próximamente.</p>
+        <button type="submit" class="enviar">Crear cuenta</button>
+      </form>
+    </div>
+  </section>
+
+  <script>
+    document.querySelectorAll<HTMLButtonElement>('.tab').forEach((tab) => {
+      tab.addEventListener('click', () => {
+        document.querySelectorAll<HTMLButtonElement>('.tab').forEach((b) => b.classList.remove('activo'));
+        document.querySelectorAll<HTMLElement>('.panel').forEach((p) => { p.hidden = true; });
+        tab.classList.add('activo');
+        const panel = document.querySelector<HTMLElement>(`[data-panel="${tab.dataset.tab}"]`);
+        if (panel) panel.hidden = false;
+      });
+    });
+
+    // Sin backend de autenticación todavía: solo la interfaz por ahora.
+    document.querySelectorAll<HTMLFormElement>('.panel').forEach((form) => {
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const confirmacion = form.querySelector<HTMLElement>('.confirmacion');
+        if (confirmacion) confirmacion.hidden = false;
+      });
+    });
+  </script>
+
+  <style>
+    .cuenta {
+      display: flex;
+      justify-content: center;
+      padding: 5rem 2rem;
+      min-height: calc(100vh - 82px);
+      background: #f7f7f7;
+    }
+    .tarjeta {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.06);
+      padding: 2.5rem;
+      width: 100%;
+      max-width: 420px;
+      height: fit-content;
+    }
+    .tabs { display: flex; gap: 0.5rem; margin-bottom: 2rem; }
+    .tab {
+      flex: 1;
+      background: none;
+      border: none;
+      border-bottom: 2px solid var(--color-border);
+      padding: 0.75rem;
+      font: inherit;
+      font-weight: 700;
+      font-size: 0.9rem;
+      color: var(--color-muted);
+      cursor: pointer;
+    }
+    .tab.activo { color: var(--color-text); border-bottom-color: var(--color-text); }
+
+    .panel { display: flex; flex-direction: column; gap: 1rem; }
+    .panel input[type='text'],
+    .panel input[type='email'],
+    .panel input[type='password'] {
+      width: 100%;
+      border: 1px solid var(--color-border);
+      border-radius: 6px;
+      padding: 0.85rem 1rem;
+      font: inherit;
+      color: var(--color-text);
+    }
+    .panel input:focus { outline: none; border-color: var(--color-primary); }
+
+    .privacidad {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+      font-size: 0.8rem;
+      color: var(--color-muted);
+    }
+    .privacidad input { accent-color: var(--color-primary); margin-top: 0.2rem; }
+    .privacidad a { color: var(--color-text); }
+
+    .confirmacion {
+      background: #eef4ff;
+      border: 1px solid var(--color-primary);
+      border-radius: 6px;
+      padding: 0.75rem 1rem;
+      font-size: 0.85rem;
+      margin: 0;
+    }
+
+    .enviar {
+      background: var(--color-primary);
+      color: var(--color-primary-text);
+      border: none;
+      cursor: pointer;
+      padding: 0.9rem;
+      border-radius: 999px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      font-size: 0.85rem;
+    }
+  </style>
+</Base>

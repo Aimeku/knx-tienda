@@ -69,18 +69,9 @@ const proyectos = [
         <span aria-hidden="true">|</span>
         <a href={getSwitcherHref(Astro.url.pathname, 'en')} class={lang === 'en' ? 'is-active' : ''}>EN</a>
       </div>
-      <a href={lang === 'en' ? '/en/contacto' : '/contacto'} class="icon-link" aria-label={t('nav.ayuda')}>
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.5"/><path d="M9.5 9.5C9.5 8.11929 10.6193 7 12 7C13.3807 7 14.5 8.11929 14.5 9.5C14.5 10.8807 13.3807 11.6 12 12.5V13.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="12" cy="16.5" r="0.75" fill="currentColor"/></svg>
+      <a href="/cuenta" class="icon-link" aria-label={t('nav.cuenta')}>
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 12C14.4853 12 16.5 9.98528 16.5 7.5C16.5 5.01472 14.4853 3 12 3C9.51472 3 7.5 5.01472 7.5 7.5C7.5 9.98528 9.51472 12 12 12Z" stroke="currentColor" stroke-width="1.5"/><path d="M3.5 20.5C4.94486 16.9942 8.19921 14.5 12 14.5C15.8008 14.5 19.0551 16.9942 20.5 20.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
       </a>
-      <div class="nav-item has-dropdown">
-        <button class="icon-link nav-trigger" aria-haspopup="true" aria-label={t('nav.cuenta')}>
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 12C14.4853 12 16.5 9.98528 16.5 7.5C16.5 5.01472 14.4853 3 12 3C9.51472 3 7.5 5.01472 7.5 7.5C7.5 9.98528 9.51472 12 12 12Z" stroke="currentColor" stroke-width="1.5"/><path d="M3.5 20.5C4.94486 16.9942 8.19921 14.5 12 14.5C15.8008 14.5 19.0551 16.9942 20.5 20.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-        </button>
-        <div class="mega-menu account-menu">
-          <a href="/cuenta">{t('nav.iniciarSesion')}</a>
-          <a href="/registro">{t('nav.registrarse')}</a>
-        </div>
-      </div>
       <a href="/carrito" class="icon-link cart-link" aria-label={t('nav.carrito')}>
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M3 4H5L6.5 15.5H18.5L20 7H6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="9" cy="20" r="1.25" fill="currentColor"/><circle cx="17" cy="20" r="1.25" fill="currentColor"/></svg>
         <span class="cart-badge" id="cart-badge">0</span>
@@ -310,12 +301,6 @@ const proyectos = [
     }
     .mega-menu a:hover { background: #f5f5f5; }
     .mega-menu .ver-todo { border-top: 1px solid var(--color-border); margin-top: 0.25rem; color: var(--color-muted); }
-    .account-menu { right: 0; left: auto; min-width: 180px; transform: translateY(8px); }
-    .has-dropdown:hover .account-menu,
-    .has-dropdown:focus-within .account-menu,
-    .has-dropdown.is-open .account-menu {
-      transform: translateY(0);
-    }
 
     /* Panel de "Tienda": a todo el ancho de la ventana, con columnas por grupo */
     .mega-menu.mega-menu--tienda {

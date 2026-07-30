@@ -1,0 +1,129 @@
+---
+export const prerender = true;
+import Legal from '../layouts/Legal.astro';
+
+const actualizado = new Date().toLocaleDateString('es-ES', { year: 'numeric', month: 'long', day: 'numeric' });
+---
+<Legal title="Política de Cookies | AVCI Smart Homes" description="Qué cookies y almacenamiento local utiliza avci.es.">
+  <h1>Política de Cookies</h1>
+  <p class="updated">Esta política de cookies se aplica a avci.es y fue publicada el {actualizado}.</p>
+
+  <h2>1. Introducción</h2>
+  <p>
+    Nuestra web, https://avci.es (en adelante: «la web») utiliza cookies y tecnologías
+    relacionadas (para mayor comodidad, todas las tecnologías se denominan «cookies»). En el
+    siguiente documento te informamos sobre el uso de cookies y almacenamiento local en nuestra
+    web.
+  </p>
+
+  <h2>2. ¿Qué son las cookies?</h2>
+  <p>
+    Una cookie es un pequeño archivo que se envía junto con las páginas de esta web y que tu
+    navegador almacena en el disco duro de tu ordenador u otro dispositivo. La información
+    almacenada puede ser devuelta a nuestros servidores o a los servidores de terceros apropiados
+    durante una visita posterior.
+  </p>
+
+  <h2>3. ¿Qué es el almacenamiento local (localStorage)?</h2>
+  <p>
+    Además de las cookies, los navegadores permiten guardar información directamente en tu
+    dispositivo mediante almacenamiento local. A diferencia de las cookies, esta información no
+    se envía automáticamente a nuestros servidores en cada visita; solo la usa tu propio
+    navegador para recordar datos entre páginas, como el contenido de tu carrito de la compra.
+  </p>
+
+  <h2>4. Tipos de cookies</h2>
+  <h3>4.1 Cookies técnicas o funcionales</h3>
+  <p>
+    Aseguran que ciertas partes de la web funcionen correctamente y que tus preferencias de
+    usuario se recuerden. Podemos colocarlas sin necesidad de tu consentimiento.
+  </p>
+  <h3>4.2 Cookies de estadísticas</h3>
+  <p>
+    Se utilizarían para obtener información sobre el uso de la web y optimizar la experiencia de
+    los usuarios. Requieren tu consentimiento.
+  </p>
+  <h3>4.3 Cookies de marketing/seguimiento</h3>
+  <p>
+    Se utilizarían para crear perfiles de usuario o mostrar publicidad personalizada. Requieren
+    tu consentimiento.
+  </p>
+
+  <h2>5. Qué usamos actualmente en avci.es</h2>
+  <p>
+    A día de hoy, avci.es <strong>no utiliza cookies de estadísticas ni de marketing/seguimiento</strong>.
+    La única información que guardamos en tu navegador es el contenido de tu carrito de la
+    compra, mediante almacenamiento local (no mediante una cookie):
+  </p>
+  <table>
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Tipo</th>
+        <th>Función</th>
+        <th>Caducidad</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>carrito</td>
+        <td>Almacenamiento local (no es una cookie)</td>
+        <td>Recordar los productos añadidos al carrito mientras navegas por la tienda</td>
+        <td>Hasta que completes la compra o borres los datos del navegador</td>
+      </tr>
+    </tbody>
+  </table>
+  <p>
+    Cuando pagas a través de Stripe, es posible que Stripe coloque sus propias cookies técnicas
+    en su dominio (no en avci.es) para procesar el pago de forma segura. Puedes consultar la
+    política de privacidad de Stripe para más información.
+  </p>
+  <p>
+    Si en el futuro incorporamos herramientas de analítica, marketing o servicios de terceros que
+    utilicen cookies, actualizaremos esta política para reflejarlo y, si corresponde, te
+    pediremos tu consentimiento antes de activarlas.
+  </p>
+
+  <h2>6. Consentimiento</h2>
+  <p>
+    Como actualmente no usamos cookies de estadísticas ni de marketing, no mostramos un aviso de
+    consentimiento de cookies. En cuanto incorporemos alguna cookie no esencial, añadiremos el
+    correspondiente aviso para que puedas aceptarlas o rechazarlas.
+  </p>
+
+  <h2>7. Activación/desactivación y borrado de cookies</h2>
+  <p>
+    Puedes utilizar tu navegador de Internet para eliminar cookies y datos de almacenamiento
+    local de forma automática o manual, o para configurar que se te avise cada vez que se coloca
+    una cookie. Para obtener más información sobre estas opciones, consulta las instrucciones de
+    la sección «Ayuda» de tu navegador.
+  </p>
+  <p>
+    Ten en cuenta que si borras el almacenamiento local de tu navegador, el contenido de tu
+    carrito de la compra se perderá.
+  </p>
+
+  <h2>8. Tus derechos con respecto a los datos personales</h2>
+  <ul>
+    <li>Derecho a saber por qué se necesitan tus datos personales, qué sucederá con ellos y durante cuánto tiempo se conservarán.</li>
+    <li><strong>Derecho de acceso:</strong> tienes derecho a acceder a tus datos personales que conocemos.</li>
+    <li><strong>Derecho de rectificación:</strong> tienes derecho a completar, rectificar, borrar o bloquear tus datos personales cuando lo desees.</li>
+    <li>Si nos das tu consentimiento para procesar tus datos, tienes derecho a revocarlo y a que se eliminen tus datos personales.</li>
+    <li><strong>Derecho de cesión de tus datos:</strong> tienes derecho a solicitar todos tus datos personales al responsable del tratamiento y a transferirlos íntegramente a otro responsable.</li>
+    <li><strong>Derecho de oposición:</strong> puedes oponerte al tratamiento de tus datos. Nosotros cumplimos con esto, a menos que existan motivos justificados para el procesamiento.</li>
+  </ul>
+  <p>
+    Para ejercer estos derechos, por favor contacta con nosotros usando los datos de la sección
+    siguiente. Si tienes alguna queja sobre cómo gestionamos tus datos, también tienes derecho a
+    presentar una reclamación ante la autoridad de control (la Agencia Española de Protección de
+    Datos).
+  </p>
+
+  <h2>9. Datos de contacto</h2>
+  <p>
+    Clever Integration SL<br />
+    C/ Las Petunias L3 Marbella (29670), Málaga, España<br />
+    Web: <a href="https://avci.es">https://avci.es</a><br />
+    Correo electrónico: <a href="mailto:info@avci.es">info@avci.es</a>
+  </p>
+</Legal>
