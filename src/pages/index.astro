@@ -5,10 +5,18 @@ import { categorias } from '../lib/categorias';
 ---
 <Base title="AVCI Smart Homes | Tienda KNX">
   <section class="hero">
-    <p class="eyebrow">Empresa de domótica KNX</p>
-    <h1>Tu casa, a un solo toque<span class="accent-dot">.</span></h1>
-    <p class="subtitle">Actuadores, sensores, paneles táctiles y pasarelas KNX al mejor precio.</p>
-    <a class="cta" href="/productos">Descubrir</a>
+    <div class="hero-slides">
+      <img src="https://keewlcnfppadsjmujlju.supabase.co/storage/v1/object/public/Fotos%20principales/1.png" alt="" class="hero-slide is-active" />
+      <img src="https://keewlcnfppadsjmujlju.supabase.co/storage/v1/object/public/Fotos%20principales/2.png" alt="" class="hero-slide" />
+      <img src="https://keewlcnfppadsjmujlju.supabase.co/storage/v1/object/public/Fotos%20principales/3.png" alt="" class="hero-slide" />
+    </div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <p class="eyebrow">Empresa de domótica KNX</p>
+      <h1>Tu casa, a un solo toque<span class="accent-dot">.</span></h1>
+      <p class="subtitle">Actuadores, sensores, paneles táctiles y pasarelas KNX al mejor precio.</p>
+      <a class="cta" href="/productos">Descubrir</a>
+    </div>
   </section>
 
   <section class="categorias">
@@ -22,21 +30,57 @@ import { categorias } from '../lib/categorias';
     </div>
   </section>
 
+  <script>
+    // Carrusel de fotos del hero: cambia de imagen cada 5 segundos con un fundido.
+    const slides = document.querySelectorAll<HTMLElement>('.hero-slide');
+    let slideActual = 0;
+    if (slides.length > 1) {
+      setInterval(() => {
+        slides[slideActual].classList.remove('is-active');
+        slideActual = (slideActual + 1) % slides.length;
+        slides[slideActual].classList.add('is-active');
+      }, 5000);
+    }
+  </script>
+
   <style>
     .hero {
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       text-align: center;
+      min-height: 85vh;
       padding: 7rem 2rem;
-      background:
-        radial-gradient(ellipse at 75% 20%, rgba(255, 255, 255, 0.08), transparent 55%),
-        linear-gradient(115deg, transparent 40%, rgba(255, 255, 255, 0.05) 48%, transparent 56%),
-        #0a0a0a;
       color: #fff;
+      /* rompe el max-width de <main> para ocupar todo el ancho de la ventana */
+      width: 100%;
+      margin-left: calc(50% - 50vw);
+      margin-right: calc(50% - 50vw);
     }
+    .hero-slides { position: absolute; inset: 0; }
+    .hero-slide {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0;
+      transition: opacity 1.2s ease;
+    }
+    .hero-slide.is-active { opacity: 1; }
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(0, 0, 0, 0.35) 0%, rgba(0, 0, 0, 0.55) 100%);
+    }
+    .hero-content { position: relative; z-index: 1; max-width: 720px; }
     .eyebrow {
       text-transform: uppercase;
       letter-spacing: 0.15em;
       font-size: 0.8rem;
-      color: #999;
+      color: #ddd;
       margin: 0 0 1rem;
     }
     .hero h1 {
@@ -45,7 +89,7 @@ import { categorias } from '../lib/categorias';
       font-weight: 800;
     }
     .accent-dot { color: var(--color-primary); }
-    .subtitle { color: #ccc; margin: 0 0 2.5rem; font-size: 1.15rem; font-weight: 300; }
+    .subtitle { color: #eee; margin: 0 0 2.5rem; font-size: 1.15rem; font-weight: 300; }
     .cta {
       display: inline-block;
       background: var(--color-primary);
