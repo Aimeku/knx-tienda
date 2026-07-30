@@ -33,41 +33,41 @@ const tiposProfesional = [
 
         <div class="grid-2">
           <label class="campo">
-            Nombre <span class="req">*</span>
+            <span>Nombre <span class="req">*</span></span>
             <input type="text" name="nombre" required />
           </label>
           <label class="campo">
-            Nombre de la empresa <span class="req">*</span>
+            <span>Nombre de la empresa <span class="req">*</span></span>
             <input type="text" name="empresa" required />
           </label>
 
           <label class="campo">
-            Apellidos <span class="req">*</span>
+            <span>Apellidos <span class="req">*</span></span>
             <input type="text" name="apellidos" required />
           </label>
           <label class="campo">
-            CIF/NIF <span class="req">*</span>
+            <span>CIF/NIF <span class="req">*</span></span>
             <input type="text" name="cifNif" required />
           </label>
 
           <label class="campo">
-            Tipo de profesional <span class="req">*</span>
+            <span>Tipo de profesional <span class="req">*</span></span>
             <select name="tipoProfesional" required>
               <option value="" disabled selected>Selecciona una opción</option>
               {tiposProfesional.map((t) => <option value={t.value}>{t.label}</option>)}
             </select>
           </label>
           <label class="campo">
-            Dirección <span class="req">*</span>
+            <span>Dirección <span class="req">*</span></span>
             <input type="text" name="direccion" required />
           </label>
 
           <label class="campo">
-            Correo electrónico <span class="req">*</span>
+            <span>Correo electrónico <span class="req">*</span></span>
             <input type="email" name="email" required />
           </label>
           <label class="campo">
-            Contraseña <span class="req">*</span>
+            <span>Contraseña <span class="req">*</span></span>
             <input type="password" name="password" required />
           </label>
         </div>
