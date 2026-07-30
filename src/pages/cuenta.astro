@@ -1,6 +1,9 @@
 ---
-export const prerender = true;
+// Necesita leer la sesión del usuario en cada visita, así que no se pregenera.
+export const prerender = false;
+
 import Base from '../layouts/Base.astro';
+import { supabaseAdmin } from '../lib/supabase';
 
 const tiposProfesional = [
   { value: 'integrador-pro', label: 'Integradores PRO' },
@@ -9,81 +12,119 @@ const tiposProfesional = [
   { value: 'arquitecto', label: 'Arquitectos' },
   { value: 'promotora-constructora', label: 'Promotoras / Constructoras' },
 ];
+
+const user = Astro.locals.user;
+let perfil: { estado: string; nombre: string } | null = null;
+
+if (user) {
+  const { data } = await supabaseAdmin.from('perfiles').select('estado, nombre').eq('id', user.id).single();
+  perfil = data;
+}
 ---
 <Base title="Mi cuenta | AVCI Smart Homes" description="Inicia sesión o crea una cuenta en AVCI Smart Homes.">
   <section class="cuenta">
-    <div class="tarjeta">
-      <div class="tabs" role="tablist">
-        <button type="button" class="tab activo" data-tab="login">Iniciar sesión</button>
-        <button type="button" class="tab" data-tab="registro">Registrarse</button>
+    {user ? (
+      <div class="tarjeta tarjeta-estado">
+        {perfil?.estado === 'aprobado' ? (
+          <>
+            <p class="estado-titulo">Has iniciado sesión</p>
+            <p class="estado-detalle">{user.email}</p>
+          </>
+        ) : perfil?.estado === 'rechazado' ? (
+          <>
+            <p class="estado-titulo">Solicitud rechazada</p>
+            <p class="estado-detalle">
+              Tu solicitud de cuenta no ha sido aprobada. Si crees que es un error,
+              <a href="/contacto">contacta con nosotros</a>.
+            </p>
+          </>
+        ) : (
+          <>
+            <p class="estado-titulo">Cuenta pendiente de aprobación</p>
+            <p class="estado-detalle">
+              Hemos recibido tu solicitud y la estamos revisando. Te avisaremos por email
+              en cuanto esté activa.
+            </p>
+          </>
+        )}
+        <button type="button" id="logout" class="enviar">Cerrar sesión</button>
       </div>
-
-      <form class="panel panel-login" data-panel="login">
-        <input type="email" name="email" placeholder="Correo electrónico" aria-label="Correo electrónico" required />
-        <input type="password" name="password" placeholder="Contraseña" aria-label="Contraseña" required />
-        <p class="confirmacion" hidden>Función en construcción: el inicio de sesión estará disponible próximamente.</p>
-        <button type="submit" class="enviar">Iniciar sesión</button>
-      </form>
-
-      <form class="panel panel-registro" data-panel="registro" hidden>
-        <p class="aviso">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" fill="currentColor"/><rect x="11" y="10.5" width="2" height="6.5" rx="1" fill="#fff"/><circle cx="12" cy="7.5" r="1.25" fill="#fff"/></svg>
-          Revisaremos esta información para activar tu cuenta.
-        </p>
-
-        <div class="grid-2">
-          <label class="campo">
-            <span>Nombre <span class="req">*</span></span>
-            <input type="text" name="nombre" required />
-          </label>
-          <label class="campo">
-            <span>Nombre de la empresa <span class="req">*</span></span>
-            <input type="text" name="empresa" required />
-          </label>
-
-          <label class="campo">
-            <span>Apellidos <span class="req">*</span></span>
-            <input type="text" name="apellidos" required />
-          </label>
-          <label class="campo">
-            <span>CIF/NIF <span class="req">*</span></span>
-            <input type="text" name="cifNif" required />
-          </label>
-
-          <label class="campo">
-            <span>Tipo de profesional <span class="req">*</span></span>
-            <select name="tipoProfesional" required>
-              <option value="" disabled selected>Selecciona una opción</option>
-              {tiposProfesional.map((t) => <option value={t.value}>{t.label}</option>)}
-            </select>
-          </label>
-          <label class="campo">
-            <span>Dirección <span class="req">*</span></span>
-            <input type="text" name="direccion" required />
-          </label>
-
-          <label class="campo">
-            <span>Correo electrónico <span class="req">*</span></span>
-            <input type="email" name="email" required />
-          </label>
-          <label class="campo">
-            <span>Contraseña <span class="req">*</span></span>
-            <input type="password" name="password" required />
-          </label>
+    ) : (
+      <div class="tarjeta">
+        <div class="tabs" role="tablist">
+          <button type="button" class="tab activo" data-tab="login">Iniciar sesión</button>
+          <button type="button" class="tab" data-tab="registro">Registrarse</button>
         </div>
 
-        <label class="privacidad">
-          <input type="checkbox" name="privacidad" required />
-          He leído y acepto la <a href="/privacidad">política de privacidad</a>
-        </label>
+        <form class="panel panel-login" data-panel="login" id="form-login">
+          <input type="email" name="email" placeholder="Correo electrónico" aria-label="Correo electrónico" required />
+          <input type="password" name="password" placeholder="Contraseña" aria-label="Contraseña" required />
+          <p class="mensaje" hidden></p>
+          <button type="submit" class="enviar">Iniciar sesión</button>
+        </form>
 
-        <p class="confirmacion" hidden>Función en construcción: la creación de cuenta estará disponible próximamente.</p>
-        <button type="submit" class="enviar">Registrarse</button>
-      </form>
-    </div>
+        <form class="panel panel-registro" data-panel="registro" id="form-registro" hidden>
+          <p class="aviso">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" fill="currentColor"/><rect x="11" y="10.5" width="2" height="6.5" rx="1" fill="#fff"/><circle cx="12" cy="7.5" r="1.25" fill="#fff"/></svg>
+            Revisaremos esta información para activar tu cuenta.
+          </p>
+
+          <div class="grid-2">
+            <label class="campo">
+              <span>Nombre <span class="req">*</span></span>
+              <input type="text" name="nombre" required />
+            </label>
+            <label class="campo">
+              <span>Nombre de la empresa <span class="req">*</span></span>
+              <input type="text" name="empresa" required />
+            </label>
+
+            <label class="campo">
+              <span>Apellidos <span class="req">*</span></span>
+              <input type="text" name="apellidos" required />
+            </label>
+            <label class="campo">
+              <span>CIF/NIF <span class="req">*</span></span>
+              <input type="text" name="cifNif" required />
+            </label>
+
+            <label class="campo">
+              <span>Tipo de profesional <span class="req">*</span></span>
+              <select name="tipoProfesional" required>
+                <option value="" disabled selected>Selecciona una opción</option>
+                {tiposProfesional.map((t) => <option value={t.value}>{t.label}</option>)}
+              </select>
+            </label>
+            <label class="campo">
+              <span>Dirección <span class="req">*</span></span>
+              <input type="text" name="direccion" required />
+            </label>
+
+            <label class="campo">
+              <span>Correo electrónico <span class="req">*</span></span>
+              <input type="email" name="email" required />
+            </label>
+            <label class="campo">
+              <span>Contraseña <span class="req">*</span></span>
+              <input type="password" name="password" required minlength="8" />
+            </label>
+          </div>
+
+          <label class="privacidad">
+            <input type="checkbox" name="privacidad" required />
+            He leído y acepto la <a href="/privacidad">política de privacidad</a>
+          </label>
+
+          <p class="mensaje" hidden></p>
+          <button type="submit" class="enviar">Registrarse</button>
+        </form>
+      </div>
+    )}
   </section>
 
   <script>
+    import { supabaseBrowser } from '../lib/supabase-browser';
+
     document.querySelectorAll<HTMLButtonElement>('.tab').forEach((tab) => {
       tab.addEventListener('click', () => {
         document.querySelectorAll<HTMLButtonElement>('.tab').forEach((b) => b.classList.remove('activo'));
@@ -94,13 +135,96 @@ const tiposProfesional = [
       });
     });
 
-    // Sin backend de autenticación todavía: solo la interfaz por ahora.
-    document.querySelectorAll<HTMLFormElement>('.panel').forEach((form) => {
-      form.addEventListener('submit', (e) => {
-        e.preventDefault();
-        const confirmacion = form.querySelector<HTMLElement>('.confirmacion');
-        if (confirmacion) confirmacion.hidden = false;
+    function mostrarMensaje(form: HTMLFormElement, texto: string, tipo: 'ok' | 'error') {
+      const mensaje = form.querySelector<HTMLElement>('.mensaje');
+      if (!mensaje) return;
+      mensaje.textContent = texto;
+      mensaje.className = `mensaje ${tipo}`;
+      mensaje.hidden = false;
+    }
+
+    function setCargando(boton: HTMLButtonElement, cargando: boolean, textoNormal: string) {
+      boton.disabled = cargando;
+      boton.textContent = cargando ? 'Un momento…' : textoNormal;
+    }
+
+    document.getElementById('form-login')?.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const form = e.currentTarget as HTMLFormElement;
+      const boton = form.querySelector('button[type="submit"]') as HTMLButtonElement;
+      const email = (form.elements.namedItem('email') as HTMLInputElement).value;
+      const password = (form.elements.namedItem('password') as HTMLInputElement).value;
+
+      setCargando(boton, true, 'Iniciar sesión');
+
+      const { data, error } = await supabaseBrowser.auth.signInWithPassword({ email, password });
+
+      if (error || !data.user) {
+        setCargando(boton, false, 'Iniciar sesión');
+        mostrarMensaje(form, 'Correo o contraseña incorrectos.', 'error');
+        return;
+      }
+
+      const { data: perfil } = await supabaseBrowser
+        .from('perfiles')
+        .select('estado')
+        .eq('id', data.user.id)
+        .single();
+
+      if (perfil?.estado !== 'aprobado') {
+        await supabaseBrowser.auth.signOut();
+        setCargando(boton, false, 'Iniciar sesión');
+        mostrarMensaje(
+          form,
+          perfil?.estado === 'rechazado'
+            ? 'Tu solicitud de cuenta ha sido rechazada.'
+            : 'Tu cuenta todavía está pendiente de aprobación. Te avisaremos por email.',
+          'error'
+        );
+        return;
+      }
+
+      window.location.reload();
+    });
+
+    document.getElementById('form-registro')?.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const form = e.currentTarget as HTMLFormElement;
+      const boton = form.querySelector('button[type="submit"]') as HTMLButtonElement;
+      const datos = new FormData(form);
+
+      setCargando(boton, true, 'Registrarse');
+
+      const res = await fetch('/api/registro', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          nombre: datos.get('nombre'),
+          apellidos: datos.get('apellidos'),
+          empresa: datos.get('empresa'),
+          cifNif: datos.get('cifNif'),
+          tipoProfesional: datos.get('tipoProfesional'),
+          direccion: datos.get('direccion'),
+          email: datos.get('email'),
+          password: datos.get('password'),
+        }),
       });
+      const respuesta = await res.json();
+
+      setCargando(boton, false, 'Registrarse');
+
+      if (!res.ok) {
+        mostrarMensaje(form, respuesta.error ?? 'No se pudo completar el registro.', 'error');
+        return;
+      }
+
+      form.reset();
+      mostrarMensaje(form, 'Solicitud enviada. Revisaremos tu cuenta y te avisaremos por email en cuanto esté activa.', 'ok');
+    });
+
+    document.getElementById('logout')?.addEventListener('click', async () => {
+      await supabaseBrowser.auth.signOut();
+      window.location.reload();
     });
   </script>
 
@@ -121,6 +245,12 @@ const tiposProfesional = [
       max-width: 760px;
       height: fit-content;
     }
+    .tarjeta-estado { max-width: 460px; text-align: center; }
+    .estado-titulo { font-size: 1.25rem; font-weight: 700; margin: 0 0 0.75rem; }
+    .estado-detalle { color: var(--color-muted); margin: 0 0 1.5rem; line-height: 1.6; }
+    .estado-detalle a { color: var(--color-text); }
+    .tarjeta-estado .enviar { background: var(--color-text); }
+
     .tabs { display: flex; gap: 0.5rem; margin-bottom: 2rem; max-width: 380px; }
     .tab {
       flex: 1;
@@ -182,14 +312,14 @@ const tiposProfesional = [
     .privacidad input { accent-color: var(--color-primary); margin-top: 0.2rem; }
     .privacidad a { color: var(--color-text); }
 
-    .confirmacion {
-      background: #eef4ff;
-      border: 1px solid var(--color-primary);
+    .mensaje {
       border-radius: 6px;
       padding: 0.75rem 1rem;
       font-size: 0.85rem;
       margin: 0;
     }
+    .mensaje.ok { background: #eef4ff; border: 1px solid var(--color-primary); }
+    .mensaje.error { background: #fdeeee; border: 1px solid #d33; color: #a00; }
 
     .enviar {
       align-self: flex-start;
@@ -204,5 +334,6 @@ const tiposProfesional = [
       letter-spacing: 0.05em;
       font-size: 0.85rem;
     }
+    .enviar:disabled { opacity: 0.6; cursor: default; }
   </style>
 </Base>

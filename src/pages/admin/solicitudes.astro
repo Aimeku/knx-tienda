@@ -1,0 +1,157 @@
+---
+export const prerender = false;
+
+import Base from '../../layouts/Base.astro';
+import { supabaseAdmin } from '../../lib/supabase';
+import { esAdmin } from '../../lib/admin';
+
+const user = Astro.locals.user;
+if (!user || !esAdmin(user.email)) {
+  return Astro.redirect('/cuenta');
+}
+
+const { data: perfiles } = await supabaseAdmin
+  .from('perfiles')
+  .select('id, email, nombre, apellidos, empresa, cif_nif, tipo_profesional, direccion, estado, created_at')
+  .order('created_at', { ascending: false });
+
+const etiquetasTipo: Record<string, string> = {
+  'integrador-pro': 'Integrador PRO',
+  disenador: 'Diseñador',
+  propietario: 'Propietario',
+  arquitecto: 'Arquitecto',
+  'promotora-constructora': 'Promotora / Constructora',
+};
+
+const pendientes = (perfiles ?? []).filter((p) => p.estado === 'pendiente');
+const resueltos = (perfiles ?? []).filter((p) => p.estado !== 'pendiente');
+---
+<Base title="Solicitudes de cuenta | AVCI Smart Homes">
+  <section class="admin">
+    <h1>Solicitudes de cuenta</h1>
+    <p class="subtitulo">Conectado como {user.email}. <button type="button" id="logout" class="link-boton">Cerrar sesión</button></p>
+
+    <h2>Pendientes ({pendientes.length})</h2>
+    {pendientes.length === 0 ? (
+      <p class="vacio">No hay solicitudes pendientes.</p>
+    ) : (
+      <div class="tabla">
+        {pendientes.map((p) => (
+          <div class="fila" data-id={p.id}>
+            <div class="datos">
+              <p class="nombre">{p.nombre} {p.apellidos} — {p.empresa}</p>
+              <p class="detalle">{p.email} · {etiquetasTipo[p.tipo_profesional] ?? p.tipo_profesional} · CIF/NIF {p.cif_nif}</p>
+              <p class="detalle">{p.direccion}</p>
+              <p class="fecha">Solicitado el {new Date(p.created_at).toLocaleDateString('es-ES')}</p>
+            </div>
+            <div class="acciones">
+              <button type="button" class="aprobar" data-id={p.id}>Aprobar</button>
+              <button type="button" class="rechazar" data-id={p.id}>Rechazar</button>
+            </div>
+          </div>
+        ))}
+      </div>
+    )}
+
+    <h2>Resueltas</h2>
+    {resueltos.length === 0 ? (
+      <p class="vacio">Todavía no hay ninguna.</p>
+    ) : (
+      <table class="historial">
+        <thead>
+          <tr><th>Nombre</th><th>Empresa</th><th>Email</th><th>Estado</th></tr>
+        </thead>
+        <tbody>
+          {resueltos.map((p) => (
+            <tr>
+              <td>{p.nombre} {p.apellidos}</td>
+              <td>{p.empresa}</td>
+              <td>{p.email}</td>
+              <td><span class={`estado estado-${p.estado}`}>{p.estado}</span></td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    )}
+  </section>
+
+  <script>
+    import { supabaseBrowser } from '../../lib/supabase-browser';
+
+    async function actualizar(id: string, accion: 'aprobar' | 'rechazar') {
+      const res = await fetch('/api/admin/perfil', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ id, accion }),
+      });
+      if (res.ok) {
+        window.location.reload();
+      } else {
+        alert('No se pudo actualizar la solicitud.');
+      }
+    }
+
+    document.querySelectorAll<HTMLButtonElement>('.aprobar').forEach((btn) => {
+      btn.addEventListener('click', () => actualizar(btn.dataset.id!, 'aprobar'));
+    });
+    document.querySelectorAll<HTMLButtonElement>('.rechazar').forEach((btn) => {
+      btn.addEventListener('click', () => actualizar(btn.dataset.id!, 'rechazar'));
+    });
+
+    document.getElementById('logout')?.addEventListener('click', async () => {
+      await supabaseBrowser.auth.signOut();
+      window.location.href = '/cuenta';
+    });
+  </script>
+
+  <style>
+    .admin { max-width: 900px; margin: 0 auto; padding: 3rem 2rem 6rem; }
+    .admin h1 { font-size: 1.75rem; margin: 0 0 0.5rem; }
+    .subtitulo { color: var(--color-muted); margin: 0 0 3rem; }
+    .link-boton {
+      background: none;
+      border: none;
+      padding: 0;
+      color: var(--color-text);
+      text-decoration: underline;
+      cursor: pointer;
+      font: inherit;
+    }
+    .admin h2 { font-size: 1.15rem; margin: 2.5rem 0 1rem; }
+    .vacio { color: var(--color-muted); font-style: italic; }
+
+    .tabla { display: flex; flex-direction: column; gap: 1rem; }
+    .fila {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1.5rem;
+      border: 1px solid var(--color-border);
+      border-radius: 8px;
+      padding: 1.25rem 1.5rem;
+    }
+    .datos .nombre { font-weight: 700; margin: 0 0 0.35rem; }
+    .datos .detalle { color: var(--color-muted); font-size: 0.9rem; margin: 0 0 0.2rem; }
+    .datos .fecha { color: var(--color-muted); font-size: 0.8rem; margin: 0.4rem 0 0; }
+
+    .acciones { display: flex; gap: 0.6rem; flex-shrink: 0; }
+    .acciones button {
+      border: none;
+      cursor: pointer;
+      padding: 0.6rem 1.25rem;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+    .aprobar { background: var(--color-text); color: #fff; }
+    .rechazar { background: #fff; color: var(--color-text); border: 1px solid var(--color-border) !important; }
+
+    .historial { width: 100%; border-collapse: collapse; }
+    .historial th, .historial td { text-align: left; padding: 0.6rem 0.5rem; border-bottom: 1px solid var(--color-border); font-size: 0.9rem; }
+    .estado { text-transform: capitalize; font-weight: 600; }
+    .estado-aprobado { color: #1a7f37; }
+    .estado-rechazado { color: #a00; }
+  </style>
+</Base>
