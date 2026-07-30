@@ -137,6 +137,8 @@ const tiposProfesional = [
     .tab.activo { color: var(--color-text); border-bottom-color: var(--color-text); }
 
     .panel-login { display: flex; flex-direction: column; gap: 1rem; max-width: 380px; }
+    /* Más específica que ".panel-login"/".panel-registro" para que gane sobre su display:flex */
+    .panel[hidden] { display: none; }
     .panel input[type='text'],
     .panel input[type='email'],
     .panel input[type='password'],
