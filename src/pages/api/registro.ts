@@ -2,6 +2,8 @@ export const prerender = false;
 
 import type { APIRoute } from 'astro';
 import { supabaseAdmin } from '../../lib/supabase';
+import { enviarEmail } from '../../lib/email';
+import { ADMIN_EMAILS } from '../../lib/admin';
 
 export const POST: APIRoute = async ({ request }) => {
   const body = await request.json();
@@ -48,6 +50,23 @@ export const POST: APIRoute = async ({ request }) => {
     await supabaseAdmin.auth.admin.deleteUser(userData.user.id);
     return new Response(JSON.stringify({ error: 'No se pudo guardar tu perfil. Inténtalo de nuevo.' }), { status: 500 });
   }
+
+  await enviarEmail({
+    to: ADMIN_EMAILS,
+    subject: `Nueva solicitud de cuenta: ${empresa}`,
+    html: `
+      <p>Ha llegado una nueva solicitud de cuenta en avci.es:</p>
+      <ul>
+        <li><strong>Nombre:</strong> ${nombre} ${apellidos}</li>
+        <li><strong>Empresa:</strong> ${empresa}</li>
+        <li><strong>CIF/NIF:</strong> ${cifNif}</li>
+        <li><strong>Tipo de profesional:</strong> ${tipoProfesional}</li>
+        <li><strong>Dirección:</strong> ${direccion}</li>
+        <li><strong>Email:</strong> ${email}</li>
+      </ul>
+      <p><a href="https://avci.es/admin/solicitudes">Revisar solicitud</a></p>
+    `,
+  });
 
   return new Response(JSON.stringify({ ok: true }), { status: 200 });
 };
