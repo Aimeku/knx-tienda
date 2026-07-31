@@ -1,7 +1,21 @@
 ---
 export const prerender = true;
 import Base from '../../layouts/Base.astro';
-import { categorias } from '../../lib/categorias';
+import { tiendaMenu } from '../../lib/categorias';
+
+function hrefGrupo(nombreGrupo: string) {
+  const grupo = tiendaMenu.find((g) => g.grupo === nombreGrupo);
+  if (!grupo || grupo.categorias.length === 0) return '/productos';
+  return `/productos?${grupo.categorias.map((c) => `categoria=${c.slug}`).join('&')}`;
+}
+
+const proyectosDestacados = [
+  { nombre: 'Integrators PRO', slug: 'integradores-pro', imagen: 'https://keewlcnfppadsjmujlju.supabase.co/storage/v1/object/public/Fotos%20principales/4.png' },
+  { nombre: 'Developers / Contractors', slug: 'promotoras-constructoras', imagen: 'https://keewlcnfppadsjmujlju.supabase.co/storage/v1/object/public/Fotos%20principales/7.png' },
+  { nombre: 'Architects', slug: 'arquitectos', imagen: 'https://keewlcnfppadsjmujlju.supabase.co/storage/v1/object/public/Fotos%20principales/8.png' },
+  { nombre: 'Designers', slug: 'disenadores', imagen: 'https://keewlcnfppadsjmujlju.supabase.co/storage/v1/object/public/Fotos%20principales/5.png' },
+  { nombre: 'Homeowners', slug: 'propietarios', imagen: 'https://keewlcnfppadsjmujlju.supabase.co/storage/v1/object/public/Fotos%20principales/6.png' },
+];
 ---
 <Base title="AVCI Smart Homes | KNX Store" description="Online store for KNX smart home products.">
   <section class="hero">
@@ -19,14 +33,61 @@ import { categorias } from '../../lib/categorias';
     </div>
   </section>
 
-  <section class="categorias">
-    <h2>Browse by category</h2>
-    <div class="cat-grid">
-      {categorias.map((c) => (
-        <a class="cat-card" href={`/productos?categoria=${c.slug}`}>
-          {c.nombre}
+  <section class="proyectos-destacados">
+    <p class="eyebrow-dark">Home automation installation</p>
+    <h2>Solutions designed for you</h2>
+    <p class="subtitle-dark">Every client has unique needs, and our solutions are designed to adapt to each profile. Choose your area and discover how we can help you:</p>
+    <div class="proyectos-grid">
+      {proyectosDestacados.map((p) => (
+        <a class="proyecto-card" href={`/en/proyectos/${p.slug}`}>
+          <img src={p.imagen} alt="" loading="lazy" />
+          <span class="proyecto-label">{p.nombre}</span>
         </a>
       ))}
+    </div>
+  </section>
+
+  <section class="empresa-features">
+    <p class="eyebrow-dark">Smart home company</p>
+    <h2>Efficiency, connectivity and support without limits</h2>
+    <p class="subtitle-dark">We work to create smart environments that adapt to today's needs and tomorrow's challenges.</p>
+    <div class="features-grid">
+      <article class="feature-card">
+        <span class="feature-icon">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M9 18H15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M10 21H14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M12 3C8.5 3 6 5.5 6 9C6 11.5 7.5 13 8.5 14C9 14.5 9.3 15.2 9.3 16H14.7C14.7 15.2 15 14.5 15.5 14C16.5 13 18 11.5 18 9C18 5.5 15.5 3 12 3Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+        </span>
+        <h3>Cutting-Edge Technology</h3>
+        <p>Advanced systems that guarantee functionality, efficiency and connectivity in any space.</p>
+      </article>
+      <article class="feature-card">
+        <span class="feature-icon">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M12 3L21 8L12 13L3 8L12 3Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M3 12L12 17L21 12" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M3 16L12 21L21 16" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+        </span>
+        <h3>Adaptable Design</h3>
+        <p>Solutions that integrate seamlessly with the specific needs of each project, while preserving aesthetics and style.</p>
+      </article>
+      <article class="feature-card">
+        <span class="feature-icon">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M4 13V11C4 6.6 7.6 3 12 3C16.4 3 20 6.6 20 11V13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><rect x="3" y="13" width="4" height="6" rx="1.5" stroke="currentColor" stroke-width="1.5"/><rect x="17" y="13" width="4" height="6" rx="1.5" stroke="currentColor" stroke-width="1.5"/><path d="M20 19V20C20 21.1 19.1 22 18 22H13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </span>
+        <h3>Full Support</h3>
+        <p>From planning to installation, we support you every step of the way to ensure optimal results.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="categorias">
+    <div class="categorias-texto">
+      <p class="eyebrow-dark">Home automation project</p>
+      <h2>Smart solutions for every need</h2>
+      <p class="subtitle-dark subtitle-dark--left">Discover how our technologies transform everyday spaces into connected, functional environments:</p>
+      <a class="cta cta--dark" href="/productos">Browse the shop</a>
+    </div>
+    <div class="cat-tiles">
+      <a class="cat-tile cat-tile--light" href={hrefGrupo('Domótica')}>Smart Homes</a>
+      <a class="cat-tile cat-tile--dark" href={hrefGrupo('Sonido')}>Sound</a>
+      <a class="cat-tile cat-tile--mid" href={hrefGrupo('Iluminación / Electricidad')}>Lighting</a>
+      <a class="cat-tile cat-tile--pale" href="/en/contacto">Security</a>
     </div>
   </section>
 
@@ -103,24 +164,154 @@ import { categorias } from '../../lib/categorias';
       font-size: 0.85rem;
     }
 
-    .categorias { padding: 4rem 2rem; }
-    .categorias h2 { text-align: center; font-size: 1.5rem; margin-bottom: 2rem; }
-    .cat-grid {
+    .proyectos-destacados { padding: 5.5rem 2rem 2rem; text-align: center; }
+    .eyebrow-dark {
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--color-muted);
+      margin: 0 0 1rem;
+    }
+    .proyectos-destacados h2 {
+      font-size: clamp(1.8rem, 4vw, 2.75rem);
+      font-weight: 800;
+      margin: 0 0 1.1rem;
+    }
+    .subtitle-dark {
+      max-width: 640px;
+      margin: 0 auto 3rem;
+      color: var(--color-muted);
+      font-size: 1.05rem;
+      font-weight: 300;
+      line-height: 1.6;
+    }
+    .proyectos-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 1rem;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 1.5rem;
     }
-    .cat-card {
+    .proyecto-card {
+      position: relative;
+      grid-column: span 2;
+      aspect-ratio: 4 / 3;
+      border-radius: 14px;
+      overflow: hidden;
       display: block;
-      text-align: center;
-      padding: 1.5rem 1rem;
-      border: 1px solid var(--color-border);
-      border-radius: 4px;
-      text-decoration: none;
-      color: var(--color-text);
-      font-weight: 600;
-      transition: background 0.15s;
     }
-    .cat-card:hover { background: #f7f7f7; border-color: var(--color-primary); }
+    .proyecto-card:nth-child(4),
+    .proyecto-card:nth-child(5) {
+      grid-column: span 3;
+    }
+    .proyecto-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s ease;
+    }
+    .proyecto-card:hover img { transform: scale(1.06); }
+    .proyecto-card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(0, 0, 0, 0) 45%, rgba(0, 0, 0, 0.6) 100%);
+    }
+    .proyecto-label {
+      position: absolute;
+      left: 1.25rem;
+      bottom: 1.25rem;
+      z-index: 1;
+      background: #0a0a0a;
+      color: #fff;
+      padding: 0.7rem 1.25rem;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      white-space: nowrap;
+    }
+    @media (max-width: 900px) {
+      .proyectos-grid { grid-template-columns: repeat(2, 1fr); }
+      .proyecto-card,
+      .proyecto-card:nth-child(4),
+      .proyecto-card:nth-child(5) { grid-column: span 1; }
+    }
+    @media (max-width: 480px) {
+      .proyecto-label { font-size: 0.8rem; padding: 0.6rem 1rem; white-space: normal; }
+    }
+
+    .empresa-features { padding: 2rem 2rem 5rem; text-align: center; }
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .feature-card {
+      border: 1px solid var(--color-border);
+      border-radius: 20px;
+      padding: 3rem 2rem;
+    }
+    .feature-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 64px;
+      height: 64px;
+      border-radius: 999px;
+      background: #0a0a0a;
+      color: #fff;
+      margin-bottom: 1.5rem;
+    }
+    .feature-card h3 { font-size: 1.2rem; margin: 0 0 0.9rem; font-weight: 700; }
+    .feature-card p { color: var(--color-muted); font-size: 0.95rem; line-height: 1.6; margin: 0; }
+    @media (max-width: 900px) {
+      .features-grid { grid-template-columns: 1fr; }
+    }
+
+    .categorias {
+      padding: 2rem 2rem 6rem;
+      display: grid;
+      grid-template-columns: 1fr 1.15fr;
+      gap: 3rem;
+      align-items: center;
+      max-width: 1300px;
+      margin: 0 auto;
+    }
+    .categorias-texto { text-align: left; }
+    .subtitle-dark--left { margin: 0 0 2rem; max-width: 480px; }
+    .cta--dark {
+      background: #0a0a0a;
+      color: #fff;
+    }
+    .cat-tiles {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+    }
+    .cat-tile {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      aspect-ratio: 16 / 10;
+      border-radius: 16px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 1.15rem;
+      transition: transform 0.2s ease;
+    }
+    .cat-tile:hover { transform: translateY(-4px); }
+    .cat-tile--light { background: #d9d9d9; color: #0a0a0a; }
+    .cat-tile--dark { background: #0a0a0a; color: #fff; }
+    .cat-tile--mid { background: #8f8f8f; color: #fff; }
+    .cat-tile--pale { background: #f2f2f2; color: #0a0a0a; }
+    @media (max-width: 900px) {
+      .categorias { grid-template-columns: 1fr; text-align: center; }
+      .categorias-texto { text-align: center; }
+      .subtitle-dark--left { margin-left: auto; margin-right: auto; }
+    }
   </style>
 </Base>
