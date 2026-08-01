@@ -28,6 +28,8 @@ export const ui = {
     'nav.carrito': 'Carrito',
     'nav.verTodoCatalogo': 'Ver todo el catálogo →',
     'nav.proximamente': 'Próximamente',
+    'nav.abrirMenu': 'Abrir menú',
+    'nav.cerrarMenu': 'Cerrar menú',
 
     'footer.proyectos': 'Proyectos',
     'footer.tienda': 'Tienda',
@@ -64,6 +66,8 @@ export const ui = {
     'nav.carrito': 'Cart',
     'nav.verTodoCatalogo': 'View full catalogue →',
     'nav.proximamente': 'Coming soon',
+    'nav.abrirMenu': 'Open menu',
+    'nav.cerrarMenu': 'Close menu',
 
     'footer.proyectos': 'Projects',
     'footer.tienda': 'Shop',
