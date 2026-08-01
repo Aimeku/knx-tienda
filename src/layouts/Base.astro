@@ -587,6 +587,7 @@ const proyectos = [
     .mobile-accordion-icon { font-size: 1.2rem; color: var(--color-muted); }
     .mobile-accordion-trigger.is-open .mobile-accordion-icon { transform: rotate(45deg); }
     .mobile-accordion-panel { padding: 0 1.5rem 1rem; display: flex; flex-direction: column; }
+    .mobile-accordion-panel[hidden] { display: none; }
 
     .mobile-menu-link {
       text-decoration: none;
@@ -618,7 +619,13 @@ const proyectos = [
       .site-header nav,
       .desktop-only { display: none; }
       .menu-toggle { display: flex; }
-      .site-header { padding: 1.1rem 1.25rem; gap: 1rem; }
+      .site-header {
+        display: flex;
+        justify-content: space-between;
+        padding: 1.1rem 1.25rem;
+      }
+      .site-header .logo,
+      .site-header .header-icons { justify-self: unset; }
       .logo img { height: 32px; }
     }
 
