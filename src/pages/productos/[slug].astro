@@ -4,7 +4,7 @@
 export const prerender = false;
 
 import Base from '../../layouts/Base.astro';
-import { supabase } from '../../lib/supabase';
+import { supabase, supabaseAdmin } from '../../lib/supabase';
 import type { Documento, Especificacion, Producto, ProductoVariante } from '../../lib/supabase';
 
 const { slug } = Astro.params;
@@ -18,6 +18,16 @@ const { data: producto } = await supabase
 if (!producto) {
   return Astro.redirect('/404');
 }
+
+// El precio solo se manda al navegador (y solo se permite comprar) si la cuenta
+// está aprobada — comprobado en servidor, no basta con que Astro.locals.user exista.
+const usuario = Astro.locals.user;
+let aprobado = false;
+if (usuario) {
+  const { data: perfil } = await supabaseAdmin.from('perfiles').select('estado').eq('id', usuario.id).single();
+  aprobado = perfil?.estado === 'aprobado';
+}
+const formatoPrecio = (n: number) => `${n.toFixed(2)} €`;
 
 const variantes = producto.producto_variantes ?? [];
 
@@ -74,7 +84,11 @@ const documentos: Documento[] =
 
     <div class="info">
       <h1>{producto.nombre}</h1>
-      <p class="precio-oculto">Inicia sesión para ver los precios</p>
+      {aprobado ? (
+        <p class="precio-real">{formatoPrecio(producto.precio_oferta ?? producto.precio)}</p>
+      ) : (
+        <p class="precio-oculto">Inicia sesión para ver los precios</p>
+      )}
       {producto.descripcion_corta && <p class="descripcion-corta">{producto.descripcion_corta}</p>}
 
       {opcionesPorAtributo.map(({ clave, opciones }) => (
@@ -98,18 +112,24 @@ const documentos: Documento[] =
         </div>
       ))}
 
-      <div class="compra">
-        <input type="number" id="cantidad" value="1" min="1" />
-        <button
-          id="add-to-cart"
-          data-id={producto.id}
-          data-nombre={producto.nombre}
-          data-precio={producto.precio_oferta ?? producto.precio}
-          data-variantes={JSON.stringify(variantes)}
-        >
-          Añadir al carrito
-        </button>
-      </div>
+      {aprobado ? (
+        <div class="compra">
+          <input type="number" id="cantidad" value="1" min="1" />
+          <button
+            id="add-to-cart"
+            data-id={producto.id}
+            data-nombre={producto.nombre}
+            data-precio={producto.precio_oferta ?? producto.precio}
+            data-variantes={JSON.stringify(variantes)}
+          >
+            Añadir al carrito
+          </button>
+        </div>
+      ) : (
+        <div class="compra">
+          <a href="/cuenta" class="cta-login">{usuario ? 'Tu cuenta está pendiente de aprobación' : 'Inicia sesión para comprar'}</a>
+        </div>
+      )}
     </div>
   </div>
 
@@ -197,6 +217,11 @@ const documentos: Documento[] =
     }
 
     .info h1 { font-size: 2.25rem; margin: 0 0 1rem; }
+    .precio-real {
+      font-size: 1.5rem;
+      font-weight: 800;
+      margin: 0 0 1.5rem;
+    }
     .precio-oculto {
       display: inline-block;
       color: var(--color-muted);
@@ -246,7 +271,9 @@ const documentos: Documento[] =
       border-radius: 6px;
       font: inherit;
     }
-    .compra button {
+    .compra button,
+    .compra .cta-login {
+      display: inline-block;
       background: var(--color-muted);
       color: #fff;
       border: none;
@@ -257,6 +284,7 @@ const documentos: Documento[] =
       text-transform: uppercase;
       letter-spacing: 0.03em;
       font-size: 0.85rem;
+      text-decoration: none;
     }
 
     .tabs { padding: 0 2rem 3rem; }
@@ -346,8 +374,12 @@ const documentos: Documento[] =
         ) ?? null;
       }
 
+      // El precio va también en localStorage solo para pintar el carrito al instante;
+      // el servidor vuelve a calcularlo desde Supabase antes de cobrar (nunca se fía de esto).
       const item = {
         id: variante ? `${btn.dataset.id}-${variante.id}` : btn.dataset.id,
+        productoId: btn.dataset.id,
+        varianteId: variante?.id ?? null,
         nombre: variante ? `${btn.dataset.nombre} – ${variante.nombre}` : btn.dataset.nombre,
         precio: Number(btn.dataset.precio) + (variante?.precio_extra ?? 0),
         cantidad,
