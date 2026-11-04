@@ -12,6 +12,7 @@ export const defaultLang: Lang = 'es';
 const TRANSLATED_PATHS = new Set([
   '/',
   '/contacto',
+  '/proximamente',
   '/proyectos/integradores-pro',
   '/proyectos/disenadores',
   '/proyectos/propietarios',

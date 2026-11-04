@@ -1,0 +1,311 @@
+---
+// Página "Próximamente" de KNX Tienda (ES/EN). Totalmente estática: sin
+// imágenes externas ni consultas a Supabase, solo HTML + CSS.
+import Base from '../layouts/Base.astro';
+import { localizedHref, type Lang } from '../i18n/ui';
+import { RUTA_PROXIMAMENTE } from '../lib/tienda';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+
+const textos = {
+  es: {
+    title: 'KNX Tienda – Próximamente | AVCI Smart Homes',
+    description:
+      'Estamos preparando una nueva plataforma especializada en productos KNX, automatización y Smart Home. Contacta con AVCI para asesoramiento y proyectos.',
+    eyebrow: 'AVCI Smart Homes',
+    estado: 'En preparación',
+    titulo: 'KNX Tienda',
+    proximamente: 'Próximamente',
+    subtitulo: 'Estamos preparando una nueva plataforma especializada en productos KNX, automatización y Smart Home.',
+    etiquetas: ['KNX', 'Automatización', 'Smart Home'],
+    nota: 'Mientras tanto, nuestro equipo te asesora en la elección de productos y en tu proyecto domótico.',
+    contacto: 'Contactar con AVCI',
+    volver: 'Volver a AVCI',
+    ogLocale: 'es_ES',
+  },
+  en: {
+    title: 'KNX Tienda – Coming soon | AVCI Smart Homes',
+    description:
+      'We are preparing a new platform specialised in KNX products, automation and Smart Home. Contact AVCI for advice and projects.',
+    eyebrow: 'AVCI Smart Homes',
+    estado: 'In preparation',
+    titulo: 'KNX Tienda',
+    proximamente: 'Coming soon',
+    subtitulo: 'We are preparing a new platform specialised in KNX products, automation and Smart Home.',
+    etiquetas: ['KNX', 'Automation', 'Smart Home'],
+    nota: 'In the meantime, our team can advise you on choosing products and on your home automation project.',
+    contacto: 'Contact AVCI',
+    volver: 'Back to AVCI',
+    ogLocale: 'en_GB',
+  },
+}[lang];
+
+const site = Astro.site ?? new URL('https://avci.es');
+const urlEs = new URL(RUTA_PROXIMAMENTE, site).href;
+const urlEn = new URL(localizedHref(RUTA_PROXIMAMENTE, 'en'), site).href;
+const canonical = lang === 'en' ? urlEn : urlEs;
+---
+<Base title={textos.title} description={textos.description}>
+  <Fragment slot="head">
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href={canonical} />
+    <link rel="alternate" hreflang="es" href={urlEs} />
+    <link rel="alternate" hreflang="en" href={urlEn} />
+    <link rel="alternate" hreflang="x-default" href={urlEs} />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="AVCI Smart Homes" />
+    <meta property="og:locale" content={textos.ogLocale} />
+    <meta property="og:title" content={textos.title} />
+    <meta property="og:description" content={textos.description} />
+    <meta property="og:url" content={canonical} />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content={textos.title} />
+    <meta name="twitter:description" content={textos.description} />
+  </Fragment>
+
+  <section class="proximamente">
+    <div class="grid-bg" aria-hidden="true"></div>
+    <div class="glow" aria-hidden="true"></div>
+
+    <div class="contenido">
+      <p class="eyebrow">{textos.eyebrow}</p>
+      <span class="estado"><span class="pulso" aria-hidden="true"></span>{textos.estado}</span>
+
+      <h1>
+        {textos.titulo}
+        <span class="separador" aria-hidden="true">–</span>
+        <span class="destacado">{textos.proximamente}</span>
+      </h1>
+
+      <p class="subtitulo">{textos.subtitulo}</p>
+
+      <ul class="etiquetas">
+        {textos.etiquetas.map((e) => <li>{e}</li>)}
+      </ul>
+
+      <div class="bus" aria-hidden="true"><span></span></div>
+
+      <p class="nota">{textos.nota}</p>
+
+      <div class="acciones">
+        <a class="cta" href={localizedHref('/contacto', lang)}>{textos.contacto}</a>
+        <a class="cta cta--ghost" href={localizedHref('/', lang)}>{textos.volver}</a>
+      </div>
+
+      <p class="directo">
+        <a href="mailto:info@avci.es">info@avci.es</a>
+        <span aria-hidden="true">·</span>
+        <a href="tel:+34639701521">639 701 521</a>
+      </p>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .proximamente {
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: calc(100vh - 82px);
+    padding: 6rem 2rem;
+    background: #0a0a0a;
+    color: #fff;
+    text-align: center;
+    /* rompe el max-width de <main> para ocupar todo el ancho, como el resto de heros */
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+  }
+
+  /* Retícula técnica de fondo, desvanecida hacia los bordes */
+  .grid-bg {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+    background-size: 48px 48px;
+    mask-image: radial-gradient(ellipse at center, #000 30%, transparent 75%);
+    -webkit-mask-image: radial-gradient(ellipse at center, #000 30%, transparent 75%);
+  }
+  .glow {
+    position: absolute;
+    width: 640px;
+    height: 640px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.09), transparent 65%);
+    animation: respirar 8s ease-in-out infinite;
+    pointer-events: none;
+  }
+
+  .contenido {
+    position: relative;
+    z-index: 1;
+    max-width: 760px;
+    animation: entrar 0.8s ease both;
+  }
+
+  .eyebrow {
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    font-size: 0.75rem;
+    color: #999;
+    margin: 0 0 1.5rem;
+  }
+
+  .estado {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    padding: 0.4rem 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 999px;
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #ddd;
+    margin-bottom: 2rem;
+  }
+  .pulso {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #fff;
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.6);
+    animation: pulso 2s ease-out infinite;
+  }
+
+  h1 {
+    font-size: clamp(2.4rem, 6.5vw, 4.5rem);
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin: 0 0 1.5rem;
+  }
+  .separador { color: #555; font-weight: 300; margin: 0 0.25em; }
+  .destacado {
+    background: linear-gradient(90deg, #fff 0%, #8f8f8f 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .subtitulo {
+    color: #ccc;
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    font-weight: 300;
+    line-height: 1.6;
+    margin: 0 auto 2rem;
+    max-width: 620px;
+  }
+
+  .etiquetas {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.6rem;
+    padding: 0;
+    margin: 0 0 2.5rem;
+  }
+  .etiquetas li {
+    font-size: 0.8rem;
+    letter-spacing: 0.06em;
+    padding: 0.45rem 1rem;
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #eee;
+  }
+
+  /* Línea tipo "bus KNX" con un pulso que la recorre */
+  .bus {
+    position: relative;
+    height: 1px;
+    max-width: 320px;
+    margin: 0 auto 2.5rem;
+    background: rgba(255, 255, 255, 0.15);
+    overflow: hidden;
+  }
+  .bus span {
+    position: absolute;
+    top: 0;
+    left: -30%;
+    width: 30%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, #fff, transparent);
+    animation: recorrer 3s ease-in-out infinite;
+  }
+
+  .nota {
+    color: #999;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin: 0 auto 2rem;
+    max-width: 520px;
+  }
+
+  .acciones {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+  .cta {
+    display: inline-block;
+    background: #fff;
+    color: #0a0a0a;
+    padding: 0.9rem 2.5rem;
+    border-radius: 999px;
+    border: 1px solid #fff;
+    text-decoration: none;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-size: 0.85rem;
+    transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease;
+  }
+  .cta:hover { transform: translateY(-2px); }
+  .cta--ghost { background: transparent; color: #fff; border-color: rgba(255, 255, 255, 0.35); }
+  .cta--ghost:hover { border-color: #fff; }
+
+  .directo { color: #777; font-size: 0.9rem; margin: 0; }
+  .directo a { color: #bbb; text-decoration: none; }
+  .directo a:hover { color: #fff; }
+  .directo span { margin: 0 0.6rem; }
+
+  @keyframes entrar {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: none; }
+  }
+  @keyframes respirar {
+    0%, 100% { opacity: 0.6; transform: translate(-50%, -50%) scale(1); }
+    50% { opacity: 1; transform: translate(-50%, -50%) scale(1.08); }
+  }
+  @keyframes pulso {
+    0% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.6); }
+    100% { box-shadow: 0 0 0 10px rgba(255, 255, 255, 0); }
+  }
+  @keyframes recorrer {
+    0% { left: -30%; }
+    100% { left: 100%; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .contenido, .glow, .pulso, .bus span { animation: none; }
+  }
+  @media (max-width: 600px) {
+    .proximamente { padding: 4rem 1.25rem; }
+    .separador { display: none; }
+    .destacado { display: block; }
+    .cta { width: 100%; }
+  }
+</style>

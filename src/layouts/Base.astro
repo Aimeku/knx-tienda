@@ -1,6 +1,7 @@
 ---
 import { tiendaMenu } from '../lib/categorias';
 import { getLangFromUrl, getSwitcherHref, useTranslations } from '../i18n/ui';
+import { TIENDA_ACTIVA, hrefTienda } from '../lib/tienda';
 
 interface Props {
   title: string;
@@ -28,6 +29,7 @@ const proyectos = [
   <title>{title}</title>
   <link rel="icon" type="image/png" href="/favicon.png" />
   <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <slot name="head" />
 </head>
 <body>
   <header class="site-header">
@@ -43,7 +45,8 @@ const proyectos = [
           ))}
         </div>
       </div>
-      <div class="nav-item has-dropdown">
+      {!TIENDA_ACTIVA && <a href={hrefTienda('/productos', lang)} class="nav-item">{t('nav.tienda')}</a>}
+      {TIENDA_ACTIVA && <div class="nav-item has-dropdown">
         <button class="nav-trigger" aria-haspopup="true">{t('nav.tienda')}</button>
         <div class="mega-menu mega-menu--tienda">
           <div class="tienda-grid">
@@ -62,7 +65,7 @@ const proyectos = [
           </div>
           <a href="/productos" class="ver-todo-tienda">{t('nav.verTodoCatalogo')}</a>
         </div>
-      </div>
+      </div>}
       <a href={lang === 'en' ? '/en/contacto' : '/contacto'} class="nav-item">{t('nav.contacto')}</a>
     </nav>
     <div class="header-icons">
@@ -74,10 +77,10 @@ const proyectos = [
       <a href="/cuenta" class="icon-link desktop-only" aria-label={t('nav.cuenta')}>
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 12C14.4853 12 16.5 9.98528 16.5 7.5C16.5 5.01472 14.4853 3 12 3C9.51472 3 7.5 5.01472 7.5 7.5C7.5 9.98528 9.51472 12 12 12Z" stroke="currentColor" stroke-width="1.5"/><path d="M3.5 20.5C4.94486 16.9942 8.19921 14.5 12 14.5C15.8008 14.5 19.0551 16.9942 20.5 20.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
       </a>
-      <a href="/carrito" class="icon-link cart-link" aria-label={t('nav.carrito')}>
+      {TIENDA_ACTIVA && <a href="/carrito" class="icon-link cart-link" aria-label={t('nav.carrito')}>
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M3 4H5L6.5 15.5H18.5L20 7H6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="9" cy="20" r="1.25" fill="currentColor"/><circle cx="17" cy="20" r="1.25" fill="currentColor"/></svg>
         <span class="cart-badge" id="cart-badge">0</span>
-      </a>
+      </a>}
       <button class="menu-toggle" id="menu-toggle" aria-label={t('nav.abrirMenu')} aria-expanded="false" aria-controls="mobile-menu">
         <span></span><span></span><span></span>
       </button>
@@ -102,7 +105,8 @@ const proyectos = [
           ))}
         </div>
       </div>
-      <div class="mobile-accordion">
+      {!TIENDA_ACTIVA && <a href={hrefTienda('/productos', lang)} class="mobile-menu-link mobile-menu-link--top">{t('nav.tienda')}</a>}
+      {TIENDA_ACTIVA && <div class="mobile-accordion">
         <button class="mobile-accordion-trigger" aria-expanded="false">
           {t('nav.tienda')}
           <span class="mobile-accordion-icon" aria-hidden="true">+</span>
@@ -122,7 +126,7 @@ const proyectos = [
           ))}
           <a href="/productos" class="mobile-menu-link mobile-ver-todo">{t('nav.verTodoCatalogo')}</a>
         </div>
-      </div>
+      </div>}
       <a href={lang === 'en' ? '/en/contacto' : '/contacto'} class="mobile-menu-link mobile-menu-link--top">{t('nav.contacto')}</a>
       <a href="/cuenta" class="mobile-menu-link mobile-menu-link--top">{t('nav.cuenta')}</a>
     </nav>
@@ -153,7 +157,7 @@ const proyectos = [
 
       <div class="footer-col">
         <h3>{t('footer.proyectos')}</h3>
-        <a href="/productos">{t('footer.tienda')}</a>
+        <a href={hrefTienda('/productos', lang)}>{t('footer.tienda')}</a>
         {proyectos.slice().reverse().map((p) => (
           <a href={lang === 'en' ? `/en/proyectos/${p.slug}` : `/proyectos/${p.slug}`}>{t(p.key)}</a>
         ))}

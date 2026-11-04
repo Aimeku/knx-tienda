@@ -1,5 +1,8 @@
 ---
-export const prerender = true;
+// Temporalmente en servidor para que el middleware pueda redirigir a
+// /proximamente mientras la tienda está inactiva (ver src/lib/tienda.ts).
+// Al reactivar la tienda se puede volver a poner a true.
+export const prerender = false;
 import Base from '../layouts/Base.astro';
 ---
 <Base title="Carrito | Tu Empresa KNX">

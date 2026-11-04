@@ -2,11 +2,12 @@
 export const prerender = true;
 import Base from '../../layouts/Base.astro';
 import { tiendaMenu } from '../../lib/categorias';
+import { hrefTienda } from '../../lib/tienda';
 
 function hrefGrupo(nombreGrupo: string) {
   const grupo = tiendaMenu.find((g) => g.grupo === nombreGrupo);
-  if (!grupo || grupo.categorias.length === 0) return '/productos';
-  return `/productos?${grupo.categorias.map((c) => `categoria=${c.slug}`).join('&')}`;
+  if (!grupo || grupo.categorias.length === 0) return hrefTienda('/productos', 'en');
+  return hrefTienda(`/productos?${grupo.categorias.map((c) => `categoria=${c.slug}`).join('&')}`, 'en');
 }
 
 const proyectosDestacados = [
@@ -29,7 +30,7 @@ const proyectosDestacados = [
       <p class="eyebrow">KNX smart home company</p>
       <h1>Your home, just one touch away<span class="accent-dot">.</span></h1>
       <p class="subtitle">Actuators, sensors, touch panels and KNX gateways at the best price.</p>
-      <a class="cta" href="/productos">Discover</a>
+      <a class="cta" href={hrefTienda('/productos', 'en')}>Discover</a>
     </div>
   </section>
 
@@ -81,7 +82,7 @@ const proyectosDestacados = [
       <p class="eyebrow-dark">Home automation project</p>
       <h2>Smart solutions for every need</h2>
       <p class="subtitle-dark subtitle-dark--left">Discover how our technologies transform everyday spaces into connected, functional environments:</p>
-      <a class="cta cta--dark" href="/productos">Browse the shop</a>
+      <a class="cta cta--dark" href={hrefTienda('/productos', 'en')}>Browse the shop</a>
     </div>
     <div class="cat-tiles">
       <a class="cat-tile cat-tile--light" href={hrefGrupo('Domótica')}>Smart Homes</a>
