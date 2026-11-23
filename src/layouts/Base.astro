@@ -1,7 +1,7 @@
 ---
 import { tiendaMenu } from '../lib/categorias';
 import { getLangFromUrl, getSwitcherHref, useTranslations } from '../i18n/ui';
-import { TIENDA_ACTIVA, hrefTienda } from '../lib/tienda';
+import { TIENDA_ACTIVA, COMPRAS_ACTIVAS, hrefTienda } from '../lib/tienda';
 
 interface Props {
   title: string;
@@ -77,7 +77,7 @@ const proyectos = [
       <a href="/cuenta" class="icon-link desktop-only" aria-label={t('nav.cuenta')}>
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 12C14.4853 12 16.5 9.98528 16.5 7.5C16.5 5.01472 14.4853 3 12 3C9.51472 3 7.5 5.01472 7.5 7.5C7.5 9.98528 9.51472 12 12 12Z" stroke="currentColor" stroke-width="1.5"/><path d="M3.5 20.5C4.94486 16.9942 8.19921 14.5 12 14.5C15.8008 14.5 19.0551 16.9942 20.5 20.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
       </a>
-      {TIENDA_ACTIVA && <a href="/carrito" class="icon-link cart-link" aria-label={t('nav.carrito')}>
+      {TIENDA_ACTIVA && COMPRAS_ACTIVAS && <a href="/carrito" class="icon-link cart-link" aria-label={t('nav.carrito')}>
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M3 4H5L6.5 15.5H18.5L20 7H6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="9" cy="20" r="1.25" fill="currentColor"/><circle cx="17" cy="20" r="1.25" fill="currentColor"/></svg>
         <span class="cart-badge" id="cart-badge">0</span>
       </a>}

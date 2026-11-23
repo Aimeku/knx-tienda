@@ -6,6 +6,7 @@ export const prerender = false;
 import Base from '../../layouts/Base.astro';
 import { supabase, supabaseAdmin } from '../../lib/supabase';
 import type { Documento, Especificacion, Producto, ProductoVariante } from '../../lib/supabase';
+import { COMPRAS_ACTIVAS } from '../../lib/tienda';
 
 const { slug } = Astro.params;
 
@@ -23,7 +24,8 @@ if (!producto) {
 // está aprobada — comprobado en servidor, no basta con que Astro.locals.user exista.
 const usuario = Astro.locals.user;
 let aprobado = false;
-if (usuario) {
+// En modo solo catálogo no hay precios ni compra: ni siquiera consultamos el perfil.
+if (COMPRAS_ACTIVAS && usuario) {
   const { data: perfil } = await supabaseAdmin.from('perfiles').select('estado').eq('id', usuario.id).single();
   aprobado = perfil?.estado === 'aprobado';
 }
@@ -84,7 +86,9 @@ const documentos: Documento[] =
 
     <div class="info">
       <h1>{producto.nombre}</h1>
-      {aprobado ? (
+      {!COMPRAS_ACTIVAS ? (
+        <p class="precio-oculto">Ref. {producto.sku} · Precio bajo consulta</p>
+      ) : aprobado ? (
         <p class="precio-real">{formatoPrecio(producto.precio_oferta ?? producto.precio)}</p>
       ) : (
         <p class="precio-oculto">Inicia sesión para ver los precios</p>
@@ -112,7 +116,16 @@ const documentos: Documento[] =
         </div>
       ))}
 
-      {aprobado ? (
+      {!COMPRAS_ACTIVAS ? (
+        <div class="compra">
+          <a
+            href={`mailto:info@avci.es?subject=${encodeURIComponent(`Presupuesto ${producto.sku} - ${producto.nombre}`)}`}
+            class="cta-login"
+          >
+            Solicitar presupuesto
+          </a>
+        </div>
+      ) : aprobado ? (
         <div class="compra">
           <input type="number" id="cantidad" value="1" min="1" />
           <button

@@ -1,6 +1,12 @@
 import { defineMiddleware } from 'astro:middleware';
 import { createServerSupabase } from './lib/supabase-server';
-import { TIENDA_ACTIVA, RUTA_PROXIMAMENTE, esRutaTienda } from './lib/tienda';
+import { TIENDA_ACTIVA, COMPRAS_ACTIVAS, RUTA_PROXIMAMENTE, esRutaTienda, esRutaCompra } from './lib/tienda';
+
+const respuestaSinCompras = (mensaje: string) =>
+  new Response(JSON.stringify({ error: mensaje }), {
+    status: 503,
+    headers: { 'Content-Type': 'application/json', 'Retry-After': '86400' },
+  });
 
 // Se ejecuta en cada petición: averigua si hay un usuario con sesión
 // iniciada (leyendo las cookies) y lo deja disponible en Astro.locals.user
@@ -15,10 +21,16 @@ export const onRequest = defineMiddleware(async (context, next) => {
       return context.redirect(RUTA_PROXIMAMENTE, 302);
     }
     if (pathname.startsWith('/api/checkout')) {
-      return new Response(JSON.stringify({ error: 'La tienda estará disponible próximamente.' }), {
-        status: 503,
-        headers: { 'Content-Type': 'application/json', 'Retry-After': '86400' },
-      });
+      return respuestaSinCompras('La tienda estará disponible próximamente.');
+    }
+  } else if (!COMPRAS_ACTIVAS) {
+    // Modo solo catálogo: se puede ver el catálogo, pero no comprar.
+    const { pathname } = context.url;
+    if (esRutaCompra(pathname)) {
+      return context.redirect('/productos', 302);
+    }
+    if (pathname.startsWith('/api/checkout')) {
+      return respuestaSinCompras('La compra online no está disponible todavía. Solicita presupuesto.');
     }
   }
 

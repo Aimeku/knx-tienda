@@ -4,6 +4,7 @@ export const prerender = false;
 
 import Base from '../../layouts/Base.astro';
 import { supabase } from '../../lib/supabase';
+import { COMPRAS_ACTIVAS } from '../../lib/tienda';
 import { tiendaMenu, categorias as categoriasPlano, marcasBase } from '../../lib/categorias';
 
 const categoriasSeleccionadas = Astro.url.searchParams.getAll('categoria');
@@ -134,7 +135,7 @@ const tituloCategoria =
               <div class="sin-imagen" />
             )}
             <h3>{p.nombre}</h3>
-            <p class="precio-oculto">Inicia sesión para ver los precios</p>
+            <p class="precio-oculto">{COMPRAS_ACTIVAS ? 'Inicia sesión para ver los precios' : 'Precio bajo consulta'}</p>
             <a class="leer-mas" href={`/productos/${p.slug}`}>Leer más</a>
           </div>
         ))}
