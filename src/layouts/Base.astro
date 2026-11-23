@@ -13,12 +13,13 @@ const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
 const proyectos = [
-  { key: 'proyectos.integradores', slug: 'integradores-pro' },
-  { key: 'proyectos.disenadores', slug: 'disenadores' },
-  { key: 'proyectos.propietarios', slug: 'propietarios' },
-  { key: 'proyectos.arquitectos', slug: 'arquitectos' },
-  { key: 'proyectos.promotoras', slug: 'promotoras-constructoras' },
+  { key: 'proyectos.integradores', desc: 'proyectos.integradores.desc', slug: 'integradores-pro' },
+  { key: 'proyectos.disenadores', desc: 'proyectos.disenadores.desc', slug: 'disenadores' },
+  { key: 'proyectos.propietarios', desc: 'proyectos.propietarios.desc', slug: 'propietarios' },
+  { key: 'proyectos.arquitectos', desc: 'proyectos.arquitectos.desc', slug: 'arquitectos' },
+  { key: 'proyectos.promotoras', desc: 'proyectos.promotoras.desc', slug: 'promotoras-constructoras' },
 ] as const;
+const hrefProyecto = (slug: string) => (lang === 'en' ? `/en/proyectos/${slug}` : `/proyectos/${slug}`);
 ---
 <!doctype html>
 <html lang={lang}>
@@ -39,10 +40,27 @@ const proyectos = [
     <nav>
       <div class="nav-item has-dropdown">
         <button class="nav-trigger" aria-haspopup="true">{t('nav.proyectos')}</button>
-        <div class="mega-menu">
-          {proyectos.map((p) => (
-            <a href={lang === 'en' ? `/en/proyectos/${p.slug}` : `/proyectos/${p.slug}`}>{t(p.key)}</a>
-          ))}
+        <div class="mega-menu mega-menu--proyectos">
+          <div class="proyectos-panel">
+            <div class="proyectos-intro">
+              <p class="proyectos-intro-titulo">{t('proyectos.menuTitulo')}</p>
+              <p class="proyectos-intro-texto">{t('proyectos.menuIntro')}</p>
+              <a href={lang === 'en' ? '/en/contacto' : '/contacto'} class="proyectos-intro-cta">{t('proyectos.menuContacto')} →</a>
+            </div>
+            <div class="proyectos-tarjetas">
+              {proyectos.map((p) => (
+                <a class="proyecto-menu-card" href={hrefProyecto(p.slug)}>
+                  <span class="proyecto-menu-img">
+                    {/* La foto se carga solo al abrir el menú por primera vez (ver script) */}
+                    <img data-src={`/proyectos/${p.slug}-menu.webp`} alt="" width="480" height="320" />
+                  </span>
+                  <span class="proyecto-menu-nombre">{t(p.key)}</span>
+                  <span class="proyecto-menu-desc">{t(p.desc)}</span>
+                  <span class="proyecto-menu-mas">{t('proyectos.verMas')} →</span>
+                </a>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
       {!TIENDA_ACTIVA && <a href={hrefTienda('/productos', lang)} class="nav-item">{t('nav.tienda')}</a>}
@@ -310,7 +328,13 @@ const proyectos = [
       const open = () => {
         clearTimeout(closeTimer);
         item.classList.add('is-open');
+        // Fotos del menú: se descargan solo la primera vez que se abre.
+        menu?.querySelectorAll<HTMLImageElement>('img[data-src]').forEach((img) => {
+          img.src = img.dataset.src!;
+          img.removeAttribute('data-src');
+        });
       };
+      item.addEventListener('focusin', open);
       const scheduleClose = () => {
         clearTimeout(closeTimer);
         closeTimer = setTimeout(() => item.classList.remove('is-open'), 350);
@@ -428,8 +452,9 @@ const proyectos = [
     .mega-menu a:hover { background: #f5f5f5; }
     .mega-menu .ver-todo { border-top: 1px solid var(--color-border); margin-top: 0.25rem; color: var(--color-muted); }
 
-    /* Panel de "Tienda": a todo el ancho de la ventana, con columnas por grupo */
-    .mega-menu.mega-menu--tienda {
+    /* Paneles de "Proyectos" y "Tienda": a todo el ancho de la ventana */
+    .mega-menu.mega-menu--tienda,
+    .mega-menu.mega-menu--proyectos {
       display: block;
       position: fixed;
       top: 81px;
@@ -442,8 +467,92 @@ const proyectos = [
     }
     .has-dropdown:hover .mega-menu.mega-menu--tienda,
     .has-dropdown:focus-within .mega-menu.mega-menu--tienda,
-    .has-dropdown.is-open .mega-menu.mega-menu--tienda {
+    .has-dropdown.is-open .mega-menu.mega-menu--tienda,
+    .has-dropdown:hover .mega-menu.mega-menu--proyectos,
+    .has-dropdown:focus-within .mega-menu.mega-menu--proyectos,
+    .has-dropdown.is-open .mega-menu.mega-menu--proyectos {
       transform: translateY(0);
+    }
+
+    /* Panel de "Proyectos": intro a la izquierda + una tarjeta con foto por perfil */
+    .proyectos-panel {
+      display: grid;
+      grid-template-columns: minmax(200px, 260px) 1fr;
+      gap: 2.5rem;
+      max-width: 1400px;
+      margin: 0 auto;
+      align-items: start;
+    }
+    .proyectos-intro-titulo {
+      margin: 0 0 0.75rem;
+      padding-bottom: 0.6rem;
+      border-bottom: 2px solid var(--color-text);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      font-weight: 700;
+      font-size: 0.85rem;
+    }
+    .proyectos-intro-texto { margin: 0 0 1.25rem; color: #555; font-size: 0.92rem; line-height: 1.55; }
+    .mega-menu--proyectos a.proyectos-intro-cta {
+      display: inline-block;
+      padding: 0.65rem 1.25rem;
+      border-radius: 999px;
+      background: var(--color-text);
+      color: #fff;
+      font-size: 0.82rem;
+      font-weight: 700;
+      white-space: normal;
+    }
+    .mega-menu--proyectos a.proyectos-intro-cta:hover { background: #333; }
+    .proyectos-tarjetas {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 1.25rem;
+    }
+    .mega-menu--proyectos a.proyecto-menu-card {
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+      padding: 0;
+      white-space: normal;
+      border-radius: 12px;
+    }
+    .mega-menu--proyectos a.proyecto-menu-card:hover { background: none; }
+    .proyecto-menu-img {
+      display: block;
+      aspect-ratio: 3 / 2;
+      border-radius: 12px;
+      overflow: hidden;
+      background: #eee;
+      margin-bottom: 0.5rem;
+    }
+    .proyecto-menu-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s ease;
+    }
+    .proyecto-menu-card:hover .proyecto-menu-img img { transform: scale(1.05); }
+    .proyecto-menu-nombre { font-weight: 700; font-size: 0.95rem; color: var(--color-text); }
+    .proyecto-menu-desc { font-size: 0.85rem; color: #666; line-height: 1.45; }
+    .proyecto-menu-mas {
+      margin-top: 0.25rem;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--color-text);
+      opacity: 0;
+      transform: translateX(-4px);
+      transition: opacity 0.2s ease, transform 0.2s ease;
+    }
+    .proyecto-menu-card:hover .proyecto-menu-mas { opacity: 1; transform: none; }
+    @media (max-width: 1100px) {
+      .proyectos-panel { grid-template-columns: 1fr; gap: 1.5rem; }
+      .proyectos-intro { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem 1.5rem; }
+      .proyectos-intro-titulo { border: none; padding: 0; margin: 0; }
+      .proyectos-intro-texto { margin: 0; }
     }
     .tienda-grid {
       display: grid;
