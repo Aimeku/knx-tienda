@@ -1,5 +1,5 @@
 ---
-import { tiendaMenu } from '../lib/categorias';
+import { tiendaMenu, marcasBase, seccionesDe, hrefCategoria, hrefMarca, hrefGrupoTienda } from '../lib/categorias';
 import { getLangFromUrl, getSwitcherHref, useTranslations } from '../i18n/ui';
 import { TIENDA_ACTIVA, COMPRAS_ACTIVAS, hrefTienda } from '../lib/tienda';
 
@@ -52,18 +52,25 @@ const proyectos = [
           <div class="tienda-grid">
             {tiendaMenu.map((grupo) => (
               <div class="tienda-columna">
-                <h3>{grupo.grupo}</h3>
-                {grupo.categorias.length > 0 ? (
-                  grupo.categorias.map((c) => (
-                    <a href={`/productos?categoria=${c.slug}`}>{c.nombre}</a>
-                  ))
-                ) : (
-                  <p class="vacio">{t('nav.proximamente')}</p>
-                )}
+                <a class="tienda-grupo" href={hrefGrupoTienda(grupo)}>{grupo.titulo}</a>
+                {seccionesDe(grupo).map((s) => (
+                  <div class="tienda-seccion">
+                    {s.seccion && <p class="tienda-seccion-titulo">{s.seccion}</p>}
+                    {s.categorias.map((c) => (
+                      <a href={hrefCategoria(c.slug)}>{c.nombre}</a>
+                    ))}
+                  </div>
+                ))}
               </div>
             ))}
+            <div class="tienda-columna tienda-columna--marcas">
+              <p class="tienda-grupo">Marcas</p>
+              {marcasBase.map((m) => (
+                <a href={hrefMarca(m)}>{m}</a>
+              ))}
+              <a href="/productos" class="tienda-ver-todo">{t('nav.verTodoCatalogo')}</a>
+            </div>
           </div>
-          <a href="/productos" class="ver-todo-tienda">{t('nav.verTodoCatalogo')}</a>
         </div>
       </div>}
       <a href={lang === 'en' ? '/en/contacto' : '/contacto'} class="nav-item">{t('nav.contacto')}</a>
@@ -112,19 +119,26 @@ const proyectos = [
           <span class="mobile-accordion-icon" aria-hidden="true">+</span>
         </button>
         <div class="mobile-accordion-panel" hidden>
+          <a href="/productos" class="mobile-menu-link mobile-ver-todo">{t('nav.verTodoCatalogo')}</a>
           {tiendaMenu.map((grupo) => (
             <div class="mobile-subgrupo">
-              <p class="mobile-subgrupo-titulo">{grupo.grupo}</p>
-              {grupo.categorias.length > 0 ? (
-                grupo.categorias.map((c) => (
-                  <a href={`/productos?categoria=${c.slug}`} class="mobile-menu-link mobile-menu-link--sub">{c.nombre}</a>
-                ))
-              ) : (
-                <p class="vacio">{t('nav.proximamente')}</p>
-              )}
+              <a href={hrefGrupoTienda(grupo)} class="mobile-subgrupo-titulo">{grupo.titulo}</a>
+              {seccionesDe(grupo).map((s) => (
+                <>
+                  {s.seccion && <p class="mobile-seccion-titulo">{s.seccion}</p>}
+                  {s.categorias.map((c) => (
+                    <a href={hrefCategoria(c.slug)} class="mobile-menu-link mobile-menu-link--sub">{c.nombre}</a>
+                  ))}
+                </>
+              ))}
             </div>
           ))}
-          <a href="/productos" class="mobile-menu-link mobile-ver-todo">{t('nav.verTodoCatalogo')}</a>
+          <div class="mobile-subgrupo">
+            <p class="mobile-subgrupo-titulo">Marcas</p>
+            {marcasBase.map((m) => (
+              <a href={hrefMarca(m)} class="mobile-menu-link mobile-menu-link--sub">{m}</a>
+            ))}
+          </div>
         </div>
       </div>}
       <a href={lang === 'en' ? '/en/contacto' : '/contacto'} class="mobile-menu-link mobile-menu-link--top">{t('nav.contacto')}</a>
@@ -433,42 +447,58 @@ const proyectos = [
     }
     .tienda-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 2rem 3rem;
+      grid-template-columns: repeat(4, minmax(0, 1fr)) minmax(180px, 0.8fr);
+      gap: 0 2.5rem;
       max-width: 1400px;
       margin: 0 auto;
     }
-    .tienda-columna h3 {
-      text-transform: uppercase;
-      font-weight: 700;
-      font-size: 0.95rem;
-      margin: 0 0 0.75rem;
-      padding-bottom: 0.6rem;
-      border-bottom: 1px solid var(--color-border);
-    }
     .mega-menu--tienda .tienda-columna a {
       display: block;
-      padding: 0.4rem 0;
+      padding: 0.35rem 0;
       white-space: normal;
+      font-size: 0.92rem;
+      color: #444;
     }
-    .tienda-columna .vacio {
-      margin: 0;
-      color: var(--color-muted);
-      font-size: 0.85rem;
-      font-style: italic;
-    }
-    .ver-todo-tienda {
+    .mega-menu--tienda .tienda-columna a:hover { background: none; color: var(--color-text); text-decoration: underline; text-underline-offset: 3px; }
+    .mega-menu--tienda .tienda-grupo {
       display: block;
-      text-align: right;
-      max-width: 1400px;
-      margin: 2rem auto 0;
-      padding-top: 1rem;
-      border-top: 1px solid var(--color-border);
-      color: var(--color-muted);
-      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      font-weight: 700;
       font-size: 0.85rem;
+      color: var(--color-text);
+      margin: 0 0 0.75rem;
+      padding: 0 0 0.6rem;
+      border-bottom: 2px solid var(--color-text);
     }
-    .ver-todo-tienda:hover { color: var(--color-primary); }
+    .mega-menu--tienda a.tienda-grupo::after { content: ' →'; opacity: 0; transition: opacity 0.15s ease; }
+    .mega-menu--tienda a.tienda-grupo:hover { text-decoration: none; }
+    .mega-menu--tienda a.tienda-grupo:hover::after { opacity: 1; }
+    .tienda-seccion + .tienda-seccion { margin-top: 0.9rem; }
+    .tienda-seccion-titulo {
+      margin: 0 0 0.2rem;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--color-muted);
+    }
+    .tienda-columna--marcas {
+      background: #f6f6f6;
+      border-radius: 12px;
+      padding: 1.25rem 1.5rem;
+      align-self: start;
+    }
+    .mega-menu--tienda .tienda-ver-todo {
+      margin-top: 1rem;
+      padding-top: 0.9rem !important;
+      border-top: 1px solid var(--color-border);
+      font-weight: 700;
+      color: var(--color-text) !important;
+    }
+    @media (max-width: 1100px) {
+      .tienda-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 2rem 2rem; }
+    }
 
     .header-icons { display: flex; align-items: center; gap: 1.5rem; }
     .icon-link {
@@ -610,10 +640,20 @@ const proyectos = [
       font-size: 0.75rem;
       font-weight: 700;
       letter-spacing: 0.05em;
-      color: var(--color-muted);
-      margin: 0.75rem 0 0.25rem;
+      color: var(--color-text);
+      text-decoration: none;
+      display: block;
+      margin: 1rem 0 0.25rem;
     }
-    .mobile-ver-todo { font-weight: 600; color: var(--color-text); }
+    .mobile-seccion-titulo {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--color-muted);
+      margin: 0.5rem 0 0;
+    }
+    .mobile-ver-todo { font-weight: 700; color: var(--color-text); }
 
     .mobile-menu-bottom {
       margin-top: auto;

@@ -1,291 +1,527 @@
 ---
-// Depende de los parámetros de la URL (filtros), así que no se puede pregenerar en build.
+// Depende de los parámetros de la URL (filtros, búsqueda, página), así que no se
+// puede pregenerar en build.
 export const prerender = false;
 
 import Base from '../../layouts/Base.astro';
 import { supabase } from '../../lib/supabase';
 import { COMPRAS_ACTIVAS } from '../../lib/tienda';
-import { tiendaMenu, categorias as categoriasPlano, marcasBase } from '../../lib/categorias';
+import { tiendaMenu, categorias as categoriasPlano, marcasBase, seccionesDe } from '../../lib/categorias';
 
-const categoriasSeleccionadas = Astro.url.searchParams.getAll('categoria');
-const marcasSeleccionadas = Astro.url.searchParams.getAll('marca');
-const sinCategorizar = Astro.url.searchParams.has('sin-categorizar');
-const hayFiltrosActivos = categoriasSeleccionadas.length > 0 || marcasSeleccionadas.length > 0 || sinCategorizar;
+const POR_PAGINA = 48;
+const params = Astro.url.searchParams;
 
+const categoriasSeleccionadas = params.getAll('categoria');
+const marcasSeleccionadas = params.getAll('marca');
+// La búsqueda va dentro de un filtro "or" de PostgREST: quitamos los caracteres
+// que tienen significado especial ahí.
+const busqueda = (params.get('q') ?? '').replace(/[,()*%\\]/g, ' ').replace(/\s+/g, ' ').trim().slice(0, 60);
+const orden = params.get('orden') === 'referencia' ? 'referencia' : 'nombre';
+const pagina = Math.max(1, parseInt(params.get('pagina') ?? '1', 10) || 1);
+const hayFiltrosActivos = categoriasSeleccionadas.length > 0 || marcasSeleccionadas.length > 0 || busqueda !== '';
+
+// Traducción slug -> id de categoría (pocas filas).
 const { data: categoriasDb } = await supabase.from('categorias').select('id, slug');
 const idPorSlug = new Map((categoriasDb ?? []).map((c) => [c.slug, c.id]));
 
-const { data: marcasFilas } = await supabase
-  .from('productos')
-  .select('marca')
-  .eq('activo', true)
-  .not('marca', 'is', null);
-const marcasDisponibles = [...new Set([...marcasBase, ...(marcasFilas ?? []).map((p) => p.marca).filter(Boolean)])].sort();
-
 let consulta = supabase
   .from('productos')
-  .select('id, nombre, slug, imagen_principal, marca')
-  .eq('activo', true)
-  .order('nombre');
+  .select('id, nombre, slug, imagen_principal, marca, sku', { count: 'exact' })
+  .eq('activo', true);
 
-if (categoriasSeleccionadas.length > 0 || sinCategorizar) {
+if (categoriasSeleccionadas.length > 0) {
   const ids = categoriasSeleccionadas.map((slug) => idPorSlug.get(slug)).filter((id): id is string => Boolean(id));
-  const condiciones: string[] = [];
-  if (ids.length > 0) condiciones.push(`categoria_id.in.(${ids.join(',')})`);
-  if (sinCategorizar) condiciones.push('categoria_id.is.null');
-  consulta = condiciones.length > 0 ? consulta.or(condiciones.join(',')) : consulta.eq('id', '00000000-0000-0000-0000-000000000000');
+  // Si ninguna categoría existe todavía en la base de datos, no debe salir nada.
+  consulta = ids.length > 0 ? consulta.in('categoria_id', ids) : consulta.eq('id', '00000000-0000-0000-0000-000000000000');
 }
 if (marcasSeleccionadas.length > 0) {
   consulta = consulta.in('marca', marcasSeleccionadas);
 }
+if (busqueda) {
+  // Cada palabra debe aparecer en el nombre o en la referencia.
+  for (const palabra of busqueda.split(' ')) {
+    consulta = consulta.or(`nombre.ilike.*${palabra}*,sku.ilike.*${palabra}*`);
+  }
+}
 
-const { data: productos } = await consulta;
+const desde = (pagina - 1) * POR_PAGINA;
+const { data: productos, count } = await consulta
+  .order(orden === 'referencia' ? 'sku' : 'nombre')
+  .range(desde, desde + POR_PAGINA - 1);
 
-const tituloCategoria =
-  categoriasSeleccionadas.length === 1
-    ? categoriasPlano.find((c) => c.slug === categoriasSeleccionadas[0])?.nombre
-    : null;
+const total = count ?? 0;
+const totalPaginas = Math.max(1, Math.ceil(total / POR_PAGINA));
+
+// URL actual con algunos parámetros cambiados (null = quitar). Cambiar filtros
+// siempre vuelve a la página 1.
+function urlCon(cambios: Record<string, string | string[] | null>) {
+  const p = new URLSearchParams(params);
+  if (!('pagina' in cambios)) p.delete('pagina');
+  for (const [clave, valor] of Object.entries(cambios)) {
+    p.delete(clave);
+    if (valor === null) continue;
+    for (const v of Array.isArray(valor) ? valor : [valor]) p.append(clave, v);
+  }
+  const qs = p.toString();
+  return qs ? `/productos?${qs}` : '/productos';
+}
+
+// Nombre legible de una categoría: "Vimar Linea · Placas" si tiene sección.
+const categoriaPorSlug = new Map(categoriasPlano.map((c) => [c.slug, c]));
+const nombreCategoria = (slug: string) => {
+  const c = categoriaPorSlug.get(slug);
+  if (!c) return slug;
+  return c.seccion && c.seccion !== 'Otros' ? `${c.seccion} · ${c.nombre}` : c.nombre;
+};
+
+// Título de la página según lo que se esté viendo.
+const grupoCompleto = tiendaMenu.find(
+  (g) => g.categorias.length === categoriasSeleccionadas.length && g.categorias.every((c) => categoriasSeleccionadas.includes(c.slug))
+);
+let titulo = 'Catálogo de productos';
+if (busqueda) titulo = `Resultados para «${busqueda}»`;
+else if (categoriasSeleccionadas.length === 1) titulo = nombreCategoria(categoriasSeleccionadas[0]);
+else if (grupoCompleto) titulo = grupoCompleto.titulo;
+else if (categoriasSeleccionadas.length === 0 && marcasSeleccionadas.length === 1) titulo = `Productos ${marcasSeleccionadas[0]}`;
+
+// Etiquetas de filtros activos (cada una enlaza a la misma búsqueda sin ese filtro).
+const chips = [
+  ...(busqueda ? [{ texto: `«${busqueda}»`, href: urlCon({ q: null }) }] : []),
+  ...categoriasSeleccionadas.map((slug) => ({
+    texto: nombreCategoria(slug),
+    href: urlCon({ categoria: categoriasSeleccionadas.filter((s) => s !== slug) }),
+  })),
+  ...marcasSeleccionadas.map((m) => ({ texto: m, href: urlCon({ marca: marcasSeleccionadas.filter((x) => x !== m) }) })),
+];
+
+// Páginas a mostrar en la paginación: primera, última y las cercanas a la actual.
+const paginasVisibles = [...new Set([1, pagina - 1, pagina, pagina + 1, totalPaginas])]
+  .filter((n) => n >= 1 && n <= totalPaginas)
+  .sort((a, b) => a - b);
 ---
-<Base title={`${tituloCategoria ?? 'Catálogo'} | AVCI Smart Homes`}>
+<Base
+  title={`${titulo} | AVCI Smart Homes`}
+  description="Catálogo de productos KNX, mecanismos, iluminación y sonido de AVCI Smart Homes."
+>
   <div class="catalogo">
-    <aside class="filtros">
-      <form method="get" action="/productos">
-        <h2>Categorías</h2>
-        <label class="check-item">
-          <input type="checkbox" name="sin-categorizar" value="1" checked={sinCategorizar} />
-          Sin categorizar
-        </label>
+    <aside class="filtros" id="panel-filtros">
+      <div class="filtros-cabecera">
+        <h2>Filtrar</h2>
+        <button type="button" class="cerrar-filtros" aria-label="Cerrar filtros">&times;</button>
+      </div>
+
+      <form id="form-filtros" method="get" action="/productos">
+        {busqueda && <input type="hidden" name="q" value={busqueda} />}
+        {orden !== 'nombre' && <input type="hidden" name="orden" value={orden} />}
 
         {tiendaMenu.map((grupo) => {
-          const slugsGrupo = grupo.categorias.map((c) => c.slug);
-          const grupoActivo = slugsGrupo.some((s) => categoriasSeleccionadas.includes(s));
-          const tieneHijos = grupo.categorias.length > 0;
+          const seleccionadas = grupo.categorias.filter((c) => categoriasSeleccionadas.includes(c.slug)).length;
+          const todas = seleccionadas === grupo.categorias.length;
           return (
-            <div class="grupo-categoria">
-              <div class="grupo-header">
-                <label class="check-item">
-                  <input type="checkbox" class="grupo-checkbox" disabled={!tieneHijos} />
-                  <span class={grupoActivo ? 'activo' : ''}>{grupo.grupo}</span>
+            <details class="filtro-grupo" open={seleccionadas > 0}>
+              <summary>
+                <span>{grupo.titulo}</span>
+                {seleccionadas > 0 && <span class="contador">{seleccionadas}</span>}
+              </summary>
+              <div class="filtro-cuerpo">
+                <label class="check-item check-todos">
+                  <input type="checkbox" class="grupo-checkbox" checked={todas} />
+                  Todo
                 </label>
-                {tieneHijos && (
-                  <button type="button" class="toggle-grupo" aria-label={`Mostrar ${grupo.grupo}`} aria-expanded={grupoActivo ? 'true' : 'false'}>
-                    {grupoActivo ? '–' : '+'}
-                  </button>
-                )}
+                {seccionesDe(grupo).map((s) => (
+                  <div class="filtro-seccion">
+                    {s.seccion && <p class="filtro-seccion-titulo">{s.seccion}</p>}
+                    {s.categorias.map((c) => (
+                      <label class="check-item">
+                        <input type="checkbox" name="categoria" value={c.slug} checked={categoriasSeleccionadas.includes(c.slug)} />
+                        {c.nombre}
+                      </label>
+                    ))}
+                  </div>
+                ))}
               </div>
-              {tieneHijos && (
-                <div class="subcategorias" hidden={!grupoActivo}>
-                  {grupo.categorias.map((c) => (
-                    <label class="check-item">
-                      <input type="checkbox" name="categoria" value={c.slug} checked={categoriasSeleccionadas.includes(c.slug)} />
-                      {c.nombre}
-                    </label>
-                  ))}
-                </div>
-              )}
-            </div>
+            </details>
           );
         })}
 
-        <div class="grupo-categoria">
-          <div class="grupo-header">
-            <span class="grupo-titulo">Canales</span>
-            <button type="button" class="toggle-grupo" aria-label="Mostrar Canales" aria-expanded="false">+</button>
+        <details class="filtro-grupo" open>
+          <summary>
+            <span>Marca</span>
+            {marcasSeleccionadas.length > 0 && <span class="contador">{marcasSeleccionadas.length}</span>}
+          </summary>
+          <div class="filtro-cuerpo">
+            {marcasBase.map((marca) => (
+              <label class="check-item">
+                <input type="checkbox" name="marca" value={marca} checked={marcasSeleccionadas.includes(marca)} />
+                {marca}
+              </label>
+            ))}
           </div>
-          <div class="subcategorias" hidden>
-            <p class="vacio">Próximamente</p>
-          </div>
-        </div>
+        </details>
 
-        <h2>Marcas</h2>
-        {marcasDisponibles.length > 0 ? (
-          marcasDisponibles.map((marca) => (
-            <label class="check-item">
-              <input type="checkbox" name="marca" value={marca} checked={marcasSeleccionadas.includes(marca)} />
-              {marca}
-            </label>
-          ))
-        ) : (
-          <p class="vacio">Todavía no hay marcas publicadas.</p>
-        )}
-
-        <div class="acciones-filtro">
-          <a href="/productos" class="restablecer">Restablecer</a>
-          <button type="submit" class="aplicar">Aplicar</button>
-        </div>
+        <noscript><button type="submit" class="aplicar">Aplicar filtros</button></noscript>
       </form>
     </aside>
+    <div class="filtros-fondo" aria-hidden="true"></div>
 
     <div class="resultados">
-      <h1>{tituloCategoria ?? 'Catálogo de productos KNX'}</h1>
-
-      <div class="grid">
-        {productos?.map((p) => (
-          <div class="card">
-            {p.imagen_principal ? (
-              <img
-                src={p.imagen_principal.replace(/-800\.webp$/, '-400.webp')}
-                alt={p.nombre}
-                loading="lazy"
-                decoding="async"
-                width="400"
-                height="400"
-              />
-            ) : (
-              <div class="sin-imagen" />
-            )}
-            <h3>{p.nombre}</h3>
-            <p class="precio-oculto">{COMPRAS_ACTIVAS ? 'Inicia sesión para ver los precios' : 'Precio bajo consulta'}</p>
-            <a class="leer-mas" href={`/productos/${p.slug}`}>Leer más</a>
-          </div>
-        ))}
+      <div class="resultados-cabecera">
+        <h1>{titulo}</h1>
+        <form class="buscador" method="get" action="/productos" role="search">
+          {categoriasSeleccionadas.map((c) => <input type="hidden" name="categoria" value={c} />)}
+          {marcasSeleccionadas.map((m) => <input type="hidden" name="marca" value={m} />)}
+          {orden !== 'nombre' && <input type="hidden" name="orden" value={orden} />}
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5" stroke="currentColor" stroke-width="1.6"/><path d="M20 20L15.5 15.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+          <input type="search" name="q" value={busqueda} placeholder="Buscar por nombre o referencia (ej. 30000, placa 2M)" aria-label="Buscar productos" />
+          <button type="submit">Buscar</button>
+        </form>
       </div>
 
-      {(!productos || productos.length === 0) && (
-        <p class="sin-resultados">
-          {hayFiltrosActivos ? 'No hay productos que coincidan con estos filtros.' : 'Todavía no hay productos publicados.'}
-        </p>
+      <div class="barra">
+        <button type="button" class="abrir-filtros">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 6H20M7 12H17M10 18H14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+          Filtros{chips.length > 0 && ` (${chips.length})`}
+        </button>
+        <p class="total">{total === 1 ? '1 producto' : `${total.toLocaleString('es-ES')} productos`}</p>
+        <label class="orden">
+          <span>Ordenar por</span>
+          <select name="orden" form="form-filtros">
+            <option value="nombre" selected={orden === 'nombre'}>Nombre</option>
+            <option value="referencia" selected={orden === 'referencia'}>Referencia</option>
+          </select>
+        </label>
+      </div>
+
+      {chips.length > 0 && (
+        <div class="chips">
+          {chips.map((c) => (
+            <a class="chip" href={c.href} aria-label={`Quitar filtro ${c.texto}`}>
+              {c.texto} <span aria-hidden="true">✕</span>
+            </a>
+          ))}
+          <a class="limpiar" href="/productos">Limpiar todo</a>
+        </div>
+      )}
+
+      {productos && productos.length > 0 ? (
+        <div class="grid">
+          {productos.map((p) => (
+            <a class="card" href={`/productos/${p.slug}`}>
+              <div class="card-imagen">
+                {p.imagen_principal ? (
+                  <img
+                    src={p.imagen_principal.replace(/-800\.webp$/, '-400.webp')}
+                    alt={p.nombre}
+                    loading="lazy"
+                    decoding="async"
+                    width="400"
+                    height="400"
+                  />
+                ) : (
+                  <div class="sin-imagen" />
+                )}
+              </div>
+              <p class="card-meta">{[p.marca, p.sku && `Ref. ${p.sku}`].filter(Boolean).join(' · ')}</p>
+              <h3>{p.nombre}</h3>
+              <p class="card-precio">{COMPRAS_ACTIVAS ? 'Inicia sesión para ver los precios' : 'Precio bajo consulta'}</p>
+              <span class="card-cta">Ver ficha</span>
+            </a>
+          ))}
+        </div>
+      ) : (
+        <div class="sin-resultados">
+          <p>{hayFiltrosActivos ? 'No hay productos que coincidan con tu búsqueda.' : 'Todavía no hay productos publicados.'}</p>
+          {hayFiltrosActivos && <a class="limpiar" href="/productos">Ver todo el catálogo</a>}
+        </div>
+      )}
+
+      {totalPaginas > 1 && (
+        <nav class="paginacion" aria-label="Páginas">
+          {pagina > 1 ? <a href={urlCon({ pagina: String(pagina - 1) })} rel="prev">← Anterior</a> : <span class="deshabilitado">← Anterior</span>}
+          <div class="numeros">
+            {paginasVisibles.map((n, i) => (
+              <>
+                {i > 0 && n - paginasVisibles[i - 1] > 1 && <span class="puntos">…</span>}
+                {n === pagina ? (
+                  <span class="actual" aria-current="page">{n}</span>
+                ) : (
+                  <a href={urlCon({ pagina: String(n) })}>{n}</a>
+                )}
+              </>
+            ))}
+          </div>
+          {pagina < totalPaginas ? <a href={urlCon({ pagina: String(pagina + 1) })} rel="next">Siguiente →</a> : <span class="deshabilitado">Siguiente →</span>}
+        </nav>
       )}
     </div>
   </div>
 
   <script>
-    document.querySelectorAll<HTMLElement>('.grupo-categoria').forEach((grupo) => {
-      // El botón +/- muestra u oculta las subcategorías del grupo.
-      const toggleBtn = grupo.querySelector<HTMLButtonElement>('.toggle-grupo');
-      const panel = grupo.querySelector<HTMLElement>('.subcategorias');
-      toggleBtn?.addEventListener('click', () => {
-        if (!panel) return;
-        panel.hidden = !panel.hidden;
-        toggleBtn.textContent = panel.hidden ? '+' : '–';
-        toggleBtn.setAttribute('aria-expanded', String(!panel.hidden));
-      });
+    const form = document.getElementById('form-filtros') as HTMLFormElement | null;
+    const enviar = () => form?.requestSubmit();
 
-      // El checkbox del grupo (ej. "Domótica") marca/desmarca todas sus subcategorías a la vez.
-      const checkboxGrupo = grupo.querySelector<HTMLInputElement>('.grupo-checkbox');
-      const hijos = grupo.querySelectorAll<HTMLInputElement>('.subcategorias input[type="checkbox"]');
-      if (!checkboxGrupo || hijos.length === 0) return;
+    // Los filtros se aplican al marcarlos, sin botón "Aplicar".
+    form?.querySelectorAll<HTMLInputElement>('input[name="categoria"], input[name="marca"]').forEach((input) => {
+      input.addEventListener('change', enviar);
+    });
+    document.querySelector<HTMLSelectElement>('select[name="orden"]')?.addEventListener('change', enviar);
 
-      checkboxGrupo.checked = Array.from(hijos).every((h) => h.checked);
-      checkboxGrupo.addEventListener('change', () => {
-        hijos.forEach((h) => { h.checked = checkboxGrupo.checked; });
-      });
-      hijos.forEach((h) => {
-        h.addEventListener('change', () => {
-          checkboxGrupo.checked = Array.from(hijos).every((c) => c.checked);
-        });
+    // "Todo" marca o desmarca todas las categorías del grupo de una vez.
+    form?.querySelectorAll<HTMLElement>('.filtro-grupo').forEach((grupo) => {
+      const todo = grupo.querySelector<HTMLInputElement>('.grupo-checkbox');
+      const hijos = grupo.querySelectorAll<HTMLInputElement>('input[name="categoria"]');
+      todo?.addEventListener('change', () => {
+        hijos.forEach((h) => { h.checked = todo.checked; });
+        enviar();
       });
     });
+
+    // Móvil: el panel de filtros se abre como un cajón lateral.
+    const panel = document.getElementById('panel-filtros');
+    const abrir = () => document.body.classList.add('filtros-abiertos');
+    const cerrar = () => document.body.classList.remove('filtros-abiertos');
+    document.querySelector('.abrir-filtros')?.addEventListener('click', abrir);
+    panel?.querySelector('.cerrar-filtros')?.addEventListener('click', cerrar);
+    document.querySelector('.filtros-fondo')?.addEventListener('click', cerrar);
   </script>
 
   <style>
     .catalogo {
       display: grid;
-      grid-template-columns: 280px 1fr;
+      grid-template-columns: 260px 1fr;
       gap: 3rem;
-      padding: 3rem 2rem;
+      padding: 2.5rem 2rem 4rem;
       align-items: start;
     }
-    @media (max-width: 800px) {
-      .catalogo { grid-template-columns: 1fr; }
+
+    /* ---------- Filtros ---------- */
+    .filtros { position: sticky; top: 100px; max-height: calc(100vh - 120px); overflow-y: auto; padding-right: 0.25rem; }
+    .filtros-cabecera { display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.5rem; }
+    .filtros-cabecera h2 { font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-muted); margin: 0; }
+    .cerrar-filtros { display: none; background: none; border: none; font-size: 1.8rem; line-height: 1; cursor: pointer; color: var(--color-text); }
+
+    .filtro-grupo { border-bottom: 1px solid var(--color-border); }
+    .filtro-grupo summary {
+      list-style: none;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.95rem 0;
+      font-weight: 700;
+      font-size: 0.95rem;
+      cursor: pointer;
     }
-
-    .filtros h2 { font-size: 1.1rem; margin: 0 0 1rem; }
-    .filtros form { display: flex; flex-direction: column; gap: 0.25rem; }
-
+    .filtro-grupo summary::-webkit-details-marker { display: none; }
+    .filtro-grupo summary::after {
+      content: '+';
+      margin-left: auto;
+      font-weight: 400;
+      font-size: 1.2rem;
+      color: var(--color-muted);
+    }
+    .filtro-grupo[open] summary::after { content: '–'; }
+    .contador {
+      background: var(--color-text);
+      color: #fff;
+      font-size: 0.7rem;
+      font-weight: 700;
+      border-radius: 999px;
+      min-width: 1.3rem;
+      height: 1.3rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 0.35rem;
+    }
+    .filtro-cuerpo { padding: 0 0 0.9rem; }
+    .filtro-seccion + .filtro-seccion { margin-top: 0.5rem; }
+    .filtro-seccion-titulo {
+      margin: 0.5rem 0 0.1rem;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--color-muted);
+    }
     .check-item {
       display: flex;
       align-items: center;
       gap: 0.6rem;
-      font-size: 0.95rem;
-      color: var(--color-text);
-      padding: 0.4rem 0;
+      font-size: 0.92rem;
+      color: #333;
+      padding: 0.35rem 0;
       cursor: pointer;
     }
-    .check-item input { accent-color: var(--color-primary); width: 16px; height: 16px; }
+    .check-item:hover { color: var(--color-text); }
+    .check-item input { accent-color: var(--color-primary); width: 16px; height: 16px; margin: 0; }
+    .check-todos { font-weight: 600; color: var(--color-text); }
+    .aplicar {
+      margin-top: 1rem;
+      width: 100%;
+      padding: 0.75rem;
+      border-radius: 999px;
+      border: none;
+      background: var(--color-text);
+      color: #fff;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .filtros-fondo { display: none; }
 
-    .grupo-categoria { margin: 0.1rem 0; }
-    .grupo-header {
+    /* ---------- Cabecera de resultados ---------- */
+    .resultados-cabecera { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem 2rem; margin-bottom: 1.25rem; }
+    .resultados-cabecera h1 { font-size: 1.6rem; margin: 0; }
+    .buscador {
+      flex: 1 1 360px;
+      max-width: 520px;
       display: flex;
       align-items: center;
-      justify-content: space-between;
       gap: 0.5rem;
-    }
-    .grupo-header .check-item,
-    .grupo-titulo { flex: 1; }
-    .grupo-titulo { font-size: 0.95rem; padding: 0.4rem 0; }
-    .activo { font-weight: 700; }
-    .toggle-grupo {
-      background: none;
-      border: none;
-      cursor: pointer;
-      color: var(--color-muted);
-      font-size: 1.1rem;
-      line-height: 1;
-      padding: 0.25rem;
-    }
-    .toggle-grupo:disabled { visibility: hidden; }
-    .subcategorias { display: flex; flex-direction: column; padding-left: 1.6rem; }
-    .vacio { color: var(--color-muted); font-size: 0.85rem; font-style: italic; margin: 0.3rem 0; }
-
-    .acciones-filtro { display: flex; gap: 0.75rem; margin-top: 1.5rem; }
-    .restablecer,
-    .aplicar {
-      flex: 1;
-      text-align: center;
-      padding: 0.75rem 1rem;
+      border: 1px solid var(--color-border);
       border-radius: 999px;
+      padding: 0.3rem 0.3rem 0.3rem 1rem;
+      background: #fff;
+      color: var(--color-muted);
+    }
+    .buscador:focus-within { border-color: var(--color-text); }
+    .buscador input { flex: 1; border: none; outline: none; font: inherit; font-size: 0.92rem; min-width: 0; background: none; }
+    .buscador button {
+      border: none;
+      background: var(--color-text);
+      color: #fff;
+      border-radius: 999px;
+      padding: 0.55rem 1.2rem;
+      font-weight: 700;
+      font-size: 0.82rem;
+      cursor: pointer;
+    }
+
+    .barra {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 0.75rem 0;
+      border-top: 1px solid var(--color-border);
+      border-bottom: 1px solid var(--color-border);
+      margin-bottom: 1rem;
+    }
+    .total { margin: 0; font-size: 0.9rem; color: var(--color-muted); }
+    .orden { margin-left: auto; display: flex; align-items: center; gap: 0.5rem; font-size: 0.88rem; color: var(--color-muted); }
+    .orden select {
+      font: inherit;
+      color: var(--color-text);
+      border: 1px solid var(--color-border);
+      border-radius: 8px;
+      padding: 0.4rem 0.6rem;
+      background: #fff;
+      cursor: pointer;
+    }
+    .abrir-filtros {
+      display: none;
+      align-items: center;
+      gap: 0.4rem;
+      border: 1px solid var(--color-text);
+      background: #fff;
+      border-radius: 999px;
+      padding: 0.45rem 1rem;
       font-weight: 700;
       font-size: 0.85rem;
-      text-decoration: none;
       cursor: pointer;
-      border: 1px solid var(--color-text);
     }
-    .restablecer { background: #fff; color: var(--color-text); }
-    .aplicar { background: var(--color-text); color: #fff; }
 
-    .resultados h1 { font-size: 1.5rem; margin: 0 0 2rem; }
-    .sin-resultados { color: var(--color-muted); }
+    .chips { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem; margin-bottom: 1.5rem; }
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      background: #f2f2f2;
+      color: var(--color-text);
+      border-radius: 999px;
+      padding: 0.35rem 0.85rem;
+      font-size: 0.85rem;
+      text-decoration: none;
+    }
+    .chip span { font-size: 0.75rem; color: var(--color-muted); }
+    .chip:hover { background: #e6e6e6; }
+    .limpiar { font-size: 0.85rem; color: var(--color-text); font-weight: 600; text-underline-offset: 3px; }
 
+    /* ---------- Tarjetas ---------- */
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-      gap: 1.5rem;
+      grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+      gap: 1.25rem;
     }
     .card {
       background: #fff;
-      border-radius: 16px;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
-      padding: 1.75rem 1.25rem;
+      border: 1px solid #eee;
+      border-radius: 14px;
+      padding: 1.25rem;
       display: flex;
       flex-direction: column;
-      align-items: center;
-      text-align: center;
-      gap: 0.75rem;
-    }
-    .card img { width: 100%; height: 180px; object-fit: contain; }
-    .card .sin-imagen { width: 100%; height: 180px; background: #f5f5f5; border-radius: 8px; }
-    .card h3 { font-size: 0.95rem; font-weight: 700; margin: 0; text-transform: uppercase; line-height: 1.35; }
-    .precio-oculto {
-      font-size: 0.95rem;
-      font-weight: 800;
-      text-transform: uppercase;
-      color: var(--color-text);
-      margin: 0;
-      line-height: 1.35;
-    }
-    .leer-mas {
-      display: inline-block;
-      background: #0a0a0a;
-      color: #fff;
-      padding: 0.75rem 1.75rem;
-      border-radius: 999px;
+      gap: 0.4rem;
       text-decoration: none;
+      color: var(--color-text);
+      transition: box-shadow 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
+    }
+    .card:hover { box-shadow: 0 10px 28px rgba(0, 0, 0, 0.08); transform: translateY(-2px); border-color: transparent; }
+    .card-imagen { aspect-ratio: 1; display: flex; align-items: center; justify-content: center; margin-bottom: 0.5rem; }
+    .card img { width: 100%; height: 100%; object-fit: contain; }
+    .sin-imagen { width: 100%; height: 100%; background: #f5f5f5; border-radius: 8px; }
+    .card-meta { margin: 0; font-size: 0.75rem; color: var(--color-muted); letter-spacing: 0.02em; }
+    .card h3 { font-size: 0.95rem; font-weight: 700; margin: 0; line-height: 1.35; }
+    .card-precio { margin: 0.2rem 0 0; font-size: 0.82rem; color: var(--color-muted); }
+    .card-cta {
+      margin-top: auto;
+      padding-top: 0.75rem;
+      font-size: 0.8rem;
       font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 0.03em;
-      font-size: 0.8rem;
-      margin-top: 0.5rem;
+      letter-spacing: 0.04em;
+    }
+    .card-cta::after { content: ' →'; }
+
+    .sin-resultados { padding: 3rem 0; color: var(--color-muted); }
+
+    /* ---------- Paginación ---------- */
+    .paginacion { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-top: 2.5rem; }
+    .paginacion a, .paginacion span { font-size: 0.9rem; text-decoration: none; color: var(--color-text); }
+    .paginacion .deshabilitado { color: #bbb; }
+    .numeros { display: flex; gap: 0.3rem; }
+    .numeros a, .numeros .actual, .numeros .puntos {
+      min-width: 2.2rem;
+      height: 2.2rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+    }
+    .numeros a:hover { background: #f2f2f2; }
+    .numeros .actual { background: var(--color-text); color: #fff; font-weight: 700; }
+
+    /* ---------- Móvil ---------- */
+    @media (max-width: 900px) {
+      .catalogo { grid-template-columns: 1fr; padding: 1.5rem 1rem 3rem; gap: 0; }
+      .abrir-filtros { display: inline-flex; }
+      .filtros {
+        position: fixed;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        width: min(340px, 88vw);
+        max-height: none;
+        background: #fff;
+        z-index: 60;
+        padding: 1.25rem 1.25rem 2rem;
+        transform: translateX(-100%);
+        transition: transform 0.25s ease;
+      }
+      .cerrar-filtros { display: block; }
+      :global(body.filtros-abiertos) .filtros { transform: none; }
+      :global(body.filtros-abiertos) .filtros-fondo { display: block; position: fixed; inset: 0; background: rgba(0, 0, 0, 0.4); z-index: 55; }
+      .orden span { display: none; }
+      .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.75rem; }
+      .card { padding: 0.9rem; }
+      .paginacion { flex-wrap: wrap; justify-content: center; }
     }
   </style>
 </Base>
