@@ -17,6 +17,15 @@ export const tiendaMenu = [
     categorias: [{ nombre: 'Pulsadores', slug: 'pulsadores' }],
   },
   {
+    grupo: 'Vimar Linea',
+    categorias: [
+      { nombre: 'Mecanismos', slug: 'vimar-linea-mecanismos' },
+      { nombre: 'Placas', slug: 'vimar-linea-placas' },
+      { nombre: 'Teclas y botones', slug: 'vimar-linea-teclas' },
+      { nombre: 'Accesorios y soportes', slug: 'vimar-linea-accesorios' },
+    ],
+  },
+  {
     grupo: 'Iluminación / Electricidad',
     categorias: [{ nombre: 'DALI', slug: 'dali' }],
   },

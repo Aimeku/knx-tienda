@@ -122,7 +122,14 @@ const tituloCategoria =
         {productos?.map((p) => (
           <div class="card">
             {p.imagen_principal ? (
-              <img src={p.imagen_principal} alt={p.nombre} />
+              <img
+                src={p.imagen_principal.replace(/-800\.webp$/, '-400.webp')}
+                alt={p.nombre}
+                loading="lazy"
+                decoding="async"
+                width="400"
+                height="400"
+              />
             ) : (
               <div class="sin-imagen" />
             )}
