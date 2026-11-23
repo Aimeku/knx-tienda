@@ -2,6 +2,7 @@
 export const prerender = true;
 import Base from '../../../layouts/Base.astro';
 import ProyectoLanding from '../../../components/ProyectoLanding.astro';
+import { foto } from '../../../lib/fotos';
 
 const soluciones = [
   {
@@ -48,6 +49,6 @@ const caracteristicas = [
     soluciones={soluciones}
     caracteristicasHeading="Why our solutions stand out"
     caracteristicas={caracteristicas}
-    imagen="https://keewlcnfppadsjmujlju.supabase.co/storage/v1/object/public/Fotos%20principales/7.png"
+    imagen={foto(7)}
   />
 </Base>

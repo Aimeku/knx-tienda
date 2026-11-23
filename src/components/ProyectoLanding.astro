@@ -1,5 +1,7 @@
 ---
 import { defaultLang, localizedHref, useTranslations, type Lang } from '../i18n/ui';
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
 
 interface Solucion {
   nombre: string;
@@ -21,7 +23,7 @@ interface Props {
   caracteristicasHeading: string;
   caracteristicas: Caracteristica[];
   lang?: Lang;
-  imagen?: string;
+  imagen?: ImageMetadata;
 }
 
 const {
@@ -40,7 +42,7 @@ const {
 const t = useTranslations(lang);
 ---
 <section class={`hero ${imagen ? 'has-image' : ''}`}>
-  {imagen && <img src={imagen} alt="" class="hero-img" />}
+  {imagen && <Image src={imagen} widths={[768, 1280, 1536]} sizes="100vw" alt="" class="hero-img" loading="eager" fetchpriority="high" />}
   <div class="hero-content">
     <p class="eyebrow">{eyebrow}</p>
     <h1>{headline}<span class="accent-dot">.</span></h1>

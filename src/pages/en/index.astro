@@ -1,6 +1,8 @@
 ---
 export const prerender = true;
 import Base from '../../layouts/Base.astro';
+import { Image } from 'astro:assets';
+import { foto } from '../../lib/fotos';
 import { tiendaMenu } from '../../lib/categorias';
 import { hrefTienda } from '../../lib/tienda';
 
@@ -11,19 +13,19 @@ function hrefGrupo(nombreGrupo: string) {
 }
 
 const proyectosDestacados = [
-  { nombre: 'Integrators PRO', slug: 'integradores-pro', imagen: 'https://keewlcnfppadsjmujlju.supabase.co/storage/v1/object/public/Fotos%20principales/9.png' },
-  { nombre: 'Developers / Contractors', slug: 'promotoras-constructoras', imagen: 'https://keewlcnfppadsjmujlju.supabase.co/storage/v1/object/public/Fotos%20principales/10.png' },
-  { nombre: 'Architects', slug: 'arquitectos', imagen: 'https://keewlcnfppadsjmujlju.supabase.co/storage/v1/object/public/Fotos%20principales/11.png' },
-  { nombre: 'Designers', slug: 'disenadores', imagen: 'https://keewlcnfppadsjmujlju.supabase.co/storage/v1/object/public/Fotos%20principales/12.png' },
-  { nombre: 'Homeowners', slug: 'propietarios', imagen: 'https://keewlcnfppadsjmujlju.supabase.co/storage/v1/object/public/Fotos%20principales/13.png' },
+  { nombre: 'Integrators PRO', slug: 'integradores-pro', imagen: foto(9) },
+  { nombre: 'Developers / Contractors', slug: 'promotoras-constructoras', imagen: foto(10) },
+  { nombre: 'Architects', slug: 'arquitectos', imagen: foto(11) },
+  { nombre: 'Designers', slug: 'disenadores', imagen: foto(12) },
+  { nombre: 'Homeowners', slug: 'propietarios', imagen: foto(13) },
 ];
 ---
 <Base title="AVCI Smart Homes | KNX Store" description="Online store for KNX smart home products.">
   <section class="hero">
     <div class="hero-slides">
-      <img src="https://keewlcnfppadsjmujlju.supabase.co/storage/v1/object/public/Fotos%20principales/1.png" alt="" class="hero-slide is-active" />
-      <img src="https://keewlcnfppadsjmujlju.supabase.co/storage/v1/object/public/Fotos%20principales/2.png" alt="" class="hero-slide" />
-      <img src="https://keewlcnfppadsjmujlju.supabase.co/storage/v1/object/public/Fotos%20principales/3.png" alt="" class="hero-slide" />
+      <Image src={foto(1)} widths={[768, 1280, 1536]} sizes="100vw" alt="" class="hero-slide is-active" loading="eager" fetchpriority="high" />
+      <Image src={foto(2)} widths={[768, 1280, 1536]} sizes="100vw" alt="" class="hero-slide" loading="eager" decoding="async" />
+      <Image src={foto(3)} widths={[768, 1280, 1536]} sizes="100vw" alt="" class="hero-slide" loading="eager" decoding="async" />
     </div>
     <div class="hero-overlay"></div>
     <div class="hero-content">
@@ -41,7 +43,7 @@ const proyectosDestacados = [
     <div class="proyectos-grid">
       {proyectosDestacados.map((p) => (
         <a class="proyecto-card" href={`/en/proyectos/${p.slug}`}>
-          <img src={p.imagen} alt="" loading="lazy" />
+          <Image src={p.imagen} widths={[480, 800]} sizes="(max-width: 900px) 50vw, 33vw" alt="" loading="lazy" decoding="async" />
           <span class="proyecto-label">{p.nombre}</span>
         </a>
       ))}
