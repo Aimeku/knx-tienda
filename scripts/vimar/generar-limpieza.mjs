@@ -14,6 +14,9 @@ const OCULTAR = [
   'Pilotos con difusor',
   'Placas descartadas',
   'Mecanismos descartados',
+  'Tomas de estándar italiano',
+  'Tomas francesas',
+  'Tomas 13A multiestándar',
 ];
 
 const ex = JSON.parse(fs.readFileSync('data/vimar/excluir.json', 'utf8'));
