@@ -42,7 +42,7 @@ export const tiendaCompleta: GrupoTienda[] = [
     categorias: [
       // Vimar: KNX (más adelante, ByMe y View Wireless como secciones nuevas)
       { nombre: 'Mecanismos Linea', slug: 'vimar-knx-linea', seccion: 'KNX' },
-      { nombre: 'Mandos y termostatos', slug: 'vimar-knx-dispositivos', seccion: 'KNX' },
+      { nombre: 'Mandos y termostatos', slug: 'vimar-knx-dispositivos', seccion: 'KNX', visible: false }, // sin productos por ahora
       { nombre: 'Aparatos DIN y módulos', slug: 'vimar-knx-din', seccion: 'KNX' },
       { nombre: 'Software', slug: 'vimar-knx-software', seccion: 'KNX', visible: false }, // sin productos por ahora
       // Categorías antiguas, sin productos por ahora
