@@ -4,6 +4,7 @@
 // Uso:
 //   node scripts/vimar/extraer-serie.mjs <nodo> <salida.json>
 //   node scripts/vimar/extraer-serie.mjs A0L101L216 data/vimar/linea.json   (serie LINEA)
+//   node scripts/vimar/extraer-serie.mjs codigos=31480.B,31480.C data/vimar/x.json  (referencias sueltas)
 //
 // Va despacio a propósito (una petición por segundo) para no cargar la web de Vimar.
 
@@ -103,9 +104,11 @@ function parsearFicha(html, codigo) {
   };
 }
 
-// 1. Recorre las páginas del listado hasta que no aparezcan códigos nuevos.
-const codigos = [];
-for (let pagina = 1; pagina < 200; pagina++) {
+// 1. Recorre las páginas del listado hasta que no aparezcan códigos nuevos
+//    (o usa la lista de referencias si se pasa "codigos=...").
+const listaFija = nodo.startsWith('codigos=') ? nodo.slice(8).split(',').filter(Boolean) : null;
+const codigos = listaFija ? [...listaFija] : [];
+for (let pagina = 1; !listaFija && pagina < 200; pagina++) {
   let html;
   try {
     html = await descargar(`${BASE}/es/int/catalog/product/index/liv/${nodo}?page=${pagina}`, 1);
@@ -130,7 +133,7 @@ const errores = [];
 for (const [i, codigo] of codigos.entries()) {
   if (porCodigo.has(codigo)) continue;
   try {
-    const html = await descargar(`${BASE}/es/int/catalog/product/index/code/${encodeURIComponent(codigo)}?node=${nodo}`);
+    const html = await descargar(`${BASE}/es/int/catalog/product/index/code/${encodeURIComponent(codigo)}${listaFija ? '' : `?node=${nodo}`}`);
     porCodigo.set(codigo, parsearFicha(html, codigo));
     console.log(`[${i + 1}/${codigos.length}] ${codigo}`);
   } catch (e) {

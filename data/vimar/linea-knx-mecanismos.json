@@ -5590,5 +5590,422 @@
       "31480.FG"
     ],
     "url": "https://www.vimar.com/es/int/catalog/product/index/code/30588"
+  },
+  {
+    "codigo": "31480.B",
+    "nombre": "2 medias teclas 1M neutro pers. blanco",
+    "descripcion": "Dos medias teclas intercambiables personalizables 1 módulo, neutras, blanco",
+    "ruta": "Sistemas+productos smart / By-me Plus / LINEA / Botones",
+    "estado": "3 - Activo",
+    "imagen": "https://www.vimar.com/irj/go/km/docs/z_catalogo/MAIN_IMAGE/31480_b-vimar-linea-bianca-due-mezzi-tasti-1m-neutro-pers-bianco.101395.jpg",
+    "ficha_pdf": "https://www.vimar.com/es/int/catalog/product/download-pdf/code/31480.B?type=.pdf",
+    "dibujos": [
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGESIZE/DI_31480.100235.G.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGESIZE/DI_31480.100236.G.DXF"
+      },
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGEREAR/VP_31480.100213.G.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGEREAR/VP_31480.100214.G.DXF"
+      },
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/3DIMAGE/EA_31480.100191.G.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/3DIMAGE/EA_31480.100192.G.DXF"
+      }
+    ],
+    "certificados": [
+      {
+        "titulo": "01. IMQ - Italia",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/CERTIFICATE/IMQ_CA02.115185.06803_2026-04-01.pdf"
+      },
+      {
+        "titulo": "96. Experto electrotécnico",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/CERTIFICATE/Espertoelettrotecnico.116413.pdf"
+      }
+    ],
+    "etim": [
+      {
+        "titulo": "Class group",
+        "valor": "Installation bus systems"
+      },
+      {
+        "titulo": "Class",
+        "valor": "Touch rocker for bus system"
+      },
+      {
+        "titulo": "Bus system KNX",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Bus system KNX-RF (Radio Frequency)",
+        "valor": "No"
+      },
+      {
+        "titulo": "Bus system radio frequency",
+        "valor": "No"
+      },
+      {
+        "titulo": "Bus system LON",
+        "valor": "No"
+      },
+      {
+        "titulo": "Bus system Powernet",
+        "valor": "No"
+      },
+      {
+        "titulo": "Other bus systems",
+        "valor": "Other"
+      },
+      {
+        "titulo": "Radio frequency bidirectional",
+        "valor": "No"
+      },
+      {
+        "titulo": "With bus connection",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Material",
+        "valor": "Plastic"
+      },
+      {
+        "titulo": "Material quality",
+        "valor": "Thermoplastic"
+      },
+      {
+        "titulo": "Surface protection",
+        "valor": "Untreated"
+      },
+      {
+        "titulo": "Surface finishing",
+        "valor": "Matt"
+      },
+      {
+        "titulo": "Colour",
+        "valor": "White"
+      },
+      {
+        "titulo": "RAL-number (similar)",
+        "valor": "9016"
+      },
+      {
+        "titulo": "Transparent",
+        "valor": "No"
+      }
+    ],
+    "pedido_minimo": "1 NR",
+    "ean": "8007352699083",
+    "embalajes": [
+      {
+        "ean": "8007352699083",
+        "cantidad": "1 NR",
+        "medidas": "10x5x1,5 [cm]",
+        "peso": "4,3 [g]"
+      },
+      {
+        "ean": "8007352699090",
+        "cantidad": "10 NR",
+        "medidas": "21,4x11x6 [cm]",
+        "peso": "104,1 [g]"
+      },
+      {
+        "ean": "8007352699106",
+        "cantidad": "90 NR",
+        "medidas": "36x22,5x19,5 [cm]",
+        "peso": "1.228,9 [g]"
+      }
+    ],
+    "relacionados": [],
+    "url": "https://www.vimar.com/es/int/catalog/product/index/code/31480.B"
+  },
+  {
+    "codigo": "31480.C",
+    "nombre": "2 medias teclas 1M neutro pers. cáñamo",
+    "descripcion": "Dos medias teclas intercambiables personalizables 1 módulo, neutras, hueso",
+    "ruta": "Sistemas+productos smart / By-me Plus / LINEA / Botones",
+    "estado": "3 - Activo",
+    "imagen": "https://www.vimar.com/irj/go/km/docs/z_catalogo/MAIN_IMAGE/31480_c-vimar-linea-canapa-due-mezzi-tasti-1m-neutro-pers-canapa.101396.jpg",
+    "ficha_pdf": "https://www.vimar.com/es/int/catalog/product/download-pdf/code/31480.C?type=.pdf",
+    "dibujos": [
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGESIZE/DI_31480.100235.G.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGESIZE/DI_31480.100236.G.DXF"
+      },
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGEREAR/VP_31480.100213.G.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGEREAR/VP_31480.100214.G.DXF"
+      },
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/3DIMAGE/EA_31480.100191.G.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/3DIMAGE/EA_31480.100192.G.DXF"
+      }
+    ],
+    "certificados": [
+      {
+        "titulo": "01. IMQ - Italia",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/CERTIFICATE/IMQ_CA02.115185.06803_2026-04-01.pdf"
+      },
+      {
+        "titulo": "96. Experto electrotécnico",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/CERTIFICATE/Espertoelettrotecnico.116413.pdf"
+      }
+    ],
+    "etim": [
+      {
+        "titulo": "Class group",
+        "valor": "Installation bus systems"
+      },
+      {
+        "titulo": "Class",
+        "valor": "Touch rocker for bus system"
+      },
+      {
+        "titulo": "Bus system KNX",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Bus system KNX-RF (Radio Frequency)",
+        "valor": "No"
+      },
+      {
+        "titulo": "Bus system radio frequency",
+        "valor": "No"
+      },
+      {
+        "titulo": "Bus system LON",
+        "valor": "No"
+      },
+      {
+        "titulo": "Bus system Powernet",
+        "valor": "No"
+      },
+      {
+        "titulo": "Other bus systems",
+        "valor": "Other"
+      },
+      {
+        "titulo": "Radio frequency bidirectional",
+        "valor": "No"
+      },
+      {
+        "titulo": "With bus connection",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Material",
+        "valor": "Plastic"
+      },
+      {
+        "titulo": "Material quality",
+        "valor": "Thermoplastic"
+      },
+      {
+        "titulo": "Surface protection",
+        "valor": "Untreated"
+      },
+      {
+        "titulo": "Surface finishing",
+        "valor": "Matt"
+      },
+      {
+        "titulo": "Colour",
+        "valor": "Beige"
+      },
+      {
+        "titulo": "RAL-number (similar)",
+        "valor": "7032"
+      },
+      {
+        "titulo": "Transparent",
+        "valor": "No"
+      }
+    ],
+    "pedido_minimo": "1 NR",
+    "ean": "8007352699212",
+    "embalajes": [
+      {
+        "ean": "8007352699212",
+        "cantidad": "1 NR",
+        "medidas": "10x5x1,5 [cm]",
+        "peso": "4,3 [g]"
+      },
+      {
+        "ean": "8007352699229",
+        "cantidad": "10 NR",
+        "medidas": "21,4x11x6 [cm]",
+        "peso": "104,1 [g]"
+      },
+      {
+        "ean": "8007352699236",
+        "cantidad": "90 NR",
+        "medidas": "36x22,5x19,5 [cm]",
+        "peso": "1.228,9 [g]"
+      }
+    ],
+    "relacionados": [],
+    "url": "https://www.vimar.com/es/int/catalog/product/index/code/31480.C"
+  },
+  {
+    "codigo": "31480.G",
+    "nombre": "2 medias teclas 1M neutro pers. negro",
+    "descripcion": "Dos medias teclas intercambiables personalizables 1 módulo, neutras, negro",
+    "ruta": "Sistemas+productos smart / By-me Plus / LINEA / Botones",
+    "estado": "3 - Activo",
+    "imagen": "https://www.vimar.com/irj/go/km/docs/z_catalogo/MAIN_IMAGE/31480_g-vimar-linea-due-mezzi-tasti-1m-neutro-pers-nero.101400.jpg",
+    "ficha_pdf": "https://www.vimar.com/es/int/catalog/product/download-pdf/code/31480.G?type=.pdf",
+    "dibujos": [
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGESIZE/DI_31480.100235.G.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGESIZE/DI_31480.100236.G.DXF"
+      },
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGEREAR/VP_31480.100213.G.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGEREAR/VP_31480.100214.G.DXF"
+      },
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/3DIMAGE/EA_31480.100191.G.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/3DIMAGE/EA_31480.100192.G.DXF"
+      }
+    ],
+    "certificados": [
+      {
+        "titulo": "01. IMQ - Italia",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/CERTIFICATE/IMQ_CA02.115185.06803_2026-04-01.pdf"
+      },
+      {
+        "titulo": "96. Experto electrotécnico",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/CERTIFICATE/Espertoelettrotecnico.116413.pdf"
+      }
+    ],
+    "etim": [
+      {
+        "titulo": "Class group",
+        "valor": "Installation bus systems"
+      },
+      {
+        "titulo": "Class",
+        "valor": "Touch rocker for bus system"
+      },
+      {
+        "titulo": "Bus system KNX",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Bus system KNX-RF (Radio Frequency)",
+        "valor": "No"
+      },
+      {
+        "titulo": "Bus system radio frequency",
+        "valor": "No"
+      },
+      {
+        "titulo": "Bus system LON",
+        "valor": "No"
+      },
+      {
+        "titulo": "Bus system Powernet",
+        "valor": "No"
+      },
+      {
+        "titulo": "Other bus systems",
+        "valor": "Other"
+      },
+      {
+        "titulo": "Radio frequency bidirectional",
+        "valor": "No"
+      },
+      {
+        "titulo": "With bus connection",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Material",
+        "valor": "Plastic"
+      },
+      {
+        "titulo": "Material quality",
+        "valor": "Thermoplastic"
+      },
+      {
+        "titulo": "Surface protection",
+        "valor": "Lacquered"
+      },
+      {
+        "titulo": "Surface finishing",
+        "valor": "Matt"
+      },
+      {
+        "titulo": "Colour",
+        "valor": "Black"
+      },
+      {
+        "titulo": "RAL-number (similar)",
+        "valor": "7021"
+      },
+      {
+        "titulo": "Transparent",
+        "valor": "No"
+      }
+    ],
+    "pedido_minimo": "1 NR",
+    "ean": "8007352698758",
+    "embalajes": [
+      {
+        "ean": "8007352698758",
+        "cantidad": "1 NR",
+        "medidas": "10x5x1,5 [cm]",
+        "peso": "4,3 [g]"
+      },
+      {
+        "ean": "8007352698765",
+        "cantidad": "10 NR",
+        "medidas": "21,4x11x6 [cm]",
+        "peso": "104,1 [g]"
+      },
+      {
+        "ean": "8007352698772",
+        "cantidad": "90 NR",
+        "medidas": "36x22,5x19,5 [cm]",
+        "peso": "1.228,9 [g]"
+      }
+    ],
+    "relacionados": [],
+    "url": "https://www.vimar.com/es/int/catalog/product/index/code/31480.G"
   }
 ]

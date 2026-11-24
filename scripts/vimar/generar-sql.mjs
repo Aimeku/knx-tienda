@@ -43,6 +43,8 @@ const SERIES = {
     serie: 'KNX',
     categorias: {
       Dispositivos: { slug: 'vimar-knx-linea', nombre: 'KNX · Mecanismos Linea', orden: 109 },
+      // Medias teclas 31480 para los mandos 30580-30583 (están en By-me Plus en Vimar).
+      Botones: { slug: 'vimar-knx-linea', nombre: 'KNX · Mecanismos Linea', orden: 109 },
     },
   },
   knx: {
