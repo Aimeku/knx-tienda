@@ -365,7 +365,9 @@
     "Diameter reach on floor": "Diámetro de alcance en el suelo",
     "Detection angle vertical": "Ángulo de detección vertical",
     "Detection angle horizontal": "Ángulo de detección horizontal",
-    "Switching power": "Potencia de conmutación"
+    "Switching power": "Potencia de conmutación",
+    "Number of buttons": "Número de botones",
+    "Printable": "Imprimible"
   },
   "valores": {
     "Domestic switching devices": "Aparatos de maniobra domésticos",
