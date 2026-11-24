@@ -52,11 +52,10 @@ export function ordenProducto(codigo, slugCategoria, posicion) {
   return base + bloqueMecanismo(codigo, slugCategoria) * 10000 + posicion * 4 + (color ?? 3);
 }
 
-// Mecanismos: primero el kit lámpara de noche, después interruptores,
+// Mecanismos: primero interruptores,
 // cruzamientos y conmutadores (normales, 2M, cableado rápido y axiales),
 // luego el resto y el adaptador de toma TV-RD-SAT al final.
 const BLOQUES_MECANISMOS = [
-  [/^0K30389/, 0],
   [/^30000/, 1], // interruptor 1P 10AX
   [/^30012/, 2], // interruptor cruzado
   [/^30004/, 3], // conmutador

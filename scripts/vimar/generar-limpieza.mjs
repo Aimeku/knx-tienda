@@ -13,6 +13,7 @@ const OCULTAR = [
   'Teclas con altavoz, difusor o luz inferior',
   'Pilotos con difusor',
   'Placas descartadas',
+  'Mecanismos descartados',
 ];
 
 const ex = JSON.parse(fs.readFileSync('data/vimar/excluir.json', 'utf8'));
