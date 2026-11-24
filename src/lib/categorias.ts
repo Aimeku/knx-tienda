@@ -31,6 +31,7 @@ export const tiendaCompleta: GrupoTienda[] = [
       { nombre: 'Mecanismos', slug: 'vimar-linea-mecanismos', seccion: 'Vimar Linea' },
       { nombre: 'Placas', slug: 'vimar-linea-placas', seccion: 'Vimar Linea' },
       { nombre: 'Teclas y botones', slug: 'vimar-linea-teclas', seccion: 'Vimar Linea' },
+      { nombre: 'Tapas ciegas', slug: 'vimar-linea-tapas-ciegas', seccion: 'Vimar Linea' },
       { nombre: 'Accesorios y soportes', slug: 'vimar-linea-accesorios', seccion: 'Vimar Linea' },
       { nombre: 'Pulsadores', slug: 'pulsadores', seccion: 'Otros', visible: false },
     ],

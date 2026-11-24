@@ -16,7 +16,10 @@ const marcasSeleccionadas = params.getAll('marca');
 // La búsqueda va dentro de un filtro "or" de PostgREST: quitamos los caracteres
 // que tienen significado especial ahí.
 const busqueda = (params.get('q') ?? '').replace(/[,()*%\\]/g, ' ').replace(/\s+/g, ' ').trim().slice(0, 60);
-const orden = params.get('orden') === 'referencia' ? 'referencia' : 'nombre';
+// Por defecto, el orden preparado de la tienda (columna productos.orden).
+const ORDENES = { recomendado: 'orden', nombre: 'nombre', referencia: 'sku' } as const;
+const ordenParam = params.get('orden') ?? '';
+const orden: keyof typeof ORDENES = Object.hasOwn(ORDENES, ordenParam) ? (ordenParam as keyof typeof ORDENES) : 'recomendado';
 const pagina = Math.max(1, parseInt(params.get('pagina') ?? '1', 10) || 1);
 const hayFiltrosActivos = categoriasSeleccionadas.length > 0 || marcasSeleccionadas.length > 0 || busqueda !== '';
 
@@ -46,7 +49,8 @@ if (busqueda) {
 
 const desde = (pagina - 1) * POR_PAGINA;
 const { data: productos, count } = await consulta
-  .order(orden === 'referencia' ? 'sku' : 'nombre')
+  .order(ORDENES[orden])
+  .order('sku')
   .range(desde, desde + POR_PAGINA - 1);
 
 const total = count ?? 0;
@@ -112,7 +116,7 @@ const paginasVisibles = [...new Set([1, pagina - 1, pagina, pagina + 1, totalPag
 
       <form id="form-filtros" method="get" action="/productos">
         {busqueda && <input type="hidden" name="q" value={busqueda} />}
-        {orden !== 'nombre' && <input type="hidden" name="orden" value={orden} />}
+        {orden !== 'recomendado' && <input type="hidden" name="orden" value={orden} />}
 
         {tiendaMenu.map((grupo) => {
           const seleccionadas = grupo.categorias.filter((c) => categoriasSeleccionadas.includes(c.slug)).length;
@@ -170,7 +174,7 @@ const paginasVisibles = [...new Set([1, pagina - 1, pagina, pagina + 1, totalPag
         <form class="buscador" method="get" action="/productos" role="search">
           {categoriasSeleccionadas.map((c) => <input type="hidden" name="categoria" value={c} />)}
           {marcasSeleccionadas.map((m) => <input type="hidden" name="marca" value={m} />)}
-          {orden !== 'nombre' && <input type="hidden" name="orden" value={orden} />}
+          {orden !== 'recomendado' && <input type="hidden" name="orden" value={orden} />}
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5" stroke="currentColor" stroke-width="1.6"/><path d="M20 20L15.5 15.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
           <input type="search" name="q" value={busqueda} placeholder="Buscar por nombre o referencia (ej. 30000, placa 2M)" aria-label="Buscar productos" />
           <button type="submit">Buscar</button>
@@ -186,6 +190,7 @@ const paginasVisibles = [...new Set([1, pagina - 1, pagina, pagina + 1, totalPag
         <label class="orden">
           <span>Ordenar por</span>
           <select name="orden" form="form-filtros">
+            <option value="recomendado" selected={orden === 'recomendado'}>Recomendado</option>
             <option value="nombre" selected={orden === 'nombre'}>Nombre</option>
             <option value="referencia" selected={orden === 'referencia'}>Referencia</option>
           </select>

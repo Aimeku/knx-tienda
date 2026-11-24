@@ -5,6 +5,7 @@
 //   node scripts/vimar/generar-sql.mjs data/vimar/linea.json sql/seeds/vimar-linea
 //
 // - Crea las categorías de la serie si no existen.
+// - Requiere la columna productos.orden (sql/006_orden_productos.sql).
 // - Inserta los productos; si ya existen (mismo SKU) actualiza textos, fotos y
 //   documentos, pero NUNCA toca precio, precio_oferta, stock ni activo.
 // - Traduce los datos técnicos ETIM con data/vimar/etim-es.json.
@@ -13,6 +14,7 @@
 
 import fs from 'node:fs';
 import path from 'node:path';
+import { ordenProducto, familiaDe } from './orden.mjs';
 
 const [entrada, carpetaSalida] = process.argv.slice(2);
 if (!entrada || !carpetaSalida) {
@@ -28,7 +30,7 @@ const CATEGORIAS = {
   Dispositivos: { slug: 'vimar-linea-mecanismos', nombre: 'Linea · Mecanismos', orden: 100 },
   Placas: { slug: 'vimar-linea-placas', nombre: 'Linea · Placas', orden: 101 },
   Botones: { slug: 'vimar-linea-teclas', nombre: 'Linea · Teclas y botones', orden: 102 },
-  'Tapa ciega': { slug: 'vimar-linea-accesorios', nombre: 'Linea · Accesorios y soportes', orden: 103 },
+  'Tapa ciega': { slug: 'vimar-linea-tapas-ciegas', nombre: 'Linea · Tapas ciegas', orden: 104 },
   Soportes: { slug: 'vimar-linea-accesorios', nombre: 'Linea · Accesorios y soportes', orden: 103 },
   Accesorios: { slug: 'vimar-linea-accesorios', nombre: 'Linea · Accesorios y soportes', orden: 103 },
 };
@@ -100,6 +102,15 @@ const todos = JSON.parse(fs.readFileSync(entrada, 'utf8'));
 const productos = todos.filter((p) => !/bloqueo/i.test(p.estado) && !excluir.has(p.codigo) && CATEGORIAS[p.ruta.split(' / ').pop()]);
 const omitidos = todos.length - productos.length;
 
+// Posición de cada familia (referencia sin color) dentro de su categoría, por código.
+const slugDe = (p) => CATEGORIAS[p.ruta.split(' / ').pop()].slug;
+const posicionFamilia = new Map();
+for (const slug of new Set(productos.map(slugDe))) {
+  const familias = [...new Set(productos.filter((p) => slugDe(p) === slug).map((p) => familiaDe(p.codigo)))].sort();
+  familias.forEach((fam, i) => posicionFamilia.set(`${slug}|${fam}`, i));
+}
+const ordenDe = (p) => ordenProducto(p.codigo, slugDe(p), posicionFamilia.get(`${slugDe(p)}|${familiaDe(p.codigo)}`));
+
 const filas = productos.map((p) => {
   const tipo = p.ruta.split(' / ').pop();
   const cat = CATEGORIAS[tipo];
@@ -109,7 +120,7 @@ const filas = productos.map((p) => {
   (select id from categorias where slug = ${sql(cat.slug)}),
   ${sql(p.codigo)}, ${sql(p.nombre)}, ${sql(`vimar-${nombreFoto(p.codigo)}-${slugify(p.nombre)}`.slice(0, 120))},
   ${sql(p.descripcion || p.nombre)}, ${sql(p.descripcion || p.nombre)},
-  'Vimar', 0, 0, true,
+  'Vimar', 0, 0, true, ${ordenDe(p)},
   ${sql(p.ficha_pdf)}, ${sql(foto)},
   ${json(especificaciones)},
   ${json(infoAdicional(p, tipo))},
@@ -142,7 +153,7 @@ partes.forEach((grupo, i) => {
   contenido += `
 insert into productos (
   categoria_id, sku, nombre, slug, descripcion_corta, descripcion_larga,
-  marca, precio, stock, activo, datasheet_url, imagen_principal,
+  marca, precio, stock, activo, orden, datasheet_url, imagen_principal,
   especificaciones, info_adicional, documentos
 ) values
 ${grupo.join(',\n')}
@@ -152,6 +163,7 @@ on conflict (sku) do update set
   descripcion_corta = excluded.descripcion_corta,
   descripcion_larga = excluded.descripcion_larga,
   marca = excluded.marca,
+  orden = excluded.orden,
   datasheet_url = excluded.datasheet_url,
   imagen_principal = excluded.imagen_principal,
   especificaciones = excluded.especificaciones,
