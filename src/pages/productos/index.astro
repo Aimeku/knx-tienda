@@ -27,62 +27,107 @@ const hayFiltrosActivos = categoriasSeleccionadas.length > 0 || marcasSelecciona
 const { data: categoriasDb } = await supabase.from('categorias').select('id, slug');
 const idPorSlug = new Map((categoriasDb ?? []).map((c) => [c.slug, c.id]));
 
-let consulta = supabase
-  .from('productos')
-  .select('id, nombre, slug, imagen_principal, marca, sku', { count: 'exact' })
-  .eq('activo', true);
-
-if (categoriasSeleccionadas.length > 0) {
-  const ids = categoriasSeleccionadas.map((slug) => idPorSlug.get(slug)).filter((id): id is string => Boolean(id));
-  // Si ninguna categoría existe todavía en la base de datos, no debe salir nada.
-  consulta = ids.length > 0 ? consulta.in('categoria_id', ids) : consulta.eq('id', '00000000-0000-0000-0000-000000000000');
-}
-if (marcasSeleccionadas.length > 0) {
-  consulta = consulta.in('marca', marcasSeleccionadas);
-}
-if (busqueda) {
-  // Cada palabra debe aparecer en el nombre o en la referencia.
-  for (const palabra of busqueda.split(' ')) {
-    consulta = consulta.or(`nombre.ilike.*${palabra}*,sku.ilike.*${palabra}*`);
+// Consulta de productos con los filtros de la URL aplicados.
+function consultaFiltrada(campos: string, opciones?: { count: 'exact' }) {
+  let consulta = supabase.from('productos').select(campos, opciones).eq('activo', true);
+  if (categoriasSeleccionadas.length > 0) {
+    const ids = categoriasSeleccionadas.map((slug) => idPorSlug.get(slug)).filter((id): id is string => Boolean(id));
+    // Si ninguna categoría existe todavía en la base de datos, no debe salir nada.
+    consulta = ids.length > 0 ? consulta.in('categoria_id', ids) : consulta.eq('id', '00000000-0000-0000-0000-000000000000');
   }
-}
-
-const desde = (pagina - 1) * POR_PAGINA;
-const { data: productosPagina, count } = await consulta
-  .order(ORDENES[orden])
-  .order('sku')
-  .range(desde, desde + POR_PAGINA - 1);
-
-// Vimar Linea: el mecanismo sin tecla es común a la versión alineada y a la
-// axial. En el orden recomendado (sin búsqueda) lo repetimos delante de cada
-// grupo axial para que todas las filas sean "mecanismo + 3 colores":
-//   30000A.B -> 30000 · 30000A.2B -> 30000.2 · 30000A.FX2B -> 30000.FX2
-// Solo se repite la tarjeta en el listado; el producto y su ficha son uno.
-const comunDeAxial = (sku: string | null) => {
-  const m = sku?.match(/^(\d{5})A\.(.*)B$/);
-  // El común no lleva letra de color (así 31000A.2CB no se empareja con la tecla 31000.2C).
-  if (!m || /[BCG]$/.test(m[2])) return null;
-  return m[2] ? `${m[1]}.${m[2]}` : m[1];
-};
-let productos = productosPagina;
-if (productosPagina && orden === 'recomendado' && !busqueda) {
-  const skusComunes = [...new Set(productosPagina.map((p) => comunDeAxial(p.sku)).filter((s): s is string => Boolean(s)))];
-  if (skusComunes.length > 0) {
-    const { data: comunes } = await supabase
-      .from('productos')
-      .select('id, nombre, slug, imagen_principal, marca, sku')
-      .eq('activo', true)
-      .in('sku', skusComunes);
-    const comunPorSku = new Map((comunes ?? []).map((c) => [c.sku, c]));
-    productos = productosPagina.flatMap((p) => {
-      const comun = comunPorSku.get(comunDeAxial(p.sku) ?? '');
-      return comun ? [comun, p] : [p];
-    });
+  if (marcasSeleccionadas.length > 0) {
+    consulta = consulta.in('marca', marcasSeleccionadas);
   }
+  if (busqueda) {
+    // Cada palabra debe aparecer en el nombre o en la referencia.
+    for (const palabra of busqueda.split(' ')) {
+      consulta = consulta.or(`nombre.ilike.*${palabra}*,sku.ilike.*${palabra}*`);
+    }
+  }
+  return consulta.order(ORDENES[orden]).order('sku');
 }
 
-const total = count ?? 0;
-const totalPaginas = Math.max(1, Math.ceil(total / POR_PAGINA));
+type Producto = { id: string; nombre: string; slug: string; imagen_principal: string | null; marca: string | null; sku: string | null };
+// Una casilla de la rejilla: un producto o un hueco en blanco.
+type Casilla = Producto | null;
+const CAMPOS = 'id, nombre, slug, imagen_principal, marca, sku';
+
+let casillas: Casilla[] = [];
+let total = 0;
+let totalPaginas = 1;
+
+if (orden === 'recomendado' && !busqueda) {
+  // Orden recomendado: los mecanismos de Vimar Linea van en filas de 4
+  // (mecanismo sin tecla + blanco, cáñamo y negro). Se monta la rejilla
+  // completa y se corta en páginas de 48 casillas, así ninguna fila queda
+  // partida entre dos páginas.
+  const { data: lista } = await consultaFiltrada('id, sku, categoria_id').range(0, 4999);
+  const filas = (lista ?? []) as unknown as { id: string; sku: string | null; categoria_id: string | null }[];
+  total = filas.length;
+  const rejilla = montarRejilla(filas, idPorSlug.get('vimar-linea-mecanismos'));
+  totalPaginas = Math.max(1, Math.ceil(rejilla.length / POR_PAGINA));
+  const trozo = rejilla.slice((pagina - 1) * POR_PAGINA, pagina * POR_PAGINA);
+  const ids = [...new Set(trozo.filter((id): id is string => id !== null))];
+  const { data: detalles } = ids.length
+    ? await supabase.from('productos').select(CAMPOS).in('id', ids)
+    : { data: [] };
+  const porId = new Map(((detalles ?? []) as Producto[]).map((p) => [p.id, p]));
+  casillas = trozo.map((id) => (id === null ? null : porId.get(id) ?? null));
+  // Quita huecos sobrantes al final de la última página.
+  while (casillas.length > 0 && casillas[casillas.length - 1] === null) casillas.pop();
+} else {
+  const desde = (pagina - 1) * POR_PAGINA;
+  const { data, count } = await consultaFiltrada(CAMPOS, { count: 'exact' }).range(desde, desde + POR_PAGINA - 1);
+  casillas = (data ?? []) as unknown as Producto[];
+  total = count ?? 0;
+  totalPaginas = Math.max(1, Math.ceil(total / POR_PAGINA));
+}
+
+// Rejilla de Vimar Linea · Mecanismos en filas de 4 casillas (null = hueco):
+//   - "mecanismo + 3 colores" (30000, 30000.B, 30000.C, 30000.G).
+//   - Las versiones axiales usan el mecanismo de la alineada, que se repite:
+//     30000A.B -> 30000 · 30000A.2B -> 30000.2 · 30000A.FX2B -> 30000.FX2.
+//   - El pulsador inversor 30010 usa el mecanismo del pulsador 30008.
+//   - Los grupos sin mecanismo llevan un hueco en blanco a la izquierda.
+// El resto de categorías van seguidas, sin huecos.
+function montarRejilla(lista: { id: string; sku: string | null; categoria_id: string | null }[], idMecanismos?: string): (string | null)[] {
+  const COMUN_ESPECIAL: Record<string, string> = { '30010': '30008' };
+  const idPorSku = new Map(lista.map((p) => [p.sku ?? '', p.id]));
+  // "30000.B" -> "30000", "30000.2B" -> "30000.2", "30203.R" -> "30203"; sin color, igual.
+  const familia = (sku: string) => (/\.(.*[BCG]|R)$/.test(sku) ? sku.slice(0, -1).replace(/\.$/, '') : sku);
+  const tieneColor = (sku: string) => familia(sku) !== sku;
+  const comunDe = (fam: string) => {
+    if (COMUN_ESPECIAL[fam]) return COMUN_ESPECIAL[fam];
+    const m = fam.match(/^(\d{5})A(?:\.(.*))?$/);
+    return m ? (m[2] ? `${m[1]}.${m[2]}` : m[1]) : null;
+  };
+
+  const salida: (string | null)[] = [];
+  let i = 0;
+  while (i < lista.length) {
+    const p = lista[i];
+    if (!idMecanismos || p.categoria_id !== idMecanismos || !p.sku) {
+      salida.push(p.id);
+      i++;
+      continue;
+    }
+    // Grupo: productos seguidos de la misma familia.
+    const fam = familia(p.sku);
+    const grupo: string[] = [];
+    while (i < lista.length && lista[i].categoria_id === idMecanismos && lista[i].sku && familia(lista[i].sku!) === fam) {
+      grupo.push(lista[i].sku!);
+      i++;
+    }
+    const conMecanismo = grupo.some((s) => !tieneColor(s));
+    const comun = conMecanismo ? null : comunDe(fam);
+    const fila: (string | null)[] = grupo.map((s) => idPorSku.get(s)!);
+    if (comun && idPorSku.has(comun)) fila.unshift(idPorSku.get(comun)!);
+    else if (!conMecanismo && fila.length === 3) fila.unshift(null);
+    while (fila.length % 4 !== 0) fila.push(null);
+    salida.push(...fila);
+  }
+  return salida;
+}
 
 // URL actual con algunos parámetros cambiados (null = quitar). Cambiar filtros
 // siempre vuelve a la página 1.
@@ -236,9 +281,11 @@ const paginasVisibles = [...new Set([1, pagina - 1, pagina, pagina + 1, totalPag
         </div>
       )}
 
-      {productos && productos.length > 0 ? (
+      {casillas.length > 0 ? (
         <div class="grid">
-          {productos.map((p) => (
+          {casillas.map((p) => p === null ? (
+            <div class="hueco" aria-hidden="true" />
+          ) : (
             <a class="card" href={`/productos/${p.slug}`}>
               <div class="card-imagen">
                 {p.imagen_principal ? (
@@ -481,7 +528,8 @@ const paginasVisibles = [...new Set([1, pagina - 1, pagina, pagina + 1, totalPag
     /* ---------- Tarjetas ---------- */
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+      /* 4 columnas fijas: las filas de mecanismos son de 4 (mecanismo + 3 colores). */
+      grid-template-columns: repeat(4, minmax(0, 1fr));
       gap: 1.25rem;
     }
     .card {
