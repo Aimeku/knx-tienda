@@ -8,7 +8,8 @@
 // - Inserta los productos; si ya existen (mismo SKU) actualiza textos, fotos y
 //   documentos, pero NUNCA toca precio, precio_oferta, stock ni activo.
 // - Traduce los datos técnicos ETIM con data/vimar/etim-es.json.
-// - Omite los artículos que Vimar tiene en "Bloqueo de pedidos".
+// - Omite los artículos que Vimar tiene en "Bloqueo de pedidos" y los de
+//   otros mercados listados en data/vimar/excluir.json.
 
 import fs from 'node:fs';
 import path from 'node:path';
@@ -88,8 +89,15 @@ function infoAdicional(p, tipo) {
 const sql = (v) => (v === null || v === undefined ? 'null' : `'${String(v).replace(/'/g, "''")}'`);
 const json = (v) => `${sql(JSON.stringify(v))}::jsonb`;
 
+// Referencias de otros mercados que no se venden (ver data/vimar/excluir.json).
+const excluir = new Set(
+  Object.entries(JSON.parse(fs.readFileSync('data/vimar/excluir.json', 'utf8')))
+    .filter(([clave]) => !clave.startsWith('_'))
+    .flatMap(([, codigos]) => codigos)
+);
+
 const todos = JSON.parse(fs.readFileSync(entrada, 'utf8'));
-const productos = todos.filter((p) => !/bloqueo/i.test(p.estado) && CATEGORIAS[p.ruta.split(' / ').pop()]);
+const productos = todos.filter((p) => !/bloqueo/i.test(p.estado) && !excluir.has(p.codigo) && CATEGORIAS[p.ruta.split(' / ').pop()]);
 const omitidos = todos.length - productos.length;
 
 const filas = productos.map((p) => {

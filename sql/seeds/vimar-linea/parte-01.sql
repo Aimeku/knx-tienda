@@ -1,5 +1,5 @@
 -- ============================================================
--- Vimar Linea: parte 01 de 08
+-- Vimar Linea: parte 01 de 07
 -- Generado con scripts/vimar/generar-sql.mjs desde data/vimar/linea.json
 -- Ejecutar en el SQL Editor de Supabase, en orden (parte 01 primero).
 -- Precio = 0: se actualizará con la tarifa de Vimar. Volver a ejecutarlo
