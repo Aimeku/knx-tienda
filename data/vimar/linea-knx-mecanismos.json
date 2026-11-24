@@ -1,0 +1,5594 @@
+[
+  {
+    "codigo": "30563.B",
+    "nombre": "Lector RFID KNX blanco",
+    "descripcion": "Lector de tarjeta de transponder con ranura vertical para montaje dentro de la habitación, estándar KNX, 2 salidas de relé NO 4 A 24 V~, 2 entradas, alimentación 12-24 V~ 50-60 Hz y 12-24 Vcc (SELV), blanco - 3 módulos",
+    "ruta": "Sistemas+productos smart / KNX / LINEA / Dispositivos",
+    "estado": "2 - Será eliminado",
+    "imagen": "https://www.vimar.com/irj/go/km/docs/z_catalogo/MAIN_IMAGE/30563_b-vimar-linea-bianca-tasca-rfid-knx-bianco.101252.jpg",
+    "ficha_pdf": "https://www.vimar.com/es/int/catalog/product/download-pdf/code/30563.B?type=.pdf",
+    "dibujos": [
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGESIZE/DI_30563.102501.B.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGESIZE/DI_30563.102502.B.DXF"
+      },
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGEREAR/VP_30563.97712.B.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGEREAR/VP_30563.97713.B.DXF"
+      },
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/3DIMAGE/EA_30563.97696.B.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/3DIMAGE/EA_30563.97697.B.DXF"
+      }
+    ],
+    "certificados": [
+      {
+        "titulo": "00. Marcado CE - UE",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/CERTIFICATE/20453_1.108463.pdf"
+      },
+      {
+        "titulo": "46. UK PSTI compliance",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/CERTIFICATE/ZAT01744.108577.00.pdf"
+      },
+      {
+        "titulo": "99. Directiva RAEE",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/CERTIFICATE/IndicazioniRAEE2024.109839.pdf"
+      }
+    ],
+    "etim": [
+      {
+        "titulo": "Class group",
+        "valor": "Installation bus systems"
+      },
+      {
+        "titulo": "Class",
+        "valor": "Access control unit for bus system"
+      },
+      {
+        "titulo": "Bus system KNX",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Bus system KNX-RF (Radio Frequency)",
+        "valor": "No"
+      },
+      {
+        "titulo": "Bus system radio frequency",
+        "valor": "No"
+      },
+      {
+        "titulo": "Bus system LON",
+        "valor": "No"
+      },
+      {
+        "titulo": "Bus system Powernet",
+        "valor": "No"
+      },
+      {
+        "titulo": "Other bus systems",
+        "valor": "None"
+      },
+      {
+        "titulo": "Model",
+        "valor": "Other"
+      },
+      {
+        "titulo": "Mounting method",
+        "valor": "Flush-mounted"
+      },
+      {
+        "titulo": "Material",
+        "valor": "Plastic"
+      },
+      {
+        "titulo": "Material quality",
+        "valor": "Thermoplastic"
+      },
+      {
+        "titulo": "Surface protection",
+        "valor": "Untreated"
+      },
+      {
+        "titulo": "Surface finishing",
+        "valor": "Matt"
+      },
+      {
+        "titulo": "Colour",
+        "valor": "White"
+      },
+      {
+        "titulo": "RAL-number (similar)",
+        "valor": "9016"
+      },
+      {
+        "titulo": "Transparent",
+        "valor": "No"
+      },
+      {
+        "titulo": "Degree of protection (IP)",
+        "valor": "IP40"
+      },
+      {
+        "titulo": "With bus connection",
+        "valor": "Si"
+      }
+    ],
+    "pedido_minimo": "1 NR",
+    "ean": "8007352699373",
+    "embalajes": [
+      {
+        "ean": "8007352699373",
+        "cantidad": "1 NR",
+        "medidas": "10,8x8,7x5,9 [cm]",
+        "peso": "130,85 [g]"
+      }
+    ],
+    "relacionados": [],
+    "url": "https://www.vimar.com/es/int/catalog/product/index/code/30563.B"
+  },
+  {
+    "codigo": "30563.C",
+    "nombre": "Lector RFID KNX cáñamo",
+    "descripcion": "Lector de tarjeta de transponder con ranura vertical para montaje dentro de la habitación, estándar KNX, 2 salidas de relé NO 4 A 24 V~, 2 entradas, alimentación 12-24 V~ 50-60 Hz y 12-24 Vcc (SELV), hueso - 3 módulos",
+    "ruta": "Sistemas+productos smart / KNX / LINEA / Dispositivos",
+    "estado": "2 - Será eliminado",
+    "imagen": "https://www.vimar.com/irj/go/km/docs/z_catalogo/MAIN_IMAGE/30563_c-vimar-linea-canapa-tasca-rfid-knx-canapa.101253.jpg",
+    "ficha_pdf": "https://www.vimar.com/es/int/catalog/product/download-pdf/code/30563.C?type=.pdf",
+    "dibujos": [
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGESIZE/DI_30563.102501.B.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGESIZE/DI_30563.102502.B.DXF"
+      },
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGEREAR/VP_30563.97712.B.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGEREAR/VP_30563.97713.B.DXF"
+      },
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/3DIMAGE/EA_30563.97696.B.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/3DIMAGE/EA_30563.97697.B.DXF"
+      }
+    ],
+    "certificados": [
+      {
+        "titulo": "00. Marcado CE - UE",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/CERTIFICATE/20453_1.108463.pdf"
+      },
+      {
+        "titulo": "46. UK PSTI compliance",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/CERTIFICATE/ZAT01744.108577.00.pdf"
+      },
+      {
+        "titulo": "99. Directiva RAEE",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/CERTIFICATE/IndicazioniRAEE2024.109839.pdf"
+      }
+    ],
+    "etim": [
+      {
+        "titulo": "Class group",
+        "valor": "Installation bus systems"
+      },
+      {
+        "titulo": "Class",
+        "valor": "Access control unit for bus system"
+      },
+      {
+        "titulo": "Bus system KNX",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Bus system KNX-RF (Radio Frequency)",
+        "valor": "No"
+      },
+      {
+        "titulo": "Bus system radio frequency",
+        "valor": "No"
+      },
+      {
+        "titulo": "Bus system LON",
+        "valor": "No"
+      },
+      {
+        "titulo": "Bus system Powernet",
+        "valor": "No"
+      },
+      {
+        "titulo": "Other bus systems",
+        "valor": "None"
+      },
+      {
+        "titulo": "Model",
+        "valor": "Other"
+      },
+      {
+        "titulo": "Mounting method",
+        "valor": "Flush-mounted"
+      },
+      {
+        "titulo": "Material",
+        "valor": "Plastic"
+      },
+      {
+        "titulo": "Material quality",
+        "valor": "Thermoplastic"
+      },
+      {
+        "titulo": "Surface protection",
+        "valor": "Untreated"
+      },
+      {
+        "titulo": "Surface finishing",
+        "valor": "Matt"
+      },
+      {
+        "titulo": "Colour",
+        "valor": "Beige"
+      },
+      {
+        "titulo": "RAL-number (similar)",
+        "valor": "7032"
+      },
+      {
+        "titulo": "Transparent",
+        "valor": "No"
+      },
+      {
+        "titulo": "Degree of protection (IP)",
+        "valor": "IP40"
+      },
+      {
+        "titulo": "With bus connection",
+        "valor": "Si"
+      }
+    ],
+    "pedido_minimo": "1 NR",
+    "ean": "8007352700376",
+    "embalajes": [
+      {
+        "ean": "8007352700376",
+        "cantidad": "1 NR",
+        "medidas": "10,8x8,7x5,9 [cm]",
+        "peso": "130,85 [g]"
+      }
+    ],
+    "relacionados": [],
+    "url": "https://www.vimar.com/es/int/catalog/product/index/code/30563.C"
+  },
+  {
+    "codigo": "30563.G",
+    "nombre": "Lector RFID KNX negro",
+    "descripcion": "Lector de tarjeta de transponder con ranura vertical para montaje dentro de la habitación, estándar KNX, 2 salidas de relé NO 4 A 24 V~, 2 entradas, alimentación 12-24 V~ 50-60 Hz y 12-24 Vcc (SELV), negro - 3 módulos",
+    "ruta": "Sistemas+productos smart / KNX / LINEA / Dispositivos",
+    "estado": "2 - Será eliminado",
+    "imagen": "https://www.vimar.com/irj/go/km/docs/z_catalogo/MAIN_IMAGE/30563_g-vimar-linea-tasca-rfid-knx-nero.101254.jpg",
+    "ficha_pdf": "https://www.vimar.com/es/int/catalog/product/download-pdf/code/30563.G?type=.pdf",
+    "dibujos": [
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGESIZE/DI_30563.102501.B.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGESIZE/DI_30563.102502.B.DXF"
+      },
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGEREAR/VP_30563.97712.B.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGEREAR/VP_30563.97713.B.DXF"
+      },
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/3DIMAGE/EA_30563.97696.B.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/3DIMAGE/EA_30563.97697.B.DXF"
+      }
+    ],
+    "certificados": [
+      {
+        "titulo": "00. Marcado CE - UE",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/CERTIFICATE/20453_1.108463.pdf"
+      },
+      {
+        "titulo": "46. UK PSTI compliance",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/CERTIFICATE/ZAT01744.108577.00.pdf"
+      },
+      {
+        "titulo": "99. Directiva RAEE",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/CERTIFICATE/IndicazioniRAEE2024.109839.pdf"
+      }
+    ],
+    "etim": [
+      {
+        "titulo": "Class group",
+        "valor": "Installation bus systems"
+      },
+      {
+        "titulo": "Class",
+        "valor": "Access control unit for bus system"
+      },
+      {
+        "titulo": "Bus system KNX",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Bus system KNX-RF (Radio Frequency)",
+        "valor": "No"
+      },
+      {
+        "titulo": "Bus system radio frequency",
+        "valor": "No"
+      },
+      {
+        "titulo": "Bus system LON",
+        "valor": "No"
+      },
+      {
+        "titulo": "Bus system Powernet",
+        "valor": "No"
+      },
+      {
+        "titulo": "Other bus systems",
+        "valor": "None"
+      },
+      {
+        "titulo": "Model",
+        "valor": "Other"
+      },
+      {
+        "titulo": "Mounting method",
+        "valor": "Flush-mounted"
+      },
+      {
+        "titulo": "Material",
+        "valor": "Plastic"
+      },
+      {
+        "titulo": "Material quality",
+        "valor": "Thermoplastic"
+      },
+      {
+        "titulo": "Surface protection",
+        "valor": "Untreated"
+      },
+      {
+        "titulo": "Surface finishing",
+        "valor": "Matt"
+      },
+      {
+        "titulo": "Colour",
+        "valor": "Black"
+      },
+      {
+        "titulo": "RAL-number (similar)",
+        "valor": "7021"
+      },
+      {
+        "titulo": "Transparent",
+        "valor": "No"
+      },
+      {
+        "titulo": "Degree of protection (IP)",
+        "valor": "IP40"
+      },
+      {
+        "titulo": "With bus connection",
+        "valor": "Si"
+      }
+    ],
+    "pedido_minimo": "1 NR",
+    "ean": "8007352699380",
+    "embalajes": [
+      {
+        "ean": "8007352699380",
+        "cantidad": "1 NR",
+        "medidas": "10,8x8,7x5,9 [cm]",
+        "peso": "130,85 [g]"
+      }
+    ],
+    "relacionados": [],
+    "url": "https://www.vimar.com/es/int/catalog/product/index/code/30563.G"
+  },
+  {
+    "codigo": "30565.B",
+    "nombre": "Lector externo RFID KNX Secure 2M blanc",
+    "descripcion": "",
+    "ruta": "Sistemas+productos smart / KNX / LINEA / Dispositivos",
+    "estado": "3 - Activo",
+    "imagen": "https://www.vimar.com/irj/go/km/docs/z_catalogo/MAIN_IMAGE/30565_b-vimar-linea-fuoriporta-rfid-knx-secure-2m-bianco.115686.jpg",
+    "ficha_pdf": "https://www.vimar.com/es/int/catalog/product/download-pdf/code/30565.B?type=.pdf",
+    "dibujos": [
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGESIZE/DI_30565.114735.B.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGESIZE/DI_30565.114736.B.DXF"
+      },
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGEREAR/VP_30565.114709.B.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGEREAR/VP_30565.114710.B.DXF"
+      },
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/3DIMAGE/EA_30565.114683.B.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/3DIMAGE/EA_30565.114684.B.DXF"
+      }
+    ],
+    "certificados": [
+      {
+        "titulo": "96. Experto electrotécnico",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/CERTIFICATE/Espertoelettrotecnico.116413.pdf"
+      },
+      {
+        "titulo": "99. Directiva RAEE",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/CERTIFICATE/IndicazioniRAEE2024.109839.pdf"
+      }
+    ],
+    "etim": [
+      {
+        "titulo": "Class group",
+        "valor": "Installation bus systems"
+      },
+      {
+        "titulo": "Class",
+        "valor": "Access control unit for bus system"
+      },
+      {
+        "titulo": "Bus system KNX",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Bus system KNX-RF (Radio Frequency)",
+        "valor": "No"
+      },
+      {
+        "titulo": "Bus system KNX Secure",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Bus system KNX Secure-RF (Radio Frequency)",
+        "valor": "No"
+      },
+      {
+        "titulo": "Bus system radio frequency",
+        "valor": "No"
+      },
+      {
+        "titulo": "Bus system LON",
+        "valor": "No"
+      },
+      {
+        "titulo": "Bus system Powernet",
+        "valor": "No"
+      },
+      {
+        "titulo": "Other bus systems",
+        "valor": "None"
+      },
+      {
+        "titulo": "Model",
+        "valor": "Other"
+      },
+      {
+        "titulo": "Mounting method",
+        "valor": "Flush-mounted"
+      },
+      {
+        "titulo": "Material",
+        "valor": "Plastic"
+      },
+      {
+        "titulo": "Material quality",
+        "valor": "Thermoplastic"
+      },
+      {
+        "titulo": "Surface protection",
+        "valor": "Untreated"
+      },
+      {
+        "titulo": "Surface finishing",
+        "valor": "Matt"
+      },
+      {
+        "titulo": "Colour",
+        "valor": "White"
+      },
+      {
+        "titulo": "RAL-number (similar)",
+        "valor": "9016"
+      },
+      {
+        "titulo": "Transparent",
+        "valor": "No"
+      },
+      {
+        "titulo": "Degree of protection (IP)",
+        "valor": "IP40"
+      },
+      {
+        "titulo": "With bus connection",
+        "valor": "Si"
+      }
+    ],
+    "pedido_minimo": "1 NR",
+    "ean": "8007352814530",
+    "embalajes": [
+      {
+        "ean": "8007352814530",
+        "cantidad": "1 NR",
+        "medidas": "6x5,4x5,2 [cm]",
+        "peso": "38,2 [g]"
+      },
+      {
+        "ean": "8007352814547",
+        "cantidad": "10 NR",
+        "medidas": "28,1x13,1x6 [cm]",
+        "peso": "422 [g]"
+      }
+    ],
+    "relacionados": [],
+    "url": "https://www.vimar.com/es/int/catalog/product/index/code/30565.B"
+  },
+  {
+    "codigo": "30565.C",
+    "nombre": "Lector externo RFID KNX Secure 2M cáñamo",
+    "descripcion": "Lector fuera de la puerta de tarjetas inteligentes RFID para montaje fuera de la habitación, estándar KNX Secure, 1 salida de relé NO 4 A 12/24 V~ 50-60 Hz y 12-24 Vcc (SELV), 1 entrada para contactos NO, alimentación adicional de 12-24 V~ 50-60 Hz y 12-24 Vcc (SELV), hueso - 2 módulos. Se entrega sin tarjeta inteligente RFID",
+    "ruta": "Sistemas+productos smart / KNX / LINEA / Dispositivos",
+    "estado": "3 - Activo",
+    "imagen": "https://www.vimar.com/irj/go/km/docs/z_catalogo/MAIN_IMAGE/30565_c-vimar-linea-fuoriporta-rfid-knx-secure-2m-canapa.115687.jpg",
+    "ficha_pdf": "https://www.vimar.com/es/int/catalog/product/download-pdf/code/30565.C?type=.pdf",
+    "dibujos": [
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGESIZE/DI_30565.114735.B.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGESIZE/DI_30565.114736.B.DXF"
+      },
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGEREAR/VP_30565.114709.B.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGEREAR/VP_30565.114710.B.DXF"
+      },
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/3DIMAGE/EA_30565.114683.B.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/3DIMAGE/EA_30565.114684.B.DXF"
+      }
+    ],
+    "certificados": [
+      {
+        "titulo": "96. Experto electrotécnico",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/CERTIFICATE/Espertoelettrotecnico.116413.pdf"
+      },
+      {
+        "titulo": "99. Directiva RAEE",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/CERTIFICATE/IndicazioniRAEE2024.109839.pdf"
+      }
+    ],
+    "etim": [
+      {
+        "titulo": "Class group",
+        "valor": "Installation bus systems"
+      },
+      {
+        "titulo": "Class",
+        "valor": "Access control unit for bus system"
+      },
+      {
+        "titulo": "Bus system KNX",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Bus system KNX-RF (Radio Frequency)",
+        "valor": "No"
+      },
+      {
+        "titulo": "Bus system KNX Secure",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Bus system KNX Secure-RF (Radio Frequency)",
+        "valor": "No"
+      },
+      {
+        "titulo": "Bus system radio frequency",
+        "valor": "No"
+      },
+      {
+        "titulo": "Bus system LON",
+        "valor": "No"
+      },
+      {
+        "titulo": "Bus system Powernet",
+        "valor": "No"
+      },
+      {
+        "titulo": "Other bus systems",
+        "valor": "None"
+      },
+      {
+        "titulo": "Model",
+        "valor": "Other"
+      },
+      {
+        "titulo": "Mounting method",
+        "valor": "Flush-mounted"
+      },
+      {
+        "titulo": "Material",
+        "valor": "Plastic"
+      },
+      {
+        "titulo": "Material quality",
+        "valor": "Thermoplastic"
+      },
+      {
+        "titulo": "Surface protection",
+        "valor": "Untreated"
+      },
+      {
+        "titulo": "Surface finishing",
+        "valor": "Matt"
+      },
+      {
+        "titulo": "Colour",
+        "valor": "Beige"
+      },
+      {
+        "titulo": "RAL-number (similar)",
+        "valor": "9016"
+      },
+      {
+        "titulo": "Transparent",
+        "valor": "No"
+      },
+      {
+        "titulo": "Degree of protection (IP)",
+        "valor": "IP40"
+      },
+      {
+        "titulo": "With bus connection",
+        "valor": "Si"
+      }
+    ],
+    "pedido_minimo": "1 NR",
+    "ean": "8007352814554",
+    "embalajes": [
+      {
+        "ean": "8007352814554",
+        "cantidad": "1 NR",
+        "medidas": "6x5,4x5,2 [cm]",
+        "peso": "38,2 [g]"
+      },
+      {
+        "ean": "8007352814561",
+        "cantidad": "10 NR",
+        "medidas": "28,1x13,1x6 [cm]",
+        "peso": "422 [g]"
+      }
+    ],
+    "relacionados": [],
+    "url": "https://www.vimar.com/es/int/catalog/product/index/code/30565.C"
+  },
+  {
+    "codigo": "30565.G",
+    "nombre": "Lector externo RFID KNX Secure 2M negro",
+    "descripcion": "Lector de tarjetas inteligentes RFID con ranura vertical para montaje dentro de la habitación, estándar KNX Secure, 1 salida de relé NO 4 A 12/24 V~ 50-60 Hz y 12-24 Vcc (SELV), 1 entrada para contactos NO, alimentación adicional de 12-24 V~ 50-60 Hz y 12-24 V cc (SELV), negro - 2 módulos",
+    "ruta": "Sistemas+productos smart / KNX / LINEA / Dispositivos",
+    "estado": "3 - Activo",
+    "imagen": "https://www.vimar.com/irj/go/km/docs/z_catalogo/MAIN_IMAGE/30565_g-vimar-linea-fuoriporta-rfid-knx-secure-2m-nero.115688.jpg",
+    "ficha_pdf": "https://www.vimar.com/es/int/catalog/product/download-pdf/code/30565.G?type=.pdf",
+    "dibujos": [
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGESIZE/DI_30565.114735.B.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGESIZE/DI_30565.114736.B.DXF"
+      },
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGEREAR/VP_30565.114709.B.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGEREAR/VP_30565.114710.B.DXF"
+      },
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/3DIMAGE/EA_30565.114683.B.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/3DIMAGE/EA_30565.114684.B.DXF"
+      }
+    ],
+    "certificados": [
+      {
+        "titulo": "96. Experto electrotécnico",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/CERTIFICATE/Espertoelettrotecnico.116413.pdf"
+      },
+      {
+        "titulo": "99. Directiva RAEE",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/CERTIFICATE/IndicazioniRAEE2024.109839.pdf"
+      }
+    ],
+    "etim": [
+      {
+        "titulo": "Class group",
+        "valor": "Installation bus systems"
+      },
+      {
+        "titulo": "Class",
+        "valor": "Access control unit for bus system"
+      },
+      {
+        "titulo": "Bus system KNX",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Bus system KNX-RF (Radio Frequency)",
+        "valor": "No"
+      },
+      {
+        "titulo": "Bus system KNX Secure",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Bus system KNX Secure-RF (Radio Frequency)",
+        "valor": "No"
+      },
+      {
+        "titulo": "Bus system radio frequency",
+        "valor": "No"
+      },
+      {
+        "titulo": "Bus system LON",
+        "valor": "No"
+      },
+      {
+        "titulo": "Bus system Powernet",
+        "valor": "No"
+      },
+      {
+        "titulo": "Other bus systems",
+        "valor": "None"
+      },
+      {
+        "titulo": "Model",
+        "valor": "Other"
+      },
+      {
+        "titulo": "Mounting method",
+        "valor": "Flush-mounted"
+      },
+      {
+        "titulo": "Material",
+        "valor": "Plastic"
+      },
+      {
+        "titulo": "Material quality",
+        "valor": "Thermoplastic"
+      },
+      {
+        "titulo": "Surface protection",
+        "valor": "Untreated"
+      },
+      {
+        "titulo": "Surface finishing",
+        "valor": "Matt"
+      },
+      {
+        "titulo": "Colour",
+        "valor": "Black"
+      },
+      {
+        "titulo": "RAL-number (similar)",
+        "valor": "7021"
+      },
+      {
+        "titulo": "Transparent",
+        "valor": "No"
+      },
+      {
+        "titulo": "Degree of protection (IP)",
+        "valor": "IP40"
+      },
+      {
+        "titulo": "With bus connection",
+        "valor": "Si"
+      }
+    ],
+    "pedido_minimo": "1 NR",
+    "ean": "8007352814578",
+    "embalajes": [
+      {
+        "ean": "8007352814578",
+        "cantidad": "1 NR",
+        "medidas": "6x5,4x5,2 [cm]",
+        "peso": "38,2 [g]"
+      },
+      {
+        "ean": "8007352814585",
+        "cantidad": "10 NR",
+        "medidas": "28,1x13,1x6 [cm]",
+        "peso": "422 [g]"
+      }
+    ],
+    "relacionados": [],
+    "url": "https://www.vimar.com/es/int/catalog/product/index/code/30565.G"
+  },
+  {
+    "codigo": "30565.TRB",
+    "nombre": "Lector externo RFID KNX Secure trop.2M b",
+    "descripcion": "Lector fuera de la puerta de tarjetas inteligentes RFID tropicalizado para montaje fuera de la habitación, estándar KNX Secure, 1 salida de relé NO 4 A 12/24 V~ 50-60 Hz y 12-24 Vcc (SELV), 1 entrada para contactos NO, alimentación adicional de 12-24 V~ 50-60 Hz y 12-24 Vcc (SELV), blanco - 2 módulos. Se entrega sin tarjeta inteligente RFID",
+    "ruta": "Sistemas+productos smart / KNX / LINEA / Dispositivos",
+    "estado": "3 - Activo",
+    "imagen": "https://www.vimar.com/irj/go/km/docs/z_catalogo/MAIN_IMAGE/30565_trb-vimar-linea-fuoriporta-rfid-knx-secure-trop-2m-bianco.115689.jpg",
+    "ficha_pdf": "https://www.vimar.com/es/int/catalog/product/download-pdf/code/30565.TRB?type=.pdf",
+    "dibujos": [
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGESIZE/DI_30565.114737.TRB.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGESIZE/DI_30565.114738.TRB.DXF"
+      },
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGEREAR/VP_30565.114711.TRB.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGEREAR/VP_30565.114712.TRB.DXF"
+      },
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/3DIMAGE/EA_30565.114685.TRB.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/3DIMAGE/EA_30565.114686.TRB.DXF"
+      }
+    ],
+    "certificados": [
+      {
+        "titulo": "96. Experto electrotécnico",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/CERTIFICATE/Espertoelettrotecnico.116413.pdf"
+      },
+      {
+        "titulo": "99. Directiva RAEE",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/CERTIFICATE/IndicazioniRAEE2024.109839.pdf"
+      }
+    ],
+    "etim": [
+      {
+        "titulo": "Class group",
+        "valor": "Installation bus systems"
+      },
+      {
+        "titulo": "Class",
+        "valor": "Access control unit for bus system"
+      },
+      {
+        "titulo": "Bus system KNX",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Bus system KNX-RF (Radio Frequency)",
+        "valor": "No"
+      },
+      {
+        "titulo": "Bus system KNX Secure",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Bus system KNX Secure-RF (Radio Frequency)",
+        "valor": "No"
+      },
+      {
+        "titulo": "Bus system radio frequency",
+        "valor": "No"
+      },
+      {
+        "titulo": "Bus system LON",
+        "valor": "No"
+      },
+      {
+        "titulo": "Bus system Powernet",
+        "valor": "No"
+      },
+      {
+        "titulo": "Other bus systems",
+        "valor": "None"
+      },
+      {
+        "titulo": "Model",
+        "valor": "Other"
+      },
+      {
+        "titulo": "Mounting method",
+        "valor": "Flush-mounted"
+      },
+      {
+        "titulo": "Material",
+        "valor": "Plastic"
+      },
+      {
+        "titulo": "Material quality",
+        "valor": "Thermoplastic"
+      },
+      {
+        "titulo": "Surface protection",
+        "valor": "Untreated"
+      },
+      {
+        "titulo": "Surface finishing",
+        "valor": "Matt"
+      },
+      {
+        "titulo": "Colour",
+        "valor": "White"
+      },
+      {
+        "titulo": "RAL-number (similar)",
+        "valor": "9016"
+      },
+      {
+        "titulo": "Transparent",
+        "valor": "No"
+      },
+      {
+        "titulo": "Degree of protection (IP)",
+        "valor": "IP40"
+      },
+      {
+        "titulo": "With bus connection",
+        "valor": "Si"
+      }
+    ],
+    "pedido_minimo": "1 NR",
+    "ean": "8007352814592",
+    "embalajes": [
+      {
+        "ean": "8007352814592",
+        "cantidad": "1 NR",
+        "medidas": "6x5,4x5,2 [cm]",
+        "peso": "38,2 [g]"
+      },
+      {
+        "ean": "8007352814608",
+        "cantidad": "10 NR",
+        "medidas": "28,1x13,1x6 [cm]",
+        "peso": "422 [g]"
+      }
+    ],
+    "relacionados": [],
+    "url": "https://www.vimar.com/es/int/catalog/product/index/code/30565.TRB"
+  },
+  {
+    "codigo": "30565.TRC",
+    "nombre": "Lector externo RFID KNX Secure trop.2M c",
+    "descripcion": "Lector fuera de la puerta de tarjetas inteligentes RFID tropicalizado para montaje fuera de la habitación, estándar KNX Secure, 1 salida de relé NO 4 A 12/24 V~ 50-60 Hz y 12-24 Vcc (SELV), 1 entrada para contactos NO, alimentación adicional de 12-24 V~ 50-60 Hz y 12-24 Vcc (SELV), hueso - 2 módulos. Se entrega sin tarjeta inteligente RFID",
+    "ruta": "Sistemas+productos smart / KNX / LINEA / Dispositivos",
+    "estado": "3 - Activo",
+    "imagen": "https://www.vimar.com/irj/go/km/docs/z_catalogo/MAIN_IMAGE/30565_trc-vimar-linea-fuoriporta-rfid-knx-secure-trop-2m-canapa.115690.jpg",
+    "ficha_pdf": "https://www.vimar.com/es/int/catalog/product/download-pdf/code/30565.TRC?type=.pdf",
+    "dibujos": [
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGESIZE/DI_30565.114737.TRB.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGESIZE/DI_30565.114738.TRB.DXF"
+      },
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGEREAR/VP_30565.114711.TRB.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGEREAR/VP_30565.114712.TRB.DXF"
+      },
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/3DIMAGE/EA_30565.114685.TRB.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/3DIMAGE/EA_30565.114686.TRB.DXF"
+      }
+    ],
+    "certificados": [
+      {
+        "titulo": "96. Experto electrotécnico",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/CERTIFICATE/Espertoelettrotecnico.116413.pdf"
+      },
+      {
+        "titulo": "99. Directiva RAEE",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/CERTIFICATE/IndicazioniRAEE2024.109839.pdf"
+      }
+    ],
+    "etim": [
+      {
+        "titulo": "Class group",
+        "valor": "Installation bus systems"
+      },
+      {
+        "titulo": "Class",
+        "valor": "Access control unit for bus system"
+      },
+      {
+        "titulo": "Bus system KNX",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Bus system KNX-RF (Radio Frequency)",
+        "valor": "No"
+      },
+      {
+        "titulo": "Bus system KNX Secure",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Bus system KNX Secure-RF (Radio Frequency)",
+        "valor": "No"
+      },
+      {
+        "titulo": "Bus system radio frequency",
+        "valor": "No"
+      },
+      {
+        "titulo": "Bus system LON",
+        "valor": "No"
+      },
+      {
+        "titulo": "Bus system Powernet",
+        "valor": "No"
+      },
+      {
+        "titulo": "Other bus systems",
+        "valor": "None"
+      },
+      {
+        "titulo": "Model",
+        "valor": "Other"
+      },
+      {
+        "titulo": "Mounting method",
+        "valor": "Flush-mounted"
+      },
+      {
+        "titulo": "Material",
+        "valor": "Plastic"
+      },
+      {
+        "titulo": "Material quality",
+        "valor": "Thermoplastic"
+      },
+      {
+        "titulo": "Surface protection",
+        "valor": "Untreated"
+      },
+      {
+        "titulo": "Surface finishing",
+        "valor": "Matt"
+      },
+      {
+        "titulo": "Colour",
+        "valor": "Beige"
+      },
+      {
+        "titulo": "RAL-number (similar)",
+        "valor": "9016"
+      },
+      {
+        "titulo": "Transparent",
+        "valor": "No"
+      },
+      {
+        "titulo": "Degree of protection (IP)",
+        "valor": "IP40"
+      },
+      {
+        "titulo": "With bus connection",
+        "valor": "Si"
+      }
+    ],
+    "pedido_minimo": "1 NR",
+    "ean": "8007352814615",
+    "embalajes": [
+      {
+        "ean": "8007352814615",
+        "cantidad": "1 NR",
+        "medidas": "6x5,4x5,2 [cm]",
+        "peso": "38,2 [g]"
+      },
+      {
+        "ean": "8007352814622",
+        "cantidad": "10 NR",
+        "medidas": "28,1x13,1x6 [cm]",
+        "peso": "422 [g]"
+      }
+    ],
+    "relacionados": [],
+    "url": "https://www.vimar.com/es/int/catalog/product/index/code/30565.TRC"
+  },
+  {
+    "codigo": "30565.TRG",
+    "nombre": "Lector externo RFID KNX Secure trop.2M n",
+    "descripcion": "Lector fuera de la puerta de tarjetas inteligentes RFID tropicalizado para montaje fuera de la habitación, estándar KNX Secure, 1 salida de relé NO 4 A 12/24 V~ 50-60 Hz y 12-24 Vcc (SELV), 1 entrada para contactos NO, alimentación adicional de 12-24 V~ 50-60 Hz y 12-24 Vcc (SELV), negro - 2 módulos. Se entrega sin tarjeta inteligente RFID",
+    "ruta": "Sistemas+productos smart / KNX / LINEA / Dispositivos",
+    "estado": "3 - Activo",
+    "imagen": "https://www.vimar.com/irj/go/km/docs/z_catalogo/MAIN_IMAGE/30565_trg-vimar-linea-fuoriporta-rfid-knx-secure-trop-2m-nero.115691.jpg",
+    "ficha_pdf": "https://www.vimar.com/es/int/catalog/product/download-pdf/code/30565.TRG?type=.pdf",
+    "dibujos": [
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGESIZE/DI_30565.114737.TRB.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGESIZE/DI_30565.114738.TRB.DXF"
+      },
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGEREAR/VP_30565.114711.TRB.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGEREAR/VP_30565.114712.TRB.DXF"
+      },
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/3DIMAGE/EA_30565.114685.TRB.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/3DIMAGE/EA_30565.114686.TRB.DXF"
+      }
+    ],
+    "certificados": [
+      {
+        "titulo": "96. Experto electrotécnico",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/CERTIFICATE/Espertoelettrotecnico.116413.pdf"
+      },
+      {
+        "titulo": "99. Directiva RAEE",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/CERTIFICATE/IndicazioniRAEE2024.109839.pdf"
+      }
+    ],
+    "etim": [
+      {
+        "titulo": "Class group",
+        "valor": "Installation bus systems"
+      },
+      {
+        "titulo": "Class",
+        "valor": "Access control unit for bus system"
+      },
+      {
+        "titulo": "Bus system KNX",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Bus system KNX-RF (Radio Frequency)",
+        "valor": "No"
+      },
+      {
+        "titulo": "Bus system KNX Secure",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Bus system KNX Secure-RF (Radio Frequency)",
+        "valor": "No"
+      },
+      {
+        "titulo": "Bus system radio frequency",
+        "valor": "No"
+      },
+      {
+        "titulo": "Bus system LON",
+        "valor": "No"
+      },
+      {
+        "titulo": "Bus system Powernet",
+        "valor": "No"
+      },
+      {
+        "titulo": "Other bus systems",
+        "valor": "None"
+      },
+      {
+        "titulo": "Model",
+        "valor": "Other"
+      },
+      {
+        "titulo": "Mounting method",
+        "valor": "Flush-mounted"
+      },
+      {
+        "titulo": "Material",
+        "valor": "Plastic"
+      },
+      {
+        "titulo": "Material quality",
+        "valor": "Thermoplastic"
+      },
+      {
+        "titulo": "Surface protection",
+        "valor": "Untreated"
+      },
+      {
+        "titulo": "Surface finishing",
+        "valor": "Matt"
+      },
+      {
+        "titulo": "Colour",
+        "valor": "Black"
+      },
+      {
+        "titulo": "RAL-number (similar)",
+        "valor": "7021"
+      },
+      {
+        "titulo": "Transparent",
+        "valor": "No"
+      },
+      {
+        "titulo": "Degree of protection (IP)",
+        "valor": "IP40"
+      },
+      {
+        "titulo": "With bus connection",
+        "valor": "Si"
+      }
+    ],
+    "pedido_minimo": "1 NR",
+    "ean": "8007352814639",
+    "embalajes": [
+      {
+        "ean": "8007352814639",
+        "cantidad": "1 NR",
+        "medidas": "6x5,4x5,2 [cm]",
+        "peso": "38,2 [g]"
+      },
+      {
+        "ean": "8007352814646",
+        "cantidad": "10 NR",
+        "medidas": "28,1x13,1x6 [cm]",
+        "peso": "422 [g]"
+      }
+    ],
+    "relacionados": [],
+    "url": "https://www.vimar.com/es/int/catalog/product/index/code/30565.TRG"
+  },
+  {
+    "codigo": "30566.B",
+    "nombre": "Lector RFID KNX Secure 2M blanco",
+    "descripcion": "Lector de tarjetas inteligentes RFID con ranura vertical para montaje dentro de la habitación, estándar KNX Secure, 1 salida de relé NO 4 A 12/24 V~ 50-60 Hz y 12-24 Vcc (SELV), 1 entrada para contactos NO, alimentación adicional de 12-24 V~ 50-60 Hz y 12-24 V cc (SELV), blanco - 2 módulos",
+    "ruta": "Sistemas+productos smart / KNX / LINEA / Dispositivos",
+    "estado": "3 - Activo",
+    "imagen": "https://www.vimar.com/irj/go/km/docs/z_catalogo/MAIN_IMAGE/30566_b-vimar-linea-tasca-rfid-knx-secure-2m-bianco.115692.jpg",
+    "ficha_pdf": "https://www.vimar.com/es/int/catalog/product/download-pdf/code/30566.B?type=.pdf",
+    "dibujos": [
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGESIZE/DI_30566.114739.B.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGESIZE/DI_30566.114740.B.DXF"
+      },
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGEREAR/VP_30566.114713.B.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGEREAR/VP_30566.114714.B.DXF"
+      },
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/3DIMAGE/EA_30566.114687.B.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/3DIMAGE/EA_30566.114688.B.DXF"
+      }
+    ],
+    "certificados": [
+      {
+        "titulo": "96. Experto electrotécnico",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/CERTIFICATE/Espertoelettrotecnico.116413.pdf"
+      },
+      {
+        "titulo": "99. Directiva RAEE",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/CERTIFICATE/IndicazioniRAEE2024.109839.pdf"
+      }
+    ],
+    "etim": [
+      {
+        "titulo": "Class group",
+        "valor": "Installation bus systems"
+      },
+      {
+        "titulo": "Class",
+        "valor": "Access control unit for bus system"
+      },
+      {
+        "titulo": "Bus system KNX",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Bus system KNX-RF (Radio Frequency)",
+        "valor": "No"
+      },
+      {
+        "titulo": "Bus system KNX Secure",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Bus system KNX Secure-RF (Radio Frequency)",
+        "valor": "No"
+      },
+      {
+        "titulo": "Bus system radio frequency",
+        "valor": "No"
+      },
+      {
+        "titulo": "Bus system LON",
+        "valor": "No"
+      },
+      {
+        "titulo": "Bus system Powernet",
+        "valor": "No"
+      },
+      {
+        "titulo": "Other bus systems",
+        "valor": "None"
+      },
+      {
+        "titulo": "Model",
+        "valor": "Other"
+      },
+      {
+        "titulo": "Mounting method",
+        "valor": "Flush-mounted"
+      },
+      {
+        "titulo": "Material",
+        "valor": "Plastic"
+      },
+      {
+        "titulo": "Material quality",
+        "valor": "Thermoplastic"
+      },
+      {
+        "titulo": "Surface protection",
+        "valor": "Untreated"
+      },
+      {
+        "titulo": "Surface finishing",
+        "valor": "Matt"
+      },
+      {
+        "titulo": "Colour",
+        "valor": "White"
+      },
+      {
+        "titulo": "RAL-number (similar)",
+        "valor": "9016"
+      },
+      {
+        "titulo": "Transparent",
+        "valor": "No"
+      },
+      {
+        "titulo": "Degree of protection (IP)",
+        "valor": "IP40"
+      },
+      {
+        "titulo": "With bus connection",
+        "valor": "Si"
+      }
+    ],
+    "pedido_minimo": "1 NR",
+    "ean": "8007352814653",
+    "embalajes": [
+      {
+        "ean": "8007352814653",
+        "cantidad": "1 NR",
+        "medidas": "10,8x8,7x5,9 [cm]",
+        "peso": "106 [g]"
+      }
+    ],
+    "relacionados": [],
+    "url": "https://www.vimar.com/es/int/catalog/product/index/code/30566.B"
+  },
+  {
+    "codigo": "30566.C",
+    "nombre": "Lector RFID KNX Secure 2M cáñamo",
+    "descripcion": "Lector de tarjetas inteligentes RFID con ranura vertical para montaje dentro de la habitación, estándar KNX Secure, 1 salida de relé NO 4 A 12/24 V~ 50-60 Hz y 12-24 Vcc (SELV), 1 entrada para contactos NO, alimentación adicional de 12-24 V~ 50-60 Hz y 12-24 V cc (SELV), hueso - 2 módulos",
+    "ruta": "Sistemas+productos smart / KNX / LINEA / Dispositivos",
+    "estado": "3 - Activo",
+    "imagen": "https://www.vimar.com/irj/go/km/docs/z_catalogo/MAIN_IMAGE/30566_c-vimar-linea-tasca-rfid-knx-secure-2m-canapa.115693.jpg",
+    "ficha_pdf": "https://www.vimar.com/es/int/catalog/product/download-pdf/code/30566.C?type=.pdf",
+    "dibujos": [
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGESIZE/DI_30566.114739.B.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGESIZE/DI_30566.114740.B.DXF"
+      },
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGEREAR/VP_30566.114713.B.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGEREAR/VP_30566.114714.B.DXF"
+      },
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/3DIMAGE/EA_30566.114687.B.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/3DIMAGE/EA_30566.114688.B.DXF"
+      }
+    ],
+    "certificados": [
+      {
+        "titulo": "96. Experto electrotécnico",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/CERTIFICATE/Espertoelettrotecnico.116413.pdf"
+      },
+      {
+        "titulo": "99. Directiva RAEE",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/CERTIFICATE/IndicazioniRAEE2024.109839.pdf"
+      }
+    ],
+    "etim": [
+      {
+        "titulo": "Class group",
+        "valor": "Installation bus systems"
+      },
+      {
+        "titulo": "Class",
+        "valor": "Access control unit for bus system"
+      },
+      {
+        "titulo": "Bus system KNX",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Bus system KNX-RF (Radio Frequency)",
+        "valor": "No"
+      },
+      {
+        "titulo": "Bus system KNX Secure",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Bus system KNX Secure-RF (Radio Frequency)",
+        "valor": "No"
+      },
+      {
+        "titulo": "Bus system radio frequency",
+        "valor": "No"
+      },
+      {
+        "titulo": "Bus system LON",
+        "valor": "No"
+      },
+      {
+        "titulo": "Bus system Powernet",
+        "valor": "No"
+      },
+      {
+        "titulo": "Other bus systems",
+        "valor": "None"
+      },
+      {
+        "titulo": "Model",
+        "valor": "Other"
+      },
+      {
+        "titulo": "Mounting method",
+        "valor": "Flush-mounted"
+      },
+      {
+        "titulo": "Material",
+        "valor": "Plastic"
+      },
+      {
+        "titulo": "Material quality",
+        "valor": "Thermoplastic"
+      },
+      {
+        "titulo": "Surface protection",
+        "valor": "Untreated"
+      },
+      {
+        "titulo": "Surface finishing",
+        "valor": "Matt"
+      },
+      {
+        "titulo": "Colour",
+        "valor": "Beige"
+      },
+      {
+        "titulo": "RAL-number (similar)",
+        "valor": "9016"
+      },
+      {
+        "titulo": "Transparent",
+        "valor": "No"
+      },
+      {
+        "titulo": "Degree of protection (IP)",
+        "valor": "IP40"
+      },
+      {
+        "titulo": "With bus connection",
+        "valor": "Si"
+      }
+    ],
+    "pedido_minimo": "1 NR",
+    "ean": "8007352814660",
+    "embalajes": [
+      {
+        "ean": "8007352814660",
+        "cantidad": "1 NR",
+        "medidas": "10,8x8,7x5,9 [cm]",
+        "peso": "106 [g]"
+      }
+    ],
+    "relacionados": [],
+    "url": "https://www.vimar.com/es/int/catalog/product/index/code/30566.C"
+  },
+  {
+    "codigo": "30566.G",
+    "nombre": "Lector RFID KNX Secure 2M negro",
+    "descripcion": "Lector de tarjetas inteligentes RFID con ranura vertical para montaje dentro de la habitación, estándar KNX Secure, 1 salida de relé NO 4 A 12/24 V~ 50-60 Hz y 12-24 Vcc (SELV), 1 entrada para contactos NO, alimentación adicional de 12-24 V~ 50-60 Hz y 12-24 V cc (SELV), negro - 2 módulos",
+    "ruta": "Sistemas+productos smart / KNX / LINEA / Dispositivos",
+    "estado": "3 - Activo",
+    "imagen": "https://www.vimar.com/irj/go/km/docs/z_catalogo/MAIN_IMAGE/30566_g-vimar-linea-tasca-rfid-knx-secure-2m-nero.115694.jpg",
+    "ficha_pdf": "https://www.vimar.com/es/int/catalog/product/download-pdf/code/30566.G?type=.pdf",
+    "dibujos": [
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGESIZE/DI_30566.114739.B.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGESIZE/DI_30566.114740.B.DXF"
+      },
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGEREAR/VP_30566.114713.B.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGEREAR/VP_30566.114714.B.DXF"
+      },
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/3DIMAGE/EA_30566.114687.B.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/3DIMAGE/EA_30566.114688.B.DXF"
+      }
+    ],
+    "certificados": [
+      {
+        "titulo": "96. Experto electrotécnico",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/CERTIFICATE/Espertoelettrotecnico.116413.pdf"
+      },
+      {
+        "titulo": "99. Directiva RAEE",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/CERTIFICATE/IndicazioniRAEE2024.109839.pdf"
+      }
+    ],
+    "etim": [
+      {
+        "titulo": "Class group",
+        "valor": "Installation bus systems"
+      },
+      {
+        "titulo": "Class",
+        "valor": "Access control unit for bus system"
+      },
+      {
+        "titulo": "Bus system KNX",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Bus system KNX-RF (Radio Frequency)",
+        "valor": "No"
+      },
+      {
+        "titulo": "Bus system KNX Secure",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Bus system KNX Secure-RF (Radio Frequency)",
+        "valor": "No"
+      },
+      {
+        "titulo": "Bus system radio frequency",
+        "valor": "No"
+      },
+      {
+        "titulo": "Bus system LON",
+        "valor": "No"
+      },
+      {
+        "titulo": "Bus system Powernet",
+        "valor": "No"
+      },
+      {
+        "titulo": "Other bus systems",
+        "valor": "None"
+      },
+      {
+        "titulo": "Model",
+        "valor": "Other"
+      },
+      {
+        "titulo": "Mounting method",
+        "valor": "Flush-mounted"
+      },
+      {
+        "titulo": "Material",
+        "valor": "Plastic"
+      },
+      {
+        "titulo": "Material quality",
+        "valor": "Thermoplastic"
+      },
+      {
+        "titulo": "Surface protection",
+        "valor": "Untreated"
+      },
+      {
+        "titulo": "Surface finishing",
+        "valor": "Matt"
+      },
+      {
+        "titulo": "Colour",
+        "valor": "Black"
+      },
+      {
+        "titulo": "RAL-number (similar)",
+        "valor": "7021"
+      },
+      {
+        "titulo": "Transparent",
+        "valor": "No"
+      },
+      {
+        "titulo": "Degree of protection (IP)",
+        "valor": "IP40"
+      },
+      {
+        "titulo": "With bus connection",
+        "valor": "Si"
+      }
+    ],
+    "pedido_minimo": "1 NR",
+    "ean": "8007352814677",
+    "embalajes": [
+      {
+        "ean": "8007352814677",
+        "cantidad": "1 NR",
+        "medidas": "10,8x8,7x5,9 [cm]",
+        "peso": "106 [g]"
+      }
+    ],
+    "relacionados": [],
+    "url": "https://www.vimar.com/es/int/catalog/product/index/code/30566.G"
+  },
+  {
+    "codigo": "30567.B",
+    "nombre": "Lector ext. RFID KNX blanco",
+    "descripcion": "Lector de tarjeta de transponder para montaje dentro de la habitación, estándar KNX, 2 salidas de relé NO 4 A 24 V~, 2 entradas, alimentación 12-24 V~ 50-60 Hz y 12-24 Vcc (SELV), blanco - 3 módulos. Se suministra sin tarjeta con transponder",
+    "ruta": "Sistemas+productos smart / KNX / LINEA / Dispositivos",
+    "estado": "2 - Será eliminado",
+    "imagen": "https://www.vimar.com/irj/go/km/docs/z_catalogo/MAIN_IMAGE/30567_b-vimar-bianca-linea-fuoriporta-rfid-knx-bianco.101255.jpg",
+    "ficha_pdf": "https://www.vimar.com/es/int/catalog/product/download-pdf/code/30567.B?type=.pdf",
+    "dibujos": [
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGESIZE/DI_30567.102503.B.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGESIZE/DI_30567.102504.B.DXF"
+      },
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGEREAR/VP_30567.97366.B.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGEREAR/VP_30567.97367.B.DXF"
+      },
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/3DIMAGE/EA_30567.102439.B.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/3DIMAGE/EA_30567.102440.B.DXF"
+      }
+    ],
+    "certificados": [
+      {
+        "titulo": "00. Marcado CE - UE",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/CERTIFICATE/20457_02.108464.pdf"
+      },
+      {
+        "titulo": "46. UK PSTI compliance",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/CERTIFICATE/ZAT01744.108577.00.pdf"
+      },
+      {
+        "titulo": "99. Directiva RAEE",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/CERTIFICATE/IndicazioniRAEE2024.109839.pdf"
+      }
+    ],
+    "etim": [
+      {
+        "titulo": "Class group",
+        "valor": "Installation bus systems"
+      },
+      {
+        "titulo": "Class",
+        "valor": "Access control unit for bus system"
+      },
+      {
+        "titulo": "Bus system KNX",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Bus system KNX-RF (Radio Frequency)",
+        "valor": "No"
+      },
+      {
+        "titulo": "Bus system radio frequency",
+        "valor": "No"
+      },
+      {
+        "titulo": "Bus system LON",
+        "valor": "No"
+      },
+      {
+        "titulo": "Bus system Powernet",
+        "valor": "No"
+      },
+      {
+        "titulo": "Other bus systems",
+        "valor": "None"
+      },
+      {
+        "titulo": "Model",
+        "valor": "Other"
+      },
+      {
+        "titulo": "Mounting method",
+        "valor": "Flush-mounted"
+      },
+      {
+        "titulo": "Material",
+        "valor": "Plastic"
+      },
+      {
+        "titulo": "Material quality",
+        "valor": "Thermoplastic"
+      },
+      {
+        "titulo": "Surface protection",
+        "valor": "Untreated"
+      },
+      {
+        "titulo": "Surface finishing",
+        "valor": "Matt"
+      },
+      {
+        "titulo": "Colour",
+        "valor": "White"
+      },
+      {
+        "titulo": "RAL-number (similar)",
+        "valor": "9016"
+      },
+      {
+        "titulo": "Transparent",
+        "valor": "No"
+      },
+      {
+        "titulo": "Degree of protection (IP)",
+        "valor": "IP40"
+      },
+      {
+        "titulo": "With bus connection",
+        "valor": "Si"
+      }
+    ],
+    "pedido_minimo": "1 NR",
+    "ean": "8007352700666",
+    "embalajes": [
+      {
+        "ean": "8007352700666",
+        "cantidad": "1 NR",
+        "medidas": "10,8x8,7x5,9 [cm]",
+        "peso": "90,43 [g]"
+      }
+    ],
+    "relacionados": [],
+    "url": "https://www.vimar.com/es/int/catalog/product/index/code/30567.B"
+  },
+  {
+    "codigo": "30567.C",
+    "nombre": "Lector ext. RFID KNX cáñamo",
+    "descripcion": "Lector de tarjeta para montaje fuera de la habitación, estándar KNX, 2 salidas de relé NO 4 A 24 V~, 2 entradas, alimentación 12-24 V~ 50-60 Hz y 12-24 Vcc (SELV), hueso - 3 módulos. Se suministra sin tarjeta con transponder",
+    "ruta": "Sistemas+productos smart / KNX / LINEA / Dispositivos",
+    "estado": "2 - Será eliminado",
+    "imagen": "https://www.vimar.com/irj/go/km/docs/z_catalogo/MAIN_IMAGE/30567_c-vimar-linea-canapa-fuoriporta-rfid-knx-canapa.101256.jpg",
+    "ficha_pdf": "https://www.vimar.com/es/int/catalog/product/download-pdf/code/30567.C?type=.pdf",
+    "dibujos": [
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGESIZE/DI_30567.102503.B.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGESIZE/DI_30567.102504.B.DXF"
+      },
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGEREAR/VP_30567.97366.B.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGEREAR/VP_30567.97367.B.DXF"
+      },
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/3DIMAGE/EA_30567.102439.B.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/3DIMAGE/EA_30567.102440.B.DXF"
+      }
+    ],
+    "certificados": [
+      {
+        "titulo": "00. Marcado CE - UE",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/CERTIFICATE/20457_02.108464.pdf"
+      },
+      {
+        "titulo": "46. UK PSTI compliance",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/CERTIFICATE/ZAT01744.108577.00.pdf"
+      },
+      {
+        "titulo": "99. Directiva RAEE",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/CERTIFICATE/IndicazioniRAEE2024.109839.pdf"
+      }
+    ],
+    "etim": [
+      {
+        "titulo": "Class group",
+        "valor": "Installation bus systems"
+      },
+      {
+        "titulo": "Class",
+        "valor": "Access control unit for bus system"
+      },
+      {
+        "titulo": "Bus system KNX",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Bus system KNX-RF (Radio Frequency)",
+        "valor": "No"
+      },
+      {
+        "titulo": "Bus system radio frequency",
+        "valor": "No"
+      },
+      {
+        "titulo": "Bus system LON",
+        "valor": "No"
+      },
+      {
+        "titulo": "Bus system Powernet",
+        "valor": "No"
+      },
+      {
+        "titulo": "Other bus systems",
+        "valor": "None"
+      },
+      {
+        "titulo": "Model",
+        "valor": "Other"
+      },
+      {
+        "titulo": "Mounting method",
+        "valor": "Flush-mounted"
+      },
+      {
+        "titulo": "Material",
+        "valor": "Plastic"
+      },
+      {
+        "titulo": "Material quality",
+        "valor": "Thermoplastic"
+      },
+      {
+        "titulo": "Surface protection",
+        "valor": "Untreated"
+      },
+      {
+        "titulo": "Surface finishing",
+        "valor": "Matt"
+      },
+      {
+        "titulo": "Colour",
+        "valor": "Beige"
+      },
+      {
+        "titulo": "RAL-number (similar)",
+        "valor": "7032"
+      },
+      {
+        "titulo": "Transparent",
+        "valor": "No"
+      },
+      {
+        "titulo": "Degree of protection (IP)",
+        "valor": "IP40"
+      },
+      {
+        "titulo": "With bus connection",
+        "valor": "Si"
+      }
+    ],
+    "pedido_minimo": "1 NR",
+    "ean": "8007352700710",
+    "embalajes": [
+      {
+        "ean": "8007352700710",
+        "cantidad": "1 NR",
+        "medidas": "10,8x8,7x5,9 [cm]",
+        "peso": "90,43 [g]"
+      }
+    ],
+    "relacionados": [],
+    "url": "https://www.vimar.com/es/int/catalog/product/index/code/30567.C"
+  },
+  {
+    "codigo": "30567.G",
+    "nombre": "Lector ext. RFID KNX negro",
+    "descripcion": "Lector de tarjeta para montaje fuera de la habitación, estándar KNX, 2 salidas de relé NO 4 A 24 V~, 2 entradas, alimentación 12-24 V~ 50-60 Hz y 12-24 Vcc (SELV), negro - 3 módulos. Se suministra sin tarjeta con transponder",
+    "ruta": "Sistemas+productos smart / KNX / LINEA / Dispositivos",
+    "estado": "2 - Será eliminado",
+    "imagen": "https://www.vimar.com/irj/go/km/docs/z_catalogo/MAIN_IMAGE/30567_g-vimar-linea-fuoriporta-rfid-knx-nero.101257.jpg",
+    "ficha_pdf": "https://www.vimar.com/es/int/catalog/product/download-pdf/code/30567.G?type=.pdf",
+    "dibujos": [
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGESIZE/DI_30567.102503.B.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGESIZE/DI_30567.102504.B.DXF"
+      },
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGEREAR/VP_30567.97366.B.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGEREAR/VP_30567.97367.B.DXF"
+      },
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/3DIMAGE/EA_30567.102439.B.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/3DIMAGE/EA_30567.102440.B.DXF"
+      }
+    ],
+    "certificados": [
+      {
+        "titulo": "00. Marcado CE - UE",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/CERTIFICATE/20457_02.108464.pdf"
+      },
+      {
+        "titulo": "46. UK PSTI compliance",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/CERTIFICATE/ZAT01744.108577.00.pdf"
+      },
+      {
+        "titulo": "99. Directiva RAEE",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/CERTIFICATE/IndicazioniRAEE2024.109839.pdf"
+      }
+    ],
+    "etim": [
+      {
+        "titulo": "Class group",
+        "valor": "Installation bus systems"
+      },
+      {
+        "titulo": "Class",
+        "valor": "Access control unit for bus system"
+      },
+      {
+        "titulo": "Bus system KNX",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Bus system KNX-RF (Radio Frequency)",
+        "valor": "No"
+      },
+      {
+        "titulo": "Bus system radio frequency",
+        "valor": "No"
+      },
+      {
+        "titulo": "Bus system LON",
+        "valor": "No"
+      },
+      {
+        "titulo": "Bus system Powernet",
+        "valor": "No"
+      },
+      {
+        "titulo": "Other bus systems",
+        "valor": "None"
+      },
+      {
+        "titulo": "Model",
+        "valor": "Other"
+      },
+      {
+        "titulo": "Mounting method",
+        "valor": "Flush-mounted"
+      },
+      {
+        "titulo": "Material",
+        "valor": "Plastic"
+      },
+      {
+        "titulo": "Material quality",
+        "valor": "Thermoplastic"
+      },
+      {
+        "titulo": "Surface protection",
+        "valor": "Untreated"
+      },
+      {
+        "titulo": "Surface finishing",
+        "valor": "Matt"
+      },
+      {
+        "titulo": "Colour",
+        "valor": "Black"
+      },
+      {
+        "titulo": "RAL-number (similar)",
+        "valor": "7021"
+      },
+      {
+        "titulo": "Transparent",
+        "valor": "No"
+      },
+      {
+        "titulo": "Degree of protection (IP)",
+        "valor": "IP40"
+      },
+      {
+        "titulo": "With bus connection",
+        "valor": "Si"
+      }
+    ],
+    "pedido_minimo": "1 NR",
+    "ean": "8007352700673",
+    "embalajes": [
+      {
+        "ean": "8007352700673",
+        "cantidad": "1 NR",
+        "medidas": "10,8x8,7x5,9 [cm]",
+        "peso": "90,43 [g]"
+      }
+    ],
+    "relacionados": [],
+    "url": "https://www.vimar.com/es/int/catalog/product/index/code/30567.G"
+  },
+  {
+    "codigo": "30567.TRB",
+    "nombre": "Lector ext. RFID KNX trop.blanco",
+    "descripcion": "",
+    "ruta": "Sistemas+productos smart / KNX / LINEA / Dispositivos",
+    "estado": "2 - Será eliminado",
+    "imagen": "https://www.vimar.com/irj/go/km/docs/z_catalogo/MAIN_IMAGE/30567_trb-vimar-linea-bianca-fuoriporta-rfid-trop-knx-bianco.101258.jpg",
+    "ficha_pdf": "https://www.vimar.com/es/int/catalog/product/download-pdf/code/30567.TRB?type=.pdf",
+    "dibujos": [
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGESIZE/DI_30567.102503.B.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGESIZE/DI_30567.102504.B.DXF"
+      },
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGEREAR/VP_30567.97366.B.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGEREAR/VP_30567.97367.B.DXF"
+      },
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/3DIMAGE/EA_30567.102439.B.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/3DIMAGE/EA_30567.102440.B.DXF"
+      }
+    ],
+    "certificados": [
+      {
+        "titulo": "46. UK PSTI compliance",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/CERTIFICATE/ZAT01744.108577.00.pdf"
+      },
+      {
+        "titulo": "99. Directiva RAEE",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/CERTIFICATE/IndicazioniRAEE2024.109839.pdf"
+      }
+    ],
+    "etim": [
+      {
+        "titulo": "Class group",
+        "valor": "Installation bus systems"
+      },
+      {
+        "titulo": "Class",
+        "valor": "Access control unit for bus system"
+      },
+      {
+        "titulo": "Bus system KNX",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Bus system KNX-RF (Radio Frequency)",
+        "valor": "No"
+      },
+      {
+        "titulo": "Bus system radio frequency",
+        "valor": "No"
+      },
+      {
+        "titulo": "Bus system LON",
+        "valor": "No"
+      },
+      {
+        "titulo": "Bus system Powernet",
+        "valor": "No"
+      },
+      {
+        "titulo": "Other bus systems",
+        "valor": "None"
+      },
+      {
+        "titulo": "Model",
+        "valor": "Other"
+      },
+      {
+        "titulo": "Mounting method",
+        "valor": "Flush-mounted"
+      },
+      {
+        "titulo": "Material",
+        "valor": "Plastic"
+      },
+      {
+        "titulo": "Material quality",
+        "valor": "Thermoplastic"
+      },
+      {
+        "titulo": "Surface protection",
+        "valor": "Untreated"
+      },
+      {
+        "titulo": "Surface finishing",
+        "valor": "Matt"
+      },
+      {
+        "titulo": "Colour",
+        "valor": "White"
+      },
+      {
+        "titulo": "RAL-number (similar)",
+        "valor": "9016"
+      },
+      {
+        "titulo": "Transparent",
+        "valor": "No"
+      },
+      {
+        "titulo": "Degree of protection (IP)",
+        "valor": "IP40"
+      },
+      {
+        "titulo": "With bus connection",
+        "valor": "Si"
+      }
+    ],
+    "pedido_minimo": "1 NR",
+    "ean": "8007352700697",
+    "embalajes": [
+      {
+        "ean": "8007352700697",
+        "cantidad": "1 NR",
+        "medidas": "10,8x8,7x5,9 [cm]",
+        "peso": "78,2 [g]"
+      }
+    ],
+    "relacionados": [],
+    "url": "https://www.vimar.com/es/int/catalog/product/index/code/30567.TRB"
+  },
+  {
+    "codigo": "30567.TRC",
+    "nombre": "Lector ext. RFID KNX trop.cáñamo",
+    "descripcion": "",
+    "ruta": "Sistemas+productos smart / KNX / LINEA / Dispositivos",
+    "estado": "2 - Será eliminado",
+    "imagen": "https://www.vimar.com/irj/go/km/docs/z_catalogo/MAIN_IMAGE/30567_trc-vimar-linea-canapa-fuoriporta-rfid-trop-knx-canapa.101259.jpg",
+    "ficha_pdf": "https://www.vimar.com/es/int/catalog/product/download-pdf/code/30567.TRC?type=.pdf",
+    "dibujos": [
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGESIZE/DI_30567.102503.B.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGESIZE/DI_30567.102504.B.DXF"
+      },
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGEREAR/VP_30567.97366.B.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGEREAR/VP_30567.97367.B.DXF"
+      },
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/3DIMAGE/EA_30567.102439.B.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/3DIMAGE/EA_30567.102440.B.DXF"
+      }
+    ],
+    "certificados": [
+      {
+        "titulo": "46. UK PSTI compliance",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/CERTIFICATE/ZAT01744.108577.00.pdf"
+      },
+      {
+        "titulo": "99. Directiva RAEE",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/CERTIFICATE/IndicazioniRAEE2024.109839.pdf"
+      }
+    ],
+    "etim": [
+      {
+        "titulo": "Class group",
+        "valor": "Installation bus systems"
+      },
+      {
+        "titulo": "Class",
+        "valor": "Access control unit for bus system"
+      },
+      {
+        "titulo": "Bus system KNX",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Bus system KNX-RF (Radio Frequency)",
+        "valor": "No"
+      },
+      {
+        "titulo": "Bus system radio frequency",
+        "valor": "No"
+      },
+      {
+        "titulo": "Bus system LON",
+        "valor": "No"
+      },
+      {
+        "titulo": "Bus system Powernet",
+        "valor": "No"
+      },
+      {
+        "titulo": "Other bus systems",
+        "valor": "None"
+      },
+      {
+        "titulo": "Model",
+        "valor": "Other"
+      },
+      {
+        "titulo": "Mounting method",
+        "valor": "Flush-mounted"
+      },
+      {
+        "titulo": "Material",
+        "valor": "Plastic"
+      },
+      {
+        "titulo": "Material quality",
+        "valor": "Thermoplastic"
+      },
+      {
+        "titulo": "Surface protection",
+        "valor": "Untreated"
+      },
+      {
+        "titulo": "Surface finishing",
+        "valor": "Matt"
+      },
+      {
+        "titulo": "Colour",
+        "valor": "Beige"
+      },
+      {
+        "titulo": "RAL-number (similar)",
+        "valor": "7032"
+      },
+      {
+        "titulo": "Transparent",
+        "valor": "No"
+      },
+      {
+        "titulo": "Degree of protection (IP)",
+        "valor": "IP40"
+      },
+      {
+        "titulo": "With bus connection",
+        "valor": "Si"
+      }
+    ],
+    "pedido_minimo": "1 NR",
+    "ean": "8007352700703",
+    "embalajes": [
+      {
+        "ean": "8007352700703",
+        "cantidad": "1 NR",
+        "medidas": "10,8x8,7x5,9 [cm]",
+        "peso": "78,2 [g]"
+      }
+    ],
+    "relacionados": [],
+    "url": "https://www.vimar.com/es/int/catalog/product/index/code/30567.TRC"
+  },
+  {
+    "codigo": "30567.TRG",
+    "nombre": "Lector ext. RFID KNX trop. negro",
+    "descripcion": "",
+    "ruta": "Sistemas+productos smart / KNX / LINEA / Dispositivos",
+    "estado": "2 - Será eliminado",
+    "imagen": "https://www.vimar.com/irj/go/km/docs/z_catalogo/MAIN_IMAGE/30567_trg-vimar-linea-fuoriporta-rfid-trop-knx-nero.101260.jpg",
+    "ficha_pdf": "https://www.vimar.com/es/int/catalog/product/download-pdf/code/30567.TRG?type=.pdf",
+    "dibujos": [
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGESIZE/DI_30567.102503.B.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGESIZE/DI_30567.102504.B.DXF"
+      },
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGEREAR/VP_30567.97366.B.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGEREAR/VP_30567.97367.B.DXF"
+      },
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/3DIMAGE/EA_30567.102439.B.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/3DIMAGE/EA_30567.102440.B.DXF"
+      }
+    ],
+    "certificados": [
+      {
+        "titulo": "46. UK PSTI compliance",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/CERTIFICATE/ZAT01744.108577.00.pdf"
+      },
+      {
+        "titulo": "99. Directiva RAEE",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/CERTIFICATE/IndicazioniRAEE2024.109839.pdf"
+      }
+    ],
+    "etim": [
+      {
+        "titulo": "Class group",
+        "valor": "Installation bus systems"
+      },
+      {
+        "titulo": "Class",
+        "valor": "Access control unit for bus system"
+      },
+      {
+        "titulo": "Bus system KNX",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Bus system KNX-RF (Radio Frequency)",
+        "valor": "No"
+      },
+      {
+        "titulo": "Bus system radio frequency",
+        "valor": "No"
+      },
+      {
+        "titulo": "Bus system LON",
+        "valor": "No"
+      },
+      {
+        "titulo": "Bus system Powernet",
+        "valor": "No"
+      },
+      {
+        "titulo": "Other bus systems",
+        "valor": "None"
+      },
+      {
+        "titulo": "Model",
+        "valor": "Other"
+      },
+      {
+        "titulo": "Mounting method",
+        "valor": "Flush-mounted"
+      },
+      {
+        "titulo": "Material",
+        "valor": "Plastic"
+      },
+      {
+        "titulo": "Material quality",
+        "valor": "Thermoplastic"
+      },
+      {
+        "titulo": "Surface protection",
+        "valor": "Untreated"
+      },
+      {
+        "titulo": "Surface finishing",
+        "valor": "Matt"
+      },
+      {
+        "titulo": "Colour",
+        "valor": "Black"
+      },
+      {
+        "titulo": "RAL-number (similar)",
+        "valor": "7021"
+      },
+      {
+        "titulo": "Transparent",
+        "valor": "No"
+      },
+      {
+        "titulo": "Degree of protection (IP)",
+        "valor": "IP40"
+      },
+      {
+        "titulo": "With bus connection",
+        "valor": "Si"
+      }
+    ],
+    "pedido_minimo": "1 NR",
+    "ean": "8007352700680",
+    "embalajes": [
+      {
+        "ean": "8007352700680",
+        "cantidad": "1 NR",
+        "medidas": "10,8x8,7x5,9 [cm]",
+        "peso": "78,2 [g]"
+      }
+    ],
+    "relacionados": [],
+    "url": "https://www.vimar.com/es/int/catalog/product/index/code/30567.TRG"
+  },
+  {
+    "codigo": "30571.B",
+    "nombre": "Termostato rotatorio KNX 2M blanco",
+    "descripcion": "Termostato electrónico con mando giratorio para control de la temperatura ambiente de 2 zonas independientes (calefacción y aire acondicionado), domótica estándar KNX, dispositivo de control de la temperatura de clase I (aportación 1%) en el modo ON/OFF, de clase IV (aportación 2%) en el modo PID, interconectable con actuador con salidas analógicas proporcionales KNX para realizar un termostato modulante de clase V (aportación 3%), 1 entrada para sensor de temperatura cableado 02965.1, 1 entrada digital programable, retroiluminación de LED blanco; se completa con placa, blanco - 2 módulos",
+    "ruta": "Sistemas+productos smart / KNX / LINEA / Dispositivos",
+    "estado": "3 - Activo",
+    "imagen": "https://www.vimar.com/irj/go/km/docs/z_catalogo/MAIN_IMAGE/30571_b-vimar-linea-bianca-termostato-rotella-knx-2m-bianco.101261.jpg",
+    "ficha_pdf": "https://www.vimar.com/es/int/catalog/product/download-pdf/code/30571.B?type=.pdf",
+    "dibujos": [
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGESIZE/DI_30571.98130.B.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGESIZE/DI_30571.98131.B.DXF"
+      },
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGEREAR/VP_30571.98317.B.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGEREAR/VP_30571.98318.B.DXF"
+      },
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/3DIMAGE/EA_30571.97869.B.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/3DIMAGE/EA_30571.97870.B.DXF"
+      }
+    ],
+    "certificados": [
+      {
+        "titulo": "46. UK PSTI compliance",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/CERTIFICATE/ZAT01744.108577.00.pdf"
+      },
+      {
+        "titulo": "96. Experto electrotécnico",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/CERTIFICATE/Espertoelettrotecnico.116413.pdf"
+      },
+      {
+        "titulo": "99. Directiva RAEE",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/CERTIFICATE/IndicazioniRAEE2024.109839.pdf"
+      }
+    ],
+    "etim": [
+      {
+        "titulo": "Class group",
+        "valor": "Stats, switches and controllers"
+      },
+      {
+        "titulo": "Class",
+        "valor": "Room thermostat"
+      },
+      {
+        "titulo": "Model",
+        "valor": "Other"
+      },
+      {
+        "titulo": "Type of power supply",
+        "valor": "Other"
+      },
+      {
+        "titulo": "Connection",
+        "valor": "2-wire"
+      },
+      {
+        "titulo": "With receiver",
+        "valor": "No"
+      },
+      {
+        "titulo": "Measuring range",
+        "valor": "0 - 40 °C"
+      },
+      {
+        "titulo": "External sensor",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Thermal feedback",
+        "valor": "Parallel"
+      },
+      {
+        "titulo": "Control characteristic",
+        "valor": "PID"
+      },
+      {
+        "titulo": "Suitable for heating",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Number of heater outputs",
+        "valor": "1"
+      },
+      {
+        "titulo": "Suitable for cooling",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Number of cooler outputs",
+        "valor": "1"
+      },
+      {
+        "titulo": "Differential value",
+        "valor": "0,10 - 1,00 k"
+      },
+      {
+        "titulo": "Adjustable differential",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Temperature readable",
+        "valor": "Si"
+      },
+      {
+        "titulo": "With sound indicator",
+        "valor": "No"
+      },
+      {
+        "titulo": "Sensor/feeler type",
+        "valor": "Resistance sensor"
+      },
+      {
+        "titulo": "Mounting method",
+        "valor": "Flush-mounted"
+      },
+      {
+        "titulo": "Number of modules (module system)",
+        "valor": "2"
+      },
+      {
+        "titulo": "With display",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Operation",
+        "valor": "Turn"
+      },
+      {
+        "titulo": "With tap water circuit",
+        "valor": "No"
+      },
+      {
+        "titulo": "Max. contact voltage",
+        "valor": "29 V"
+      },
+      {
+        "titulo": "Max. contact load",
+        "valor": "0 A"
+      },
+      {
+        "titulo": "Degree of protection (IP)",
+        "valor": "IP20"
+      },
+      {
+        "titulo": "Degree of protection (NEMA)",
+        "valor": "Other"
+      },
+      {
+        "titulo": "Explosion-proof",
+        "valor": "No"
+      },
+      {
+        "titulo": "Colour",
+        "valor": "White"
+      },
+      {
+        "titulo": "RAL-number",
+        "valor": "9016"
+      },
+      {
+        "titulo": "Height",
+        "valor": "52,80 mm"
+      },
+      {
+        "titulo": "Width",
+        "valor": "44,80 mm"
+      },
+      {
+        "titulo": "Depth",
+        "valor": "41,70 mm"
+      },
+      {
+        "titulo": "Diameter",
+        "valor": "0,00 mm"
+      },
+      {
+        "titulo": "Class of the temperature control",
+        "valor": "V"
+      },
+      {
+        "titulo": "Compatible with Apple HomeKit",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Compatible with Google Assistant",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Compatible with Amazon Alexa",
+        "valor": "Si"
+      }
+    ],
+    "pedido_minimo": "1 NR",
+    "ean": "8007352689220",
+    "embalajes": [
+      {
+        "ean": "8007352689220",
+        "cantidad": "1 NR",
+        "medidas": "6x5,4x5,2 [cm]",
+        "peso": "60,2 [g]"
+      },
+      {
+        "ean": "8007352689237",
+        "cantidad": "10 NR",
+        "medidas": "28,1x13,1x6 [cm]",
+        "peso": "689,6 [g]"
+      },
+      {
+        "ean": "8007352689244",
+        "cantidad": "120 NR",
+        "medidas": "38,5x29x30 [cm]",
+        "peso": "8.752 [g]"
+      }
+    ],
+    "relacionados": [],
+    "url": "https://www.vimar.com/es/int/catalog/product/index/code/30571.B"
+  },
+  {
+    "codigo": "30571.C",
+    "nombre": "Termostato rotatorio KNX 2M cáñamo",
+    "descripcion": "Termostato electrónico con mando giratorio para control de la temperatura ambiente de 2 zonas independientes (calefacción y aire acondicionado), domótica estándar KNX, dispositivo de control de la temperatura de clase I (aportación 1%) en el modo ON/OFF, de clase IV (aportación 2%) en el modo PID, interconectable con actuador con salidas analógicas proporcionales KNX para realizar un termostato modulante de clase V (aportación 3%), 1 entrada para sensor de temperatura cableado 02965.1, 1 entrada digital programable, retroiluminación de LED blanco; se completa con placa, hueso - 2 módulos",
+    "ruta": "Sistemas+productos smart / KNX / LINEA / Dispositivos",
+    "estado": "3 - Activo",
+    "imagen": "https://www.vimar.com/irj/go/km/docs/z_catalogo/MAIN_IMAGE/30571_c-vimar-linea-canapa-termostato-rotella-knx-2m-canapa.101262.jpg",
+    "ficha_pdf": "https://www.vimar.com/es/int/catalog/product/download-pdf/code/30571.C?type=.pdf",
+    "dibujos": [
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGESIZE/DI_30571.98130.B.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGESIZE/DI_30571.98131.B.DXF"
+      },
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGEREAR/VP_30571.98317.B.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGEREAR/VP_30571.98318.B.DXF"
+      },
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/3DIMAGE/EA_30571.97869.B.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/3DIMAGE/EA_30571.97870.B.DXF"
+      }
+    ],
+    "certificados": [
+      {
+        "titulo": "46. UK PSTI compliance",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/CERTIFICATE/ZAT01744.108577.00.pdf"
+      },
+      {
+        "titulo": "96. Experto electrotécnico",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/CERTIFICATE/Espertoelettrotecnico.116413.pdf"
+      },
+      {
+        "titulo": "99. Directiva RAEE",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/CERTIFICATE/IndicazioniRAEE2024.109839.pdf"
+      }
+    ],
+    "etim": [
+      {
+        "titulo": "Class group",
+        "valor": "Stats, switches and controllers"
+      },
+      {
+        "titulo": "Class",
+        "valor": "Room thermostat"
+      },
+      {
+        "titulo": "Model",
+        "valor": "Other"
+      },
+      {
+        "titulo": "Type of power supply",
+        "valor": "Other"
+      },
+      {
+        "titulo": "Connection",
+        "valor": "2-wire"
+      },
+      {
+        "titulo": "With receiver",
+        "valor": "No"
+      },
+      {
+        "titulo": "Measuring range",
+        "valor": "0 - 40 °C"
+      },
+      {
+        "titulo": "External sensor",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Thermal feedback",
+        "valor": "Parallel"
+      },
+      {
+        "titulo": "Control characteristic",
+        "valor": "PID"
+      },
+      {
+        "titulo": "Suitable for heating",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Number of heater outputs",
+        "valor": "1"
+      },
+      {
+        "titulo": "Suitable for cooling",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Number of cooler outputs",
+        "valor": "1"
+      },
+      {
+        "titulo": "Differential value",
+        "valor": "0,10 - 1,00 k"
+      },
+      {
+        "titulo": "Adjustable differential",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Temperature readable",
+        "valor": "Si"
+      },
+      {
+        "titulo": "With sound indicator",
+        "valor": "No"
+      },
+      {
+        "titulo": "Sensor/feeler type",
+        "valor": "Resistance sensor"
+      },
+      {
+        "titulo": "Mounting method",
+        "valor": "Flush-mounted"
+      },
+      {
+        "titulo": "Number of modules (module system)",
+        "valor": "2"
+      },
+      {
+        "titulo": "With display",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Operation",
+        "valor": "Turn"
+      },
+      {
+        "titulo": "With tap water circuit",
+        "valor": "No"
+      },
+      {
+        "titulo": "Max. contact voltage",
+        "valor": "29 V"
+      },
+      {
+        "titulo": "Max. contact load",
+        "valor": "0 A"
+      },
+      {
+        "titulo": "Degree of protection (IP)",
+        "valor": "IP20"
+      },
+      {
+        "titulo": "Degree of protection (NEMA)",
+        "valor": "Other"
+      },
+      {
+        "titulo": "Explosion-proof",
+        "valor": "No"
+      },
+      {
+        "titulo": "Colour",
+        "valor": "Beige"
+      },
+      {
+        "titulo": "RAL-number",
+        "valor": "7032"
+      },
+      {
+        "titulo": "Height",
+        "valor": "52,80 mm"
+      },
+      {
+        "titulo": "Width",
+        "valor": "44,80 mm"
+      },
+      {
+        "titulo": "Depth",
+        "valor": "41,70 mm"
+      },
+      {
+        "titulo": "Diameter",
+        "valor": "0,00 mm"
+      },
+      {
+        "titulo": "Class of the temperature control",
+        "valor": "V"
+      },
+      {
+        "titulo": "Compatible with Apple HomeKit",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Compatible with Google Assistant",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Compatible with Amazon Alexa",
+        "valor": "Si"
+      }
+    ],
+    "pedido_minimo": "1 NR",
+    "ean": "8007352695634",
+    "embalajes": [
+      {
+        "ean": "8007352695634",
+        "cantidad": "1 NR",
+        "medidas": "6x5,4x5,2 [cm]",
+        "peso": "60,4 [g]"
+      },
+      {
+        "ean": "8007352695641",
+        "cantidad": "10 NR",
+        "medidas": "28,1x13,1x6 [cm]",
+        "peso": "692 [g]"
+      },
+      {
+        "ean": "8007352695658",
+        "cantidad": "120 NR",
+        "medidas": "38,5x29x30 [cm]",
+        "peso": "8.742 [g]"
+      }
+    ],
+    "relacionados": [],
+    "url": "https://www.vimar.com/es/int/catalog/product/index/code/30571.C"
+  },
+  {
+    "codigo": "30571.G",
+    "nombre": "Termostato rotatorio KNX 2M negro",
+    "descripcion": "Termostato electrónico con mando giratorio para control de la temperatura ambiente de 2 zonas independientes (calefacción y aire acondicionado), domótica estándar KNX, dispositivo de control de la temperatura de clase I (aportación 1%) en el modo ON/OFF, de clase IV (aportación 2%) en el modo PID, interconectable con actuador con salidas analógicas proporcionales KNX para realizar un termostato modulante de clase V (aportación 3%), 1 entrada para sensor de temperatura cableado 02965.1, 1 entrada digital programable, retroiluminación de LED blanco; se completa con placa, negro - 2 módulos",
+    "ruta": "Sistemas+productos smart / KNX / LINEA / Dispositivos",
+    "estado": "3 - Activo",
+    "imagen": "https://www.vimar.com/irj/go/km/docs/z_catalogo/MAIN_IMAGE/30571_g-vimar-linea-termostato-rotella-knx-2m-nero.101263.jpg",
+    "ficha_pdf": "https://www.vimar.com/es/int/catalog/product/download-pdf/code/30571.G?type=.pdf",
+    "dibujos": [
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGESIZE/DI_30571.98130.B.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGESIZE/DI_30571.98131.B.DXF"
+      },
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGEREAR/VP_30571.98317.B.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGEREAR/VP_30571.98318.B.DXF"
+      },
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/3DIMAGE/EA_30571.97869.B.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/3DIMAGE/EA_30571.97870.B.DXF"
+      }
+    ],
+    "certificados": [
+      {
+        "titulo": "46. UK PSTI compliance",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/CERTIFICATE/ZAT01744.108577.00.pdf"
+      },
+      {
+        "titulo": "96. Experto electrotécnico",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/CERTIFICATE/Espertoelettrotecnico.116413.pdf"
+      },
+      {
+        "titulo": "99. Directiva RAEE",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/CERTIFICATE/IndicazioniRAEE2024.109839.pdf"
+      }
+    ],
+    "etim": [
+      {
+        "titulo": "Class group",
+        "valor": "Stats, switches and controllers"
+      },
+      {
+        "titulo": "Class",
+        "valor": "Room thermostat"
+      },
+      {
+        "titulo": "Model",
+        "valor": "Other"
+      },
+      {
+        "titulo": "Type of power supply",
+        "valor": "Other"
+      },
+      {
+        "titulo": "Connection",
+        "valor": "2-wire"
+      },
+      {
+        "titulo": "With receiver",
+        "valor": "No"
+      },
+      {
+        "titulo": "Measuring range",
+        "valor": "0 - 40 °C"
+      },
+      {
+        "titulo": "External sensor",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Thermal feedback",
+        "valor": "Parallel"
+      },
+      {
+        "titulo": "Control characteristic",
+        "valor": "PID"
+      },
+      {
+        "titulo": "Suitable for heating",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Number of heater outputs",
+        "valor": "1"
+      },
+      {
+        "titulo": "Suitable for cooling",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Number of cooler outputs",
+        "valor": "1"
+      },
+      {
+        "titulo": "Differential value",
+        "valor": "0,10 - 1,00 k"
+      },
+      {
+        "titulo": "Adjustable differential",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Temperature readable",
+        "valor": "Si"
+      },
+      {
+        "titulo": "With sound indicator",
+        "valor": "No"
+      },
+      {
+        "titulo": "Sensor/feeler type",
+        "valor": "Resistance sensor"
+      },
+      {
+        "titulo": "Mounting method",
+        "valor": "Flush-mounted"
+      },
+      {
+        "titulo": "Number of modules (module system)",
+        "valor": "2"
+      },
+      {
+        "titulo": "With display",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Operation",
+        "valor": "Turn"
+      },
+      {
+        "titulo": "With tap water circuit",
+        "valor": "No"
+      },
+      {
+        "titulo": "Max. contact voltage",
+        "valor": "29 V"
+      },
+      {
+        "titulo": "Max. contact load",
+        "valor": "0 A"
+      },
+      {
+        "titulo": "Degree of protection (IP)",
+        "valor": "IP20"
+      },
+      {
+        "titulo": "Degree of protection (NEMA)",
+        "valor": "Other"
+      },
+      {
+        "titulo": "Explosion-proof",
+        "valor": "No"
+      },
+      {
+        "titulo": "Colour",
+        "valor": "Black"
+      },
+      {
+        "titulo": "RAL-number",
+        "valor": "7021"
+      },
+      {
+        "titulo": "Height",
+        "valor": "52,80 mm"
+      },
+      {
+        "titulo": "Width",
+        "valor": "44,80 mm"
+      },
+      {
+        "titulo": "Depth",
+        "valor": "41,70 mm"
+      },
+      {
+        "titulo": "Diameter",
+        "valor": "0,00 mm"
+      },
+      {
+        "titulo": "Class of the temperature control",
+        "valor": "V"
+      },
+      {
+        "titulo": "Compatible with Apple HomeKit",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Compatible with Google Assistant",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Compatible with Amazon Alexa",
+        "valor": "Si"
+      }
+    ],
+    "pedido_minimo": "1 NR",
+    "ean": "8007352689190",
+    "embalajes": [
+      {
+        "ean": "8007352689190",
+        "cantidad": "1 NR",
+        "medidas": "6x5,4x5,2 [cm]",
+        "peso": "60 [g]"
+      },
+      {
+        "ean": "8007352689206",
+        "cantidad": "10 NR",
+        "medidas": "28,1x13,1x6 [cm]",
+        "peso": "690,4 [g]"
+      },
+      {
+        "ean": "8007352689213",
+        "cantidad": "120 NR",
+        "medidas": "38,5x29x30 [cm]",
+        "peso": "8.728 [g]"
+      }
+    ],
+    "relacionados": [],
+    "url": "https://www.vimar.com/es/int/catalog/product/index/code/30571.G"
+  },
+  {
+    "codigo": "30575.B",
+    "nombre": "Detector IR KNX blanco",
+    "descripcion": "Detector de movimiento de infrarrojos pasivos, estándar KNX, blanco - 2 módulos",
+    "ruta": "Sistemas+productos smart / KNX / LINEA / Dispositivos",
+    "estado": "3 - Activo",
+    "imagen": "https://www.vimar.com/irj/go/km/docs/z_catalogo/MAIN_IMAGE/30575_b-vimar-linea-bianca-rivelatore-ir-knx-bianco.101264.jpg",
+    "ficha_pdf": "https://www.vimar.com/es/int/catalog/product/download-pdf/code/30575.B?type=.pdf",
+    "dibujos": [
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGESIZE/DI_30575.99093.B.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGESIZE/DI_30575.99094.B.DXF"
+      },
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGEREAR/VP_30575.99083.B.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGEREAR/VP_30575.99084.B.DXF"
+      },
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/3DIMAGE/EA_30575.99073.B.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/3DIMAGE/EA_30575.99074.B.DXF"
+      }
+    ],
+    "certificados": [
+      {
+        "titulo": "46. UK PSTI compliance",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/CERTIFICATE/ZAT01744.108577.00.pdf"
+      },
+      {
+        "titulo": "96. Experto electrotécnico",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/CERTIFICATE/Espertoelettrotecnico.116413.pdf"
+      },
+      {
+        "titulo": "99. Directiva RAEE",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/CERTIFICATE/IndicazioniRAEE2024.109839.pdf"
+      }
+    ],
+    "etim": [
+      {
+        "titulo": "Class group",
+        "valor": "Installation bus systems"
+      },
+      {
+        "titulo": "Class",
+        "valor": "Movement sensor for bus system"
+      },
+      {
+        "titulo": "Bus system KNX",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Bus system KNX-RF (Radio Frequency)",
+        "valor": "No"
+      },
+      {
+        "titulo": "Bus system radio frequency",
+        "valor": "No"
+      },
+      {
+        "titulo": "Bus system LON",
+        "valor": "No"
+      },
+      {
+        "titulo": "Bus system Powernet",
+        "valor": "No"
+      },
+      {
+        "titulo": "Other bus systems",
+        "valor": "Other"
+      },
+      {
+        "titulo": "Radio frequency bidirectional",
+        "valor": "No"
+      },
+      {
+        "titulo": "Model",
+        "valor": "Movement sensor"
+      },
+      {
+        "titulo": "Mounting method",
+        "valor": "Flush-mounted"
+      },
+      {
+        "titulo": "Material",
+        "valor": "Plastic"
+      },
+      {
+        "titulo": "Material quality",
+        "valor": "Thermoplastic"
+      },
+      {
+        "titulo": "Surface protection",
+        "valor": "Untreated"
+      },
+      {
+        "titulo": "Surface finishing",
+        "valor": "Matt"
+      },
+      {
+        "titulo": "Colour",
+        "valor": "White"
+      },
+      {
+        "titulo": "RAL-number (similar)",
+        "valor": "9016"
+      },
+      {
+        "titulo": "Transparent",
+        "valor": "No"
+      },
+      {
+        "titulo": "With bus connection",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Substation input",
+        "valor": "No"
+      },
+      {
+        "titulo": "Creep-under protection",
+        "valor": "No"
+      },
+      {
+        "titulo": "Operation mode switch",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Animal zone",
+        "valor": "No"
+      },
+      {
+        "titulo": "Staircase light controller",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Response value luminosity adjustable",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Teach-function for response value luminosity",
+        "valor": "No"
+      },
+      {
+        "titulo": "Switch-off delay self-learning",
+        "valor": "No"
+      },
+      {
+        "titulo": "DALI-2 certified",
+        "valor": "No"
+      },
+      {
+        "titulo": "Max. reach sideways",
+        "valor": "10,00 m"
+      },
+      {
+        "titulo": "Max. reach frontally",
+        "valor": "10 m"
+      },
+      {
+        "titulo": "Diameter reach on floor",
+        "valor": "0,00 m"
+      },
+      {
+        "titulo": "Detection angle vertical",
+        "valor": "0 - 36"
+      },
+      {
+        "titulo": "Detection angle horizontal",
+        "valor": "0,00 - 112,00"
+      },
+      {
+        "titulo": "Switching power",
+        "valor": "0 W"
+      },
+      {
+        "titulo": "Width",
+        "valor": "44,70 mm"
+      },
+      {
+        "titulo": "Height",
+        "valor": "52,80 mm"
+      },
+      {
+        "titulo": "Depth",
+        "valor": "36,90 mm"
+      },
+      {
+        "titulo": "Built-in width",
+        "valor": "44,70 mm"
+      },
+      {
+        "titulo": "Built-in depth",
+        "valor": "24,10 mm"
+      },
+      {
+        "titulo": "Built-in length",
+        "valor": "52,80 mm"
+      }
+    ],
+    "pedido_minimo": "1 NR",
+    "ean": "8007352691803",
+    "embalajes": [
+      {
+        "ean": "8007352691803",
+        "cantidad": "1 NR",
+        "medidas": "6x5,4x5,2 [cm]",
+        "peso": "44,65 [g]"
+      },
+      {
+        "ean": "8007352691810",
+        "cantidad": "10 NR",
+        "medidas": "28,1x13,1x6 [cm]",
+        "peso": "534 [g]"
+      }
+    ],
+    "relacionados": [],
+    "url": "https://www.vimar.com/es/int/catalog/product/index/code/30575.B"
+  },
+  {
+    "codigo": "30575.C",
+    "nombre": "Detector IR KNX cáñamo",
+    "descripcion": "Detector de movimiento de infrarrojos pasivos, estándar KNX, hueso - 2 módulos",
+    "ruta": "Sistemas+productos smart / KNX / LINEA / Dispositivos",
+    "estado": "3 - Activo",
+    "imagen": "https://www.vimar.com/irj/go/km/docs/z_catalogo/MAIN_IMAGE/30575_c-vimar-linea-canapa-rivelatore-ir-knx-canapa.101265.jpg",
+    "ficha_pdf": "https://www.vimar.com/es/int/catalog/product/download-pdf/code/30575.C?type=.pdf",
+    "dibujos": [
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGESIZE/DI_30575.99093.B.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGESIZE/DI_30575.99094.B.DXF"
+      },
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGEREAR/VP_30575.99083.B.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGEREAR/VP_30575.99084.B.DXF"
+      },
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/3DIMAGE/EA_30575.99073.B.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/3DIMAGE/EA_30575.99074.B.DXF"
+      }
+    ],
+    "certificados": [
+      {
+        "titulo": "46. UK PSTI compliance",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/CERTIFICATE/ZAT01744.108577.00.pdf"
+      },
+      {
+        "titulo": "96. Experto electrotécnico",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/CERTIFICATE/Espertoelettrotecnico.116413.pdf"
+      },
+      {
+        "titulo": "99. Directiva RAEE",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/CERTIFICATE/IndicazioniRAEE2024.109839.pdf"
+      }
+    ],
+    "etim": [
+      {
+        "titulo": "Class group",
+        "valor": "Installation bus systems"
+      },
+      {
+        "titulo": "Class",
+        "valor": "Movement sensor for bus system"
+      },
+      {
+        "titulo": "Bus system KNX",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Bus system KNX-RF (Radio Frequency)",
+        "valor": "No"
+      },
+      {
+        "titulo": "Bus system radio frequency",
+        "valor": "No"
+      },
+      {
+        "titulo": "Bus system LON",
+        "valor": "No"
+      },
+      {
+        "titulo": "Bus system Powernet",
+        "valor": "No"
+      },
+      {
+        "titulo": "Other bus systems",
+        "valor": "Other"
+      },
+      {
+        "titulo": "Radio frequency bidirectional",
+        "valor": "No"
+      },
+      {
+        "titulo": "Model",
+        "valor": "Movement sensor"
+      },
+      {
+        "titulo": "Mounting method",
+        "valor": "Flush-mounted"
+      },
+      {
+        "titulo": "Material",
+        "valor": "Plastic"
+      },
+      {
+        "titulo": "Material quality",
+        "valor": "Thermoplastic"
+      },
+      {
+        "titulo": "Surface protection",
+        "valor": "Untreated"
+      },
+      {
+        "titulo": "Surface finishing",
+        "valor": "Matt"
+      },
+      {
+        "titulo": "Colour",
+        "valor": "Beige"
+      },
+      {
+        "titulo": "RAL-number (similar)",
+        "valor": "7032"
+      },
+      {
+        "titulo": "Transparent",
+        "valor": "No"
+      },
+      {
+        "titulo": "With bus connection",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Substation input",
+        "valor": "No"
+      },
+      {
+        "titulo": "Creep-under protection",
+        "valor": "No"
+      },
+      {
+        "titulo": "Operation mode switch",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Animal zone",
+        "valor": "No"
+      },
+      {
+        "titulo": "Staircase light controller",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Response value luminosity adjustable",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Teach-function for response value luminosity",
+        "valor": "No"
+      },
+      {
+        "titulo": "Switch-off delay self-learning",
+        "valor": "No"
+      },
+      {
+        "titulo": "DALI-2 certified",
+        "valor": "No"
+      },
+      {
+        "titulo": "Max. reach sideways",
+        "valor": "10,00 m"
+      },
+      {
+        "titulo": "Max. reach frontally",
+        "valor": "10 m"
+      },
+      {
+        "titulo": "Diameter reach on floor",
+        "valor": "0,00 m"
+      },
+      {
+        "titulo": "Detection angle vertical",
+        "valor": "0 - 36"
+      },
+      {
+        "titulo": "Detection angle horizontal",
+        "valor": "0,00 - 112,00"
+      },
+      {
+        "titulo": "Switching power",
+        "valor": "0 W"
+      },
+      {
+        "titulo": "Width",
+        "valor": "44,70 mm"
+      },
+      {
+        "titulo": "Height",
+        "valor": "52,80 mm"
+      },
+      {
+        "titulo": "Depth",
+        "valor": "36,90 mm"
+      },
+      {
+        "titulo": "Built-in width",
+        "valor": "44,70 mm"
+      },
+      {
+        "titulo": "Built-in depth",
+        "valor": "24,10 mm"
+      },
+      {
+        "titulo": "Built-in length",
+        "valor": "52,80 mm"
+      }
+    ],
+    "pedido_minimo": "1 NR",
+    "ean": "8007352691766",
+    "embalajes": [
+      {
+        "ean": "8007352691766",
+        "cantidad": "1 NR",
+        "medidas": "6x5,4x5,2 [cm]",
+        "peso": "44,65 [g]"
+      },
+      {
+        "ean": "8007352691773",
+        "cantidad": "10 NR",
+        "medidas": "28,1x13,1x6 [cm]",
+        "peso": "534 [g]"
+      }
+    ],
+    "relacionados": [],
+    "url": "https://www.vimar.com/es/int/catalog/product/index/code/30575.C"
+  },
+  {
+    "codigo": "30575.G",
+    "nombre": "Detector IR KNX negro",
+    "descripcion": "Detector de movimiento de infrarrojos pasivos, estándar KNX, negro - 2 módulos",
+    "ruta": "Sistemas+productos smart / KNX / LINEA / Dispositivos",
+    "estado": "3 - Activo",
+    "imagen": "https://www.vimar.com/irj/go/km/docs/z_catalogo/MAIN_IMAGE/30575_g-vimar-linea-rivelatore-ir-knx-nero.101266.jpg",
+    "ficha_pdf": "https://www.vimar.com/es/int/catalog/product/download-pdf/code/30575.G?type=.pdf",
+    "dibujos": [
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGESIZE/DI_30575.99093.B.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGESIZE/DI_30575.99094.B.DXF"
+      },
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGEREAR/VP_30575.99083.B.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGEREAR/VP_30575.99084.B.DXF"
+      },
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/3DIMAGE/EA_30575.99073.B.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/3DIMAGE/EA_30575.99074.B.DXF"
+      }
+    ],
+    "certificados": [
+      {
+        "titulo": "46. UK PSTI compliance",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/CERTIFICATE/ZAT01744.108577.00.pdf"
+      },
+      {
+        "titulo": "96. Experto electrotécnico",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/CERTIFICATE/Espertoelettrotecnico.116413.pdf"
+      },
+      {
+        "titulo": "99. Directiva RAEE",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/CERTIFICATE/IndicazioniRAEE2024.109839.pdf"
+      }
+    ],
+    "etim": [
+      {
+        "titulo": "Class group",
+        "valor": "Installation bus systems"
+      },
+      {
+        "titulo": "Class",
+        "valor": "Movement sensor for bus system"
+      },
+      {
+        "titulo": "Bus system KNX",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Bus system KNX-RF (Radio Frequency)",
+        "valor": "No"
+      },
+      {
+        "titulo": "Bus system radio frequency",
+        "valor": "No"
+      },
+      {
+        "titulo": "Bus system LON",
+        "valor": "No"
+      },
+      {
+        "titulo": "Bus system Powernet",
+        "valor": "No"
+      },
+      {
+        "titulo": "Other bus systems",
+        "valor": "Other"
+      },
+      {
+        "titulo": "Radio frequency bidirectional",
+        "valor": "No"
+      },
+      {
+        "titulo": "Model",
+        "valor": "Movement sensor"
+      },
+      {
+        "titulo": "Mounting method",
+        "valor": "Flush-mounted"
+      },
+      {
+        "titulo": "Material",
+        "valor": "Plastic"
+      },
+      {
+        "titulo": "Material quality",
+        "valor": "Thermoplastic"
+      },
+      {
+        "titulo": "Surface protection",
+        "valor": "Untreated"
+      },
+      {
+        "titulo": "Surface finishing",
+        "valor": "Matt"
+      },
+      {
+        "titulo": "Colour",
+        "valor": "Black"
+      },
+      {
+        "titulo": "RAL-number (similar)",
+        "valor": "7021"
+      },
+      {
+        "titulo": "Transparent",
+        "valor": "No"
+      },
+      {
+        "titulo": "With bus connection",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Substation input",
+        "valor": "No"
+      },
+      {
+        "titulo": "Creep-under protection",
+        "valor": "No"
+      },
+      {
+        "titulo": "Operation mode switch",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Animal zone",
+        "valor": "No"
+      },
+      {
+        "titulo": "Staircase light controller",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Response value luminosity adjustable",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Teach-function for response value luminosity",
+        "valor": "No"
+      },
+      {
+        "titulo": "Switch-off delay self-learning",
+        "valor": "No"
+      },
+      {
+        "titulo": "DALI-2 certified",
+        "valor": "No"
+      },
+      {
+        "titulo": "Max. reach sideways",
+        "valor": "10,00 m"
+      },
+      {
+        "titulo": "Max. reach frontally",
+        "valor": "10 m"
+      },
+      {
+        "titulo": "Diameter reach on floor",
+        "valor": "0,00 m"
+      },
+      {
+        "titulo": "Detection angle vertical",
+        "valor": "0 - 36"
+      },
+      {
+        "titulo": "Detection angle horizontal",
+        "valor": "0,00 - 112,00"
+      },
+      {
+        "titulo": "Switching power",
+        "valor": "0 W"
+      },
+      {
+        "titulo": "Width",
+        "valor": "44,70 mm"
+      },
+      {
+        "titulo": "Height",
+        "valor": "52,80 mm"
+      },
+      {
+        "titulo": "Depth",
+        "valor": "36,90 mm"
+      },
+      {
+        "titulo": "Built-in width",
+        "valor": "44,70 mm"
+      },
+      {
+        "titulo": "Built-in depth",
+        "valor": "24,10 mm"
+      },
+      {
+        "titulo": "Built-in length",
+        "valor": "52,80 mm"
+      }
+    ],
+    "pedido_minimo": "1 NR",
+    "ean": "8007352691780",
+    "embalajes": [
+      {
+        "ean": "8007352691780",
+        "cantidad": "1 NR",
+        "medidas": "6x5,4x5,2 [cm]",
+        "peso": "44,65 [g]"
+      },
+      {
+        "ean": "8007352691797",
+        "cantidad": "10 NR",
+        "medidas": "28,1x13,1x6 [cm]",
+        "peso": "534 [g]"
+      }
+    ],
+    "relacionados": [],
+    "url": "https://www.vimar.com/es/int/catalog/product/index/code/30575.G"
+  },
+  {
+    "codigo": "30580",
+    "nombre": "Mando KNX 4 pulsadores 2M",
+    "descripcion": "Dispositivo de mando de cuatro pulsadores, estándar KNX, detección en la oscuridad por LED RGB con regulación de intensidad; se completa con dos medias teclas intercambiables de 1 o 2 módulos - 2 módulos",
+    "ruta": "Sistemas+productos smart / KNX / LINEA / Dispositivos",
+    "estado": "3 - Activo",
+    "imagen": "https://www.vimar.com/irj/go/km/docs/z_catalogo/MAIN_IMAGE/30580-vimar-linea-comando-knx-4-pulsanti-2m.109141.jpg",
+    "ficha_pdf": "https://www.vimar.com/es/int/catalog/product/download-pdf/code/30580?type=.pdf",
+    "dibujos": [
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGESIZE/DI_30580.99053.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGESIZE/DI_30580.99054.DXF"
+      },
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGEREAR/VP_30580.102459.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGEREAR/VP_30580.102460.DXF"
+      },
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/3DIMAGE/EA_30580.98989.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/3DIMAGE/EA_30580.98990.DXF"
+      }
+    ],
+    "certificados": [
+      {
+        "titulo": "27. KNX",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/CERTIFICATE/01580_certificate-18066.102794.pdf"
+      },
+      {
+        "titulo": "46. UK PSTI compliance",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/CERTIFICATE/ZAT01744.108577.00.pdf"
+      },
+      {
+        "titulo": "96. Experto electrotécnico",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/CERTIFICATE/Espertoelettrotecnico.116413.pdf"
+      },
+      {
+        "titulo": "99. Directiva RAEE",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/CERTIFICATE/IndicazioniRAEE2024.109839.pdf"
+      }
+    ],
+    "etim": [
+      {
+        "titulo": "Class group",
+        "valor": "Installation bus systems"
+      },
+      {
+        "titulo": "Class",
+        "valor": "Multi operating device for bus system"
+      },
+      {
+        "titulo": "Bus system KNX",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Bus system KNX-RF (Radio Frequency)",
+        "valor": "No"
+      },
+      {
+        "titulo": "Bus system radio frequency",
+        "valor": "No"
+      },
+      {
+        "titulo": "Bus system LON",
+        "valor": "No"
+      },
+      {
+        "titulo": "Bus system Powernet",
+        "valor": "No"
+      },
+      {
+        "titulo": "Other bus systems",
+        "valor": "Other"
+      },
+      {
+        "titulo": "Radio frequency bidirectional",
+        "valor": "No"
+      },
+      {
+        "titulo": "Mounting method",
+        "valor": "Flush-mounted"
+      },
+      {
+        "titulo": "Width in number of modular spacings",
+        "valor": "2"
+      },
+      {
+        "titulo": "Number of actuation points",
+        "valor": "4"
+      },
+      {
+        "titulo": "With display",
+        "valor": "No"
+      },
+      {
+        "titulo": "Status-LED",
+        "valor": "Si"
+      },
+      {
+        "titulo": "IR sensor",
+        "valor": "No"
+      },
+      {
+        "titulo": "Manual set point setting",
+        "valor": "No"
+      },
+      {
+        "titulo": "Presence button",
+        "valor": "No"
+      },
+      {
+        "titulo": "With temperature controller",
+        "valor": "No"
+      },
+      {
+        "titulo": "With integrated DCF77 receiver",
+        "valor": "No"
+      },
+      {
+        "titulo": "With time switch clock",
+        "valor": "No"
+      },
+      {
+        "titulo": "With anti-theft/dismantling protection",
+        "valor": "No"
+      },
+      {
+        "titulo": "Central functional unit for senders/actuators",
+        "valor": "No"
+      },
+      {
+        "titulo": "Material",
+        "valor": "Plastic"
+      },
+      {
+        "titulo": "Material quality",
+        "valor": "Thermoplastic"
+      },
+      {
+        "titulo": "Surface protection",
+        "valor": "Untreated"
+      },
+      {
+        "titulo": "Surface finishing",
+        "valor": "Matt"
+      },
+      {
+        "titulo": "Colour",
+        "valor": "Black"
+      },
+      {
+        "titulo": "RAL-number (similar)",
+        "valor": "7021"
+      },
+      {
+        "titulo": "Transparent",
+        "valor": "No"
+      },
+      {
+        "titulo": "Degree of protection (IP)",
+        "valor": "IP40"
+      },
+      {
+        "titulo": "With bus connection",
+        "valor": "Si"
+      }
+    ],
+    "pedido_minimo": "1 NR",
+    "ean": "8007352679757",
+    "embalajes": [
+      {
+        "ean": "8007352679757",
+        "cantidad": "1 NR",
+        "medidas": "6x4,5x5,4 [cm]",
+        "peso": "36,8 [g]"
+      },
+      {
+        "ean": "8007352679771",
+        "cantidad": "72 NR",
+        "medidas": "37,5x30x13,5 [cm]",
+        "peso": "2.980 [g]"
+      }
+    ],
+    "relacionados": [
+      "31480.B",
+      "31480.C",
+      "31480.G",
+      "31480.FB",
+      "31480.FC",
+      "31480.FG",
+      "31480.2G",
+      "31480.2B",
+      "31480.2C"
+    ],
+    "url": "https://www.vimar.com/es/int/catalog/product/index/code/30580"
+  },
+  {
+    "codigo": "30581",
+    "nombre": "Mando KNX 4 pulsadores+actuador 2M",
+    "descripcion": "Dispositivo de mando de cuatro pulsadores y actuador con salida de relé conmutada 16 A 120-240 V~ 50/60 Hz, estándar KNX, visibilidad en la oscuridad con LED RGB con regulación de intensidad; se completa con dos medias teclas intercambiables de 1 o 2 módulos - 2 módulos",
+    "ruta": "Sistemas+productos smart / KNX / LINEA / Dispositivos",
+    "estado": "3 - Activo",
+    "imagen": "https://www.vimar.com/irj/go/km/docs/z_catalogo/MAIN_IMAGE/30581-vimar-linea-comando-knx-4-pulsanti-attuatore-2m.109142.jpg",
+    "ficha_pdf": "https://www.vimar.com/es/int/catalog/product/download-pdf/code/30581?type=.pdf",
+    "dibujos": [
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGESIZE/DI_30581.99055.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGESIZE/DI_30581.99056.DXF"
+      },
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGEREAR/VP_30581.102461.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGEREAR/VP_30581.102462.DXF"
+      },
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/3DIMAGE/EA_30581.98991.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/3DIMAGE/EA_30581.98992.DXF"
+      }
+    ],
+    "certificados": [
+      {
+        "titulo": "27. KNX",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/CERTIFICATE/01581_certificate-18069.108457.pdf"
+      },
+      {
+        "titulo": "46. UK PSTI compliance",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/CERTIFICATE/ZAT01744.108577.00.pdf"
+      },
+      {
+        "titulo": "96. Experto electrotécnico",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/CERTIFICATE/Espertoelettrotecnico.116413.pdf"
+      },
+      {
+        "titulo": "99. Directiva RAEE",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/CERTIFICATE/IndicazioniRAEE2024.109839.pdf"
+      }
+    ],
+    "etim": [
+      {
+        "titulo": "Class group",
+        "valor": "Installation bus systems"
+      },
+      {
+        "titulo": "Class",
+        "valor": "Multi operating device for bus system"
+      },
+      {
+        "titulo": "Bus system KNX",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Bus system KNX-RF (Radio Frequency)",
+        "valor": "No"
+      },
+      {
+        "titulo": "Bus system radio frequency",
+        "valor": "No"
+      },
+      {
+        "titulo": "Bus system LON",
+        "valor": "No"
+      },
+      {
+        "titulo": "Bus system Powernet",
+        "valor": "No"
+      },
+      {
+        "titulo": "Other bus systems",
+        "valor": "Other"
+      },
+      {
+        "titulo": "Radio frequency bidirectional",
+        "valor": "No"
+      },
+      {
+        "titulo": "Mounting method",
+        "valor": "Flush-mounted"
+      },
+      {
+        "titulo": "Width in number of modular spacings",
+        "valor": "2"
+      },
+      {
+        "titulo": "Number of actuation points",
+        "valor": "4"
+      },
+      {
+        "titulo": "With display",
+        "valor": "No"
+      },
+      {
+        "titulo": "Status-LED",
+        "valor": "Si"
+      },
+      {
+        "titulo": "IR sensor",
+        "valor": "No"
+      },
+      {
+        "titulo": "Manual set point setting",
+        "valor": "No"
+      },
+      {
+        "titulo": "Presence button",
+        "valor": "No"
+      },
+      {
+        "titulo": "With temperature controller",
+        "valor": "No"
+      },
+      {
+        "titulo": "With integrated DCF77 receiver",
+        "valor": "No"
+      },
+      {
+        "titulo": "With time switch clock",
+        "valor": "No"
+      },
+      {
+        "titulo": "With anti-theft/dismantling protection",
+        "valor": "No"
+      },
+      {
+        "titulo": "Central functional unit for senders/actuators",
+        "valor": "No"
+      },
+      {
+        "titulo": "Material",
+        "valor": "Plastic"
+      },
+      {
+        "titulo": "Material quality",
+        "valor": "Thermoplastic"
+      },
+      {
+        "titulo": "Surface protection",
+        "valor": "Untreated"
+      },
+      {
+        "titulo": "Surface finishing",
+        "valor": "Matt"
+      },
+      {
+        "titulo": "Colour",
+        "valor": "Black"
+      },
+      {
+        "titulo": "RAL-number (similar)",
+        "valor": "7021"
+      },
+      {
+        "titulo": "Transparent",
+        "valor": "No"
+      },
+      {
+        "titulo": "Degree of protection (IP)",
+        "valor": "IP40"
+      },
+      {
+        "titulo": "With bus connection",
+        "valor": "Si"
+      }
+    ],
+    "pedido_minimo": "1 NR",
+    "ean": "8007352679788",
+    "embalajes": [
+      {
+        "ean": "8007352679788",
+        "cantidad": "1 NR",
+        "medidas": "6x5,4x5,2 [cm]",
+        "peso": "62,2 [g]"
+      },
+      {
+        "ean": "8007352679801",
+        "cantidad": "60 NR",
+        "medidas": "37,5x30x13,5 [cm]",
+        "peso": "4.050 [g]"
+      }
+    ],
+    "relacionados": [
+      "31480.B",
+      "31480.C",
+      "31480.G",
+      "31480.FB",
+      "31480.FC",
+      "31480.FG",
+      "31480.2G",
+      "31480.2B",
+      "31480.2C"
+    ],
+    "url": "https://www.vimar.com/es/int/catalog/product/index/code/30581"
+  },
+  {
+    "codigo": "30582",
+    "nombre": "Mando KNX 4 pulsadores+pers.láminas 2M",
+    "descripcion": "Dispositivo de mando de cuatro pulsadores y actuador para 1 persiana con orientación de láminas con salida de relé conmutada para motor† 0,6 2 A 120-240 V~ 50/60 Hz, estándar KNX, visibilidad en la oscuridad con LED RGB con regulación de intensidad; se completa con dos medias teclas intercambiables de 1 o 2 módulos - 2 módulos",
+    "ruta": "Sistemas+productos smart / KNX / LINEA / Dispositivos",
+    "estado": "3 - Activo",
+    "imagen": "https://www.vimar.com/irj/go/km/docs/z_catalogo/MAIN_IMAGE/30582-vimar-linea-comando-knx-4-pulsanti-tappar-lamelle-2m.109143.jpg",
+    "ficha_pdf": "https://www.vimar.com/es/int/catalog/product/download-pdf/code/30582?type=.pdf",
+    "dibujos": [
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGESIZE/DI_30582.99057.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGESIZE/DI_30582.99058.DXF"
+      },
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGEREAR/VP_30582.99025.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGEREAR/VP_30582.99026.DXF"
+      },
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/3DIMAGE/EA_30582.98993.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/3DIMAGE/EA_30582.98994.DXF"
+      }
+    ],
+    "certificados": [
+      {
+        "titulo": "27. KNX",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/CERTIFICATE/01582_certificate-18070.108458.pdf"
+      },
+      {
+        "titulo": "46. UK PSTI compliance",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/CERTIFICATE/ZAT01744.108577.00.pdf"
+      },
+      {
+        "titulo": "96. Experto electrotécnico",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/CERTIFICATE/Espertoelettrotecnico.116413.pdf"
+      },
+      {
+        "titulo": "99. Directiva RAEE",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/CERTIFICATE/IndicazioniRAEE2024.109839.pdf"
+      }
+    ],
+    "etim": [
+      {
+        "titulo": "Class group",
+        "valor": "Installation bus systems"
+      },
+      {
+        "titulo": "Class",
+        "valor": "Multi operating device for bus system"
+      },
+      {
+        "titulo": "Bus system KNX",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Bus system KNX-RF (Radio Frequency)",
+        "valor": "No"
+      },
+      {
+        "titulo": "Bus system radio frequency",
+        "valor": "No"
+      },
+      {
+        "titulo": "Bus system LON",
+        "valor": "No"
+      },
+      {
+        "titulo": "Bus system Powernet",
+        "valor": "No"
+      },
+      {
+        "titulo": "Other bus systems",
+        "valor": "Other"
+      },
+      {
+        "titulo": "Radio frequency bidirectional",
+        "valor": "No"
+      },
+      {
+        "titulo": "Mounting method",
+        "valor": "Flush-mounted"
+      },
+      {
+        "titulo": "Width in number of modular spacings",
+        "valor": "2"
+      },
+      {
+        "titulo": "Number of actuation points",
+        "valor": "4"
+      },
+      {
+        "titulo": "With display",
+        "valor": "No"
+      },
+      {
+        "titulo": "Status-LED",
+        "valor": "Si"
+      },
+      {
+        "titulo": "IR sensor",
+        "valor": "No"
+      },
+      {
+        "titulo": "Manual set point setting",
+        "valor": "No"
+      },
+      {
+        "titulo": "Presence button",
+        "valor": "No"
+      },
+      {
+        "titulo": "With temperature controller",
+        "valor": "No"
+      },
+      {
+        "titulo": "With integrated DCF77 receiver",
+        "valor": "No"
+      },
+      {
+        "titulo": "With time switch clock",
+        "valor": "No"
+      },
+      {
+        "titulo": "With anti-theft/dismantling protection",
+        "valor": "No"
+      },
+      {
+        "titulo": "Central functional unit for senders/actuators",
+        "valor": "No"
+      },
+      {
+        "titulo": "Material",
+        "valor": "Plastic"
+      },
+      {
+        "titulo": "Material quality",
+        "valor": "Thermoplastic"
+      },
+      {
+        "titulo": "Surface protection",
+        "valor": "Untreated"
+      },
+      {
+        "titulo": "Surface finishing",
+        "valor": "Matt"
+      },
+      {
+        "titulo": "Colour",
+        "valor": "Other"
+      },
+      {
+        "titulo": "RAL-number (similar)",
+        "valor": "7024"
+      },
+      {
+        "titulo": "Transparent",
+        "valor": "No"
+      },
+      {
+        "titulo": "Degree of protection (IP)",
+        "valor": "IP40"
+      },
+      {
+        "titulo": "With bus connection",
+        "valor": "Si"
+      }
+    ],
+    "pedido_minimo": "1 NR",
+    "ean": "8007352689497",
+    "embalajes": [
+      {
+        "ean": "8007352689497",
+        "cantidad": "1 NR",
+        "medidas": "6x5,4x5,2 [cm]",
+        "peso": "61,4 [g]"
+      },
+      {
+        "ean": "8007352689503",
+        "cantidad": "60 NR",
+        "medidas": "37,5x30x13,5 [cm]",
+        "peso": "3.995 [g]"
+      }
+    ],
+    "relacionados": [
+      "31480.B",
+      "31480.C",
+      "31480.G",
+      "31480.FB",
+      "31480.FC",
+      "31480.FG",
+      "31480.2FB",
+      "31480.2FC",
+      "31480.2FG"
+    ],
+    "url": "https://www.vimar.com/es/int/catalog/product/index/code/30582"
+  },
+  {
+    "codigo": "30583",
+    "nombre": "Mando KNX Secure 4 botones 2M",
+    "descripcion": "Dispositivo de mando de cuatro pulsadores, estándar KNX Secure, visibilidad en la oscuridad por LED RGB con regulación de intensidad; sensor de temperatura integrado, se completa con dos medias teclas intercambiables de 1 o 2 módulos - 2 módulos",
+    "ruta": "Sistemas+productos smart / KNX / LINEA / Dispositivos",
+    "estado": "3 - Activo",
+    "imagen": "https://www.vimar.com/irj/go/km/docs/z_catalogo/MAIN_IMAGE/30583-vimar-knx-comando-knx-secure-4-pulsanti-2m.108663.jpg",
+    "ficha_pdf": "https://www.vimar.com/es/int/catalog/product/download-pdf/code/30583?type=.pdf",
+    "dibujos": [
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGESIZE/DI_30583.108279.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGESIZE/DI_30583.108280.DXF"
+      },
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGEREAR/VP_30583.108259.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGEREAR/VP_30583.108260.DXF"
+      },
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/3DIMAGE/EA_30583.108239.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/3DIMAGE/EA_30583.108240.DXF"
+      }
+    ],
+    "certificados": [
+      {
+        "titulo": "46. UK PSTI compliance",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/CERTIFICATE/P620.108919.pdf"
+      },
+      {
+        "titulo": "96. Experto electrotécnico",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/CERTIFICATE/Espertoelettrotecnico.116413.pdf"
+      },
+      {
+        "titulo": "99. Directiva RAEE",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/CERTIFICATE/IndicazioniRAEE2024.109839.pdf"
+      }
+    ],
+    "etim": [
+      {
+        "titulo": "Class group",
+        "valor": "Installation bus systems"
+      },
+      {
+        "titulo": "Class",
+        "valor": "Multi operating device for bus system"
+      },
+      {
+        "titulo": "Bus system KNX",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Bus system KNX-RF (Radio Frequency)",
+        "valor": "No"
+      },
+      {
+        "titulo": "Bus system radio frequency",
+        "valor": "No"
+      },
+      {
+        "titulo": "Bus system LON",
+        "valor": "No"
+      },
+      {
+        "titulo": "Bus system Powernet",
+        "valor": "No"
+      },
+      {
+        "titulo": "Other bus systems",
+        "valor": "None"
+      },
+      {
+        "titulo": "Radio frequency bidirectional",
+        "valor": "No"
+      },
+      {
+        "titulo": "Mounting method",
+        "valor": "Flush-mounted"
+      },
+      {
+        "titulo": "Width in number of modular spacings",
+        "valor": "0"
+      },
+      {
+        "titulo": "Number of actuation points",
+        "valor": "4"
+      },
+      {
+        "titulo": "With display",
+        "valor": "No"
+      },
+      {
+        "titulo": "Status-LED",
+        "valor": "Si"
+      },
+      {
+        "titulo": "IR sensor",
+        "valor": "No"
+      },
+      {
+        "titulo": "Manual set point setting",
+        "valor": "No"
+      },
+      {
+        "titulo": "Presence button",
+        "valor": "Si"
+      },
+      {
+        "titulo": "With temperature controller",
+        "valor": "No"
+      },
+      {
+        "titulo": "With integrated DCF77 receiver",
+        "valor": "No"
+      },
+      {
+        "titulo": "With time switch clock",
+        "valor": "No"
+      },
+      {
+        "titulo": "With anti-theft/dismantling protection",
+        "valor": "No"
+      },
+      {
+        "titulo": "Central functional unit for senders/actuators",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Material",
+        "valor": "Plastic"
+      },
+      {
+        "titulo": "Material quality",
+        "valor": "Thermoplastic"
+      },
+      {
+        "titulo": "Surface protection",
+        "valor": "Untreated"
+      },
+      {
+        "titulo": "Surface finishing",
+        "valor": "Matt"
+      },
+      {
+        "titulo": "Colour",
+        "valor": "Other"
+      },
+      {
+        "titulo": "RAL-number (similar)",
+        "valor": "7024"
+      },
+      {
+        "titulo": "Transparent",
+        "valor": "No"
+      },
+      {
+        "titulo": "Degree of protection (IP)",
+        "valor": "IP20"
+      },
+      {
+        "titulo": "With bus connection",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Min. depth of built-in installation box",
+        "valor": "25,00 mm"
+      }
+    ],
+    "pedido_minimo": "1 NR",
+    "ean": "8007352756113",
+    "embalajes": [
+      {
+        "ean": "8007352756113",
+        "cantidad": "1 NR",
+        "medidas": "6x5,4x5,2 [cm]",
+        "peso": "38,4 [g]"
+      },
+      {
+        "ean": "8007352756120",
+        "cantidad": "60 NR",
+        "medidas": "37,5x30x13,5 [cm]",
+        "peso": "2.624 [g]"
+      }
+    ],
+    "relacionados": [
+      "31480.B",
+      "31480.C",
+      "31480.G",
+      "31480.FB",
+      "31480.FC",
+      "31480.FG"
+    ],
+    "url": "https://www.vimar.com/es/int/catalog/product/index/code/30583"
+  },
+  {
+    "codigo": "30585",
+    "nombre": "Mando KNX 6 pulsadores 3M",
+    "descripcion": "Dispositivo de mando de seis pulsadores, estándar KNX, detección en la oscuridad por LED RGB con regulación de intensidad; se completa con dos medias teclas intercambiables de 1 o 2 módulos - 3 módulos",
+    "ruta": "Sistemas+productos smart / KNX / LINEA / Dispositivos",
+    "estado": "3 - Activo",
+    "imagen": "https://www.vimar.com/irj/go/km/docs/z_catalogo/MAIN_IMAGE/30585-vimar-linea-comando-knx-6-pulsanti-3m.109144.jpg",
+    "ficha_pdf": "https://www.vimar.com/es/int/catalog/product/download-pdf/code/30585?type=.pdf",
+    "dibujos": [
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGESIZE/DI_30585.99059.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGESIZE/DI_30585.99060.DXF"
+      },
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGEREAR/VP_30585.102463.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGEREAR/VP_30585.102464.DXF"
+      },
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/3DIMAGE/EA_30585.98995.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/3DIMAGE/EA_30585.98996.DXF"
+      }
+    ],
+    "certificados": [
+      {
+        "titulo": "27. KNX",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/CERTIFICATE/01585_certificate-18067.108459.pdf"
+      },
+      {
+        "titulo": "46. UK PSTI compliance",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/CERTIFICATE/ZAT01744.108577.00.pdf"
+      },
+      {
+        "titulo": "96. Experto electrotécnico",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/CERTIFICATE/Espertoelettrotecnico.116413.pdf"
+      },
+      {
+        "titulo": "99. Directiva RAEE",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/CERTIFICATE/IndicazioniRAEE2024.109839.pdf"
+      }
+    ],
+    "etim": [
+      {
+        "titulo": "Class group",
+        "valor": "Installation bus systems"
+      },
+      {
+        "titulo": "Class",
+        "valor": "Multi operating device for bus system"
+      },
+      {
+        "titulo": "Bus system KNX",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Bus system KNX-RF (Radio Frequency)",
+        "valor": "No"
+      },
+      {
+        "titulo": "Bus system radio frequency",
+        "valor": "No"
+      },
+      {
+        "titulo": "Bus system LON",
+        "valor": "No"
+      },
+      {
+        "titulo": "Bus system Powernet",
+        "valor": "No"
+      },
+      {
+        "titulo": "Other bus systems",
+        "valor": "Other"
+      },
+      {
+        "titulo": "Radio frequency bidirectional",
+        "valor": "No"
+      },
+      {
+        "titulo": "Mounting method",
+        "valor": "Flush-mounted"
+      },
+      {
+        "titulo": "Width in number of modular spacings",
+        "valor": "3"
+      },
+      {
+        "titulo": "Number of actuation points",
+        "valor": "6"
+      },
+      {
+        "titulo": "With display",
+        "valor": "No"
+      },
+      {
+        "titulo": "Status-LED",
+        "valor": "Si"
+      },
+      {
+        "titulo": "IR sensor",
+        "valor": "No"
+      },
+      {
+        "titulo": "Manual set point setting",
+        "valor": "No"
+      },
+      {
+        "titulo": "Presence button",
+        "valor": "No"
+      },
+      {
+        "titulo": "With temperature controller",
+        "valor": "No"
+      },
+      {
+        "titulo": "With integrated DCF77 receiver",
+        "valor": "No"
+      },
+      {
+        "titulo": "With time switch clock",
+        "valor": "No"
+      },
+      {
+        "titulo": "With anti-theft/dismantling protection",
+        "valor": "No"
+      },
+      {
+        "titulo": "Central functional unit for senders/actuators",
+        "valor": "No"
+      },
+      {
+        "titulo": "Material",
+        "valor": "Plastic"
+      },
+      {
+        "titulo": "Material quality",
+        "valor": "Thermoplastic"
+      },
+      {
+        "titulo": "Surface protection",
+        "valor": "Untreated"
+      },
+      {
+        "titulo": "Surface finishing",
+        "valor": "Matt"
+      },
+      {
+        "titulo": "Colour",
+        "valor": "Other"
+      },
+      {
+        "titulo": "RAL-number (similar)",
+        "valor": "7024"
+      },
+      {
+        "titulo": "Transparent",
+        "valor": "No"
+      },
+      {
+        "titulo": "Degree of protection (IP)",
+        "valor": "IP40"
+      },
+      {
+        "titulo": "With bus connection",
+        "valor": "Si"
+      }
+    ],
+    "pedido_minimo": "1 NR",
+    "ean": "8007352689527",
+    "embalajes": [
+      {
+        "ean": "8007352689527",
+        "cantidad": "1 NR",
+        "medidas": "5,7x5,3x7,7 [cm]",
+        "peso": "48,68 [g]"
+      },
+      {
+        "ean": "8007352689534",
+        "cantidad": "70 NR",
+        "medidas": "39,5x30x17 [cm]",
+        "peso": "3.800 [g]"
+      }
+    ],
+    "relacionados": [
+      "31480.B",
+      "31480.C",
+      "31480.G",
+      "31480.FB",
+      "31480.FC",
+      "31480.FG",
+      "31480.2G",
+      "31480.2B",
+      "31480.2C"
+    ],
+    "url": "https://www.vimar.com/es/int/catalog/product/index/code/30585"
+  },
+  {
+    "codigo": "30586",
+    "nombre": "Mando KNX 6 pulsadores+actuador 3M",
+    "descripcion": "Dispositivo de mando de seis pulsadores y actuador con salida de relé conmutada 16 A 120-240 V~ 50/60 Hz, estándar KNX, visibilidad en la oscuridad con LED RGB con regulación de intensidad; se completa con dos medias teclas intercambiables de 1 o 2 módulos - 3 módulos",
+    "ruta": "Sistemas+productos smart / KNX / LINEA / Dispositivos",
+    "estado": "3 - Activo",
+    "imagen": "https://www.vimar.com/irj/go/km/docs/z_catalogo/MAIN_IMAGE/30586-vimar-linea-comando-knx-6-pulsanti-attuatore-3m.109145.jpg",
+    "ficha_pdf": "https://www.vimar.com/es/int/catalog/product/download-pdf/code/30586?type=.pdf",
+    "dibujos": [
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGESIZE/DI_30586.99061.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGESIZE/DI_30586.99062.DXF"
+      },
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGEREAR/VP_30586.102465.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGEREAR/VP_30586.102466.DXF"
+      },
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/3DIMAGE/EA_30586.98997.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/3DIMAGE/EA_30586.98998.DXF"
+      }
+    ],
+    "certificados": [
+      {
+        "titulo": "27. KNX",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/CERTIFICATE/01586_certificate-18068.108460.pdf"
+      },
+      {
+        "titulo": "46. UK PSTI compliance",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/CERTIFICATE/ZAT01744.108577.00.pdf"
+      },
+      {
+        "titulo": "96. Experto electrotécnico",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/CERTIFICATE/Espertoelettrotecnico.116413.pdf"
+      },
+      {
+        "titulo": "99. Directiva RAEE",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/CERTIFICATE/IndicazioniRAEE2024.109839.pdf"
+      }
+    ],
+    "etim": [
+      {
+        "titulo": "Class group",
+        "valor": "Installation bus systems"
+      },
+      {
+        "titulo": "Class",
+        "valor": "Multi operating device for bus system"
+      },
+      {
+        "titulo": "Bus system KNX",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Bus system KNX-RF (Radio Frequency)",
+        "valor": "No"
+      },
+      {
+        "titulo": "Bus system radio frequency",
+        "valor": "No"
+      },
+      {
+        "titulo": "Bus system LON",
+        "valor": "No"
+      },
+      {
+        "titulo": "Bus system Powernet",
+        "valor": "No"
+      },
+      {
+        "titulo": "Other bus systems",
+        "valor": "Other"
+      },
+      {
+        "titulo": "Radio frequency bidirectional",
+        "valor": "No"
+      },
+      {
+        "titulo": "Mounting method",
+        "valor": "Flush-mounted"
+      },
+      {
+        "titulo": "Width in number of modular spacings",
+        "valor": "3"
+      },
+      {
+        "titulo": "Number of actuation points",
+        "valor": "6"
+      },
+      {
+        "titulo": "With display",
+        "valor": "No"
+      },
+      {
+        "titulo": "Status-LED",
+        "valor": "Si"
+      },
+      {
+        "titulo": "IR sensor",
+        "valor": "No"
+      },
+      {
+        "titulo": "Manual set point setting",
+        "valor": "No"
+      },
+      {
+        "titulo": "Presence button",
+        "valor": "No"
+      },
+      {
+        "titulo": "With temperature controller",
+        "valor": "No"
+      },
+      {
+        "titulo": "With integrated DCF77 receiver",
+        "valor": "No"
+      },
+      {
+        "titulo": "With time switch clock",
+        "valor": "No"
+      },
+      {
+        "titulo": "With anti-theft/dismantling protection",
+        "valor": "No"
+      },
+      {
+        "titulo": "Central functional unit for senders/actuators",
+        "valor": "No"
+      },
+      {
+        "titulo": "Material",
+        "valor": "Plastic"
+      },
+      {
+        "titulo": "Material quality",
+        "valor": "Thermoplastic"
+      },
+      {
+        "titulo": "Surface protection",
+        "valor": "Untreated"
+      },
+      {
+        "titulo": "Surface finishing",
+        "valor": "Matt"
+      },
+      {
+        "titulo": "Colour",
+        "valor": "Other"
+      },
+      {
+        "titulo": "RAL-number (similar)",
+        "valor": "7024"
+      },
+      {
+        "titulo": "Transparent",
+        "valor": "No"
+      },
+      {
+        "titulo": "Degree of protection (IP)",
+        "valor": "IP40"
+      },
+      {
+        "titulo": "With bus connection",
+        "valor": "Si"
+      }
+    ],
+    "pedido_minimo": "1 NR",
+    "ean": "8007352679955",
+    "embalajes": [
+      {
+        "ean": "8007352679955",
+        "cantidad": "1 NR",
+        "medidas": "5,7x5,3x7,7 [cm]",
+        "peso": "72,4 [g]"
+      },
+      {
+        "ean": "8007352679986",
+        "cantidad": "70 NR",
+        "medidas": "39,5x30x17 [cm]",
+        "peso": "5.450 [g]"
+      }
+    ],
+    "relacionados": [
+      "31480.B",
+      "31480.C",
+      "31480.G",
+      "31480.FB",
+      "31480.FC",
+      "31480.FG",
+      "31480.2G",
+      "31480.2B",
+      "31480.2C"
+    ],
+    "url": "https://www.vimar.com/es/int/catalog/product/index/code/30586"
+  },
+  {
+    "codigo": "30587",
+    "nombre": "Mando KNX 6 pulsadores+pers.láminas 3M",
+    "descripcion": "Dispositivo de mando de seis pulsadores y actuador para 1 persiana con orientación de láminas con salida de relé conmutada para motor† 0,6 2 A 120-240 V~ 50/60 Hz, estándar KNX, visibilidad en la oscuridad con LED RGB con regulación de intensidad; se completa con dos medias teclas intercambiables de 1 o 2 módulos - 3 módulos",
+    "ruta": "Sistemas+productos smart / KNX / LINEA / Dispositivos",
+    "estado": "3 - Activo",
+    "imagen": "https://www.vimar.com/irj/go/km/docs/z_catalogo/MAIN_IMAGE/30587-vimar-linea-comando-knx-6-pulsanti-tappar-lamelle-3m.109146.jpg",
+    "ficha_pdf": "https://www.vimar.com/es/int/catalog/product/download-pdf/code/30587?type=.pdf",
+    "dibujos": [
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGESIZE/DI_30587.99063.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGESIZE/DI_30587.99064.DXF"
+      },
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGEREAR/VP_30587.102467.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGEREAR/VP_30587.102468.DXF"
+      },
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/3DIMAGE/EA_30587.98999.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/3DIMAGE/EA_30587.99000.DXF"
+      }
+    ],
+    "certificados": [
+      {
+        "titulo": "27. KNX",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/CERTIFICATE/01587_certificate-18071.108461.pdf"
+      },
+      {
+        "titulo": "46. UK PSTI compliance",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/CERTIFICATE/ZAT01744.108577.00.pdf"
+      },
+      {
+        "titulo": "96. Experto electrotécnico",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/CERTIFICATE/Espertoelettrotecnico.116413.pdf"
+      },
+      {
+        "titulo": "99. Directiva RAEE",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/CERTIFICATE/IndicazioniRAEE2024.109839.pdf"
+      }
+    ],
+    "etim": [
+      {
+        "titulo": "Class group",
+        "valor": "Installation bus systems"
+      },
+      {
+        "titulo": "Class",
+        "valor": "Multi operating device for bus system"
+      },
+      {
+        "titulo": "Bus system KNX",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Bus system KNX-RF (Radio Frequency)",
+        "valor": "No"
+      },
+      {
+        "titulo": "Bus system radio frequency",
+        "valor": "No"
+      },
+      {
+        "titulo": "Bus system LON",
+        "valor": "No"
+      },
+      {
+        "titulo": "Bus system Powernet",
+        "valor": "No"
+      },
+      {
+        "titulo": "Other bus systems",
+        "valor": "Other"
+      },
+      {
+        "titulo": "Radio frequency bidirectional",
+        "valor": "No"
+      },
+      {
+        "titulo": "Mounting method",
+        "valor": "Flush-mounted"
+      },
+      {
+        "titulo": "Width in number of modular spacings",
+        "valor": "3"
+      },
+      {
+        "titulo": "Number of actuation points",
+        "valor": "6"
+      },
+      {
+        "titulo": "With display",
+        "valor": "No"
+      },
+      {
+        "titulo": "Status-LED",
+        "valor": "Si"
+      },
+      {
+        "titulo": "IR sensor",
+        "valor": "No"
+      },
+      {
+        "titulo": "Manual set point setting",
+        "valor": "No"
+      },
+      {
+        "titulo": "Presence button",
+        "valor": "No"
+      },
+      {
+        "titulo": "With temperature controller",
+        "valor": "No"
+      },
+      {
+        "titulo": "With integrated DCF77 receiver",
+        "valor": "No"
+      },
+      {
+        "titulo": "With time switch clock",
+        "valor": "No"
+      },
+      {
+        "titulo": "With anti-theft/dismantling protection",
+        "valor": "No"
+      },
+      {
+        "titulo": "Central functional unit for senders/actuators",
+        "valor": "No"
+      },
+      {
+        "titulo": "Material",
+        "valor": "Plastic"
+      },
+      {
+        "titulo": "Material quality",
+        "valor": "Thermoplastic"
+      },
+      {
+        "titulo": "Surface protection",
+        "valor": "Untreated"
+      },
+      {
+        "titulo": "Surface finishing",
+        "valor": "Matt"
+      },
+      {
+        "titulo": "Colour",
+        "valor": "Other"
+      },
+      {
+        "titulo": "RAL-number (similar)",
+        "valor": "7024"
+      },
+      {
+        "titulo": "Transparent",
+        "valor": "No"
+      },
+      {
+        "titulo": "Degree of protection (IP)",
+        "valor": "IP40"
+      },
+      {
+        "titulo": "With bus connection",
+        "valor": "Si"
+      }
+    ],
+    "pedido_minimo": "1 NR",
+    "ean": "8007352690905",
+    "embalajes": [
+      {
+        "ean": "8007352690905",
+        "cantidad": "1 NR",
+        "medidas": "5,7x5,3x7,7 [cm]",
+        "peso": "71,4 [g]"
+      },
+      {
+        "ean": "8007352689510",
+        "cantidad": "70 NR",
+        "medidas": "39,5x30x17 [cm]",
+        "peso": "5.381 [g]"
+      }
+    ],
+    "relacionados": [
+      "31480.B",
+      "31480.C",
+      "31480.G",
+      "31480.FB",
+      "31480.FC",
+      "31480.FG",
+      "31480.2FB",
+      "31480.2FC",
+      "31480.2FG"
+    ],
+    "url": "https://www.vimar.com/es/int/catalog/product/index/code/30587"
+  },
+  {
+    "codigo": "30588",
+    "nombre": "Mando KNX Secure 6 botones 3M",
+    "descripcion": "Dispositivo de mando de seis pulsadores, estándar KNX Secure, visibilidad en la oscuridad por LED RGB con regulación de intensidad; se completa con dos medias teclas intercambiables de 1 o 2 módulos - 3 módulos",
+    "ruta": "Sistemas+productos smart / KNX / LINEA / Dispositivos",
+    "estado": "3 - Activo",
+    "imagen": "https://www.vimar.com/irj/go/km/docs/z_catalogo/MAIN_IMAGE/30588-vimar-knx-comando-knx-secure-6-pulsanti-3m.108664.jpg",
+    "ficha_pdf": "https://www.vimar.com/es/int/catalog/product/download-pdf/code/30588?type=.pdf",
+    "dibujos": [
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGESIZE/DI_30588.108281.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGESIZE/DI_30588.108282.DXF"
+      },
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGEREAR/VP_30588.108261.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGEREAR/VP_30588.108262.DXF"
+      },
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/3DIMAGE/EA_30588.108241.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/3DIMAGE/EA_30588.108242.DXF"
+      }
+    ],
+    "certificados": [
+      {
+        "titulo": "46. UK PSTI compliance",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/CERTIFICATE/P620.108919.pdf"
+      },
+      {
+        "titulo": "96. Experto electrotécnico",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/CERTIFICATE/Espertoelettrotecnico.116413.pdf"
+      },
+      {
+        "titulo": "99. Directiva RAEE",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/CERTIFICATE/IndicazioniRAEE2024.109839.pdf"
+      }
+    ],
+    "etim": [
+      {
+        "titulo": "Class group",
+        "valor": "Installation bus systems"
+      },
+      {
+        "titulo": "Class",
+        "valor": "Multi operating device for bus system"
+      },
+      {
+        "titulo": "Bus system KNX",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Bus system KNX-RF (Radio Frequency)",
+        "valor": "No"
+      },
+      {
+        "titulo": "Bus system radio frequency",
+        "valor": "No"
+      },
+      {
+        "titulo": "Bus system LON",
+        "valor": "No"
+      },
+      {
+        "titulo": "Bus system Powernet",
+        "valor": "No"
+      },
+      {
+        "titulo": "Other bus systems",
+        "valor": "None"
+      },
+      {
+        "titulo": "Radio frequency bidirectional",
+        "valor": "No"
+      },
+      {
+        "titulo": "Mounting method",
+        "valor": "Flush-mounted"
+      },
+      {
+        "titulo": "Width in number of modular spacings",
+        "valor": "0"
+      },
+      {
+        "titulo": "Number of actuation points",
+        "valor": "6"
+      },
+      {
+        "titulo": "With display",
+        "valor": "No"
+      },
+      {
+        "titulo": "Status-LED",
+        "valor": "Si"
+      },
+      {
+        "titulo": "IR sensor",
+        "valor": "No"
+      },
+      {
+        "titulo": "Manual set point setting",
+        "valor": "No"
+      },
+      {
+        "titulo": "Presence button",
+        "valor": "Si"
+      },
+      {
+        "titulo": "With temperature controller",
+        "valor": "No"
+      },
+      {
+        "titulo": "With integrated DCF77 receiver",
+        "valor": "No"
+      },
+      {
+        "titulo": "With time switch clock",
+        "valor": "No"
+      },
+      {
+        "titulo": "With anti-theft/dismantling protection",
+        "valor": "No"
+      },
+      {
+        "titulo": "Central functional unit for senders/actuators",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Material",
+        "valor": "Plastic"
+      },
+      {
+        "titulo": "Material quality",
+        "valor": "Thermoplastic"
+      },
+      {
+        "titulo": "Surface protection",
+        "valor": "Untreated"
+      },
+      {
+        "titulo": "Surface finishing",
+        "valor": "Matt"
+      },
+      {
+        "titulo": "Colour",
+        "valor": "Other"
+      },
+      {
+        "titulo": "RAL-number (similar)",
+        "valor": "7024"
+      },
+      {
+        "titulo": "Transparent",
+        "valor": "No"
+      },
+      {
+        "titulo": "Degree of protection (IP)",
+        "valor": "IP20"
+      },
+      {
+        "titulo": "With bus connection",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Min. depth of built-in installation box",
+        "valor": "25,00 mm"
+      }
+    ],
+    "pedido_minimo": "1 NR",
+    "ean": "8007352756137",
+    "embalajes": [
+      {
+        "ean": "8007352756137",
+        "cantidad": "1 NR",
+        "medidas": "5,7x5,3x7,7 [cm]",
+        "peso": "48,4 [g]"
+      },
+      {
+        "ean": "8007352756144",
+        "cantidad": "70 NR",
+        "medidas": "39,5x30x17 [cm]",
+        "peso": "3.774 [g]"
+      }
+    ],
+    "relacionados": [
+      "31480.B",
+      "31480.C",
+      "31480.G",
+      "31480.FB",
+      "31480.FC",
+      "31480.FG"
+    ],
+    "url": "https://www.vimar.com/es/int/catalog/product/index/code/30588"
+  }
+]

@@ -41,6 +41,7 @@ export const tiendaCompleta: GrupoTienda[] = [
     titulo: 'Smart Home',
     categorias: [
       // Vimar: KNX (más adelante, ByMe y View Wireless como secciones nuevas)
+      { nombre: 'Mecanismos Linea', slug: 'vimar-knx-linea', seccion: 'KNX' },
       { nombre: 'Mandos, pantallas y termostatos', slug: 'vimar-knx-dispositivos', seccion: 'KNX' },
       { nombre: 'Aparatos DIN y módulos', slug: 'vimar-knx-din', seccion: 'KNX' },
       { nombre: 'Software', slug: 'vimar-knx-software', seccion: 'KNX', visible: false }, // sin productos por ahora

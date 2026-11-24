@@ -351,7 +351,21 @@
     "Rated power": "Potencia nominal",
     "Suitable for distribution board": "Apto para cuadro de distribución",
     "Text field": "Campo de texto",
-    "Additional interfaces": "Interfaces adicionales"
+    "Additional interfaces": "Interfaces adicionales",
+    "Creep-under protection": "Protección contra reptación",
+    "Operation mode switch": "Selector de modo de funcionamiento",
+    "Animal zone": "Zona para animales",
+    "Staircase light controller": "Temporizador de escalera",
+    "Response value luminosity adjustable": "Umbral de luminosidad regulable",
+    "Teach-function for response value luminosity": "Aprendizaje del umbral de luminosidad",
+    "Switch-off delay self-learning": "Retardo de apagado autoaprendido",
+    "DALI-2 certified": "Certificado DALI-2",
+    "Max. reach sideways": "Alcance lateral máx.",
+    "Max. reach frontally": "Alcance frontal máx.",
+    "Diameter reach on floor": "Diámetro de alcance en el suelo",
+    "Detection angle vertical": "Ángulo de detección vertical",
+    "Detection angle horizontal": "Ángulo de detección horizontal",
+    "Switching power": "Potencia de conmutación"
   },
   "valores": {
     "Domestic switching devices": "Aparatos de maniobra domésticos",

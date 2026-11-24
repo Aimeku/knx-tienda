@@ -4,6 +4,7 @@
 // Uso:
 //   node scripts/vimar/generar-sql.mjs data/vimar/linea.json sql/seeds/vimar-linea            (Linea estándar)
 //   node scripts/vimar/generar-sql.mjs data/vimar/linea-knx.json sql/seeds/vimar-linea-knx knx (Smart Home KNX)
+//   node scripts/vimar/generar-sql.mjs data/vimar/linea-knx-mecanismos.json sql/seeds/vimar-knx-mecanismos knx-linea
 //
 // - Crea las categorías de la serie si no existen.
 // - Requiere la columna productos.orden (sql/006_orden_productos.sql).
@@ -36,6 +37,12 @@ const SERIES = {
       'Tapa ciega': { slug: 'vimar-linea-tapas-ciegas', nombre: 'Linea · Tapas ciegas', orden: 104 },
       Soportes: { slug: 'vimar-linea-accesorios', nombre: 'Linea · Accesorios y soportes', orden: 103 },
       Accesorios: { slug: 'vimar-linea-accesorios', nombre: 'Linea · Accesorios y soportes', orden: 103 },
+    },
+  },
+  'knx-linea': {
+    serie: 'KNX',
+    categorias: {
+      Dispositivos: { slug: 'vimar-knx-linea', nombre: 'KNX · Mecanismos Linea', orden: 109 },
     },
   },
   knx: {

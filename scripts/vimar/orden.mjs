@@ -14,9 +14,10 @@ const ORDEN_CATEGORIA = {
   'vimar-linea-teclas': 3,
   'vimar-linea-tapas-ciegas': 4,
   'vimar-linea-accesorios': 5,
-  'vimar-knx-dispositivos': 6,
-  'vimar-knx-din': 7,
-  'vimar-knx-software': 8,
+  'vimar-knx-linea': 6,
+  'vimar-knx-dispositivos': 7,
+  'vimar-knx-din': 8,
+  'vimar-knx-software': 9,
 };
 
 // Placas: familia -> [orientación (0 horizontal, 1 vertical), tamaño]

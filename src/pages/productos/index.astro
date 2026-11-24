@@ -68,7 +68,7 @@ if (orden === 'recomendado' && !busqueda) {
   const { data: lista } = await consultaFiltrada('id, sku, categoria_id').range(0, 4999);
   const filas = (lista ?? []) as unknown as { id: string; sku: string | null; categoria_id: string | null }[];
   total = filas.length;
-  const rejilla = montarRejilla(filas, idPorSlug.get('vimar-linea-mecanismos'), [idPorSlug.get('vimar-linea-placas'), idPorSlug.get('vimar-linea-teclas'), idPorSlug.get('vimar-linea-tapas-ciegas')]);
+  const rejilla = montarRejilla(filas, [idPorSlug.get('vimar-linea-mecanismos'), idPorSlug.get('vimar-knx-linea')], [idPorSlug.get('vimar-linea-placas'), idPorSlug.get('vimar-linea-teclas'), idPorSlug.get('vimar-linea-tapas-ciegas')]);
   totalPaginas = Math.max(1, Math.ceil(rejilla.length / POR_PAGINA));
   const trozo = rejilla.slice((pagina - 1) * POR_PAGINA, pagina * POR_PAGINA);
   const ids = [...new Set(trozo.filter((c): c is string => typeof c === 'string'))];
@@ -96,7 +96,8 @@ if (orden === 'recomendado' && !busqueda) {
   totalPaginas = Math.max(1, Math.ceil(total / POR_PAGINA));
 }
 
-// Rejilla de Vimar Linea · Mecanismos en filas de 4 casillas (null = hueco):
+// Rejilla de Vimar Linea · Mecanismos (y KNX · Mecanismos Linea) en filas de 4
+// casillas (null = hueco):
 //   - "mecanismo + 3 colores" (30000, 30000.B, 30000.C, 30000.G).
 //   - Las versiones axiales usan el mecanismo de la alineada, que se repite:
 //     30000A.B -> 30000 · 30000A.2B -> 30000.2 · 30000A.FX2B -> 30000.FX2.
@@ -109,16 +110,24 @@ if (orden === 'recomendado' && !busqueda) {
 // El resto de categorías van seguidas, sin huecos.
 function montarRejilla(
   lista: { id: string; sku: string | null; categoria_id: string | null }[],
-  idMecanismos?: string,
+  idsMecanismos: (string | undefined)[] = [],
   idsCentradas: (string | undefined)[] = [],
 ): Celda[] {
   const centradas = new Set(idsCentradas.filter(Boolean));
+  const mecanismos = new Set(idsMecanismos.filter(Boolean));
   const COMUN_ESPECIAL: Record<string, string> = { '30010': '30008' };
   const idPorSku = new Map(lista.map((p) => [p.sku ?? '', p.id]));
   // "30000.B" -> "30000", "30000.2B" -> "30000.2", "30203.R" -> "30203"; sin color, igual.
   // Productos distintos que van juntos en la misma fila.
   // Luz de emergencia y mando de 4 pulsadores, en la fila de la lámpara LED.
-  const MISMA_FILA: Record<string, string> = { '30398': '30397', '30406': '30397' };
+  // KNX Linea: los cuatro mandos de 4 pulsadores, juntos en una fila.
+  const MISMA_FILA: Record<string, string> = {
+    '30398': '30397',
+    '30406': '30397',
+    '30581': '30580',
+    '30582': '30580',
+    '30583': '30580',
+  };
   const familia = (sku: string) =>
     MISMA_FILA[sku] ?? (/\.(.*[BCG]|R)$/.test(sku) ? sku.slice(0, -1).replace(/\.$/, '') : sku);
   const tieneColor = (sku: string) => familia(sku) !== sku;
@@ -152,7 +161,7 @@ function montarRejilla(
       salida.push({ centrar: ids.length }, ...ids, ...Array(3 - ids.length).fill(null));
       continue;
     }
-    if (!idMecanismos || p.categoria_id !== idMecanismos || !p.sku) {
+    if (!p.categoria_id || !mecanismos.has(p.categoria_id) || !p.sku) {
       salida.push(p.id);
       i++;
       continue;
@@ -160,7 +169,7 @@ function montarRejilla(
     // Grupo: productos seguidos de la misma familia.
     const fam = familia(p.sku);
     const grupo: string[] = [];
-    while (i < lista.length && lista[i].categoria_id === idMecanismos && lista[i].sku && familia(lista[i].sku!) === fam) {
+    while (i < lista.length && lista[i].categoria_id === p.categoria_id && lista[i].sku && familia(lista[i].sku!) === fam) {
       grupo.push(lista[i].sku!);
       i++;
     }
