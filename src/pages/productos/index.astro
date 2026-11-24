@@ -68,7 +68,19 @@ if (orden === 'recomendado' && !busqueda) {
   const { data: lista } = await consultaFiltrada('id, sku, categoria_id').range(0, 4999);
   const filas = (lista ?? []) as unknown as { id: string; sku: string | null; categoria_id: string | null }[];
   total = filas.length;
-  const rejilla = montarRejilla(filas, [idPorSlug.get('vimar-linea-mecanismos'), idPorSlug.get('vimar-knx-linea')], [idPorSlug.get('vimar-linea-placas'), idPorSlug.get('vimar-linea-teclas'), idPorSlug.get('vimar-linea-tapas-ciegas'), idPorSlug.get('vimar-knx-eikon'), idPorSlug.get('vimar-knx-eikon-vintage'), idPorSlug.get('vimar-knx-eikon-flat-tondo')]);
+  // El soporte Eikon 21603 (de Eikon · Mecanismos) se repite al principio de
+  // Eikon · Vintage y Eikon · Flat/Tondo: sirve para todos los mandos Eikon.
+  const repetirAlInicio = [idPorSlug.get('vimar-knx-eikon-vintage'), idPorSlug.get('vimar-knx-eikon-flat-tondo')].filter(Boolean);
+  if (filas.some((f) => f.categoria_id && repetirAlInicio.includes(f.categoria_id))) {
+    const { data: soporte } = await supabase.from('productos').select('id').eq('sku', '21603').eq('activo', true).maybeSingle();
+    if (soporte) {
+      for (const cat of repetirAlInicio) {
+        const i = filas.findIndex((f) => f.categoria_id === cat);
+        if (i >= 0) filas.splice(i, 0, { id: soporte.id, sku: '21603', categoria_id: cat });
+      }
+    }
+  }
+  const rejilla = montarRejilla(filas,[idPorSlug.get('vimar-linea-mecanismos'), idPorSlug.get('vimar-knx-linea')], [idPorSlug.get('vimar-linea-placas'), idPorSlug.get('vimar-linea-teclas'), idPorSlug.get('vimar-linea-tapas-ciegas'), idPorSlug.get('vimar-knx-eikon'), idPorSlug.get('vimar-knx-eikon-vintage'), idPorSlug.get('vimar-knx-eikon-flat-tondo')]);
   totalPaginas = Math.max(1, Math.ceil(rejilla.length / POR_PAGINA));
   const trozo = rejilla.slice((pagina - 1) * POR_PAGINA, pagina * POR_PAGINA);
   const ids = [...new Set(trozo.filter((c): c is string => typeof c === 'string'))];

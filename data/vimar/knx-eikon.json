@@ -13813,5 +13813,166 @@
     ],
     "relacionados": [],
     "url": "https://www.vimar.com/es/int/catalog/product/index/code/R20842.N"
+  },
+  {
+    "codigo": "21603",
+    "nombre": "Soporte 2M sin tornillos eje 71",
+    "descripcion": "Soporte 2 módulos, sin tornillos, para cajas empotrables con distancia entre eje 60 mm o 56x56 mm, componible con distancia entre eje 71 mm",
+    "ruta": "Series residenciales / Series resid. tradicionales / EIKON / Soportes",
+    "estado": "3 - Activo",
+    "imagen": "https://www.vimar.com/irj/go/km/docs/z_catalogo/MAIN_IMAGE/21603-vimar-eikon-supporto-2m-senza-viti-int71.61511.jpg",
+    "ficha_pdf": "https://www.vimar.com/es/int/catalog/product/download-pdf/code/21603?type=.pdf",
+    "dibujos": [
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGESIZE/DI_21603.73588.png"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGESIZE/DI_21603.25293.DXF"
+      },
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGEREAR/VP_21603.70354.png"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGEREAR/VP_21603.25258.DXF"
+      },
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/3DIMAGE/EA_21603.81484.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/3DIMAGE/EA_21603.81485.DXF"
+      }
+    ],
+    "certificados": [
+      {
+        "titulo": "01. IMQ - Italia",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/CERTIFICATE/IMQ_CA02.103672.02566_2022-07-05.pdf"
+      },
+      {
+        "titulo": "01. IMQ - Italia",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/CERTIFICATE/IMQ_CA02.107546.06552_2022-07-05.pdf"
+      },
+      {
+        "titulo": "01. IMQ - Italia",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/CERTIFICATE/IMQ_CA02.107547.06550_2022-07-05.pdf"
+      },
+      {
+        "titulo": "01. IMQ - Italia",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/CERTIFICATE/IMQ_CA02.109117.05828_2024-07-01.pdf"
+      },
+      {
+        "titulo": "50. Product Environm. Profile",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/CERTIFICATE/VMAR-20012-V01.116722.01-EN.pdf"
+      },
+      {
+        "titulo": "96. Experto electrotécnico",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/CERTIFICATE/Espertoelettrotecnico.116413.pdf"
+      }
+    ],
+    "etim": [
+      {
+        "titulo": "Class group",
+        "valor": "Domestic switching devices"
+      },
+      {
+        "titulo": "Class",
+        "valor": "Holder for modular domestic switching devices"
+      },
+      {
+        "titulo": "Model",
+        "valor": "Flush-mounted"
+      },
+      {
+        "titulo": "Type of fastening",
+        "valor": "Other"
+      },
+      {
+        "titulo": "Mounting method of the module inserts",
+        "valor": "Front side"
+      },
+      {
+        "titulo": "Mounting direction",
+        "valor": "Horizontal and vertical"
+      },
+      {
+        "titulo": "Number of modules horizontal (module system)",
+        "valor": "2"
+      },
+      {
+        "titulo": "Number of modules vertical (module system)",
+        "valor": "1"
+      },
+      {
+        "titulo": "With built-in installation box",
+        "valor": "No"
+      },
+      {
+        "titulo": "With screws",
+        "valor": "No"
+      },
+      {
+        "titulo": "Suitable for mounting in round junction box 60 mm",
+        "valor": "No"
+      },
+      {
+        "titulo": "Flush-mounted installation",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Suitable for subfloor installation duct box",
+        "valor": "No"
+      },
+      {
+        "titulo": "Suitable for wall duct",
+        "valor": "No"
+      },
+      {
+        "titulo": "Suitable for mounting on DIN-rail 35 mm",
+        "valor": "No"
+      },
+      {
+        "titulo": "Material",
+        "valor": "Plastic"
+      },
+      {
+        "titulo": "Material quality",
+        "valor": "Thermoplastic"
+      },
+      {
+        "titulo": "Surface protection",
+        "valor": "Untreated"
+      }
+    ],
+    "pedido_minimo": "50 NR",
+    "ean": "8007352421363",
+    "embalajes": [
+      {
+        "ean": "8007352421363",
+        "cantidad": "1 NR",
+        "medidas": "7,4x7,4x2 [cm]",
+        "peso": "19,9 [g]"
+      },
+      {
+        "ean": "8007352421370",
+        "cantidad": "50 NR",
+        "medidas": "29x25x10 [cm]",
+        "peso": "1.076 [g]"
+      },
+      {
+        "ean": "8007352625921",
+        "cantidad": "300 NR",
+        "medidas": "62x26x30 [cm]",
+        "peso": "6.456 [g]"
+      }
+    ],
+    "relacionados": [
+      "21602.C"
+    ],
+    "url": "https://www.vimar.com/es/int/catalog/product/index/code/21603"
   }
 ]

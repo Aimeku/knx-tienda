@@ -51,6 +51,8 @@ const SERIES = {
     serie: 'KNX',
     categorias: {
       Dispositivos: { slug: 'vimar-knx-eikon', nombre: 'KNX · Eikon · Mecanismos', orden: 113 },
+      // Soporte 21603 (viene de la serie Eikon tradicional): con los mecanismos.
+      Soportes: { slug: 'vimar-knx-eikon', nombre: 'KNX · Eikon · Mecanismos', orden: 113 },
     },
     // Dentro de Eikon, por referencia: Vintage (palancas) y Flat/Tondo (.AX).
     porCodigo: [
