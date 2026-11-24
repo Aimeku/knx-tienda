@@ -26,7 +26,7 @@ export interface GrupoTienda {
 export const tiendaCompleta: GrupoTienda[] = [
   {
     grupo: 'Interruptores/Mecanismos',
-    titulo: 'Interruptores y mecanismos',
+    titulo: 'Estándar',
     categorias: [
       { nombre: 'Mecanismos', slug: 'vimar-linea-mecanismos', seccion: 'Vimar Linea' },
       { nombre: 'Placas', slug: 'vimar-linea-placas', seccion: 'Vimar Linea' },
@@ -37,18 +37,22 @@ export const tiendaCompleta: GrupoTienda[] = [
     ],
   },
   {
-    grupo: 'Domótica',
-    titulo: 'Domótica KNX',
-    visible: false, // sin productos por ahora
+    grupo: 'Domótica', // la tarjeta "Smart Homes" de la home enlaza aquí
+    titulo: 'Smart Home',
     categorias: [
-      { nombre: 'Actuadores', slug: 'actuadores' },
-      { nombre: 'Paneles táctiles', slug: 'paneles-tactiles-knx' },
-      { nombre: 'Sensores', slug: 'sensores' },
-      { nombre: 'Fuentes de alimentación', slug: 'fuentes-de-alimentacion' },
-      { nombre: 'Gateways', slug: 'gateways' },
-      { nombre: 'Interfaces y acopladores', slug: 'interfaces-y-acopladores' },
-      { nombre: 'Servidores', slug: 'servidores' },
-      { nombre: 'Protocolo propietario', slug: 'protocolo-propietario' },
+      // Vimar: KNX (más adelante, ByMe y View Wireless como secciones nuevas)
+      { nombre: 'Mandos, pantallas y termostatos', slug: 'vimar-knx-dispositivos', seccion: 'KNX' },
+      { nombre: 'Aparatos DIN y módulos', slug: 'vimar-knx-din', seccion: 'KNX' },
+      { nombre: 'Software y accesorios', slug: 'vimar-knx-software', seccion: 'KNX' },
+      // Categorías antiguas, sin productos por ahora
+      { nombre: 'Actuadores', slug: 'actuadores', visible: false },
+      { nombre: 'Paneles táctiles', slug: 'paneles-tactiles-knx', visible: false },
+      { nombre: 'Sensores', slug: 'sensores', visible: false },
+      { nombre: 'Fuentes de alimentación', slug: 'fuentes-de-alimentacion', visible: false },
+      { nombre: 'Gateways', slug: 'gateways', visible: false },
+      { nombre: 'Interfaces y acopladores', slug: 'interfaces-y-acopladores', visible: false },
+      { nombre: 'Servidores', slug: 'servidores', visible: false },
+      { nombre: 'Protocolo propietario', slug: 'protocolo-propietario', visible: false },
     ],
   },
   {

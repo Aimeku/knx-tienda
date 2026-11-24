@@ -2,7 +2,8 @@
 // SQL Editor de Supabase (igual que los seeds de sql/seeds/).
 //
 // Uso:
-//   node scripts/vimar/generar-sql.mjs data/vimar/linea.json sql/seeds/vimar-linea
+//   node scripts/vimar/generar-sql.mjs data/vimar/linea.json sql/seeds/vimar-linea            (Linea estándar)
+//   node scripts/vimar/generar-sql.mjs data/vimar/linea-knx.json sql/seeds/vimar-linea-knx knx (Smart Home KNX)
 //
 // - Crea las categorías de la serie si no existen.
 // - Requiere la columna productos.orden (sql/006_orden_productos.sql).
@@ -16,24 +17,43 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { ordenProducto, familiaDe } from './orden.mjs';
 
-const [entrada, carpetaSalida] = process.argv.slice(2);
+const [entrada, carpetaSalida, serieArg = 'linea'] = process.argv.slice(2);
 if (!entrada || !carpetaSalida) {
   console.error('Uso: node scripts/vimar/generar-sql.mjs <productos.json> <carpeta-salida>');
   process.exit(1);
 }
 
-const SERIE = 'Linea';
 const PRODUCTOS_POR_FICHERO = 80;
 
-// Último tramo de la ruta de Vimar -> categoría de la tienda
-const CATEGORIAS = {
-  Dispositivos: { slug: 'vimar-linea-mecanismos', nombre: 'Linea · Mecanismos', orden: 100 },
-  Placas: { slug: 'vimar-linea-placas', nombre: 'Linea · Placas', orden: 101 },
-  Botones: { slug: 'vimar-linea-teclas', nombre: 'Linea · Teclas y botones', orden: 102 },
-  'Tapa ciega': { slug: 'vimar-linea-tapas-ciegas', nombre: 'Linea · Tapas ciegas', orden: 104 },
-  Soportes: { slug: 'vimar-linea-accesorios', nombre: 'Linea · Accesorios y soportes', orden: 103 },
-  Accesorios: { slug: 'vimar-linea-accesorios', nombre: 'Linea · Accesorios y soportes', orden: 103 },
+// Por serie: nombre y "último tramo de la ruta de Vimar -> categoría de la tienda".
+const SERIES = {
+  linea: {
+    serie: 'Linea',
+    categorias: {
+      Dispositivos: { slug: 'vimar-linea-mecanismos', nombre: 'Linea · Mecanismos', orden: 100 },
+      Placas: { slug: 'vimar-linea-placas', nombre: 'Linea · Placas', orden: 101 },
+      Botones: { slug: 'vimar-linea-teclas', nombre: 'Linea · Teclas y botones', orden: 102 },
+      'Tapa ciega': { slug: 'vimar-linea-tapas-ciegas', nombre: 'Linea · Tapas ciegas', orden: 104 },
+      Soportes: { slug: 'vimar-linea-accesorios', nombre: 'Linea · Accesorios y soportes', orden: 103 },
+      Accesorios: { slug: 'vimar-linea-accesorios', nombre: 'Linea · Accesorios y soportes', orden: 103 },
+    },
+  },
+  knx: {
+    serie: 'KNX',
+    categorias: {
+      Dispositivos: { slug: 'vimar-knx-dispositivos', nombre: 'KNX · Mandos, pantallas y termostatos', orden: 110 },
+      'Aparatos DIN': { slug: 'vimar-knx-din', nombre: 'KNX · Aparatos DIN y módulos', orden: 111 },
+      'Componentes no modulares': { slug: 'vimar-knx-din', nombre: 'KNX · Aparatos DIN y módulos', orden: 111 },
+      Software: { slug: 'vimar-knx-software', nombre: 'KNX · Software y accesorios', orden: 112 },
+      Accesorios: { slug: 'vimar-knx-software', nombre: 'KNX · Software y accesorios', orden: 112 },
+    },
+  },
 };
+if (!SERIES[serieArg]) {
+  console.error(`Serie desconocida: ${serieArg} (válidas: ${Object.keys(SERIES).join(', ')})`);
+  process.exit(1);
+}
+const { serie: SERIE, categorias: CATEGORIAS } = SERIES[serieArg];
 
 const { etiquetas, valores } = JSON.parse(fs.readFileSync('data/vimar/etim-es.json', 'utf8'));
 const nombreFoto = (codigo) => codigo.toLowerCase().replace(/[^a-z0-9]+/g, '-');
