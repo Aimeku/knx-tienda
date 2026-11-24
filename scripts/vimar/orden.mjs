@@ -49,7 +49,22 @@ export function ordenProducto(codigo, slugCategoria, posicion) {
   // código dentro de su categoría), con sus colores seguidos. Las
   // referencias sin letra de color van detrás de las de color.
   const color = COLORES[codigo.slice(-1)];
-  return base + posicion * 4 + (color ?? 3);
+  return base + bloqueMecanismo(codigo, slugCategoria) * 10000 + posicion * 4 + (color ?? 3);
+}
+
+// Mecanismos: primero el kit lámpara de noche, después interruptores,
+// cruzamientos y conmutadores (normales, 2M, cableado rápido y axiales),
+// luego el resto y el adaptador de toma TV-RD-SAT al final.
+const BLOQUES_MECANISMOS = [
+  [/^0K30389/, 0],
+  [/^30000/, 1], // interruptor 1P 10AX
+  [/^30012/, 2], // interruptor cruzado
+  [/^30004/, 3], // conmutador
+  [/^30319/, 9], // adaptador toma TV-RD-SAT
+];
+function bloqueMecanismo(codigo, slugCategoria) {
+  if (slugCategoria !== 'vimar-linea-mecanismos') return 0;
+  return BLOQUES_MECANISMOS.find(([re]) => re.test(codigo))?.[1] ?? 5;
 }
 
 // Familia de un mecanismo/tecla: el código sin la letra de color final.
