@@ -46,10 +46,10 @@ export function ordenProducto(codigo, slugCategoria, posicion) {
   }
 
   // Resto: por referencia (posicion = puesto de la familia ordenada por
-  // código dentro de su categoría), con sus colores seguidos. Las
-  // referencias sin letra de color van detrás de las de color.
+  // código dentro de su categoría): primero la referencia sin color (el
+  // mecanismo sin tecla) y después blanco, cáñamo y negro.
   const color = COLORES[codigo.slice(-1)];
-  return base + bloqueMecanismo(codigo, slugCategoria) * 10000 + posicion * 4 + (color ?? 3);
+  return base + bloqueMecanismo(codigo, slugCategoria) * 10000 + posicion * 4 + (color === undefined ? 0 : color + 1);
 }
 
 // Mecanismos: primero interruptores,
@@ -67,4 +67,6 @@ function bloqueMecanismo(codigo, slugCategoria) {
 }
 
 // Familia de un mecanismo/tecla: el código sin la letra de color final.
-export const familiaDe = (codigo) => (/[BCG]$/.test(codigo) && codigo.includes('.') ? codigo.slice(0, -1) : codigo);
+// "30000.B" y "30000" son la misma familia ("30000").
+export const familiaDe = (codigo) =>
+  /[BCG]$/.test(codigo) && codigo.includes('.') ? codigo.slice(0, -1).replace(/\.$/, '') : codigo;
