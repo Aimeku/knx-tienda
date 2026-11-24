@@ -64,7 +64,7 @@ if (orden === 'recomendado' && !busqueda) {
   const { data: lista } = await consultaFiltrada('id, sku, categoria_id').range(0, 4999);
   const filas = (lista ?? []) as unknown as { id: string; sku: string | null; categoria_id: string | null }[];
   total = filas.length;
-  const rejilla = montarRejilla(filas, idPorSlug.get('vimar-linea-mecanismos'));
+  const rejilla = montarRejilla(filas, idPorSlug.get('vimar-linea-mecanismos'), idPorSlug.get('vimar-linea-placas'));
   totalPaginas = Math.max(1, Math.ceil(rejilla.length / POR_PAGINA));
   const trozo = rejilla.slice((pagina - 1) * POR_PAGINA, pagina * POR_PAGINA);
   const ids = [...new Set(trozo.filter((id): id is string => id !== null))];
@@ -89,8 +89,15 @@ if (orden === 'recomendado' && !busqueda) {
 //     30000A.B -> 30000 · 30000A.2B -> 30000.2 · 30000A.FX2B -> 30000.FX2.
 //   - El pulsador inversor 30010 usa el mecanismo del pulsador 30008.
 //   - Los grupos sin mecanismo llevan un hueco en blanco a la izquierda.
+// Placas, en filas de 3 con el hueco a la izquierda: cada fila es un tamaño en
+// un trío de acabados (30642.00/.01/.02 tecno blanco, cáñamo y negro;
+// .20/.21/.22; .40/.41/.42 Reflex; .60/.61/.62; .70.01/.71/.72).
 // El resto de categorías van seguidas, sin huecos.
-function montarRejilla(lista: { id: string; sku: string | null; categoria_id: string | null }[], idMecanismos?: string): (string | null)[] {
+function montarRejilla(
+  lista: { id: string; sku: string | null; categoria_id: string | null }[],
+  idMecanismos?: string,
+  idPlacas?: string,
+): (string | null)[] {
   const COMUN_ESPECIAL: Record<string, string> = { '30010': '30008' };
   const idPorSku = new Map(lista.map((p) => [p.sku ?? '', p.id]));
   // "30000.B" -> "30000", "30000.2B" -> "30000.2", "30203.R" -> "30203"; sin color, igual.
@@ -106,10 +113,27 @@ function montarRejilla(lista: { id: string; sku: string | null; categoria_id: st
     return m ? (m[2] ? `${m[1]}.${m[2]}` : m[1]) : null;
   };
 
+  // "30642.21" -> "30642|2" (placa 2M, trío de acabados 20-22).
+  const trioPlaca = (sku: string) => {
+    const [fam, acabado = ''] = sku.split('.');
+    return `${fam}|${acabado.charAt(0)}`;
+  };
+
   const salida: (string | null)[] = [];
   let i = 0;
   while (i < lista.length) {
     const p = lista[i];
+    if (idPlacas && p.categoria_id === idPlacas && p.sku) {
+      const trio = trioPlaca(p.sku);
+      const fila: (string | null)[] = [null];
+      while (i < lista.length && lista[i].categoria_id === idPlacas && lista[i].sku && trioPlaca(lista[i].sku!) === trio) {
+        fila.push(lista[i].id);
+        i++;
+      }
+      while (fila.length % 4 !== 0) fila.push(null);
+      salida.push(...fila);
+      continue;
+    }
     if (!idMecanismos || p.categoria_id !== idMecanismos || !p.sku) {
       salida.push(p.id);
       i++;
