@@ -54,12 +54,14 @@ export function ordenProducto(codigo, slugCategoria, posicion) {
 
 // Mecanismos: primero interruptores,
 // cruzamientos y conmutadores (normales, 2M, cableado rápido y axiales),
-// luego el resto y el adaptador de toma TV-RD-SAT al final.
+// luego el resto y al final el adaptador de toma TV-RD-SAT, la lámpara LED
+// extraíble y la luz de emergencia.
 const BLOQUES_MECANISMOS = [
   [/^30000/, 1], // interruptor 1P 10AX
   [/^30012/, 2], // interruptor cruzado
   [/^30004/, 3], // conmutador
   [/^30319/, 9], // adaptador toma TV-RD-SAT
+  [/^3039[78]$/, 9], // lámpara LED extraíble y luz de emergencia (detrás del adaptador)
 ];
 function bloqueMecanismo(codigo, slugCategoria) {
   if (slugCategoria !== 'vimar-linea-mecanismos') return 0;

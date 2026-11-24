@@ -94,7 +94,10 @@ function montarRejilla(lista: { id: string; sku: string | null; categoria_id: st
   const COMUN_ESPECIAL: Record<string, string> = { '30010': '30008' };
   const idPorSku = new Map(lista.map((p) => [p.sku ?? '', p.id]));
   // "30000.B" -> "30000", "30000.2B" -> "30000.2", "30203.R" -> "30203"; sin color, igual.
-  const familia = (sku: string) => (/\.(.*[BCG]|R)$/.test(sku) ? sku.slice(0, -1).replace(/\.$/, '') : sku);
+  // Productos distintos que van juntos en la misma fila.
+  const MISMA_FILA: Record<string, string> = { '30398': '30397' }; // luz de emergencia con la lámpara LED
+  const familia = (sku: string) =>
+    MISMA_FILA[sku] ?? (/\.(.*[BCG]|R)$/.test(sku) ? sku.slice(0, -1).replace(/\.$/, '') : sku);
   const tieneColor = (sku: string) => familia(sku) !== sku;
   const comunDe = (fam: string) => {
     if (COMUN_ESPECIAL[fam]) return COMUN_ESPECIAL[fam];
