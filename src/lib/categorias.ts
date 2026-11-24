@@ -40,11 +40,17 @@ export const tiendaCompleta: GrupoTienda[] = [
     grupo: 'Domótica', // la tarjeta "Smart Homes" de la home enlaza aquí
     titulo: 'Smart Home',
     categorias: [
-      // Vimar: KNX (más adelante, ByMe y View Wireless como secciones nuevas)
-      { nombre: 'Mecanismos Linea', slug: 'vimar-knx-linea', seccion: 'KNX' },
-      { nombre: 'Mandos y termostatos', slug: 'vimar-knx-dispositivos', seccion: 'KNX', visible: false }, // sin productos por ahora
-      { nombre: 'Aparatos DIN y módulos', slug: 'vimar-knx-din', seccion: 'KNX' },
-      { nombre: 'Software', slug: 'vimar-knx-software', seccion: 'KNX', visible: false }, // sin productos por ahora
+      // Tres sistemas de Vimar: KNX, ByMe y View Wireless. Cada sistema se
+      // reparte en secciones "Sistema · Serie"; las que no tienen productos
+      // (visible: false) no salen en el menú ni en los filtros.
+      // KNX
+      { nombre: 'Mecanismos', slug: 'vimar-knx-linea', seccion: 'KNX · Linea' },
+      { nombre: 'Vintage', slug: 'vimar-knx-eikon-vintage', seccion: 'KNX · Eikon', visible: false }, // sin productos por ahora
+      { nombre: 'Flat / Tondo', slug: 'vimar-knx-eikon-flat-tondo', seccion: 'KNX · Eikon', visible: false }, // sin productos por ahora
+      { nombre: 'Aparatos DIN y módulos', slug: 'vimar-knx-din', seccion: 'KNX · Componentes comunes' },
+      { nombre: 'Mandos y termostatos', slug: 'vimar-knx-dispositivos', seccion: 'KNX · Componentes comunes', visible: false }, // sin productos por ahora
+      { nombre: 'Software', slug: 'vimar-knx-software', seccion: 'KNX · Componentes comunes', visible: false }, // sin productos por ahora
+      // ByMe y View Wireless: se añadirán aquí con sus secciones.
       // Categorías antiguas, sin productos por ahora
       { nombre: 'Actuadores', slug: 'actuadores', visible: false },
       { nombre: 'Paneles táctiles', slug: 'paneles-tactiles-knx', visible: false },
