@@ -163,12 +163,19 @@ function montarRejilla(
       const cat = p.categoria_id;
       // Cómo se agrupan las filas: placas por tamaño y trío de acabados;
       // Eikon Vintage por referencia (22581, 22582: sus 6 acabados en 2 filas);
-      // Eikon Mecanismos y Flat/Tondo, toda la categoría seguida; el resto, por
-      // referencia sin color.
+      // Eikon Táctil y Flat/Tondo: primero soporte y mandos juntos, luego las
+      // etiquetas o las teclas (cada tecla Flat/Tondo con sus acabados:
+      // 22751.0.01, .03… y las neutras iluminables 22751.01, .03… juntas);
+      // el resto, por referencia sin color.
+      const eikonTeclas = (sku: string) =>
+        /^2184[67]/.test(sku) ? 'etiquetas'
+        : /^22751\.\d\d$/.test(sku) ? 'iluminables'
+        : /^22751\.[^.]+\./.test(sku) ? sku.split('.').slice(0, 2).join('.')
+        : 'cabecera';
       const clave = (sku: string) =>
         cat === idsCentradas[0] ? trioPlaca(sku)
         : cat === idsCentradas[4] ? sku.split('.')[0]
-        : cat === idsCentradas[3] || cat === idsCentradas[5] ? 'toda'
+        : cat === idsCentradas[3] || cat === idsCentradas[5] ? eikonTeclas(sku)
         : familia(sku);
       const grupo = clave(p.sku);
       const ids: string[] = [];

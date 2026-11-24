@@ -50,14 +50,18 @@ const SERIES = {
   'knx-eikon': {
     serie: 'KNX',
     categorias: {
-      Dispositivos: { slug: 'vimar-knx-eikon', nombre: 'KNX · Eikon · Mecanismos', orden: 113 },
+      Dispositivos: { slug: 'vimar-knx-eikon', nombre: 'KNX · Eikon · Táctil', orden: 113 },
       // Soporte 21603 (viene de la serie Eikon tradicional): con los mecanismos.
-      Soportes: { slug: 'vimar-knx-eikon', nombre: 'KNX · Eikon · Mecanismos', orden: 113 },
+      Soportes: { slug: 'vimar-knx-eikon', nombre: 'KNX · Eikon · Táctil', orden: 113 },
     },
     // Dentro de Eikon, por referencia: Vintage (palancas) y Flat/Tondo (.AX).
     porCodigo: [
       [/^2258[12]\./, { slug: 'vimar-knx-eikon-vintage', nombre: 'KNX · Eikon · Vintage', orden: 114 }],
       [/\.AX$/, { slug: 'vimar-knx-eikon-flat-tondo', nombre: 'KNX · Eikon · Flat / Tondo', orden: 115 }],
+      // Teclas Flat y Tondo para domótica (de Eikon tradicional / Botones).
+      [/^22751\./, { slug: 'vimar-knx-eikon-flat-tondo', nombre: 'KNX · Eikon · Flat / Tondo', orden: 115 }],
+      // Etiquetas para los mandos Eikon Tactil.
+      [/^2184[67]/, { slug: 'vimar-knx-eikon', nombre: 'KNX · Eikon · Táctil', orden: 113 }],
     ],
   },
   knx: {
