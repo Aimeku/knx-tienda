@@ -48,8 +48,12 @@ function consultaFiltrada(campos: string, opciones?: { count: 'exact' }) {
 }
 
 type Producto = { id: string; nombre: string; slug: string; imagen_principal: string | null; marca: string | null; sku: string | null };
-// Una casilla de la rejilla: un producto o un hueco en blanco.
-type Casilla = Producto | null;
+// Una casilla de la rejilla: un producto o un hueco en blanco. "inicio" marca
+// el primer producto de una fila centrada de n productos (placas y teclas).
+type Casilla = { p: Producto; inicio?: number } | null;
+// En la rejilla, una fila centrada empieza con este marcador seguido de sus
+// productos; el marcador ocupa la 4.ª casilla de la fila (no se pinta).
+type Celda = string | null | { centrar: number };
 const CAMPOS = 'id, nombre, slug, imagen_principal, marca, sku';
 
 let casillas: Casilla[] = [];
@@ -64,21 +68,30 @@ if (orden === 'recomendado' && !busqueda) {
   const { data: lista } = await consultaFiltrada('id, sku, categoria_id').range(0, 4999);
   const filas = (lista ?? []) as unknown as { id: string; sku: string | null; categoria_id: string | null }[];
   total = filas.length;
-  const rejilla = montarRejilla(filas, idPorSlug.get('vimar-linea-mecanismos'), idPorSlug.get('vimar-linea-placas'));
+  const rejilla = montarRejilla(filas, idPorSlug.get('vimar-linea-mecanismos'), [idPorSlug.get('vimar-linea-placas'), idPorSlug.get('vimar-linea-teclas')]);
   totalPaginas = Math.max(1, Math.ceil(rejilla.length / POR_PAGINA));
   const trozo = rejilla.slice((pagina - 1) * POR_PAGINA, pagina * POR_PAGINA);
-  const ids = [...new Set(trozo.filter((id): id is string => id !== null))];
+  const ids = [...new Set(trozo.filter((c): c is string => typeof c === 'string'))];
   const { data: detalles } = ids.length
     ? await supabase.from('productos').select(CAMPOS).in('id', ids)
     : { data: [] };
   const porId = new Map(((detalles ?? []) as Producto[]).map((p) => [p.id, p]));
-  casillas = trozo.map((id) => (id === null ? null : porId.get(id) ?? null));
+  let inicio: number | undefined;
+  for (const c of trozo) {
+    if (c !== null && typeof c === 'object') {
+      inicio = c.centrar;
+      continue;
+    }
+    const p = c === null ? undefined : porId.get(c);
+    casillas.push(p ? { p, inicio } : null);
+    inicio = undefined;
+  }
   // Quita huecos sobrantes al final de la última página.
   while (casillas.length > 0 && casillas[casillas.length - 1] === null) casillas.pop();
 } else {
   const desde = (pagina - 1) * POR_PAGINA;
   const { data, count } = await consultaFiltrada(CAMPOS, { count: 'exact' }).range(desde, desde + POR_PAGINA - 1);
-  casillas = (data ?? []) as unknown as Producto[];
+  casillas = ((data ?? []) as unknown as Producto[]).map((p) => ({ p }));
   total = count ?? 0;
   totalPaginas = Math.max(1, Math.ceil(total / POR_PAGINA));
 }
@@ -89,15 +102,17 @@ if (orden === 'recomendado' && !busqueda) {
 //     30000A.B -> 30000 · 30000A.2B -> 30000.2 · 30000A.FX2B -> 30000.FX2.
 //   - El pulsador inversor 30010 usa el mecanismo del pulsador 30008.
 //   - Los grupos sin mecanismo llevan un hueco en blanco a la izquierda.
-// Placas, en filas de 3 con el hueco a la izquierda: cada fila es un tamaño en
+// Placas y teclas, en filas centradas de 3. Placas: cada fila es un tamaño en
 // un trío de acabados (30642.00/.01/.02 tecno blanco, cáñamo y negro;
 // .20/.21/.22; .40/.41/.42 Reflex; .60/.61/.62; .70.01/.71/.72).
+// Teclas: cada fila es una tecla en blanco, cáñamo y negro.
 // El resto de categorías van seguidas, sin huecos.
 function montarRejilla(
   lista: { id: string; sku: string | null; categoria_id: string | null }[],
   idMecanismos?: string,
-  idPlacas?: string,
-): (string | null)[] {
+  idsCentradas: (string | undefined)[] = [],
+): Celda[] {
+  const centradas = new Set(idsCentradas.filter(Boolean));
   const COMUN_ESPECIAL: Record<string, string> = { '30010': '30008' };
   const idPorSku = new Map(lista.map((p) => [p.sku ?? '', p.id]));
   // "30000.B" -> "30000", "30000.2B" -> "30000.2", "30203.R" -> "30203"; sin color, igual.
@@ -119,19 +134,22 @@ function montarRejilla(
     return `${fam}|${acabado.charAt(0)}`;
   };
 
-  const salida: (string | null)[] = [];
+  const salida: Celda[] = [];
   let i = 0;
   while (i < lista.length) {
     const p = lista[i];
-    if (idPlacas && p.categoria_id === idPlacas && p.sku) {
-      const trio = trioPlaca(p.sku);
-      const fila: (string | null)[] = [null];
-      while (i < lista.length && lista[i].categoria_id === idPlacas && lista[i].sku && trioPlaca(lista[i].sku!) === trio) {
-        fila.push(lista[i].id);
+    if (p.categoria_id && centradas.has(p.categoria_id) && p.sku) {
+      const cat = p.categoria_id;
+      const clave = (sku: string) => (cat === idsCentradas[0] ? trioPlaca(sku) : familia(sku));
+      const grupo = clave(p.sku);
+      const ids: string[] = [];
+      while (ids.length < 3 && i < lista.length && lista[i].categoria_id === cat && lista[i].sku && clave(lista[i].sku!) === grupo) {
+        ids.push(lista[i].id);
         i++;
       }
-      while (fila.length % 4 !== 0) fila.push(null);
-      salida.push(...fila);
+      // Siempre 4 casillas por fila (marcador + productos + huecos) para que
+      // las páginas de 48 casillas corten por filas completas.
+      salida.push({ centrar: ids.length }, ...ids, ...Array(3 - ids.length).fill(null));
       continue;
     }
     if (!idMecanismos || p.categoria_id !== idMecanismos || !p.sku) {
@@ -311,15 +329,18 @@ const paginasVisibles = [...new Set([1, pagina - 1, pagina, pagina + 1, totalPag
 
       {casillas.length > 0 ? (
         <div class="grid">
-          {casillas.map((p) => p === null ? (
+          {casillas.map((c) => c === null ? (
             <div class="hueco" aria-hidden="true" />
           ) : (
-            <a class="card" href={`/productos/${p.slug}`}>
+            <a
+              class:list={['card', c.inicio && `inicio-${c.inicio}`]}
+              href={`/productos/${c.p.slug}`}
+            >
               <div class="card-imagen">
-                {p.imagen_principal ? (
+                {c.p.imagen_principal ? (
                   <img
-                    src={p.imagen_principal.replace(/-800\.webp$/, '-400.webp')}
-                    alt={p.nombre}
+                    src={c.p.imagen_principal.replace(/-800\.webp$/, '-400.webp')}
+                    alt={c.p.nombre}
                     loading="lazy"
                     decoding="async"
                     width="400"
@@ -329,8 +350,8 @@ const paginasVisibles = [...new Set([1, pagina - 1, pagina, pagina + 1, totalPag
                   <div class="sin-imagen" />
                 )}
               </div>
-              <p class="card-meta">{[p.marca, p.sku && `Ref. ${p.sku}`].filter(Boolean).join(' · ')}</p>
-              <h3>{p.nombre}</h3>
+              <p class="card-meta">{[c.p.marca, c.p.sku && `Ref. ${c.p.sku}`].filter(Boolean).join(' · ')}</p>
+              <h3>{c.p.nombre}</h3>
               <p class="card-precio">{COMPRAS_ACTIVAS ? 'Inicia sesión para ver los precios' : 'Precio bajo consulta'}</p>
               <span class="card-cta">Ver ficha</span>
             </a>
@@ -556,10 +577,16 @@ const paginasVisibles = [...new Set([1, pagina - 1, pagina, pagina + 1, totalPag
     /* ---------- Tarjetas ---------- */
     .grid {
       display: grid;
-      /* 4 columnas fijas: las filas de mecanismos son de 4 (mecanismo + 3 colores). */
-      grid-template-columns: repeat(4, minmax(0, 1fr));
+      /* 4 tarjetas por fila (mecanismo + 3 colores). Se usan 8 columnas y cada
+         tarjeta ocupa 2, así las filas de 3 (placas y teclas) se pueden centrar
+         dejando media tarjeta a cada lado. */
+      grid-template-columns: repeat(8, minmax(0, 1fr));
       gap: 1.25rem;
     }
+    .grid > * { grid-column: span 2; }
+    .grid > .inicio-3 { grid-column: 2 / span 2; }
+    .grid > .inicio-2 { grid-column: 3 / span 2; }
+    .grid > .inicio-1 { grid-column: 4 / span 2; }
     .card {
       background: #fff;
       border: 1px solid #eee;
@@ -630,7 +657,9 @@ const paginasVisibles = [...new Set([1, pagina - 1, pagina, pagina + 1, totalPag
       :global(body.filtros-abiertos) .filtros { transform: none; }
       :global(body.filtros-abiertos) .filtros-fondo { display: block; position: fixed; inset: 0; background: rgba(0, 0, 0, 0.4); z-index: 55; }
       .orden span { display: none; }
-      .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.75rem; }
+      .grid { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0.75rem; }
+      /* En el móvil (2 por fila) las filas de 3 no se centran: solo empiezan línea nueva. */
+      .grid > .inicio-3, .grid > .inicio-2, .grid > .inicio-1 { grid-column: 1 / span 2; }
       .card { padding: 0.9rem; }
       .paginacion { flex-wrap: wrap; justify-content: center; }
     }
