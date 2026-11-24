@@ -1,12 +1,13 @@
 -- ============================================================
 -- Vimar Linea: ocultar productos de otros mercados
--- (Reino Unido, Israel, EE. UU. y tomas euroamericanas)
+-- (Reino Unido, Israel, EE. UU., tomas euroamericanas y Tailandia)
 -- Ejecutar en el SQL Editor de Supabase.
 --
 -- No borra nada: solo los marca como inactivos (activo = false), así que
 -- dejan de verse en la web pero siguen guardados. Lista completa y motivo
 -- en data/vimar/excluir.json.
 --
+-- Se puede ejecutar varias veces sin problema.
 -- Para volver a mostrarlos, cambia "false" por "true" y ejecútalo de nuevo.
 -- ============================================================
 
@@ -34,5 +35,11 @@ where marca = 'Vimar' and sku in (
   '30234.B', '30234.C', '30234.G', '30248.B', '30248.C', '30248.G', '30249.B', '30249.C', '30249.G'
 );
 
--- Comprobación: debería devolver 111
+-- Tailandia: 6 productos
+update productos set activo = false, updated_at = now()
+where marca = 'Vimar' and sku in (
+  '30248.THB', '30248.THC', '30248.THG', '30249.THB', '30249.THC', '30249.THG'
+);
+
+-- Comprobación: debería devolver 117
 select count(*) as ocultos from productos where marca = 'Vimar' and activo = false;
