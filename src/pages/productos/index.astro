@@ -48,10 +48,38 @@ if (busqueda) {
 }
 
 const desde = (pagina - 1) * POR_PAGINA;
-const { data: productos, count } = await consulta
+const { data: productosPagina, count } = await consulta
   .order(ORDENES[orden])
   .order('sku')
   .range(desde, desde + POR_PAGINA - 1);
+
+// Vimar Linea: el mecanismo sin tecla es común a la versión alineada y a la
+// axial. En el orden recomendado (sin búsqueda) lo repetimos delante de cada
+// grupo axial para que todas las filas sean "mecanismo + 3 colores":
+//   30000A.B -> 30000 · 30000A.2B -> 30000.2 · 30000A.FX2B -> 30000.FX2
+// Solo se repite la tarjeta en el listado; el producto y su ficha son uno.
+const comunDeAxial = (sku: string | null) => {
+  const m = sku?.match(/^(\d{5})A\.(.*)B$/);
+  // El común no lleva letra de color (así 31000A.2CB no se empareja con la tecla 31000.2C).
+  if (!m || /[BCG]$/.test(m[2])) return null;
+  return m[2] ? `${m[1]}.${m[2]}` : m[1];
+};
+let productos = productosPagina;
+if (productosPagina && orden === 'recomendado' && !busqueda) {
+  const skusComunes = [...new Set(productosPagina.map((p) => comunDeAxial(p.sku)).filter((s): s is string => Boolean(s)))];
+  if (skusComunes.length > 0) {
+    const { data: comunes } = await supabase
+      .from('productos')
+      .select('id, nombre, slug, imagen_principal, marca, sku')
+      .eq('activo', true)
+      .in('sku', skusComunes);
+    const comunPorSku = new Map((comunes ?? []).map((c) => [c.sku, c]));
+    productos = productosPagina.flatMap((p) => {
+      const comun = comunPorSku.get(comunDeAxial(p.sku) ?? '');
+      return comun ? [comun, p] : [p];
+    });
+  }
+}
 
 const total = count ?? 0;
 const totalPaginas = Math.max(1, Math.ceil(total / POR_PAGINA));
