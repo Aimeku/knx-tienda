@@ -5,20 +5,25 @@
 // - titulo:  lo que ve el cliente.
 // - seccion: subapartado opcional dentro de un grupo (ej. una serie de un fabricante).
 //            Las categorías con la misma sección deben ir seguidas.
+// - visible: false oculta el grupo o la categoría del menú y de los filtros
+//            (ej. mientras no tenga productos). Por defecto es visible.
 
 export interface CategoriaTienda {
   nombre: string;
   slug: string;
   seccion?: string;
+  visible?: boolean;
 }
 
 export interface GrupoTienda {
   grupo: string;
   titulo: string;
   categorias: CategoriaTienda[];
+  visible?: boolean;
 }
 
-export const tiendaMenu: GrupoTienda[] = [
+// Estructura completa (incluye lo oculto).
+export const tiendaCompleta: GrupoTienda[] = [
   {
     grupo: 'Interruptores/Mecanismos',
     titulo: 'Interruptores y mecanismos',
@@ -27,12 +32,13 @@ export const tiendaMenu: GrupoTienda[] = [
       { nombre: 'Placas', slug: 'vimar-linea-placas', seccion: 'Vimar Linea' },
       { nombre: 'Teclas y botones', slug: 'vimar-linea-teclas', seccion: 'Vimar Linea' },
       { nombre: 'Accesorios y soportes', slug: 'vimar-linea-accesorios', seccion: 'Vimar Linea' },
-      { nombre: 'Pulsadores', slug: 'pulsadores', seccion: 'Otros' },
+      { nombre: 'Pulsadores', slug: 'pulsadores', seccion: 'Otros', visible: false },
     ],
   },
   {
     grupo: 'Domótica',
     titulo: 'Domótica KNX',
+    visible: false, // sin productos por ahora
     categorias: [
       { nombre: 'Actuadores', slug: 'actuadores' },
       { nombre: 'Paneles táctiles', slug: 'paneles-tactiles-knx' },
@@ -47,11 +53,13 @@ export const tiendaMenu: GrupoTienda[] = [
   {
     grupo: 'Iluminación / Electricidad',
     titulo: 'Iluminación',
+    visible: false, // sin productos por ahora
     categorias: [{ nombre: 'DALI', slug: 'dali' }],
   },
   {
     grupo: 'Sonido',
     titulo: 'Sonido',
+    visible: false, // sin productos por ahora
     categorias: [
       { nombre: 'Altavoces de techo', slug: 'altavoces-techo' },
       { nombre: 'Altavoces de pared', slug: 'altavoces-pared' },
@@ -62,10 +70,18 @@ export const tiendaMenu: GrupoTienda[] = [
   },
 ];
 
-export const categorias = tiendaMenu.flatMap((g) => g.categorias);
+// Lo que ve el cliente: solo grupos y categorías visibles, y sin grupos vacíos.
+export const tiendaMenu: GrupoTienda[] = tiendaCompleta
+  .filter((g) => g.visible !== false)
+  .map((g) => ({ ...g, categorias: g.categorias.filter((c) => c.visible !== false) }))
+  .filter((g) => g.categorias.length > 0);
 
-// Marcas que siempre aparecen (menú y filtros), aunque todavía no haya productos con ellas.
-export const marcasBase = ['Vimar', 'Interra', 'Sonos'];
+// Todas las categorías (también las ocultas), para poner nombre a cualquier filtro.
+export const categorias = tiendaCompleta.flatMap((g) => g.categorias);
+
+// Marcas que aparecen en el menú y en los filtros. Por ahora solo Vimar;
+// para volver a mostrar otras, añádelas aquí (ej. 'Interra', 'Sonos').
+export const marcasBase = ['Vimar'];
 
 // Agrupa las categorías de un grupo por sección, respetando el orden.
 export function seccionesDe(grupo: GrupoTienda): { seccion?: string; categorias: CategoriaTienda[] }[] {

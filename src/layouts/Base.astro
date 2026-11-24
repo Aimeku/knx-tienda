@@ -556,7 +556,8 @@ const hrefProyecto = (slug: string) => (lang === 'en' ? `/en/proyectos/${slug}` 
     }
     .tienda-grid {
       display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr)) minmax(180px, 0.8fr);
+      /* columnas de ancho fijo: sirve igual con 1 grupo visible que con 4 */
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
       gap: 0 2.5rem;
       max-width: 1400px;
       margin: 0 auto;
@@ -606,7 +607,7 @@ const hrefProyecto = (slug: string) => (lang === 'en' ? `/en/proyectos/${slug}` 
       color: var(--color-text) !important;
     }
     @media (max-width: 1100px) {
-      .tienda-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 2rem 2rem; }
+      .tienda-grid { gap: 2rem 2rem; }
     }
 
     .header-icons { display: flex; align-items: center; gap: 1.5rem; }
