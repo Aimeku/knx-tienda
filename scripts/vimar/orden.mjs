@@ -79,6 +79,9 @@ function bloqueMecanismo(codigo, slugCategoria) {
 // "30000.B" y "30000" son la misma familia ("30000").
 // Teclas Flat neutras iluminables (22751.01, 22751.03…): juntas, justo
 // detrás de las Flat sin símbolo (22751.0.xx).
+// Placas electrónicas Táctil (21662.xx): detrás del mando 21840 y antes de
+// las etiquetas (21846, 21847).
 export const familiaDe = (codigo) =>
   /^22751\.\d\d$/.test(codigo) ? '22751.0~'
+  : /^21662\./.test(codigo) ? '21845~'
   : /[BCG]$/.test(codigo) && codigo.includes('.') ? codigo.slice(0, -1).replace(/\.$/, '') : codigo;

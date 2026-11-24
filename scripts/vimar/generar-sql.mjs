@@ -62,6 +62,11 @@ const SERIES = {
       [/^22751\./, { slug: 'vimar-knx-eikon-flat-tondo', nombre: 'KNX · Eikon · Flat / Tondo', orden: 115 }],
       // Etiquetas para los mandos Eikon Tactil.
       [/^2184[67]/, { slug: 'vimar-knx-eikon', nombre: 'KNX · Eikon · Táctil', orden: 113 }],
+      // Placas (Eikon tradicional / Placas), solo 2M y para paneles:
+      // electrónicas 2M -> Táctil; Vintage -> Vintage; Flat y Tondo -> Flat/Tondo.
+      [/^21662\./, { slug: 'vimar-knx-eikon', nombre: 'KNX · Eikon · Táctil', orden: 113 }],
+      [/^2267[12]\./, { slug: 'vimar-knx-eikon-vintage', nombre: 'KNX · Eikon · Vintage', orden: 114 }],
+      [/^2268[12]\./, { slug: 'vimar-knx-eikon-flat-tondo', nombre: 'KNX · Eikon · Flat / Tondo', orden: 115 }],
     ],
   },
   knx: {
