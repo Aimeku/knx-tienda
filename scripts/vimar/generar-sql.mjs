@@ -45,7 +45,8 @@ const SERIES = {
       'Aparatos DIN': { slug: 'vimar-knx-din', nombre: 'KNX · Aparatos DIN y módulos', orden: 111 },
       'Componentes no modulares': { slug: 'vimar-knx-din', nombre: 'KNX · Aparatos DIN y módulos', orden: 111 },
       Software: { slug: 'vimar-knx-software', nombre: 'KNX · Software y accesorios', orden: 112 },
-      Accesorios: { slug: 'vimar-knx-software', nombre: 'KNX · Software y accesorios', orden: 112 },
+      // La tarjeta transponder va con su programador (01599), en Dispositivos.
+      Accesorios: { slug: 'vimar-knx-dispositivos', nombre: 'KNX · Mandos, pantallas y termostatos', orden: 110 },
     },
   },
 };
