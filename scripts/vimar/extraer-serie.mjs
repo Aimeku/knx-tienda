@@ -144,7 +144,9 @@ for (const [i, codigo] of codigos.entries()) {
   await espera(PAUSA_MS);
 }
 
-const productos = codigos.map((c) => porCodigo.get(c)).filter(Boolean);
+// El listado de Vimar a veces devuelve menos páginas: no se pierden las
+// fichas ya descargadas en ejecuciones anteriores.
+const productos = [...new Set([...codigos, ...porCodigo.keys()])].map((c) => porCodigo.get(c)).filter(Boolean);
 fs.writeFileSync(salida, JSON.stringify(productos, null, 2));
 console.log(`\nListo: ${productos.length} productos en ${salida}. Errores: ${errores.length}`);
 if (errores.length) console.log(errores);

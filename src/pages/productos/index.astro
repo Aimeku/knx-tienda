@@ -68,7 +68,7 @@ if (orden === 'recomendado' && !busqueda) {
   const { data: lista } = await consultaFiltrada('id, sku, categoria_id').range(0, 4999);
   const filas = (lista ?? []) as unknown as { id: string; sku: string | null; categoria_id: string | null }[];
   total = filas.length;
-  const rejilla = montarRejilla(filas, [idPorSlug.get('vimar-linea-mecanismos'), idPorSlug.get('vimar-knx-linea')], [idPorSlug.get('vimar-linea-placas'), idPorSlug.get('vimar-linea-teclas'), idPorSlug.get('vimar-linea-tapas-ciegas')]);
+  const rejilla = montarRejilla(filas, [idPorSlug.get('vimar-linea-mecanismos'), idPorSlug.get('vimar-knx-linea')], [idPorSlug.get('vimar-linea-placas'), idPorSlug.get('vimar-linea-teclas'), idPorSlug.get('vimar-linea-tapas-ciegas'), idPorSlug.get('vimar-knx-eikon'), idPorSlug.get('vimar-knx-eikon-vintage'), idPorSlug.get('vimar-knx-eikon-flat-tondo')]);
   totalPaginas = Math.max(1, Math.ceil(rejilla.length / POR_PAGINA));
   const trozo = rejilla.slice((pagina - 1) * POR_PAGINA, pagina * POR_PAGINA);
   const ids = [...new Set(trozo.filter((c): c is string => typeof c === 'string'))];
@@ -149,7 +149,15 @@ function montarRejilla(
     const p = lista[i];
     if (p.categoria_id && centradas.has(p.categoria_id) && p.sku) {
       const cat = p.categoria_id;
-      const clave = (sku: string) => (cat === idsCentradas[0] ? trioPlaca(sku) : familia(sku));
+      // Cómo se agrupan las filas: placas por tamaño y trío de acabados;
+      // Eikon Vintage por referencia (22581, 22582: sus 6 acabados en 2 filas);
+      // Eikon Mecanismos y Flat/Tondo, toda la categoría seguida; el resto, por
+      // referencia sin color.
+      const clave = (sku: string) =>
+        cat === idsCentradas[0] ? trioPlaca(sku)
+        : cat === idsCentradas[4] ? sku.split('.')[0]
+        : cat === idsCentradas[3] || cat === idsCentradas[5] ? 'toda'
+        : familia(sku);
       const grupo = clave(p.sku);
       const ids: string[] = [];
       while (ids.length < 3 && i < lista.length && lista[i].categoria_id === cat && lista[i].sku && clave(lista[i].sku!) === grupo) {

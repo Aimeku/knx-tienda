@@ -47,6 +47,17 @@ const SERIES = {
       Botones: { slug: 'vimar-knx-linea', nombre: 'KNX · Mecanismos Linea', orden: 109 },
     },
   },
+  'knx-eikon': {
+    serie: 'KNX',
+    categorias: {
+      Dispositivos: { slug: 'vimar-knx-eikon', nombre: 'KNX · Eikon · Mecanismos', orden: 113 },
+    },
+    // Dentro de Eikon, por referencia: Vintage (palancas) y Flat/Tondo (.AX).
+    porCodigo: [
+      [/^2258[12]\./, { slug: 'vimar-knx-eikon-vintage', nombre: 'KNX · Eikon · Vintage', orden: 114 }],
+      [/\.AX$/, { slug: 'vimar-knx-eikon-flat-tondo', nombre: 'KNX · Eikon · Flat / Tondo', orden: 115 }],
+    ],
+  },
   knx: {
     serie: 'KNX',
     categorias: {
@@ -63,7 +74,10 @@ if (!SERIES[serieArg]) {
   console.error(`Serie desconocida: ${serieArg} (válidas: ${Object.keys(SERIES).join(', ')})`);
   process.exit(1);
 }
-const { serie: SERIE, categorias: CATEGORIAS } = SERIES[serieArg];
+const { serie: SERIE, categorias: CATEGORIAS, porCodigo: POR_CODIGO = [] } = SERIES[serieArg];
+// Categoría de un producto: primero por referencia (si la serie lo define) y
+// si no, por el último tramo de la ruta de Vimar.
+const categoriaDe = (p) => POR_CODIGO.find(([re]) => re.test(p.codigo))?.[1] ?? CATEGORIAS[p.ruta.split(' / ').pop()];
 
 const { etiquetas, valores } = JSON.parse(fs.readFileSync('data/vimar/etim-es.json', 'utf8'));
 const nombreFoto = (codigo) => codigo.toLowerCase().replace(/[^a-z0-9]+/g, '-');
@@ -101,12 +115,12 @@ function documentos(p) {
   return docs;
 }
 
-function infoAdicional(p, tipo) {
+function infoAdicional(p) {
   const filas = [
     { titulo: 'Referencia Vimar', valor: p.codigo },
     { titulo: 'EAN', valor: p.ean },
     { titulo: 'Serie', valor: `Vimar ${SERIE}` },
-    { titulo: 'Tipo', valor: CATEGORIAS[tipo].nombre.replace(`${SERIE} · `, '') },
+    { titulo: 'Tipo', valor: categoriaDe(p).nombre.replace(`${SERIE} · `, '') },
   ];
   if (p.pedido_minimo) filas.push({ titulo: 'Pedido mínimo', valor: p.pedido_minimo.replace(/ NR$/, ' uds.') });
   if (p.embalajes.length) {
@@ -129,11 +143,11 @@ const excluir = new Set(
 );
 
 const todos = JSON.parse(fs.readFileSync(entrada, 'utf8'));
-const productos = todos.filter((p) => !/bloqueo/i.test(p.estado) && !excluir.has(p.codigo) && CATEGORIAS[p.ruta.split(' / ').pop()]);
+const productos = todos.filter((p) => !/bloqueo/i.test(p.estado) && !excluir.has(p.codigo) && categoriaDe(p));
 const omitidos = todos.length - productos.length;
 
 // Posición de cada familia (referencia sin color) dentro de su categoría, por código.
-const slugDe = (p) => CATEGORIAS[p.ruta.split(' / ').pop()].slug;
+const slugDe = (p) => categoriaDe(p).slug;
 const posicionFamilia = new Map();
 for (const slug of new Set(productos.map(slugDe))) {
   const familias = [...new Set(productos.filter((p) => slugDe(p) === slug).map((p) => familiaDe(p.codigo)))].sort();
@@ -142,8 +156,7 @@ for (const slug of new Set(productos.map(slugDe))) {
 const ordenDe = (p) => ordenProducto(p.codigo, slugDe(p), posicionFamilia.get(`${slugDe(p)}|${familiaDe(p.codigo)}`));
 
 const filas = productos.map((p) => {
-  const tipo = p.ruta.split(' / ').pop();
-  const cat = CATEGORIAS[tipo];
+  const cat = categoriaDe(p);
   const foto = fs.existsSync(`public/productos/vimar/${nombreFoto(p.codigo)}-800.webp`) ? `/productos/vimar/${nombreFoto(p.codigo)}-800.webp` : null;
   const especificaciones = p.etim.map((e) => ({ titulo: etiquetas[e.titulo] ?? e.titulo, valor: traducirValor(e.valor) }));
   return `(
@@ -153,12 +166,12 @@ const filas = productos.map((p) => {
   'Vimar', 0, 0, true, ${ordenDe(p)},
   ${sql(p.ficha_pdf)}, ${sql(foto)},
   ${json(especificaciones)},
-  ${json(infoAdicional(p, tipo))},
+  ${json(infoAdicional(p))},
   ${json(documentos(p))}
 )`;
 });
 
-const categoriasUnicas = [...new Map(Object.values(CATEGORIAS).map((c) => [c.slug, c])).values()];
+const categoriasUnicas = [...new Map([...Object.values(CATEGORIAS), ...POR_CODIGO.map(([, c]) => c)].map((c) => [c.slug, c])).values()];
 const cabecera = (n, total) => `-- ============================================================
 -- Vimar ${SERIE}: parte ${n} de ${total}
 -- Generado con scripts/vimar/generar-sql.mjs desde ${entrada}

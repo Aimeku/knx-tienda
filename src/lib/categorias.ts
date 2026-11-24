@@ -45,8 +45,9 @@ export const tiendaCompleta: GrupoTienda[] = [
       // (visible: false) no salen en el menú ni en los filtros.
       // KNX
       { nombre: 'Mecanismos', slug: 'vimar-knx-linea', seccion: 'KNX · Linea' },
-      { nombre: 'Vintage', slug: 'vimar-knx-eikon-vintage', seccion: 'KNX · Eikon', visible: false }, // sin productos por ahora
-      { nombre: 'Flat / Tondo', slug: 'vimar-knx-eikon-flat-tondo', seccion: 'KNX · Eikon', visible: false }, // sin productos por ahora
+      { nombre: 'Mecanismos', slug: 'vimar-knx-eikon', seccion: 'KNX · Eikon' },
+      { nombre: 'Vintage', slug: 'vimar-knx-eikon-vintage', seccion: 'KNX · Eikon' },
+      { nombre: 'Flat / Tondo', slug: 'vimar-knx-eikon-flat-tondo', seccion: 'KNX · Eikon' },
       { nombre: 'Aparatos DIN y módulos', slug: 'vimar-knx-din', seccion: 'KNX · Componentes comunes' },
       { nombre: 'Mandos y termostatos', slug: 'vimar-knx-dispositivos', seccion: 'KNX · Componentes comunes', visible: false }, // sin productos por ahora
       { nombre: 'Software', slug: 'vimar-knx-software', seccion: 'KNX · Componentes comunes', visible: false }, // sin productos por ahora
