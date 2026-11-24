@@ -68,7 +68,7 @@ if (orden === 'recomendado' && !busqueda) {
   const { data: lista } = await consultaFiltrada('id, sku, categoria_id').range(0, 4999);
   const filas = (lista ?? []) as unknown as { id: string; sku: string | null; categoria_id: string | null }[];
   total = filas.length;
-  const rejilla = montarRejilla(filas, idPorSlug.get('vimar-linea-mecanismos'), [idPorSlug.get('vimar-linea-placas'), idPorSlug.get('vimar-linea-teclas')]);
+  const rejilla = montarRejilla(filas, idPorSlug.get('vimar-linea-mecanismos'), [idPorSlug.get('vimar-linea-placas'), idPorSlug.get('vimar-linea-teclas'), idPorSlug.get('vimar-linea-tapas-ciegas')]);
   totalPaginas = Math.max(1, Math.ceil(rejilla.length / POR_PAGINA));
   const trozo = rejilla.slice((pagina - 1) * POR_PAGINA, pagina * POR_PAGINA);
   const ids = [...new Set(trozo.filter((c): c is string => typeof c === 'string'))];
@@ -105,7 +105,7 @@ if (orden === 'recomendado' && !busqueda) {
 // Placas y teclas, en filas centradas de 3. Placas: cada fila es un tamaño en
 // un trío de acabados (30642.00/.01/.02 tecno blanco, cáñamo y negro;
 // .20/.21/.22; .40/.41/.42 Reflex; .60/.61/.62; .70.01/.71/.72).
-// Teclas: cada fila es una tecla en blanco, cáñamo y negro.
+// Teclas y tapas ciegas: cada fila es una referencia en blanco, cáñamo y negro.
 // El resto de categorías van seguidas, sin huecos.
 function montarRejilla(
   lista: { id: string; sku: string | null; categoria_id: string | null }[],
