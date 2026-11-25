@@ -61,6 +61,15 @@ if (user) {
           <input type="password" name="password" placeholder="Contraseña" aria-label="Contraseña" required />
           <p class="mensaje" hidden></p>
           <button type="submit" class="enviar">Iniciar sesión</button>
+          <button type="button" class="enlace" id="ir-recuperar">¿Has olvidado tu contraseña?</button>
+        </form>
+
+        <form class="panel panel-login" data-panel="recuperar" id="form-recuperar" hidden>
+          <p class="ayuda">Escribe el correo de tu cuenta y te enviaremos un enlace para crear una contraseña nueva.</p>
+          <input type="email" name="email" placeholder="Correo electrónico" aria-label="Correo electrónico" required />
+          <p class="mensaje" hidden></p>
+          <button type="submit" class="enviar">Enviar enlace</button>
+          <button type="button" class="enlace" id="volver-login">Volver a iniciar sesión</button>
         </form>
 
         <form class="panel panel-registro" data-panel="registro" id="form-registro" hidden>
@@ -133,6 +142,35 @@ if (user) {
         const panel = document.querySelector<HTMLElement>(`[data-panel="${tab.dataset.tab}"]`);
         if (panel) panel.hidden = false;
       });
+    });
+
+    function mostrarPanel(nombre: string) {
+      document.querySelectorAll<HTMLElement>('.panel').forEach((p) => { p.hidden = p.dataset.panel !== nombre; });
+    }
+    document.getElementById('ir-recuperar')?.addEventListener('click', () => {
+      const email = (document.querySelector<HTMLInputElement>('#form-login [name="email"]'))?.value ?? '';
+      const destino = document.querySelector<HTMLInputElement>('#form-recuperar [name="email"]');
+      if (destino && email) destino.value = email;
+      mostrarPanel('recuperar');
+    });
+    document.getElementById('volver-login')?.addEventListener('click', () => mostrarPanel('login'));
+
+    document.getElementById('form-recuperar')?.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const form = e.currentTarget as HTMLFormElement;
+      const boton = form.querySelector('button[type="submit"]') as HTMLButtonElement;
+      const email = (form.elements.namedItem('email') as HTMLInputElement).value.trim();
+      setCargando(boton, true, 'Enviar enlace');
+      const { error } = await supabaseBrowser.auth.resetPasswordForEmail(email, {
+        redirectTo: `${window.location.origin}/nueva-contrasena`,
+      });
+      setCargando(boton, false, 'Enviar enlace');
+      if (error && /rate|seconds|limit/i.test(error.message)) {
+        mostrarMensaje(form, 'Has pedido varios enlaces seguidos. Espera un minuto y vuelve a intentarlo.', 'error');
+        return;
+      }
+      // Mismo mensaje exista o no la cuenta, para no revelar qué correos están registrados.
+      mostrarMensaje(form, 'Si ese correo tiene cuenta, te llegará un email con el enlace en unos minutos. Revisa también la carpeta de spam.', 'ok');
     });
 
     function mostrarMensaje(form: HTMLFormElement, texto: string, tipo: 'ok' | 'error') {
@@ -312,6 +350,18 @@ if (user) {
     .privacidad input { accent-color: var(--color-primary); margin-top: 0.2rem; }
     .privacidad a { color: var(--color-text); }
 
+    .enlace {
+      align-self: flex-start;
+      background: none;
+      border: none;
+      padding: 0;
+      color: var(--color-muted);
+      text-decoration: underline;
+      font: inherit;
+      font-size: 0.9rem;
+      cursor: pointer;
+    }
+    .ayuda { margin: 0; color: var(--color-muted); font-size: 0.95rem; }
     .mensaje {
       border-radius: 6px;
       padding: 0.75rem 1rem;
