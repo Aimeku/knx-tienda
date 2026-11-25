@@ -6,7 +6,7 @@ export const prerender = false;
 import Base from '../../layouts/Base.astro';
 import { supabase, supabaseAdmin } from '../../lib/supabase';
 import type { Documento, Especificacion, Producto, ProductoVariante } from '../../lib/supabase';
-import { COMPRAS_ACTIVAS } from '../../lib/tienda';
+import { COMPRAS_ACTIVAS, conIva, formatoPrecio } from '../../lib/tienda';
 
 const { slug } = Astro.params;
 
@@ -29,7 +29,10 @@ if (COMPRAS_ACTIVAS && usuario) {
   const { data: perfil } = await supabaseAdmin.from('perfiles').select('estado').eq('id', usuario.id).single();
   aprobado = perfil?.estado === 'aprobado';
 }
-const formatoPrecio = (n: number) => `${n.toFixed(2)} €`;
+// Precio en Supabase sin IVA; en la web, con el 21 % incluido.
+const precioBase = producto.precio_oferta ?? producto.precio;
+const tienePrecio = Number(precioBase) > 0;
+const precioIva = tienePrecio ? conIva(Number(precioBase)) : 0;
 
 const variantes = producto.producto_variantes ?? [];
 
@@ -88,8 +91,10 @@ const documentos: Documento[] =
       <h1>{producto.nombre}</h1>
       {!COMPRAS_ACTIVAS ? (
         <p class="precio-oculto">Ref. {producto.sku} · Precio bajo consulta</p>
+      ) : aprobado && tienePrecio ? (
+        <p class="precio-real">{formatoPrecio(precioIva)} <span class="precio-iva">IVA incluido</span></p>
       ) : aprobado ? (
-        <p class="precio-real">{formatoPrecio(producto.precio_oferta ?? producto.precio)}</p>
+        <p class="precio-oculto">Ref. {producto.sku} · Precio bajo consulta</p>
       ) : (
         <p class="precio-oculto">Inicia sesión para ver los precios</p>
       )}
@@ -116,7 +121,7 @@ const documentos: Documento[] =
         </div>
       ))}
 
-      {!COMPRAS_ACTIVAS ? (
+      {!COMPRAS_ACTIVAS || (aprobado && !tienePrecio) ? (
         <div class="compra">
           <a
             href={`mailto:info@avci.es?subject=${encodeURIComponent(`Presupuesto ${producto.sku} - ${producto.nombre}`)}`}
@@ -132,8 +137,8 @@ const documentos: Documento[] =
             id="add-to-cart"
             data-id={producto.id}
             data-nombre={producto.nombre}
-            data-precio={producto.precio_oferta ?? producto.precio}
-            data-variantes={JSON.stringify(variantes)}
+            data-precio={precioIva}
+            data-variantes={JSON.stringify(variantes.map((v) => ({ ...v, precio_extra: conIva(Number(v.precio_extra) || 0) })))}
           >
             Añadir al carrito
           </button>
@@ -234,6 +239,11 @@ const documentos: Documento[] =
       font-size: 1.5rem;
       font-weight: 800;
       margin: 0 0 1.5rem;
+    }
+    .precio-iva {
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--color-muted);
     }
     .precio-oculto {
       display: inline-block;
@@ -403,7 +413,8 @@ const documentos: Documento[] =
       if (existente) existente.cantidad += item.cantidad;
       else carrito.push(item);
       localStorage.setItem('carrito', JSON.stringify(carrito));
-      alert('Producto añadido al carrito');
+      window.dispatchEvent(new Event('carrito-cambiado'));
+      if (confirm('Producto añadido al carrito. ¿Ir al carrito?')) window.location.href = '/carrito';
     });
   </script>
 </Base>

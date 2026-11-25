@@ -261,10 +261,15 @@ const hrefProyecto = (slug: string) => (lang === 'en' ? `/en/proyectos/${slug}` 
   </a>
 
   <script>
-    const carrito = JSON.parse(localStorage.getItem('carrito') || '[]');
-    const total = carrito.reduce((s: number, i: any) => s + (i.cantidad || 1), 0);
-    const badge = document.getElementById('cart-badge');
-    if (badge) badge.textContent = String(total);
+    function pintarContadorCarrito() {
+      let carrito: any[] = [];
+      try { carrito = JSON.parse(localStorage.getItem('carrito') || '[]'); } catch {}
+      const total = carrito.reduce((s: number, i: any) => s + (i.cantidad || 1), 0);
+      const badge = document.getElementById('cart-badge');
+      if (badge) badge.textContent = String(total);
+    }
+    pintarContadorCarrito();
+    window.addEventListener('carrito-cambiado', pintarContadorCarrito);
   </script>
 
   <script>

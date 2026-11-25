@@ -1,63 +1,158 @@
 ---
-// Temporalmente en servidor para que el middleware pueda redirigir a
-// /proximamente mientras la tienda está inactiva (ver src/lib/tienda.ts).
-// Al reactivar la tienda se puede volver a poner a true.
+// En servidor: comprueba que la cuenta esté aprobada antes de dejar pagar.
 export const prerender = false;
 import Base from '../layouts/Base.astro';
----
-<Base title="Carrito | Tu Empresa KNX">
-  <h1>Tu carrito</h1>
-  <div id="carrito-contenido"></div>
+import { supabaseAdmin } from '../lib/supabase';
 
-  <div id="checkout-form" style="display:none; margin-top: 2rem;">
-    <label>
-      Email para el pedido:
-      <input type="email" id="email-input" required />
-    </label>
-    <button id="pagar-btn">Pagar con tarjeta</button>
-  </div>
+const usuario = Astro.locals.user;
+let aprobado = false;
+if (usuario) {
+  const { data: perfil } = await supabaseAdmin.from('perfiles').select('estado').eq('id', usuario.id).single();
+  aprobado = perfil?.estado === 'aprobado';
+}
+---
+<Base title="Carrito | AVCI Smart Homes" description="Tu carrito en AVCI Smart Homes.">
+  <section class="carrito">
+    <h1>Tu carrito</h1>
+
+    <div id="carrito-vacio" class="vacio" hidden>
+      <p>Tu carrito está vacío.</p>
+      <a href="/productos" class="boton">Ver productos</a>
+    </div>
+
+    <div id="carrito-lleno" hidden>
+      <ul id="lineas" class="lineas"></ul>
+
+      <div class="resumen">
+        <p class="total">Total <strong id="total"></strong></p>
+        <p class="nota">IVA (21 %) incluido. Los gastos de envío se confirman con el pedido.</p>
+        <p class="nota">¿Tienes un código de descuento? Podrás introducirlo en la página de pago.</p>
+
+        {aprobado ? (
+          <button id="pagar" class="boton">Pagar con tarjeta</button>
+        ) : (
+          <a href="/cuenta" class="boton boton--gris">
+            {usuario ? 'Tu cuenta está pendiente de aprobación' : 'Inicia sesión para comprar'}
+          </a>
+        )}
+        <p id="error" class="error" hidden></p>
+      </div>
+    </div>
+  </section>
 
   <script>
-    function render() {
-      const carrito = JSON.parse(localStorage.getItem('carrito') || '[]');
-      const cont = document.getElementById('carrito-contenido')!;
-      const form = document.getElementById('checkout-form')!;
+    type Linea = { id: string; productoId: string; varianteId: string | null; nombre: string; precio: number; cantidad: number };
 
-      if (carrito.length === 0) {
-        cont.innerHTML = '<p>Tu carrito está vacío.</p>';
-        form.style.display = 'none';
-        return;
-      }
+    const euros = (n: number) => n.toLocaleString('es-ES', { style: 'currency', currency: 'EUR', minimumFractionDigits: 2 });
+    const leer = (): Linea[] => {
+      try { return JSON.parse(localStorage.getItem('carrito') || '[]'); } catch { return []; }
+    };
+    const guardar = (carrito: Linea[]) => {
+      localStorage.setItem('carrito', JSON.stringify(carrito));
+      window.dispatchEvent(new Event('carrito-cambiado'));
+      pintar();
+    };
+    const escapar = (t: string) => t.replace(/[&<>"']/g, (c) => `&#${c.charCodeAt(0)};`);
 
-      const total = carrito.reduce((s: number, i: any) => s + i.precio * i.cantidad, 0);
-      cont.innerHTML = `
-        <ul>
-          ${carrito.map((i: any) => `<li>${i.nombre} x${i.cantidad} — ${(i.precio * i.cantidad).toFixed(2)}€</li>`).join('')}
-        </ul>
-        <p><strong>Total: ${total.toFixed(2)}€</strong></p>
-      `;
-      form.style.display = 'block';
+    function pintar() {
+      const carrito = leer();
+      document.getElementById('carrito-vacio')!.hidden = carrito.length > 0;
+      document.getElementById('carrito-lleno')!.hidden = carrito.length === 0;
+      if (!carrito.length) return;
+
+      document.getElementById('lineas')!.innerHTML = carrito.map((l, i) => `
+        <li class="linea">
+          <span class="nombre">${escapar(l.nombre)}</span>
+          <span class="unidad">${euros(l.precio)}</span>
+          <input type="number" min="1" max="9999" value="${l.cantidad}" data-i="${i}" aria-label="Cantidad" />
+          <span class="importe">${euros(l.precio * l.cantidad)}</span>
+          <button type="button" class="quitar" data-quitar="${i}" aria-label="Quitar">×</button>
+        </li>`).join('');
+      const total = carrito.reduce((s, l) => s + l.precio * l.cantidad, 0);
+      document.getElementById('total')!.textContent = euros(total);
     }
 
-    render();
-
-    document.getElementById('pagar-btn')?.addEventListener('click', async () => {
-      const email = (document.getElementById('email-input') as HTMLInputElement).value;
-      if (!email) { alert('Introduce tu email'); return; }
-
-      const carrito = JSON.parse(localStorage.getItem('carrito') || '[]');
-      const res = await fetch('/api/checkout', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ items: carrito, email }),
-      });
-      const data = await res.json();
-      if (data.url) {
-        localStorage.removeItem('carrito');
-        window.location.href = data.url;
-      } else {
-        alert(data.error || 'Error al iniciar el pago');
-      }
+    document.getElementById('lineas')!.addEventListener('change', (e) => {
+      const input = e.target as HTMLInputElement;
+      if (input.dataset.i === undefined) return;
+      const carrito = leer();
+      carrito[Number(input.dataset.i)].cantidad = Math.min(9999, Math.max(1, Math.floor(Number(input.value) || 1)));
+      guardar(carrito);
     });
+    document.getElementById('lineas')!.addEventListener('click', (e) => {
+      const boton = (e.target as HTMLElement).closest<HTMLButtonElement>('[data-quitar]');
+      if (!boton) return;
+      const carrito = leer();
+      carrito.splice(Number(boton.dataset.quitar), 1);
+      guardar(carrito);
+    });
+
+    document.getElementById('pagar')?.addEventListener('click', async (e) => {
+      const boton = e.currentTarget as HTMLButtonElement;
+      const error = document.getElementById('error')!;
+      error.hidden = true;
+      boton.disabled = true;
+      boton.textContent = 'Redirigiendo al pago…';
+      try {
+        const res = await fetch('/api/checkout', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ items: leer() }),
+        });
+        const data = await res.json();
+        if (data.url) { window.location.href = data.url; return; }
+        error.textContent = data.error || 'No se pudo iniciar el pago.';
+      } catch {
+        error.textContent = 'No se pudo iniciar el pago. Inténtalo de nuevo.';
+      }
+      error.hidden = false;
+      boton.disabled = false;
+      boton.textContent = 'Pagar con tarjeta';
+    });
+
+    pintar();
   </script>
+
+  <style>
+    .carrito { max-width: 900px; margin: 0 auto; padding: 2rem 16px 4rem; }
+    h1 { font-size: 2rem; margin: 0 0 1.5rem; }
+    .lineas { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--color-border); }
+    :global(.linea) {
+      display: grid;
+      grid-template-columns: 1fr auto 4.5rem 6.5rem 2rem;
+      gap: 0.75rem;
+      align-items: center;
+      padding: 0.9rem 0;
+      border-bottom: 1px solid var(--color-border);
+    }
+    :global(.linea .unidad) { color: var(--color-muted); font-size: 0.9rem; }
+    :global(.linea .importe) { text-align: right; font-weight: 700; }
+    :global(.linea input) { width: 100%; padding: 0.35rem; border: 1px solid var(--color-border); border-radius: 6px; }
+    :global(.linea .quitar) { border: none; background: none; font-size: 1.4rem; cursor: pointer; color: var(--color-muted); }
+    .resumen { margin-top: 1.5rem; text-align: right; }
+    .total { font-size: 1.4rem; margin: 0 0 0.5rem; }
+    .nota { color: var(--color-muted); font-size: 0.9rem; margin: 0.25rem 0; }
+    .boton {
+      display: inline-block;
+      margin-top: 1.25rem;
+      background: var(--color-primary);
+      color: var(--color-primary-text);
+      border: none;
+      padding: 0.8rem 2rem;
+      border-radius: 999px;
+      font-weight: 700;
+      cursor: pointer;
+      text-decoration: none;
+    }
+    .boton:disabled { opacity: 0.6; cursor: wait; }
+    .boton--gris { background: var(--color-muted); }
+    .error { color: #b00020; margin-top: 0.75rem; }
+    .vacio { text-align: center; padding: 3rem 0; }
+    @media (max-width: 640px) {
+      :global(.linea) { grid-template-columns: 1fr 4rem 2rem; }
+      :global(.linea .nombre) { grid-column: 1 / -1; }
+      :global(.linea .unidad) { display: none; }
+      :global(.linea .importe) { grid-column: 1; grid-row: 2; text-align: left; }
+    }
+  </style>
 </Base>

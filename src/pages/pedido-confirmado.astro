@@ -1,0 +1,35 @@
+---
+// Página a la que vuelve Stripe tras pagar. El pedido se marca como pagado en
+// el webhook (/api/stripe-webhook); aquí solo se da las gracias y se vacía el carrito.
+export const prerender = false;
+import Base from '../layouts/Base.astro';
+---
+<Base title="Pedido confirmado | AVCI Smart Homes" description="Gracias por tu pedido.">
+  <section class="confirmado">
+    <h1>¡Gracias por tu pedido!</h1>
+    <p>Hemos recibido tu pago. Nos pondremos en contacto contigo para confirmar el envío.</p>
+    <p>Si tienes cualquier duda, escríbenos a <a href="mailto:info@avci.es">info@avci.es</a>.</p>
+    <a href="/productos" class="boton">Seguir comprando</a>
+  </section>
+
+  <script>
+    localStorage.removeItem('carrito');
+    window.dispatchEvent(new Event('carrito-cambiado'));
+  </script>
+
+  <style>
+    .confirmado { max-width: 640px; margin: 0 auto; padding: 4rem 16px; text-align: center; }
+    h1 { font-size: 2rem; margin: 0 0 1rem; }
+    p { color: var(--color-muted); }
+    .boton {
+      display: inline-block;
+      margin-top: 1.5rem;
+      background: var(--color-primary);
+      color: var(--color-primary-text);
+      padding: 0.8rem 2rem;
+      border-radius: 999px;
+      font-weight: 700;
+      text-decoration: none;
+    }
+  </style>
+</Base>

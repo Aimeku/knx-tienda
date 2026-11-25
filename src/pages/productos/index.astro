@@ -4,8 +4,22 @@
 export const prerender = false;
 
 import Base from '../../layouts/Base.astro';
-import { supabase } from '../../lib/supabase';
-import { COMPRAS_ACTIVAS } from '../../lib/tienda';
+import { supabase, supabaseAdmin } from '../../lib/supabase';
+import { COMPRAS_ACTIVAS, conIva, formatoPrecio } from '../../lib/tienda';
+
+// Los precios solo se pintan para cuentas aprobadas (comprobado en servidor).
+const usuario = Astro.locals.user;
+let aprobado = false;
+if (COMPRAS_ACTIVAS && usuario) {
+  const { data: perfil } = await supabaseAdmin.from('perfiles').select('estado').eq('id', usuario.id).single();
+  aprobado = perfil?.estado === 'aprobado';
+}
+const textoPrecio = (p: { precio?: number | null; precio_oferta?: number | null }) => {
+  if (!COMPRAS_ACTIVAS) return 'Precio bajo consulta';
+  if (!aprobado) return 'Inicia sesión para ver los precios';
+  const base = Number(p.precio_oferta ?? p.precio);
+  return base > 0 ? `${formatoPrecio(conIva(base))} IVA incl.` : 'Precio bajo consulta';
+};
 import { tiendaMenu, categorias as categoriasPlano, marcasBase, seccionesDe } from '../../lib/categorias';
 
 const POR_PAGINA = 48;
@@ -54,7 +68,7 @@ type Casilla = { p: Producto; inicio?: number } | null;
 // En la rejilla, una fila centrada empieza con este marcador seguido de sus
 // productos; el marcador ocupa la 4.ª casilla de la fila (no se pinta).
 type Celda = string | null | { centrar: number };
-const CAMPOS = 'id, nombre, slug, imagen_principal, marca, sku';
+const CAMPOS = 'id, nombre, slug, imagen_principal, marca, sku, precio, precio_oferta';
 
 let casillas: Casilla[] = [];
 let total = 0;
@@ -392,7 +406,7 @@ const paginasVisibles = [...new Set([1, pagina - 1, pagina, pagina + 1, totalPag
               </div>
               <p class="card-meta">{[c.p.marca, c.p.sku && `Ref. ${c.p.sku}`].filter(Boolean).join(' · ')}</p>
               <h3>{c.p.nombre}</h3>
-              <p class="card-precio">{COMPRAS_ACTIVAS ? 'Inicia sesión para ver los precios' : 'Precio bajo consulta'}</p>
+              <p class:list={['card-precio', { 'card-precio--real': aprobado }]}>{textoPrecio(c.p)}</p>
               <span class="card-cta">Ver ficha</span>
             </a>
           ))}
@@ -648,6 +662,7 @@ const paginasVisibles = [...new Set([1, pagina - 1, pagina, pagina + 1, totalPag
     .card-meta { margin: 0; font-size: 0.75rem; color: var(--color-muted); letter-spacing: 0.02em; }
     .card h3 { font-size: 0.95rem; font-weight: 700; margin: 0; line-height: 1.35; }
     .card-precio { margin: 0.2rem 0 0; font-size: 0.82rem; color: var(--color-muted); }
+    .card-precio--real { font-size: 0.95rem; font-weight: 700; color: var(--color-text); }
     .card-cta {
       margin-top: auto;
       padding-top: 0.75rem;

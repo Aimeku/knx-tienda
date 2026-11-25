@@ -22,8 +22,21 @@ export const POST: APIRoute = async ({ request }) => {
     const session = event.data.object as Stripe.Checkout.Session;
     const pedidoId = session.metadata?.pedido_id;
 
-    if (pedidoId) {
-      await supabaseAdmin.from('pedidos').update({ estado: 'pagado' }).eq('id', pedidoId);
+    if (pedidoId && session.payment_status === 'paid') {
+      // Importe realmente cobrado (ya con el código de descuento, si lo hubo),
+      // nombre y dirección de envío que el cliente ha puesto en Stripe.
+      const envio = session.collected_information?.shipping_details ?? null;
+      await supabaseAdmin
+        .from('pedidos')
+        .update({
+          estado: 'pagado',
+          ...(session.amount_total != null && { total: session.amount_total / 100 }),
+          cliente_nombre: envio?.name ?? session.customer_details?.name ?? null,
+          direccion_envio: envio
+            ? { ...envio, telefono: session.customer_details?.phone ?? null, descuento: (session.total_details?.amount_discount ?? 0) / 100 }
+            : null,
+        })
+        .eq('id', pedidoId);
       // Aquí también puedes descontar stock, enviar email de confirmación, etc.
     }
   }

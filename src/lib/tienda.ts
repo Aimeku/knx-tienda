@@ -13,7 +13,14 @@ import { localizedHref, type Lang } from '../i18n/ui';
 //   true  = tienda completa con precios para cuentas aprobadas y compra.
 //           Activarlo solo cuando todos los productos tengan precio (no 0 €).
 export const TIENDA_ACTIVA = true;
-export const COMPRAS_ACTIVAS = false;
+export const COMPRAS_ACTIVAS = true;
+
+// Los precios de Supabase (productos.precio) son PVP SIN IVA. En la web y en
+// el cobro se muestran y se cobran con el IVA incluido.
+export const IVA = 0.21;
+export const conIva = (base: number) => Math.round(base * (1 + IVA) * 100) / 100;
+export const formatoPrecio = (n: number) =>
+  n.toLocaleString('es-ES', { style: 'currency', currency: 'EUR', minimumFractionDigits: 2 });
 
 export const RUTA_PROXIMAMENTE = '/proximamente';
 
