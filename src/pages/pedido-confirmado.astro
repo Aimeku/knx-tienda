@@ -1,13 +1,40 @@
 ---
-// Página a la que vuelve Stripe tras pagar. El pedido se marca como pagado en
-// el webhook (/api/stripe-webhook); aquí solo se da las gracias y se vacía el carrito.
+// Tras confirmar un pedido: muestra los datos para la transferencia.
+// Solo el usuario que hizo el pedido puede verlo.
 export const prerender = false;
 import Base from '../layouts/Base.astro';
+import { supabaseAdmin } from '../lib/supabase';
+import { datosTransferencia, referenciaPedido } from '../lib/pedidos';
+import { formatoPrecio } from '../lib/tienda';
+
+const usuario = Astro.locals.user;
+const id = Astro.url.searchParams.get('id') ?? '';
+if (!usuario || !/^[0-9a-f-]{36}$/i.test(id)) return Astro.redirect('/carrito');
+
+const { data: pedido } = await supabaseAdmin
+  .from('pedidos')
+  .select('id, numero, total, descuento, codigo_descuento, estado, usuario_id')
+  .eq('id', id)
+  .maybeSingle();
+if (!pedido || pedido.usuario_id !== usuario.id) return Astro.redirect('/carrito');
+
+const ref = referenciaPedido(pedido.numero);
+const banco = datosTransferencia();
 ---
-<Base title="Pedido confirmado | AVCI Smart Homes" description="Gracias por tu pedido.">
+<Base title="Pedido recibido | AVCI Smart Homes" description="Gracias por tu pedido.">
   <section class="confirmado">
     <h1>¡Gracias por tu pedido!</h1>
-    <p>Hemos recibido tu pago. Nos pondremos en contacto contigo para confirmar el envío.</p>
+    <p>Hemos recibido tu pedido <strong>{ref}</strong>. Para completarlo, haz una transferencia con estos datos:</p>
+
+    <dl class="datos">
+      <dt>Importe</dt><dd>{formatoPrecio(Number(pedido.total))}</dd>
+      <dt>IBAN</dt><dd class="iban">{banco.iban || 'Te lo enviaremos por email en breve'}</dd>
+      <dt>Titular</dt><dd>{banco.titular}</dd>
+      {banco.banco && <><dt>Banco</dt><dd>{banco.banco}</dd></>}
+      <dt>Concepto</dt><dd><strong>{ref}</strong></dd>
+    </dl>
+
+    <p>Te hemos enviado estos datos por email. Prepararemos el envío en cuanto recibamos el pago.</p>
     <p>Si tienes cualquier duda, escríbenos a <a href="mailto:info@avci.es">info@avci.es</a>.</p>
     <a href="/productos" class="boton">Seguir comprando</a>
   </section>
@@ -21,6 +48,19 @@ import Base from '../layouts/Base.astro';
     .confirmado { max-width: 640px; margin: 0 auto; padding: 4rem 16px; text-align: center; }
     h1 { font-size: 2rem; margin: 0 0 1rem; }
     p { color: var(--color-muted); }
+    .datos {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 0.6rem 1.25rem;
+      text-align: left;
+      background: #f5f5f5;
+      border-radius: 8px;
+      padding: 1.25rem 1.5rem;
+      margin: 1.5rem 0;
+    }
+    .datos dt { font-weight: 700; }
+    .datos dd { margin: 0; overflow-wrap: anywhere; }
+    .iban { font-family: ui-monospace, monospace; letter-spacing: 0.03em; }
     .boton {
       display: inline-block;
       margin-top: 1.5rem;

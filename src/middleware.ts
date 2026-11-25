@@ -20,7 +20,7 @@ export const onRequest = defineMiddleware(async (context, next) => {
     if (esRutaTienda(pathname)) {
       return context.redirect(RUTA_PROXIMAMENTE, 302);
     }
-    if (pathname.startsWith('/api/checkout')) {
+    if (pathname.startsWith('/api/pedido')) {
       return respuestaSinCompras('La tienda estará disponible próximamente.');
     }
   } else if (!COMPRAS_ACTIVAS) {
@@ -29,7 +29,7 @@ export const onRequest = defineMiddleware(async (context, next) => {
     if (esRutaCompra(pathname)) {
       return context.redirect('/productos', 302);
     }
-    if (pathname.startsWith('/api/checkout')) {
+    if (pathname.startsWith('/api/pedido')) {
       return respuestaSinCompras('La compra online no está disponible todavía. Solicita presupuesto.');
     }
   }

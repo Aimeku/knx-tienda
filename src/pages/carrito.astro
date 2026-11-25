@@ -1,14 +1,16 @@
 ---
-// En servidor: comprueba que la cuenta esté aprobada antes de dejar pagar.
+// En servidor: comprueba que la cuenta esté aprobada antes de dejar comprar.
 export const prerender = false;
 import Base from '../layouts/Base.astro';
 import { supabaseAdmin } from '../lib/supabase';
 
 const usuario = Astro.locals.user;
 let aprobado = false;
+let direccionPerfil = '';
 if (usuario) {
-  const { data: perfil } = await supabaseAdmin.from('perfiles').select('estado').eq('id', usuario.id).single();
+  const { data: perfil } = await supabaseAdmin.from('perfiles').select('estado, direccion').eq('id', usuario.id).single();
   aprobado = perfil?.estado === 'aprobado';
+  direccionPerfil = perfil?.direccion ?? '';
 }
 ---
 <Base title="Carrito | AVCI Smart Homes" description="Tu carrito en AVCI Smart Homes.">
@@ -23,20 +25,59 @@ if (usuario) {
     <div id="carrito-lleno" hidden>
       <ul id="lineas" class="lineas"></ul>
 
-      <div class="resumen">
-        <p class="total">Total <strong id="total"></strong></p>
-        <p class="nota">IVA (21 %) incluido. Los gastos de envío se confirman con el pedido.</p>
-        <p class="nota">¿Tienes un código de descuento? Podrás introducirlo en la página de pago.</p>
+      {aprobado ? (
+        <div class="pie">
+          <form id="form-codigo" class="codigo">
+            <label for="codigo">Código de descuento</label>
+            <div class="codigo-fila">
+              <input id="codigo" name="codigo" autocomplete="off" maxlength="40" placeholder="Escribe tu código" />
+              <button type="submit" class="boton boton--borde">Aplicar</button>
+            </div>
+            <p id="aviso-codigo" class="aviso" hidden></p>
+          </form>
 
-        {aprobado ? (
-          <button id="pagar" class="boton">Pagar con tarjeta</button>
-        ) : (
+          <div class="resumen">
+            <p>Subtotal <span id="subtotal"></span></p>
+            <p id="fila-descuento" class="descuento" hidden>Descuento <span id="codigo-aplicado"></span> <span id="descuento"></span></p>
+            <p class="total">Total <strong id="total"></strong></p>
+            <p class="nota">IVA (21 %) incluido. Los gastos de envío se confirman con el pedido.</p>
+          </div>
+
+          <form id="form-pedido" class="envio">
+            <h2>Datos de envío</h2>
+            <label>Dirección de envío
+              <textarea name="direccion" rows="3" required minlength="10" maxlength="400">{direccionPerfil}</textarea>
+            </label>
+            <label>Teléfono de contacto
+              <input name="telefono" type="tel" required maxlength="30" autocomplete="tel" />
+            </label>
+            <label>Notas para el pedido (opcional)
+              <textarea name="notas" rows="2" maxlength="1000"></textarea>
+            </label>
+
+            <div class="pago">
+              <h2>Forma de pago: transferencia bancaria</h2>
+              <p>Al confirmar el pedido te mostraremos (y te enviaremos por email) el IBAN y el concepto para la transferencia. Prepararemos el envío en cuanto recibamos el pago.</p>
+            </div>
+
+            <label class="check">
+              <input type="checkbox" name="condiciones" required />
+              <span>He leído y acepto las <a href="/condiciones-generales-compra" target="_blank">condiciones generales de compra</a>.</span>
+            </label>
+
+            <button id="confirmar" type="submit" class="boton">Confirmar pedido</button>
+            <p id="error" class="error" hidden></p>
+          </form>
+        </div>
+      ) : (
+        <div class="resumen">
+          <p class="total">Total <strong id="total"></strong></p>
+          <p class="nota">IVA (21 %) incluido.</p>
           <a href="/cuenta" class="boton boton--gris">
             {usuario ? 'Tu cuenta está pendiente de aprobación' : 'Inicia sesión para comprar'}
           </a>
-        )}
-        <p id="error" class="error" hidden></p>
-      </div>
+        </div>
+      )}
     </div>
   </section>
 
@@ -44,23 +85,26 @@ if (usuario) {
     type Linea = { id: string; productoId: string; varianteId: string | null; nombre: string; precio: number; cantidad: number };
 
     const euros = (n: number) => n.toLocaleString('es-ES', { style: 'currency', currency: 'EUR', minimumFractionDigits: 2 });
+    const $ = <T extends HTMLElement = HTMLElement>(id: string) => document.getElementById(id) as T | null;
     const leer = (): Linea[] => {
       try { return JSON.parse(localStorage.getItem('carrito') || '[]'); } catch { return []; }
     };
-    const guardar = (carrito: Linea[]) => {
+    const escapar = (t: string) => t.replace(/[&<>"']/g, (c) => `&#${c.charCodeAt(0)};`);
+    let codigo = '';
+
+    function guardar(carrito: Linea[]) {
       localStorage.setItem('carrito', JSON.stringify(carrito));
       window.dispatchEvent(new Event('carrito-cambiado'));
       pintar();
-    };
-    const escapar = (t: string) => t.replace(/[&<>"']/g, (c) => `&#${c.charCodeAt(0)};`);
+    }
 
     function pintar() {
       const carrito = leer();
-      document.getElementById('carrito-vacio')!.hidden = carrito.length > 0;
-      document.getElementById('carrito-lleno')!.hidden = carrito.length === 0;
+      $('carrito-vacio')!.hidden = carrito.length > 0;
+      $('carrito-lleno')!.hidden = carrito.length === 0;
       if (!carrito.length) return;
 
-      document.getElementById('lineas')!.innerHTML = carrito.map((l, i) => `
+      $('lineas')!.innerHTML = carrito.map((l, i) => `
         <li class="linea">
           <span class="nombre">${escapar(l.nombre)}</span>
           <span class="unidad">${euros(l.precio)}</span>
@@ -68,18 +112,45 @@ if (usuario) {
           <span class="importe">${euros(l.precio * l.cantidad)}</span>
           <button type="button" class="quitar" data-quitar="${i}" aria-label="Quitar">×</button>
         </li>`).join('');
-      const total = carrito.reduce((s, l) => s + l.precio * l.cantidad, 0);
-      document.getElementById('total')!.textContent = euros(total);
+      // Total provisional al instante; el servidor lo confirma justo después.
+      $('total')!.textContent = euros(carrito.reduce((s, l) => s + l.precio * l.cantidad, 0));
+      recalcular();
     }
 
-    document.getElementById('lineas')!.addEventListener('change', (e) => {
+    // El resumen (precios, descuento y total) lo calcula siempre el servidor.
+    async function recalcular() {
+      if (!$('subtotal')) return; // cuenta no aprobada: solo total provisional
+      const res = await fetch('/api/pedido', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ accion: 'calcular', items: leer(), codigo }),
+      }).catch(() => null);
+      const datos = await res?.json().catch(() => null);
+      const aviso = $('aviso-codigo')!;
+      if (!res?.ok || !datos) {
+        aviso.textContent = datos?.error || 'No se pudo calcular el pedido.';
+        aviso.hidden = false;
+        return;
+      }
+      $('subtotal')!.textContent = euros(datos.subtotal);
+      $('total')!.textContent = euros(datos.total);
+      $('fila-descuento')!.hidden = !datos.descuento;
+      $('codigo-aplicado')!.textContent = datos.codigo ? `(${datos.codigo})` : '';
+      $('descuento')!.textContent = `-${euros(datos.descuento)}`;
+      aviso.hidden = !datos.avisoCodigo && !datos.codigo;
+      aviso.textContent = datos.avisoCodigo || (datos.codigo ? `Código ${datos.codigo} aplicado.` : '');
+      aviso.classList.toggle('aviso--ok', !datos.avisoCodigo);
+      if (datos.avisoCodigo) codigo = '';
+    }
+
+    $('lineas')!.addEventListener('change', (e) => {
       const input = e.target as HTMLInputElement;
       if (input.dataset.i === undefined) return;
       const carrito = leer();
       carrito[Number(input.dataset.i)].cantidad = Math.min(9999, Math.max(1, Math.floor(Number(input.value) || 1)));
       guardar(carrito);
     });
-    document.getElementById('lineas')!.addEventListener('click', (e) => {
+    $('lineas')!.addEventListener('click', (e) => {
       const boton = (e.target as HTMLElement).closest<HTMLButtonElement>('[data-quitar]');
       if (!boton) return;
       const carrito = leer();
@@ -87,27 +158,47 @@ if (usuario) {
       guardar(carrito);
     });
 
-    document.getElementById('pagar')?.addEventListener('click', async (e) => {
-      const boton = e.currentTarget as HTMLButtonElement;
-      const error = document.getElementById('error')!;
+    $('form-codigo')?.addEventListener('submit', (e) => {
+      e.preventDefault();
+      codigo = $<HTMLInputElement>('codigo')!.value.trim();
+      recalcular();
+    });
+
+    $<HTMLFormElement>('form-pedido')?.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const form = e.currentTarget as HTMLFormElement;
+      const boton = $<HTMLButtonElement>('confirmar')!;
+      const error = $('error')!;
+      const datos = new FormData(form);
       error.hidden = true;
       boton.disabled = true;
-      boton.textContent = 'Redirigiendo al pago…';
+      boton.textContent = 'Enviando pedido…';
       try {
-        const res = await fetch('/api/checkout', {
+        const res = await fetch('/api/pedido', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ items: leer() }),
+          body: JSON.stringify({
+            accion: 'confirmar',
+            items: leer(),
+            codigo,
+            direccion: datos.get('direccion'),
+            telefono: datos.get('telefono'),
+            notas: datos.get('notas'),
+          }),
         });
-        const data = await res.json();
-        if (data.url) { window.location.href = data.url; return; }
-        error.textContent = data.error || 'No se pudo iniciar el pago.';
+        const r = await res.json();
+        if (r.ok) {
+          localStorage.removeItem('carrito');
+          window.location.href = `/pedido-confirmado?id=${encodeURIComponent(r.id)}`;
+          return;
+        }
+        error.textContent = r.error || 'No se pudo enviar el pedido.';
       } catch {
-        error.textContent = 'No se pudo iniciar el pago. Inténtalo de nuevo.';
+        error.textContent = 'No se pudo enviar el pedido. Inténtalo de nuevo.';
       }
       error.hidden = false;
       boton.disabled = false;
-      boton.textContent = 'Pagar con tarjeta';
+      boton.textContent = 'Confirmar pedido';
     });
 
     pintar();
@@ -116,6 +207,7 @@ if (usuario) {
   <style>
     .carrito { max-width: 900px; margin: 0 auto; padding: 2rem 16px 4rem; }
     h1 { font-size: 2rem; margin: 0 0 1.5rem; }
+    h2 { font-size: 1.15rem; margin: 0 0 0.75rem; }
     .lineas { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--color-border); }
     :global(.linea) {
       display: grid;
@@ -129,30 +221,53 @@ if (usuario) {
     :global(.linea .importe) { text-align: right; font-weight: 700; }
     :global(.linea input) { width: 100%; padding: 0.35rem; border: 1px solid var(--color-border); border-radius: 6px; }
     :global(.linea .quitar) { border: none; background: none; font-size: 1.4rem; cursor: pointer; color: var(--color-muted); }
-    .resumen { margin-top: 1.5rem; text-align: right; }
-    .total { font-size: 1.4rem; margin: 0 0 0.5rem; }
-    .nota { color: var(--color-muted); font-size: 0.9rem; margin: 0.25rem 0; }
+
+    .pie { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem 2.5rem; margin-top: 1.5rem; }
+    .codigo label { font-weight: 700; font-size: 0.9rem; }
+    .codigo-fila { display: flex; gap: 0.5rem; margin-top: 0.4rem; }
+    .codigo-fila input { flex: 1; min-width: 0; text-transform: uppercase; }
+    .aviso { margin: 0.5rem 0 0; font-size: 0.9rem; color: #b00020; }
+    .aviso--ok { color: #1b7a3a; }
+
+    .resumen { text-align: right; }
+    .resumen p { margin: 0.2rem 0; }
+    .resumen .descuento { color: #1b7a3a; }
+    .total { font-size: 1.4rem; margin-top: 0.5rem !important; }
+    .nota { color: var(--color-muted); font-size: 0.9rem; }
+
+    .envio { grid-column: 1 / -1; border-top: 1px solid var(--color-border); padding-top: 1.5rem; display: grid; gap: 1rem; max-width: 560px; }
+    .envio label { display: grid; gap: 0.35rem; font-weight: 600; font-size: 0.9rem; }
+    input, textarea { font: inherit; padding: 0.55rem 0.7rem; border: 1px solid var(--color-border); border-radius: 6px; }
+    .envio .check { display: flex; gap: 0.5rem; align-items: flex-start; font-weight: 400; }
+    .pago { background: #f5f5f5; border-radius: 8px; padding: 1rem 1.25rem; }
+    .pago p { margin: 0; color: var(--color-muted); font-size: 0.92rem; }
+
     .boton {
       display: inline-block;
-      margin-top: 1.25rem;
       background: var(--color-primary);
       color: var(--color-primary-text);
-      border: none;
+      border: 1px solid var(--color-primary);
       padding: 0.8rem 2rem;
       border-radius: 999px;
       font-weight: 700;
       cursor: pointer;
       text-decoration: none;
+      justify-self: start;
     }
+    .resumen .boton { margin-top: 1.25rem; }
     .boton:disabled { opacity: 0.6; cursor: wait; }
-    .boton--gris { background: var(--color-muted); }
-    .error { color: #b00020; margin-top: 0.75rem; }
+    .boton--gris { background: var(--color-muted); border-color: var(--color-muted); }
+    .boton--borde { background: transparent; color: var(--color-text); padding: 0.55rem 1.2rem; }
+    .error { color: #b00020; margin: 0; }
     .vacio { text-align: center; padding: 3rem 0; }
+
     @media (max-width: 640px) {
       :global(.linea) { grid-template-columns: 1fr 4rem 2rem; }
       :global(.linea .nombre) { grid-column: 1 / -1; }
       :global(.linea .unidad) { display: none; }
       :global(.linea .importe) { grid-column: 1; grid-row: 2; text-align: left; }
+      .pie { grid-template-columns: 1fr; }
+      .resumen { text-align: left; }
     }
   </style>
 </Base>
