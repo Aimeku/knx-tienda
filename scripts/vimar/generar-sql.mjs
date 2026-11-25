@@ -66,7 +66,7 @@ const SERIES = {
       // electrónicas 2M -> Táctil; Vintage -> Vintage; Flat y Tondo -> Flat/Tondo.
       [/^21662\./, { slug: 'vimar-knx-eikon', nombre: 'KNX · Eikon · Táctil', orden: 113 }],
       [/^2267[12]\./, { slug: 'vimar-knx-eikon-vintage', nombre: 'KNX · Eikon · Vintage', orden: 114 }],
-      [/^2268[12]\./, { slug: 'vimar-knx-eikon-flat-tondo', nombre: 'KNX · Eikon · Flat / Tondo', orden: 115 }],
+      [/^(2268[12]|22692)\./, { slug: 'vimar-knx-eikon-flat-tondo', nombre: 'KNX · Eikon · Flat / Tondo', orden: 115 }],
     ],
   },
   knx: {

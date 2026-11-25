@@ -172,7 +172,7 @@ function montarRejilla(
       const eikonTeclas = (sku: string) =>
         /^2184[67]/.test(sku) ? 'etiquetas'
         : /^21662\./.test(sku) ? 'placas-tactil'
-        : /^226[78]\d\./.test(sku) ? sinAcabado(sku)
+        : /^226[789]\d\./.test(sku) ? sinAcabado(sku)
         : /^22751\.\d\d$/.test(sku) ? 'iluminables'
         : /^22751\.[^.]+\./.test(sku) ? sku.split('.').slice(0, 2).join('.')
         : 'cabecera';

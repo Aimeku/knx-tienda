@@ -40984,5 +40984,3703 @@
     ],
     "relacionados": [],
     "url": "https://www.vimar.com/es/int/catalog/product/index/code/22682.RN.2.91"
+  },
+  {
+    "codigo": "22692.01",
+    "nombre": "Placa 2Mx4 Flat blanco mate",
+    "descripcion": "Placa 2Mx4 Flat blanco mate",
+    "ruta": "Series residenciales / Series resid. tradicionales / EIKON / Placas",
+    "estado": "3 - Activo",
+    "imagen": "https://www.vimar.com/irj/go/km/docs/z_catalogo/MAIN_IMAGE/22692_01-vimar-eikon-exe-placca-2mx4-flat-bianco-matt.110737.jpg",
+    "ficha_pdf": "https://www.vimar.com/es/int/catalog/product/download-pdf/code/22692.01?type=.pdf",
+    "dibujos": [
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGESIZE/DI_22692.107314.01.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGESIZE/DI_22692.107315.01.DXF"
+      },
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGEREAR/VP_22692.85089.01.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGEREAR/VP_22692.85090.01.DXF"
+      },
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/3DIMAGE/EA_22692.107238.01.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/3DIMAGE/EA_22692.107239.01.DXF"
+      }
+    ],
+    "certificados": [
+      {
+        "titulo": "01. IMQ - Italia",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/CERTIFICATE/IMQ_CA02.107546.06552_2022-07-05.pdf"
+      }
+    ],
+    "etim": [
+      {
+        "titulo": "Class group",
+        "valor": "Domestic switching devices"
+      },
+      {
+        "titulo": "Class",
+        "valor": "Cover frame for domestic switching devices"
+      },
+      {
+        "titulo": "Number of units",
+        "valor": "4"
+      },
+      {
+        "titulo": "Mounting direction",
+        "valor": "Horizontal and vertical"
+      },
+      {
+        "titulo": "Number of device inserts horizontal",
+        "valor": "2"
+      },
+      {
+        "titulo": "Number of device inserts vertical",
+        "valor": "2"
+      },
+      {
+        "titulo": "Number of modules horizontal (module system)",
+        "valor": "2"
+      },
+      {
+        "titulo": "Number of modules vertical (module system)",
+        "valor": "1"
+      },
+      {
+        "titulo": "With mounting grid",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Suitable for subfloor installation duct box",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Suitable for wall duct",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Suitable for built-in installation",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Label space/information surface",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Material",
+        "valor": "Metal"
+      },
+      {
+        "titulo": "Material quality",
+        "valor": "Other"
+      },
+      {
+        "titulo": "Surface protection",
+        "valor": "Lacquered"
+      },
+      {
+        "titulo": "Surface finishing",
+        "valor": "Matt"
+      },
+      {
+        "titulo": "Colour",
+        "valor": "White"
+      },
+      {
+        "titulo": "RAL-number (similar)",
+        "valor": "9003"
+      },
+      {
+        "titulo": "Transparent",
+        "valor": "No"
+      },
+      {
+        "titulo": "With hinged lid",
+        "valor": "No"
+      },
+      {
+        "titulo": "Degree of protection (IP)",
+        "valor": "IP00"
+      },
+      {
+        "titulo": "Type of fastening",
+        "valor": "Clamp mounting"
+      },
+      {
+        "titulo": "Width",
+        "valor": "90,00 mm"
+      },
+      {
+        "titulo": "Height",
+        "valor": "90,00 mm"
+      },
+      {
+        "titulo": "Depth",
+        "valor": "7,150 mm"
+      },
+      {
+        "titulo": "Built-in width",
+        "valor": "90,00 mm"
+      },
+      {
+        "titulo": "Built-in height",
+        "valor": "3,00 mm"
+      },
+      {
+        "titulo": "Diameter bore hole (opening)",
+        "valor": "0,00 mm"
+      }
+    ],
+    "pedido_minimo": "1 NR",
+    "ean": "8007352622548",
+    "embalajes": [
+      {
+        "ean": "8007352622548",
+        "cantidad": "1 NR",
+        "medidas": "9,5x9,5x1,4 [cm]",
+        "peso": "150,8 [g]"
+      },
+      {
+        "ean": "8007352622555",
+        "cantidad": "5 NR",
+        "medidas": "10,3x8x10,4 [cm]",
+        "peso": "796 [g]"
+      }
+    ],
+    "relacionados": [],
+    "url": "https://www.vimar.com/es/int/catalog/product/index/code/22692.01"
+  },
+  {
+    "codigo": "22692.RN.01",
+    "nombre": "Placa 2Mx4 Tondo blanco mate",
+    "descripcion": "Placa 2 módulos para cuatro mandos Tondo domóticos/KNX, metal, blanco mate",
+    "ruta": "Series residenciales / Series resid. tradicionales / EIKON / Placas",
+    "estado": "3 - Activo",
+    "imagen": "https://www.vimar.com/irj/go/km/docs/z_catalogo/MAIN_IMAGE/22692_rn_01-vimar-eikon-exe-placca-2mx4-tondo-bianco-matt.110743.jpg",
+    "ficha_pdf": "https://www.vimar.com/es/int/catalog/product/download-pdf/code/22692.RN.01?type=.pdf",
+    "dibujos": [
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGESIZE/DI_22692.105866.RN.01.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGESIZE/DI_22692.105867.RN.01.DXF"
+      },
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGEREAR/VP_22692.105852.RN.01.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGEREAR/VP_22692.105853.RN.01.DXF"
+      },
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/3DIMAGE/EA_22692.105786.RN.01.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/3DIMAGE/EA_22692.105787.RN.01.DXF"
+      }
+    ],
+    "certificados": [],
+    "etim": [
+      {
+        "titulo": "Class group",
+        "valor": "Domestic switching devices"
+      },
+      {
+        "titulo": "Class",
+        "valor": "Cover frame for domestic switching devices"
+      },
+      {
+        "titulo": "Number of units",
+        "valor": "4"
+      },
+      {
+        "titulo": "Mounting direction",
+        "valor": "Horizontal and vertical"
+      },
+      {
+        "titulo": "Number of device inserts horizontal",
+        "valor": "2"
+      },
+      {
+        "titulo": "Number of device inserts vertical",
+        "valor": "2"
+      },
+      {
+        "titulo": "Number of modules horizontal (module system)",
+        "valor": "2"
+      },
+      {
+        "titulo": "Number of modules vertical (module system)",
+        "valor": "1"
+      },
+      {
+        "titulo": "With mounting grid",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Flush-mounted installation",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Suitable for subfloor installation duct box",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Suitable for wall duct",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Suitable for built-in installation",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Label space/information surface",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Material",
+        "valor": "Metal"
+      },
+      {
+        "titulo": "Material quality",
+        "valor": "Other"
+      },
+      {
+        "titulo": "Halogen free",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Anti-bacterial treatment",
+        "valor": "No"
+      },
+      {
+        "titulo": "Surface protection",
+        "valor": "Lacquered"
+      },
+      {
+        "titulo": "Surface finishing",
+        "valor": "Matt"
+      },
+      {
+        "titulo": "Colour",
+        "valor": "White"
+      },
+      {
+        "titulo": "RAL-number (similar)",
+        "valor": "9003"
+      },
+      {
+        "titulo": "Transparent",
+        "valor": "No"
+      },
+      {
+        "titulo": "With hinged lid",
+        "valor": "No"
+      },
+      {
+        "titulo": "Degree of protection (IP)",
+        "valor": "IP00"
+      },
+      {
+        "titulo": "Type of fastening",
+        "valor": "Clamp mounting"
+      },
+      {
+        "titulo": "Width",
+        "valor": "90,00 mm"
+      },
+      {
+        "titulo": "Height",
+        "valor": "90,00 mm"
+      },
+      {
+        "titulo": "Depth",
+        "valor": "10,150 mm"
+      },
+      {
+        "titulo": "Built-in width",
+        "valor": "90,00 mm"
+      },
+      {
+        "titulo": "Built-in height",
+        "valor": "3,00 mm"
+      }
+    ],
+    "pedido_minimo": "1 NR",
+    "ean": "8007352743458",
+    "embalajes": [
+      {
+        "ean": "8007352743458",
+        "cantidad": "1 NR",
+        "medidas": "9,5x9,5x1,4 [cm]",
+        "peso": "150,8 [g]"
+      },
+      {
+        "ean": "8007352743465",
+        "cantidad": "5 NR",
+        "medidas": "10,3x8x10,4 [cm]",
+        "peso": "796 [g]"
+      }
+    ],
+    "relacionados": [],
+    "url": "https://www.vimar.com/es/int/catalog/product/index/code/22692.RN.01"
+  },
+  {
+    "codigo": "22692.03",
+    "nombre": "Placa 2Mx4 Flat gris antracita",
+    "descripcion": "Placa 2Mx4 Flat gris antracita",
+    "ruta": "Series residenciales / Series resid. tradicionales / EIKON / Placas",
+    "estado": "3 - Activo",
+    "imagen": "https://www.vimar.com/irj/go/km/docs/z_catalogo/MAIN_IMAGE/22692_03-vimar-eikon-exe-placca-2mx4-flat-grigio-antracite.110738.jpg",
+    "ficha_pdf": "https://www.vimar.com/es/int/catalog/product/download-pdf/code/22692.03?type=.pdf",
+    "dibujos": [
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGESIZE/DI_22692.107314.01.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGESIZE/DI_22692.107315.01.DXF"
+      },
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGEREAR/VP_22692.85089.01.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGEREAR/VP_22692.85090.01.DXF"
+      },
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/3DIMAGE/EA_22692.107238.01.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/3DIMAGE/EA_22692.107239.01.DXF"
+      }
+    ],
+    "certificados": [
+      {
+        "titulo": "01. IMQ - Italia",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/CERTIFICATE/IMQ_CA02.107546.06552_2022-07-05.pdf"
+      }
+    ],
+    "etim": [
+      {
+        "titulo": "Class group",
+        "valor": "Domestic switching devices"
+      },
+      {
+        "titulo": "Class",
+        "valor": "Cover frame for domestic switching devices"
+      },
+      {
+        "titulo": "Number of units",
+        "valor": "4"
+      },
+      {
+        "titulo": "Mounting direction",
+        "valor": "Horizontal and vertical"
+      },
+      {
+        "titulo": "Number of device inserts horizontal",
+        "valor": "2"
+      },
+      {
+        "titulo": "Number of device inserts vertical",
+        "valor": "2"
+      },
+      {
+        "titulo": "Number of modules horizontal (module system)",
+        "valor": "2"
+      },
+      {
+        "titulo": "Number of modules vertical (module system)",
+        "valor": "1"
+      },
+      {
+        "titulo": "With mounting grid",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Suitable for subfloor installation duct box",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Suitable for wall duct",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Suitable for built-in installation",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Label space/information surface",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Material",
+        "valor": "Metal"
+      },
+      {
+        "titulo": "Material quality",
+        "valor": "Other"
+      },
+      {
+        "titulo": "Surface protection",
+        "valor": "Lacquered"
+      },
+      {
+        "titulo": "Surface finishing",
+        "valor": "Matt"
+      },
+      {
+        "titulo": "Colour",
+        "valor": "Anthracite"
+      },
+      {
+        "titulo": "RAL-number (similar)",
+        "valor": "7043"
+      },
+      {
+        "titulo": "Transparent",
+        "valor": "No"
+      },
+      {
+        "titulo": "With hinged lid",
+        "valor": "No"
+      },
+      {
+        "titulo": "Degree of protection (IP)",
+        "valor": "IP00"
+      },
+      {
+        "titulo": "Type of fastening",
+        "valor": "Clamp mounting"
+      },
+      {
+        "titulo": "Width",
+        "valor": "90,00 mm"
+      },
+      {
+        "titulo": "Height",
+        "valor": "90,00 mm"
+      },
+      {
+        "titulo": "Depth",
+        "valor": "7,150 mm"
+      },
+      {
+        "titulo": "Built-in width",
+        "valor": "90,00 mm"
+      },
+      {
+        "titulo": "Built-in height",
+        "valor": "3,00 mm"
+      },
+      {
+        "titulo": "Diameter bore hole (opening)",
+        "valor": "0,00 mm"
+      }
+    ],
+    "pedido_minimo": "1 NR",
+    "ean": "8007352622623",
+    "embalajes": [
+      {
+        "ean": "8007352622623",
+        "cantidad": "1 NR",
+        "medidas": "9,5x9,5x1,4 [cm]",
+        "peso": "150,2 [g]"
+      },
+      {
+        "ean": "8007352622630",
+        "cantidad": "5 NR",
+        "medidas": "10,3x8x10,4 [cm]",
+        "peso": "792,4 [g]"
+      }
+    ],
+    "relacionados": [],
+    "url": "https://www.vimar.com/es/int/catalog/product/index/code/22692.03"
+  },
+  {
+    "codigo": "22692.RN.03",
+    "nombre": "Placa 2Mx4 Tondo gris antracita",
+    "descripcion": "Placa 2 módulos para cuatro mandos Tondo domóticos/KNX, metal, gris antracita",
+    "ruta": "Series residenciales / Series resid. tradicionales / EIKON / Placas",
+    "estado": "3 - Activo",
+    "imagen": "https://www.vimar.com/irj/go/km/docs/z_catalogo/MAIN_IMAGE/22692_rn_03-vimar-eikon-exe-placca-2mx4-tondo-grigio-antracite.110744.jpg",
+    "ficha_pdf": "https://www.vimar.com/es/int/catalog/product/download-pdf/code/22692.RN.03?type=.pdf",
+    "dibujos": [
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGESIZE/DI_22692.105866.RN.01.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGESIZE/DI_22692.105867.RN.01.DXF"
+      },
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGEREAR/VP_22692.105852.RN.01.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGEREAR/VP_22692.105853.RN.01.DXF"
+      },
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/3DIMAGE/EA_22692.105786.RN.01.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/3DIMAGE/EA_22692.105787.RN.01.DXF"
+      }
+    ],
+    "certificados": [],
+    "etim": [
+      {
+        "titulo": "Class group",
+        "valor": "Domestic switching devices"
+      },
+      {
+        "titulo": "Class",
+        "valor": "Cover frame for domestic switching devices"
+      },
+      {
+        "titulo": "Number of units",
+        "valor": "4"
+      },
+      {
+        "titulo": "Mounting direction",
+        "valor": "Horizontal and vertical"
+      },
+      {
+        "titulo": "Number of device inserts horizontal",
+        "valor": "2"
+      },
+      {
+        "titulo": "Number of device inserts vertical",
+        "valor": "2"
+      },
+      {
+        "titulo": "Number of modules horizontal (module system)",
+        "valor": "2"
+      },
+      {
+        "titulo": "Number of modules vertical (module system)",
+        "valor": "1"
+      },
+      {
+        "titulo": "With mounting grid",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Flush-mounted installation",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Suitable for subfloor installation duct box",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Suitable for wall duct",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Suitable for built-in installation",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Label space/information surface",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Material",
+        "valor": "Metal"
+      },
+      {
+        "titulo": "Material quality",
+        "valor": "Other"
+      },
+      {
+        "titulo": "Halogen free",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Anti-bacterial treatment",
+        "valor": "No"
+      },
+      {
+        "titulo": "Surface protection",
+        "valor": "Lacquered"
+      },
+      {
+        "titulo": "Surface finishing",
+        "valor": "Matt"
+      },
+      {
+        "titulo": "Colour",
+        "valor": "Anthracite"
+      },
+      {
+        "titulo": "RAL-number (similar)",
+        "valor": "7043"
+      },
+      {
+        "titulo": "Transparent",
+        "valor": "No"
+      },
+      {
+        "titulo": "With hinged lid",
+        "valor": "No"
+      },
+      {
+        "titulo": "Degree of protection (IP)",
+        "valor": "IP00"
+      },
+      {
+        "titulo": "Type of fastening",
+        "valor": "Clamp mounting"
+      },
+      {
+        "titulo": "Width",
+        "valor": "90,00 mm"
+      },
+      {
+        "titulo": "Height",
+        "valor": "90,00 mm"
+      },
+      {
+        "titulo": "Depth",
+        "valor": "10,150 mm"
+      },
+      {
+        "titulo": "Built-in width",
+        "valor": "90,00 mm"
+      },
+      {
+        "titulo": "Built-in height",
+        "valor": "3,00 mm"
+      }
+    ],
+    "pedido_minimo": "1 NR",
+    "ean": "8007352743472",
+    "embalajes": [
+      {
+        "ean": "8007352743472",
+        "cantidad": "1 NR",
+        "medidas": "9,5x9,5x1,4 [cm]",
+        "peso": "150,2 [g]"
+      },
+      {
+        "ean": "8007352743489",
+        "cantidad": "5 NR",
+        "medidas": "10,3x8x10,4 [cm]",
+        "peso": "792,4 [g]"
+      }
+    ],
+    "relacionados": [],
+    "url": "https://www.vimar.com/es/int/catalog/product/index/code/22692.RN.03"
+  },
+  {
+    "codigo": "22692.11",
+    "nombre": "Placa 2Mx4 Flat níquel cepillado",
+    "descripcion": "Placa 2Mx4 Flat níquel cepillado",
+    "ruta": "Series residenciales / Series resid. tradicionales / EIKON / Placas",
+    "estado": "3 - Activo",
+    "imagen": "https://www.vimar.com/irj/go/km/docs/z_catalogo/MAIN_IMAGE/22692_11-vimar-eikon-exe-placca-2mx4-flat-nichel-spazzolato.110739.jpg",
+    "ficha_pdf": "https://www.vimar.com/es/int/catalog/product/download-pdf/code/22692.11?type=.pdf",
+    "dibujos": [
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGESIZE/DI_22692.107314.01.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGESIZE/DI_22692.107315.01.DXF"
+      },
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGEREAR/VP_22692.85089.01.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGEREAR/VP_22692.85090.01.DXF"
+      },
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/3DIMAGE/EA_22692.107238.01.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/3DIMAGE/EA_22692.107239.01.DXF"
+      }
+    ],
+    "certificados": [
+      {
+        "titulo": "01. IMQ - Italia",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/CERTIFICATE/IMQ_CA02.107546.06552_2022-07-05.pdf"
+      }
+    ],
+    "etim": [
+      {
+        "titulo": "Class group",
+        "valor": "Domestic switching devices"
+      },
+      {
+        "titulo": "Class",
+        "valor": "Cover frame for domestic switching devices"
+      },
+      {
+        "titulo": "Number of units",
+        "valor": "4"
+      },
+      {
+        "titulo": "Mounting direction",
+        "valor": "Horizontal and vertical"
+      },
+      {
+        "titulo": "Number of device inserts horizontal",
+        "valor": "2"
+      },
+      {
+        "titulo": "Number of device inserts vertical",
+        "valor": "2"
+      },
+      {
+        "titulo": "Number of modules horizontal (module system)",
+        "valor": "2"
+      },
+      {
+        "titulo": "Number of modules vertical (module system)",
+        "valor": "1"
+      },
+      {
+        "titulo": "With mounting grid",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Suitable for subfloor installation duct box",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Suitable for wall duct",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Suitable for built-in installation",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Label space/information surface",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Material",
+        "valor": "Metal"
+      },
+      {
+        "titulo": "Material quality",
+        "valor": "Other"
+      },
+      {
+        "titulo": "Surface protection",
+        "valor": "Metallic"
+      },
+      {
+        "titulo": "Surface finishing",
+        "valor": "Matt"
+      },
+      {
+        "titulo": "Colour",
+        "valor": "Stainless steel"
+      },
+      {
+        "titulo": "RAL-number (similar)",
+        "valor": "7048"
+      },
+      {
+        "titulo": "Transparent",
+        "valor": "No"
+      },
+      {
+        "titulo": "With hinged lid",
+        "valor": "No"
+      },
+      {
+        "titulo": "Degree of protection (IP)",
+        "valor": "IP00"
+      },
+      {
+        "titulo": "Type of fastening",
+        "valor": "Clamp mounting"
+      },
+      {
+        "titulo": "Width",
+        "valor": "90,00 mm"
+      },
+      {
+        "titulo": "Height",
+        "valor": "90,00 mm"
+      },
+      {
+        "titulo": "Depth",
+        "valor": "7,150 mm"
+      },
+      {
+        "titulo": "Built-in width",
+        "valor": "90,00 mm"
+      },
+      {
+        "titulo": "Built-in height",
+        "valor": "3,00 mm"
+      },
+      {
+        "titulo": "Diameter bore hole (opening)",
+        "valor": "0,00 mm"
+      }
+    ],
+    "pedido_minimo": "1 NR",
+    "ean": "8007352622708",
+    "embalajes": [
+      {
+        "ean": "8007352622708",
+        "cantidad": "1 NR",
+        "medidas": "9,5x9,5x1,4 [cm]",
+        "peso": "150 [g]"
+      },
+      {
+        "ean": "8007352622715",
+        "cantidad": "5 NR",
+        "medidas": "10,3x8x10,4 [cm]",
+        "peso": "795,2 [g]"
+      }
+    ],
+    "relacionados": [],
+    "url": "https://www.vimar.com/es/int/catalog/product/index/code/22692.11"
+  },
+  {
+    "codigo": "22692.RN.11",
+    "nombre": "Placa 2Mx4 Tondo níquel cepillado",
+    "descripcion": "Placa 2 módulos para cuatro mandos Tondo domóticos/KNX, metal, níquel cepillado",
+    "ruta": "Series residenciales / Series resid. tradicionales / EIKON / Placas",
+    "estado": "3 - Activo",
+    "imagen": "https://www.vimar.com/irj/go/km/docs/z_catalogo/MAIN_IMAGE/22692_rn_11-vimar-eikon-exe-placca-2mx4-tondo-nichel-spazzolato.110745.jpg",
+    "ficha_pdf": "https://www.vimar.com/es/int/catalog/product/download-pdf/code/22692.RN.11?type=.pdf",
+    "dibujos": [
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGESIZE/DI_22692.105866.RN.01.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGESIZE/DI_22692.105867.RN.01.DXF"
+      },
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGEREAR/VP_22692.105852.RN.01.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGEREAR/VP_22692.105853.RN.01.DXF"
+      },
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/3DIMAGE/EA_22692.105786.RN.01.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/3DIMAGE/EA_22692.105787.RN.01.DXF"
+      }
+    ],
+    "certificados": [],
+    "etim": [
+      {
+        "titulo": "Class group",
+        "valor": "Domestic switching devices"
+      },
+      {
+        "titulo": "Class",
+        "valor": "Cover frame for domestic switching devices"
+      },
+      {
+        "titulo": "Number of units",
+        "valor": "4"
+      },
+      {
+        "titulo": "Mounting direction",
+        "valor": "Horizontal and vertical"
+      },
+      {
+        "titulo": "Number of device inserts horizontal",
+        "valor": "2"
+      },
+      {
+        "titulo": "Number of device inserts vertical",
+        "valor": "2"
+      },
+      {
+        "titulo": "Number of modules horizontal (module system)",
+        "valor": "2"
+      },
+      {
+        "titulo": "Number of modules vertical (module system)",
+        "valor": "1"
+      },
+      {
+        "titulo": "With mounting grid",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Flush-mounted installation",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Suitable for subfloor installation duct box",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Suitable for wall duct",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Suitable for built-in installation",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Label space/information surface",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Material",
+        "valor": "Metal"
+      },
+      {
+        "titulo": "Material quality",
+        "valor": "Other"
+      },
+      {
+        "titulo": "Halogen free",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Anti-bacterial treatment",
+        "valor": "No"
+      },
+      {
+        "titulo": "Surface protection",
+        "valor": "Metallic"
+      },
+      {
+        "titulo": "Surface finishing",
+        "valor": "Matt"
+      },
+      {
+        "titulo": "Colour",
+        "valor": "Stainless steel"
+      },
+      {
+        "titulo": "RAL-number (similar)",
+        "valor": "7048"
+      },
+      {
+        "titulo": "Transparent",
+        "valor": "No"
+      },
+      {
+        "titulo": "With hinged lid",
+        "valor": "No"
+      },
+      {
+        "titulo": "Degree of protection (IP)",
+        "valor": "IP00"
+      },
+      {
+        "titulo": "Type of fastening",
+        "valor": "Clamp mounting"
+      },
+      {
+        "titulo": "Width",
+        "valor": "90,00 mm"
+      },
+      {
+        "titulo": "Height",
+        "valor": "90,00 mm"
+      },
+      {
+        "titulo": "Depth",
+        "valor": "10,150 mm"
+      },
+      {
+        "titulo": "Built-in width",
+        "valor": "90,00 mm"
+      },
+      {
+        "titulo": "Built-in height",
+        "valor": "3,00 mm"
+      }
+    ],
+    "pedido_minimo": "1 NR",
+    "ean": "8007352743496",
+    "embalajes": [
+      {
+        "ean": "8007352743496",
+        "cantidad": "1 NR",
+        "medidas": "9,5x9,5x1,4 [cm]",
+        "peso": "150 [g]"
+      },
+      {
+        "ean": "8007352743502",
+        "cantidad": "5 NR",
+        "medidas": "10,3x8x10,4 [cm]",
+        "peso": "795,2 [g]"
+      }
+    ],
+    "relacionados": [],
+    "url": "https://www.vimar.com/es/int/catalog/product/index/code/22692.RN.11"
+  },
+  {
+    "codigo": "22692.12",
+    "nombre": "Placa 2Mx4 Flat bronce osc.cepillado",
+    "descripcion": "Placa 2Mx4 Flat bronce osc.cepillado",
+    "ruta": "Series residenciales / Series resid. tradicionales / EIKON / Placas",
+    "estado": "3 - Activo",
+    "imagen": "https://www.vimar.com/irj/go/km/docs/z_catalogo/MAIN_IMAGE/22692_12-vimar-eikon-exe-placca-2mx4-flat-bronzo-scuro-spazz.110740.jpg",
+    "ficha_pdf": "https://www.vimar.com/es/int/catalog/product/download-pdf/code/22692.12?type=.pdf",
+    "dibujos": [
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGESIZE/DI_22692.107314.01.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGESIZE/DI_22692.107315.01.DXF"
+      },
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGEREAR/VP_22692.85089.01.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGEREAR/VP_22692.85090.01.DXF"
+      },
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/3DIMAGE/EA_22692.107238.01.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/3DIMAGE/EA_22692.107239.01.DXF"
+      }
+    ],
+    "certificados": [
+      {
+        "titulo": "01. IMQ - Italia",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/CERTIFICATE/IMQ_CA02.107546.06552_2022-07-05.pdf"
+      }
+    ],
+    "etim": [
+      {
+        "titulo": "Class group",
+        "valor": "Domestic switching devices"
+      },
+      {
+        "titulo": "Class",
+        "valor": "Cover frame for domestic switching devices"
+      },
+      {
+        "titulo": "Number of units",
+        "valor": "4"
+      },
+      {
+        "titulo": "Mounting direction",
+        "valor": "Horizontal and vertical"
+      },
+      {
+        "titulo": "Number of device inserts horizontal",
+        "valor": "2"
+      },
+      {
+        "titulo": "Number of device inserts vertical",
+        "valor": "2"
+      },
+      {
+        "titulo": "Number of modules horizontal (module system)",
+        "valor": "2"
+      },
+      {
+        "titulo": "Number of modules vertical (module system)",
+        "valor": "1"
+      },
+      {
+        "titulo": "With mounting grid",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Suitable for subfloor installation duct box",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Suitable for wall duct",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Suitable for built-in installation",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Label space/information surface",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Material",
+        "valor": "Metal"
+      },
+      {
+        "titulo": "Material quality",
+        "valor": "Other"
+      },
+      {
+        "titulo": "Surface protection",
+        "valor": "Lacquered"
+      },
+      {
+        "titulo": "Surface finishing",
+        "valor": "Matt"
+      },
+      {
+        "titulo": "Colour",
+        "valor": "Bronze"
+      },
+      {
+        "titulo": "RAL-number (similar)",
+        "valor": "7013"
+      },
+      {
+        "titulo": "Transparent",
+        "valor": "No"
+      },
+      {
+        "titulo": "With hinged lid",
+        "valor": "No"
+      },
+      {
+        "titulo": "Degree of protection (IP)",
+        "valor": "IP00"
+      },
+      {
+        "titulo": "Type of fastening",
+        "valor": "Clamp mounting"
+      },
+      {
+        "titulo": "Width",
+        "valor": "90,00 mm"
+      },
+      {
+        "titulo": "Height",
+        "valor": "90,00 mm"
+      },
+      {
+        "titulo": "Depth",
+        "valor": "7,150 mm"
+      },
+      {
+        "titulo": "Built-in width",
+        "valor": "90,00 mm"
+      },
+      {
+        "titulo": "Built-in height",
+        "valor": "3,00 mm"
+      },
+      {
+        "titulo": "Diameter bore hole (opening)",
+        "valor": "0,00 mm"
+      }
+    ],
+    "pedido_minimo": "1 NR",
+    "ean": "8007352622784",
+    "embalajes": [
+      {
+        "ean": "8007352622784",
+        "cantidad": "1 NR",
+        "medidas": "9,5x9,5x1,4 [cm]",
+        "peso": "150,2 [g]"
+      },
+      {
+        "ean": "8007352622791",
+        "cantidad": "5 NR",
+        "medidas": "10,3x8x10,4 [cm]",
+        "peso": "792,6 [g]"
+      }
+    ],
+    "relacionados": [],
+    "url": "https://www.vimar.com/es/int/catalog/product/index/code/22692.12"
+  },
+  {
+    "codigo": "22692.RN.12",
+    "nombre": "Placa 2Mx4 Tondo bronce cepillado",
+    "descripcion": "Placa 2 módulos para cuatro mandos Tondo domóticos/KNX, metal, bronce oscuro cepillado",
+    "ruta": "Series residenciales / Series resid. tradicionales / EIKON / Placas",
+    "estado": "3 - Activo",
+    "imagen": "https://www.vimar.com/irj/go/km/docs/z_catalogo/MAIN_IMAGE/22692_rn_12-vimar-eikon-exe-placca-2mx4-tondo-bronzo-scuro-spazz.110746.jpg",
+    "ficha_pdf": "https://www.vimar.com/es/int/catalog/product/download-pdf/code/22692.RN.12?type=.pdf",
+    "dibujos": [
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGESIZE/DI_22692.105866.RN.01.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGESIZE/DI_22692.105867.RN.01.DXF"
+      },
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGEREAR/VP_22692.105852.RN.01.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGEREAR/VP_22692.105853.RN.01.DXF"
+      },
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/3DIMAGE/EA_22692.105786.RN.01.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/3DIMAGE/EA_22692.105787.RN.01.DXF"
+      }
+    ],
+    "certificados": [],
+    "etim": [
+      {
+        "titulo": "Class group",
+        "valor": "Domestic switching devices"
+      },
+      {
+        "titulo": "Class",
+        "valor": "Cover frame for domestic switching devices"
+      },
+      {
+        "titulo": "Number of units",
+        "valor": "4"
+      },
+      {
+        "titulo": "Mounting direction",
+        "valor": "Horizontal and vertical"
+      },
+      {
+        "titulo": "Number of device inserts horizontal",
+        "valor": "2"
+      },
+      {
+        "titulo": "Number of device inserts vertical",
+        "valor": "2"
+      },
+      {
+        "titulo": "Number of modules horizontal (module system)",
+        "valor": "2"
+      },
+      {
+        "titulo": "Number of modules vertical (module system)",
+        "valor": "1"
+      },
+      {
+        "titulo": "With mounting grid",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Flush-mounted installation",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Suitable for subfloor installation duct box",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Suitable for wall duct",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Suitable for built-in installation",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Label space/information surface",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Material",
+        "valor": "Metal"
+      },
+      {
+        "titulo": "Material quality",
+        "valor": "Other"
+      },
+      {
+        "titulo": "Halogen free",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Anti-bacterial treatment",
+        "valor": "No"
+      },
+      {
+        "titulo": "Surface protection",
+        "valor": "Lacquered"
+      },
+      {
+        "titulo": "Surface finishing",
+        "valor": "Matt"
+      },
+      {
+        "titulo": "Colour",
+        "valor": "Bronze"
+      },
+      {
+        "titulo": "RAL-number (similar)",
+        "valor": "7013"
+      },
+      {
+        "titulo": "Transparent",
+        "valor": "No"
+      },
+      {
+        "titulo": "With hinged lid",
+        "valor": "No"
+      },
+      {
+        "titulo": "Degree of protection (IP)",
+        "valor": "IP00"
+      },
+      {
+        "titulo": "Type of fastening",
+        "valor": "Clamp mounting"
+      },
+      {
+        "titulo": "Width",
+        "valor": "90,00 mm"
+      },
+      {
+        "titulo": "Height",
+        "valor": "90,00 mm"
+      },
+      {
+        "titulo": "Depth",
+        "valor": "10,150 mm"
+      },
+      {
+        "titulo": "Built-in width",
+        "valor": "90,00 mm"
+      },
+      {
+        "titulo": "Built-in height",
+        "valor": "3,00 mm"
+      }
+    ],
+    "pedido_minimo": "1 NR",
+    "ean": "8007352743519",
+    "embalajes": [
+      {
+        "ean": "8007352743519",
+        "cantidad": "1 NR",
+        "medidas": "9,5x9,5x1,4 [cm]",
+        "peso": "150,2 [g]"
+      },
+      {
+        "ean": "8007352743526",
+        "cantidad": "5 NR",
+        "medidas": "10,3x8x10,4 [cm]",
+        "peso": "792,6 [g]"
+      }
+    ],
+    "relacionados": [],
+    "url": "https://www.vimar.com/es/int/catalog/product/index/code/22692.RN.12"
+  },
+  {
+    "codigo": "22692.82",
+    "nombre": "Placa 2Mx4 Flat oro",
+    "descripcion": "Placa 2Mx4 Flat oro",
+    "ruta": "Series residenciales / Series resid. tradicionales / EIKON / Placas",
+    "estado": "3 - Activo",
+    "imagen": "https://www.vimar.com/irj/go/km/docs/z_catalogo/MAIN_IMAGE/22692_82-vimar-eikon-exe-placca-2mx4-flat-oro.110741.jpg",
+    "ficha_pdf": "https://www.vimar.com/es/int/catalog/product/download-pdf/code/22692.82?type=.pdf",
+    "dibujos": [
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGESIZE/DI_22692.107314.01.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGESIZE/DI_22692.107315.01.DXF"
+      },
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGEREAR/VP_22692.85089.01.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGEREAR/VP_22692.85090.01.DXF"
+      },
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/3DIMAGE/EA_22692.107238.01.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/3DIMAGE/EA_22692.107239.01.DXF"
+      }
+    ],
+    "certificados": [
+      {
+        "titulo": "01. IMQ - Italia",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/CERTIFICATE/IMQ_CA02.107546.06552_2022-07-05.pdf"
+      }
+    ],
+    "etim": [
+      {
+        "titulo": "Class group",
+        "valor": "Domestic switching devices"
+      },
+      {
+        "titulo": "Class",
+        "valor": "Cover frame for domestic switching devices"
+      },
+      {
+        "titulo": "Number of units",
+        "valor": "4"
+      },
+      {
+        "titulo": "Mounting direction",
+        "valor": "Horizontal and vertical"
+      },
+      {
+        "titulo": "Number of device inserts horizontal",
+        "valor": "2"
+      },
+      {
+        "titulo": "Number of device inserts vertical",
+        "valor": "2"
+      },
+      {
+        "titulo": "Number of modules horizontal (module system)",
+        "valor": "2"
+      },
+      {
+        "titulo": "Number of modules vertical (module system)",
+        "valor": "1"
+      },
+      {
+        "titulo": "With mounting grid",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Suitable for subfloor installation duct box",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Suitable for wall duct",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Suitable for built-in installation",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Label space/information surface",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Material",
+        "valor": "Metal"
+      },
+      {
+        "titulo": "Material quality",
+        "valor": "Other"
+      },
+      {
+        "titulo": "Surface protection",
+        "valor": "Lacquered"
+      },
+      {
+        "titulo": "Surface finishing",
+        "valor": "Glossy"
+      },
+      {
+        "titulo": "Colour",
+        "valor": "Gold"
+      },
+      {
+        "titulo": "RAL-number (similar)",
+        "valor": "1036"
+      },
+      {
+        "titulo": "Transparent",
+        "valor": "No"
+      },
+      {
+        "titulo": "With hinged lid",
+        "valor": "No"
+      },
+      {
+        "titulo": "Degree of protection (IP)",
+        "valor": "IP00"
+      },
+      {
+        "titulo": "Type of fastening",
+        "valor": "Clamp mounting"
+      },
+      {
+        "titulo": "Width",
+        "valor": "90,00 mm"
+      },
+      {
+        "titulo": "Height",
+        "valor": "90,00 mm"
+      },
+      {
+        "titulo": "Depth",
+        "valor": "7,150 mm"
+      },
+      {
+        "titulo": "Built-in width",
+        "valor": "90,00 mm"
+      },
+      {
+        "titulo": "Built-in height",
+        "valor": "3,00 mm"
+      },
+      {
+        "titulo": "Diameter bore hole (opening)",
+        "valor": "0,00 mm"
+      }
+    ],
+    "pedido_minimo": "1 NR",
+    "ean": "8007352622869",
+    "embalajes": [
+      {
+        "ean": "8007352622869",
+        "cantidad": "1 NR",
+        "medidas": "9,5x9,5x1,4 [cm]",
+        "peso": "152,4 [g]"
+      },
+      {
+        "ean": "8007352622876",
+        "cantidad": "5 NR",
+        "medidas": "10,3x8x10,4 [cm]",
+        "peso": "800,5 [g]"
+      }
+    ],
+    "relacionados": [],
+    "url": "https://www.vimar.com/es/int/catalog/product/index/code/22692.82"
+  },
+  {
+    "codigo": "22692.RN.82",
+    "nombre": "Placa 2Mx4 Tondo oro",
+    "descripcion": "Placa 2 módulos para cuatro mandos Tondo domóticos/KNX, metal, oro",
+    "ruta": "Series residenciales / Series resid. tradicionales / EIKON / Placas",
+    "estado": "3 - Activo",
+    "imagen": "https://www.vimar.com/irj/go/km/docs/z_catalogo/MAIN_IMAGE/22692_rn_82-vimar-eikon-exe-placca-2mx4-tondo-oro.110747.jpg",
+    "ficha_pdf": "https://www.vimar.com/es/int/catalog/product/download-pdf/code/22692.RN.82?type=.pdf",
+    "dibujos": [
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGESIZE/DI_22692.105866.RN.01.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGESIZE/DI_22692.105867.RN.01.DXF"
+      },
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGEREAR/VP_22692.105852.RN.01.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGEREAR/VP_22692.105853.RN.01.DXF"
+      },
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/3DIMAGE/EA_22692.105786.RN.01.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/3DIMAGE/EA_22692.105787.RN.01.DXF"
+      }
+    ],
+    "certificados": [],
+    "etim": [
+      {
+        "titulo": "Class group",
+        "valor": "Domestic switching devices"
+      },
+      {
+        "titulo": "Class",
+        "valor": "Cover frame for domestic switching devices"
+      },
+      {
+        "titulo": "Number of units",
+        "valor": "4"
+      },
+      {
+        "titulo": "Mounting direction",
+        "valor": "Horizontal and vertical"
+      },
+      {
+        "titulo": "Number of device inserts horizontal",
+        "valor": "2"
+      },
+      {
+        "titulo": "Number of device inserts vertical",
+        "valor": "2"
+      },
+      {
+        "titulo": "Number of modules horizontal (module system)",
+        "valor": "2"
+      },
+      {
+        "titulo": "Number of modules vertical (module system)",
+        "valor": "1"
+      },
+      {
+        "titulo": "With mounting grid",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Flush-mounted installation",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Suitable for subfloor installation duct box",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Suitable for wall duct",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Suitable for built-in installation",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Label space/information surface",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Material",
+        "valor": "Metal"
+      },
+      {
+        "titulo": "Material quality",
+        "valor": "Other"
+      },
+      {
+        "titulo": "Halogen free",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Anti-bacterial treatment",
+        "valor": "No"
+      },
+      {
+        "titulo": "Surface protection",
+        "valor": "Lacquered"
+      },
+      {
+        "titulo": "Surface finishing",
+        "valor": "Glossy"
+      },
+      {
+        "titulo": "Colour",
+        "valor": "Gold"
+      },
+      {
+        "titulo": "RAL-number (similar)",
+        "valor": "1036"
+      },
+      {
+        "titulo": "Transparent",
+        "valor": "No"
+      },
+      {
+        "titulo": "With hinged lid",
+        "valor": "No"
+      },
+      {
+        "titulo": "Degree of protection (IP)",
+        "valor": "IP00"
+      },
+      {
+        "titulo": "Type of fastening",
+        "valor": "Clamp mounting"
+      },
+      {
+        "titulo": "Width",
+        "valor": "90,00 mm"
+      },
+      {
+        "titulo": "Height",
+        "valor": "90,00 mm"
+      },
+      {
+        "titulo": "Depth",
+        "valor": "10,150 mm"
+      },
+      {
+        "titulo": "Built-in width",
+        "valor": "90,00 mm"
+      },
+      {
+        "titulo": "Built-in height",
+        "valor": "3,00 mm"
+      }
+    ],
+    "pedido_minimo": "1 NR",
+    "ean": "8007352743533",
+    "embalajes": [
+      {
+        "ean": "8007352743533",
+        "cantidad": "1 NR",
+        "medidas": "9,5x9,5x1,4 [cm]",
+        "peso": "152,4 [g]"
+      },
+      {
+        "ean": "8007352743540",
+        "cantidad": "5 NR",
+        "medidas": "10,3x8x10,4 [cm]",
+        "peso": "800,5 [g]"
+      }
+    ],
+    "relacionados": [],
+    "url": "https://www.vimar.com/es/int/catalog/product/index/code/22692.RN.82"
+  },
+  {
+    "codigo": "22692.87",
+    "nombre": "Placa 2Mx4 Flat bronce env. cep.",
+    "descripcion": "Placa 2 módulos para cuatro mandos Flat, metal, bronce envejecido cepillado",
+    "ruta": "Series residenciales / Series resid. tradicionales / EIKON / Placas",
+    "estado": "3 - Activo",
+    "imagen": "https://www.vimar.com/irj/go/km/docs/z_catalogo/MAIN_IMAGE/22692_87-vimar-eikon-placca-2mx4-flat-bronzo-antico-spazz.116057.jpg",
+    "ficha_pdf": "https://www.vimar.com/es/int/catalog/product/download-pdf/code/22692.87?type=.pdf",
+    "dibujos": [
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGESIZE/DI_22692.107314.01.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGESIZE/DI_22692.107315.01.DXF"
+      },
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGEREAR/VP_22692.85089.01.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGEREAR/VP_22692.85090.01.DXF"
+      },
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/3DIMAGE/EA_22692.107238.01.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/3DIMAGE/EA_22692.107239.01.DXF"
+      }
+    ],
+    "certificados": [],
+    "etim": [
+      {
+        "titulo": "Class group",
+        "valor": "Domestic switching devices"
+      },
+      {
+        "titulo": "Class",
+        "valor": "Cover frame for domestic switching devices"
+      },
+      {
+        "titulo": "Number of units",
+        "valor": "4"
+      },
+      {
+        "titulo": "Mounting direction",
+        "valor": "Horizontal and vertical"
+      },
+      {
+        "titulo": "Number of device inserts horizontal",
+        "valor": "2"
+      },
+      {
+        "titulo": "Number of device inserts vertical",
+        "valor": "2"
+      },
+      {
+        "titulo": "Number of modules horizontal (module system)",
+        "valor": "2"
+      },
+      {
+        "titulo": "Number of modules vertical (module system)",
+        "valor": "1"
+      },
+      {
+        "titulo": "With mounting grid",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Flush-mounted installation",
+        "valor": "No"
+      },
+      {
+        "titulo": "Suitable for subfloor installation duct box",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Suitable for wall duct",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Suitable for built-in installation",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Label space/information surface",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Material",
+        "valor": "Metal"
+      },
+      {
+        "titulo": "Material quality",
+        "valor": "Other"
+      },
+      {
+        "titulo": "Halogen free",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Anti-bacterial treatment",
+        "valor": "No"
+      },
+      {
+        "titulo": "Surface protection",
+        "valor": "Metallic"
+      },
+      {
+        "titulo": "Surface finishing",
+        "valor": "Matt"
+      },
+      {
+        "titulo": "Colour",
+        "valor": "Bronze"
+      },
+      {
+        "titulo": "RAL-number (similar)",
+        "valor": "8008"
+      },
+      {
+        "titulo": "Transparent",
+        "valor": "No"
+      },
+      {
+        "titulo": "With hinged lid",
+        "valor": "No"
+      },
+      {
+        "titulo": "Degree of protection (IP)",
+        "valor": "IP00"
+      },
+      {
+        "titulo": "Impact strength",
+        "valor": "Other"
+      },
+      {
+        "titulo": "Type of fastening",
+        "valor": "Clamp mounting"
+      },
+      {
+        "titulo": "Width",
+        "valor": "90,00 mm"
+      },
+      {
+        "titulo": "Height",
+        "valor": "90,00 mm"
+      },
+      {
+        "titulo": "Depth",
+        "valor": "7,150 mm"
+      },
+      {
+        "titulo": "Outer diameter",
+        "valor": "0,00 mm"
+      },
+      {
+        "titulo": "Inner diameter",
+        "valor": "0,00 mm"
+      },
+      {
+        "titulo": "Built-in width",
+        "valor": "90,00 mm"
+      },
+      {
+        "titulo": "Built-in height",
+        "valor": "3,00 mm"
+      },
+      {
+        "titulo": "Diameter bore hole (opening)",
+        "valor": "0,00 mm"
+      }
+    ],
+    "pedido_minimo": "5 NR",
+    "ean": "8007352830158",
+    "embalajes": [
+      {
+        "ean": "8007352830158",
+        "cantidad": "1 NR",
+        "medidas": "9,5x9,5x1,4 [cm]",
+        "peso": "150 [g]"
+      },
+      {
+        "ean": "8007352830165",
+        "cantidad": "5 NR",
+        "medidas": "10,3x8x10,4 [cm]",
+        "peso": "795,2 [g]"
+      }
+    ],
+    "relacionados": [],
+    "url": "https://www.vimar.com/es/int/catalog/product/index/code/22692.87"
+  },
+  {
+    "codigo": "22692.RN.87",
+    "nombre": "Placa 2Mx4 Tondo bronce env. cep.",
+    "descripcion": "Placa 2 módulos para cuatro mandos Tondo, metal, bronce envejecido cepillado",
+    "ruta": "Series residenciales / Series resid. tradicionales / EIKON / Placas",
+    "estado": "3 - Activo",
+    "imagen": "https://www.vimar.com/irj/go/km/docs/z_catalogo/MAIN_IMAGE/22692_rn_87-vimar-eikon-placca-2mx4-tondo-bronzo-antico-spazz.116061.jpg",
+    "ficha_pdf": "https://www.vimar.com/es/int/catalog/product/download-pdf/code/22692.RN.87?type=.pdf",
+    "dibujos": [
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGESIZE/DI_22692.105866.RN.01.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGESIZE/DI_22692.105867.RN.01.DXF"
+      },
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGEREAR/VP_22692.105852.RN.01.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGEREAR/VP_22692.105853.RN.01.DXF"
+      },
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/3DIMAGE/EA_22692.105786.RN.01.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/3DIMAGE/EA_22692.105787.RN.01.DXF"
+      }
+    ],
+    "certificados": [],
+    "etim": [
+      {
+        "titulo": "Class group",
+        "valor": "Domestic switching devices"
+      },
+      {
+        "titulo": "Class",
+        "valor": "Cover frame for domestic switching devices"
+      },
+      {
+        "titulo": "Number of units",
+        "valor": "4"
+      },
+      {
+        "titulo": "Mounting direction",
+        "valor": "Horizontal and vertical"
+      },
+      {
+        "titulo": "Number of device inserts horizontal",
+        "valor": "2"
+      },
+      {
+        "titulo": "Number of device inserts vertical",
+        "valor": "2"
+      },
+      {
+        "titulo": "Number of modules horizontal (module system)",
+        "valor": "2"
+      },
+      {
+        "titulo": "Number of modules vertical (module system)",
+        "valor": "1"
+      },
+      {
+        "titulo": "With mounting grid",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Flush-mounted installation",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Suitable for subfloor installation duct box",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Suitable for wall duct",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Suitable for built-in installation",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Label space/information surface",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Material",
+        "valor": "Metal"
+      },
+      {
+        "titulo": "Material quality",
+        "valor": "Other"
+      },
+      {
+        "titulo": "Halogen free",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Anti-bacterial treatment",
+        "valor": "No"
+      },
+      {
+        "titulo": "Surface protection",
+        "valor": "Metallic"
+      },
+      {
+        "titulo": "Surface finishing",
+        "valor": "Matt"
+      },
+      {
+        "titulo": "Colour",
+        "valor": "Bronze"
+      },
+      {
+        "titulo": "RAL-number (similar)",
+        "valor": "8008"
+      },
+      {
+        "titulo": "Transparent",
+        "valor": "No"
+      },
+      {
+        "titulo": "With hinged lid",
+        "valor": "No"
+      },
+      {
+        "titulo": "Degree of protection (IP)",
+        "valor": "IP00"
+      },
+      {
+        "titulo": "Impact strength",
+        "valor": "Other"
+      },
+      {
+        "titulo": "Type of fastening",
+        "valor": "Clamp mounting"
+      },
+      {
+        "titulo": "Width",
+        "valor": "90,00 mm"
+      },
+      {
+        "titulo": "Height",
+        "valor": "90,00 mm"
+      },
+      {
+        "titulo": "Depth",
+        "valor": "10,150 mm"
+      },
+      {
+        "titulo": "Outer diameter",
+        "valor": "0,00 mm"
+      },
+      {
+        "titulo": "Inner diameter",
+        "valor": "0,00 mm"
+      },
+      {
+        "titulo": "Built-in width",
+        "valor": "90,00 mm"
+      },
+      {
+        "titulo": "Built-in height",
+        "valor": "3,00 mm"
+      },
+      {
+        "titulo": "Diameter bore hole (opening)",
+        "valor": "0,00 mm"
+      }
+    ],
+    "pedido_minimo": "5 NR",
+    "ean": "8007352830233",
+    "embalajes": [
+      {
+        "ean": "8007352830233",
+        "cantidad": "1 NR",
+        "medidas": "9,5x9,5x1,4 [cm]",
+        "peso": "150 [g]"
+      },
+      {
+        "ean": "8007352830240",
+        "cantidad": "5 NR",
+        "medidas": "10,3x8x10,4 [cm]",
+        "peso": "795,2 [g]"
+      }
+    ],
+    "relacionados": [],
+    "url": "https://www.vimar.com/es/int/catalog/product/index/code/22692.RN.87"
+  },
+  {
+    "codigo": "22692.88",
+    "nombre": "Placa 2Mx4 Flat oro satinado",
+    "descripcion": "",
+    "ruta": "Series residenciales / Series resid. tradicionales / EIKON / Placas",
+    "estado": "3 - Activo",
+    "imagen": "https://www.vimar.com/irj/go/km/docs/z_catalogo/MAIN_IMAGE/22692_88-vimar-eikon-exe-placca-2mx4-flat-oro-satinato.110742.jpg",
+    "ficha_pdf": "https://www.vimar.com/es/int/catalog/product/download-pdf/code/22692.88?type=.pdf",
+    "dibujos": [
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGESIZE/DI_22692.107314.01.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGESIZE/DI_22692.107315.01.DXF"
+      },
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/3DIMAGE/EA_22692.107238.01.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/3DIMAGE/EA_22692.107239.01.DXF"
+      }
+    ],
+    "certificados": [
+      {
+        "titulo": "01. IMQ - Italia",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/CERTIFICATE/IMQ_CA02.107546.06552_2022-07-05.pdf"
+      }
+    ],
+    "etim": [
+      {
+        "titulo": "Class group",
+        "valor": "Domestic switching devices"
+      },
+      {
+        "titulo": "Class",
+        "valor": "Cover frame for domestic switching devices"
+      },
+      {
+        "titulo": "Number of units",
+        "valor": "4"
+      },
+      {
+        "titulo": "Mounting direction",
+        "valor": "Horizontal and vertical"
+      },
+      {
+        "titulo": "Number of device inserts horizontal",
+        "valor": "2"
+      },
+      {
+        "titulo": "Number of device inserts vertical",
+        "valor": "2"
+      },
+      {
+        "titulo": "Number of modules horizontal (module system)",
+        "valor": "2"
+      },
+      {
+        "titulo": "Number of modules vertical (module system)",
+        "valor": "1"
+      },
+      {
+        "titulo": "With mounting grid",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Suitable for subfloor installation duct box",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Suitable for wall duct",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Suitable for built-in installation",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Label space/information surface",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Material",
+        "valor": "Metal"
+      },
+      {
+        "titulo": "Material quality",
+        "valor": "Other"
+      },
+      {
+        "titulo": "Surface protection",
+        "valor": "Lacquered"
+      },
+      {
+        "titulo": "Surface finishing",
+        "valor": "Matt"
+      },
+      {
+        "titulo": "Colour",
+        "valor": "Gold"
+      },
+      {
+        "titulo": "RAL-number (similar)",
+        "valor": "1036"
+      },
+      {
+        "titulo": "Transparent",
+        "valor": "No"
+      },
+      {
+        "titulo": "With hinged lid",
+        "valor": "No"
+      },
+      {
+        "titulo": "Type of fastening",
+        "valor": "Clamp mounting"
+      },
+      {
+        "titulo": "Width",
+        "valor": "90,00 mm"
+      },
+      {
+        "titulo": "Height",
+        "valor": "90,00 mm"
+      },
+      {
+        "titulo": "Depth",
+        "valor": "7,150 mm"
+      },
+      {
+        "titulo": "Built-in width",
+        "valor": "90,00 mm"
+      },
+      {
+        "titulo": "Built-in height",
+        "valor": "3,00 mm"
+      },
+      {
+        "titulo": "Diameter bore hole (opening)",
+        "valor": "0,00 mm"
+      }
+    ],
+    "pedido_minimo": "1 NR",
+    "ean": "8007352656499",
+    "embalajes": [
+      {
+        "ean": "8007352656499",
+        "cantidad": "1 NR",
+        "medidas": "9,5x9,5x1,4 [cm]",
+        "peso": "150,8 [g]"
+      },
+      {
+        "ean": "8007352656505",
+        "cantidad": "5 NR",
+        "medidas": "10,3x8x10,4 [cm]",
+        "peso": "796 [g]"
+      }
+    ],
+    "relacionados": [],
+    "url": "https://www.vimar.com/es/int/catalog/product/index/code/22692.88"
+  },
+  {
+    "codigo": "22692.RN.88",
+    "nombre": "Placa 2Mx4 Tondo oro satinado",
+    "descripcion": "Placa 2 módulos para cuatro mandos Tondo domóticos/KNX, metal, oro satinado",
+    "ruta": "Series residenciales / Series resid. tradicionales / EIKON / Placas",
+    "estado": "3 - Activo",
+    "imagen": "https://www.vimar.com/irj/go/km/docs/z_catalogo/MAIN_IMAGE/22692_rn_88-vimar-eikon-exe-placca-2mx4-tondo-oro-satinato.110748.jpg",
+    "ficha_pdf": "https://www.vimar.com/es/int/catalog/product/download-pdf/code/22692.RN.88?type=.pdf",
+    "dibujos": [
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGESIZE/DI_22692.105866.RN.01.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGESIZE/DI_22692.105867.RN.01.DXF"
+      },
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGEREAR/VP_22692.105852.RN.01.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGEREAR/VP_22692.105853.RN.01.DXF"
+      },
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/3DIMAGE/EA_22692.105786.RN.01.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/3DIMAGE/EA_22692.105787.RN.01.DXF"
+      }
+    ],
+    "certificados": [],
+    "etim": [
+      {
+        "titulo": "Class group",
+        "valor": "Domestic switching devices"
+      },
+      {
+        "titulo": "Class",
+        "valor": "Cover frame for domestic switching devices"
+      },
+      {
+        "titulo": "Number of units",
+        "valor": "4"
+      },
+      {
+        "titulo": "Mounting direction",
+        "valor": "Horizontal and vertical"
+      },
+      {
+        "titulo": "Number of device inserts horizontal",
+        "valor": "2"
+      },
+      {
+        "titulo": "Number of device inserts vertical",
+        "valor": "2"
+      },
+      {
+        "titulo": "Number of modules horizontal (module system)",
+        "valor": "2"
+      },
+      {
+        "titulo": "Number of modules vertical (module system)",
+        "valor": "1"
+      },
+      {
+        "titulo": "With mounting grid",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Flush-mounted installation",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Suitable for subfloor installation duct box",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Suitable for wall duct",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Suitable for built-in installation",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Label space/information surface",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Material",
+        "valor": "Metal"
+      },
+      {
+        "titulo": "Material quality",
+        "valor": "Other"
+      },
+      {
+        "titulo": "Halogen free",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Anti-bacterial treatment",
+        "valor": "No"
+      },
+      {
+        "titulo": "Surface protection",
+        "valor": "Lacquered"
+      },
+      {
+        "titulo": "Surface finishing",
+        "valor": "Matt"
+      },
+      {
+        "titulo": "Colour",
+        "valor": "Gold"
+      },
+      {
+        "titulo": "RAL-number (similar)",
+        "valor": "1036"
+      },
+      {
+        "titulo": "Transparent",
+        "valor": "No"
+      },
+      {
+        "titulo": "With hinged lid",
+        "valor": "No"
+      },
+      {
+        "titulo": "Degree of protection (IP)",
+        "valor": "IP00"
+      },
+      {
+        "titulo": "Type of fastening",
+        "valor": "Clamp mounting"
+      },
+      {
+        "titulo": "Width",
+        "valor": "90,00 mm"
+      },
+      {
+        "titulo": "Height",
+        "valor": "90,00 mm"
+      },
+      {
+        "titulo": "Depth",
+        "valor": "10,150 mm"
+      },
+      {
+        "titulo": "Built-in width",
+        "valor": "90,00 mm"
+      },
+      {
+        "titulo": "Built-in height",
+        "valor": "3,00 mm"
+      }
+    ],
+    "pedido_minimo": "1 NR",
+    "ean": "8007352743557",
+    "embalajes": [
+      {
+        "ean": "8007352743557",
+        "cantidad": "1 NR",
+        "medidas": "9,5x9,5x1,4 [cm]",
+        "peso": "150,8 [g]"
+      },
+      {
+        "ean": "8007352743564",
+        "cantidad": "5 NR",
+        "medidas": "10,3x8x10,4 [cm]",
+        "peso": "796 [g]"
+      }
+    ],
+    "relacionados": [],
+    "url": "https://www.vimar.com/es/int/catalog/product/index/code/22692.RN.88"
+  },
+  {
+    "codigo": "22692.89",
+    "nombre": "Placa 2Mx4 Flat latón cep.",
+    "descripcion": "Placa 2 módulos para cuatro mandos Flat, metal, latón cepillado",
+    "ruta": "Series residenciales / Series resid. tradicionales / EIKON / Placas",
+    "estado": "3 - Activo",
+    "imagen": "https://www.vimar.com/irj/go/km/docs/z_catalogo/MAIN_IMAGE/22692_89-vimar-eikon-placca-2mx4-flat-ottone-spazz.116058.jpg",
+    "ficha_pdf": "https://www.vimar.com/es/int/catalog/product/download-pdf/code/22692.89?type=.pdf",
+    "dibujos": [
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGESIZE/DI_22692.107314.01.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGESIZE/DI_22692.107315.01.DXF"
+      },
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGEREAR/VP_22692.85089.01.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGEREAR/VP_22692.85090.01.DXF"
+      },
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/3DIMAGE/EA_22692.107238.01.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/3DIMAGE/EA_22692.107239.01.DXF"
+      }
+    ],
+    "certificados": [],
+    "etim": [
+      {
+        "titulo": "Class group",
+        "valor": "Domestic switching devices"
+      },
+      {
+        "titulo": "Class",
+        "valor": "Cover frame for domestic switching devices"
+      },
+      {
+        "titulo": "Number of units",
+        "valor": "4"
+      },
+      {
+        "titulo": "Mounting direction",
+        "valor": "Horizontal and vertical"
+      },
+      {
+        "titulo": "Number of device inserts horizontal",
+        "valor": "2"
+      },
+      {
+        "titulo": "Number of device inserts vertical",
+        "valor": "2"
+      },
+      {
+        "titulo": "Number of modules horizontal (module system)",
+        "valor": "2"
+      },
+      {
+        "titulo": "Number of modules vertical (module system)",
+        "valor": "1"
+      },
+      {
+        "titulo": "With mounting grid",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Flush-mounted installation",
+        "valor": "No"
+      },
+      {
+        "titulo": "Suitable for subfloor installation duct box",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Suitable for wall duct",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Suitable for built-in installation",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Label space/information surface",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Material",
+        "valor": "Metal"
+      },
+      {
+        "titulo": "Material quality",
+        "valor": "Other"
+      },
+      {
+        "titulo": "Halogen free",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Anti-bacterial treatment",
+        "valor": "No"
+      },
+      {
+        "titulo": "Surface protection",
+        "valor": "Metallic"
+      },
+      {
+        "titulo": "Surface finishing",
+        "valor": "Matt"
+      },
+      {
+        "titulo": "Colour",
+        "valor": "Brass"
+      },
+      {
+        "titulo": "RAL-number (similar)",
+        "valor": "1002"
+      },
+      {
+        "titulo": "Transparent",
+        "valor": "No"
+      },
+      {
+        "titulo": "With hinged lid",
+        "valor": "No"
+      },
+      {
+        "titulo": "Degree of protection (IP)",
+        "valor": "IP00"
+      },
+      {
+        "titulo": "Impact strength",
+        "valor": "Other"
+      },
+      {
+        "titulo": "Type of fastening",
+        "valor": "Clamp mounting"
+      },
+      {
+        "titulo": "Width",
+        "valor": "90,00 mm"
+      },
+      {
+        "titulo": "Height",
+        "valor": "90,00 mm"
+      },
+      {
+        "titulo": "Depth",
+        "valor": "7,150 mm"
+      },
+      {
+        "titulo": "Outer diameter",
+        "valor": "0,00 mm"
+      },
+      {
+        "titulo": "Inner diameter",
+        "valor": "0,00 mm"
+      },
+      {
+        "titulo": "Built-in width",
+        "valor": "90,00 mm"
+      },
+      {
+        "titulo": "Built-in height",
+        "valor": "3,00 mm"
+      },
+      {
+        "titulo": "Diameter bore hole (opening)",
+        "valor": "0,00 mm"
+      }
+    ],
+    "pedido_minimo": "5 NR",
+    "ean": "8007352830097",
+    "embalajes": [
+      {
+        "ean": "8007352830097",
+        "cantidad": "1 NR",
+        "medidas": "9,5x9,5x1,4 [cm]",
+        "peso": "150 [g]"
+      },
+      {
+        "ean": "8007352830103",
+        "cantidad": "5 NR",
+        "medidas": "10,3x8x10,4 [cm]",
+        "peso": "795,2 [g]"
+      }
+    ],
+    "relacionados": [],
+    "url": "https://www.vimar.com/es/int/catalog/product/index/code/22692.89"
+  },
+  {
+    "codigo": "22692.RN.89",
+    "nombre": "Placa 2Mx4 Tondo latón cep.",
+    "descripcion": "Placa 2 módulos para cuatro mandos Tondo, metal, latón cepillado",
+    "ruta": "Series residenciales / Series resid. tradicionales / EIKON / Placas",
+    "estado": "3 - Activo",
+    "imagen": "https://www.vimar.com/irj/go/km/docs/z_catalogo/MAIN_IMAGE/22692_rn_89-vimar-eikon-placca-2mx4-tondo-ottone-spazz.116062.jpg",
+    "ficha_pdf": "https://www.vimar.com/es/int/catalog/product/download-pdf/code/22692.RN.89?type=.pdf",
+    "dibujos": [
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGESIZE/DI_22692.105866.RN.01.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGESIZE/DI_22692.105867.RN.01.DXF"
+      },
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGEREAR/VP_22692.105852.RN.01.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGEREAR/VP_22692.105853.RN.01.DXF"
+      },
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/3DIMAGE/EA_22692.105786.RN.01.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/3DIMAGE/EA_22692.105787.RN.01.DXF"
+      }
+    ],
+    "certificados": [],
+    "etim": [
+      {
+        "titulo": "Class group",
+        "valor": "Domestic switching devices"
+      },
+      {
+        "titulo": "Class",
+        "valor": "Cover frame for domestic switching devices"
+      },
+      {
+        "titulo": "Number of units",
+        "valor": "4"
+      },
+      {
+        "titulo": "Mounting direction",
+        "valor": "Horizontal and vertical"
+      },
+      {
+        "titulo": "Number of device inserts horizontal",
+        "valor": "2"
+      },
+      {
+        "titulo": "Number of device inserts vertical",
+        "valor": "2"
+      },
+      {
+        "titulo": "Number of modules horizontal (module system)",
+        "valor": "2"
+      },
+      {
+        "titulo": "Number of modules vertical (module system)",
+        "valor": "1"
+      },
+      {
+        "titulo": "With mounting grid",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Flush-mounted installation",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Suitable for subfloor installation duct box",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Suitable for wall duct",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Suitable for built-in installation",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Label space/information surface",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Material",
+        "valor": "Metal"
+      },
+      {
+        "titulo": "Material quality",
+        "valor": "Other"
+      },
+      {
+        "titulo": "Halogen free",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Anti-bacterial treatment",
+        "valor": "No"
+      },
+      {
+        "titulo": "Surface protection",
+        "valor": "Metallic"
+      },
+      {
+        "titulo": "Surface finishing",
+        "valor": "Matt"
+      },
+      {
+        "titulo": "Colour",
+        "valor": "Brass"
+      },
+      {
+        "titulo": "RAL-number (similar)",
+        "valor": "1002"
+      },
+      {
+        "titulo": "Transparent",
+        "valor": "No"
+      },
+      {
+        "titulo": "With hinged lid",
+        "valor": "No"
+      },
+      {
+        "titulo": "Degree of protection (IP)",
+        "valor": "IP00"
+      },
+      {
+        "titulo": "Impact strength",
+        "valor": "Other"
+      },
+      {
+        "titulo": "Type of fastening",
+        "valor": "Clamp mounting"
+      },
+      {
+        "titulo": "Width",
+        "valor": "90,00 mm"
+      },
+      {
+        "titulo": "Height",
+        "valor": "90,00 mm"
+      },
+      {
+        "titulo": "Depth",
+        "valor": "10,150 mm"
+      },
+      {
+        "titulo": "Outer diameter",
+        "valor": "0,00 mm"
+      },
+      {
+        "titulo": "Inner diameter",
+        "valor": "0,00 mm"
+      },
+      {
+        "titulo": "Built-in width",
+        "valor": "90,00 mm"
+      },
+      {
+        "titulo": "Built-in height",
+        "valor": "3,00 mm"
+      },
+      {
+        "titulo": "Diameter bore hole (opening)",
+        "valor": "0,00 mm"
+      }
+    ],
+    "pedido_minimo": "1 NR",
+    "ean": "8007352830172",
+    "embalajes": [
+      {
+        "ean": "8007352830172",
+        "cantidad": "1 NR",
+        "medidas": "9,5x9,5x1,4 [cm]",
+        "peso": "150 [g]"
+      },
+      {
+        "ean": "8007352830189",
+        "cantidad": "5 NR",
+        "medidas": "10,3x8x10,4 [cm]",
+        "peso": "795,2 [g]"
+      }
+    ],
+    "relacionados": [],
+    "url": "https://www.vimar.com/es/int/catalog/product/index/code/22692.RN.89"
+  },
+  {
+    "codigo": "22692.90",
+    "nombre": "Placa 2Mx4 Flat gun metal",
+    "descripcion": "Placa 2 módulos para cuatro mandos Flat, metal, gun metal cepillado",
+    "ruta": "Series residenciales / Series resid. tradicionales / EIKON / Placas",
+    "estado": "3 - Activo",
+    "imagen": "https://www.vimar.com/irj/go/km/docs/z_catalogo/MAIN_IMAGE/22692_90-vimar-eikon-placca-2mx4-flat-gun-metal.116059.jpg",
+    "ficha_pdf": "https://www.vimar.com/es/int/catalog/product/download-pdf/code/22692.90?type=.pdf",
+    "dibujos": [
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGESIZE/DI_22692.107314.01.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGESIZE/DI_22692.107315.01.DXF"
+      },
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGEREAR/VP_22692.85089.01.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGEREAR/VP_22692.85090.01.DXF"
+      },
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/3DIMAGE/EA_22692.107238.01.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/3DIMAGE/EA_22692.107239.01.DXF"
+      }
+    ],
+    "certificados": [],
+    "etim": [
+      {
+        "titulo": "Class group",
+        "valor": "Domestic switching devices"
+      },
+      {
+        "titulo": "Class",
+        "valor": "Cover frame for domestic switching devices"
+      },
+      {
+        "titulo": "Number of units",
+        "valor": "4"
+      },
+      {
+        "titulo": "Mounting direction",
+        "valor": "Horizontal and vertical"
+      },
+      {
+        "titulo": "Number of device inserts horizontal",
+        "valor": "2"
+      },
+      {
+        "titulo": "Number of device inserts vertical",
+        "valor": "2"
+      },
+      {
+        "titulo": "Number of modules horizontal (module system)",
+        "valor": "2"
+      },
+      {
+        "titulo": "Number of modules vertical (module system)",
+        "valor": "1"
+      },
+      {
+        "titulo": "With mounting grid",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Flush-mounted installation",
+        "valor": "No"
+      },
+      {
+        "titulo": "Suitable for subfloor installation duct box",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Suitable for wall duct",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Suitable for built-in installation",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Label space/information surface",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Material",
+        "valor": "Metal"
+      },
+      {
+        "titulo": "Material quality",
+        "valor": "Other"
+      },
+      {
+        "titulo": "Halogen free",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Anti-bacterial treatment",
+        "valor": "No"
+      },
+      {
+        "titulo": "Surface protection",
+        "valor": "Metallic"
+      },
+      {
+        "titulo": "Surface finishing",
+        "valor": "Matt"
+      },
+      {
+        "titulo": "Colour",
+        "valor": "Anthracite"
+      },
+      {
+        "titulo": "RAL-number (similar)",
+        "valor": "7011"
+      },
+      {
+        "titulo": "Transparent",
+        "valor": "No"
+      },
+      {
+        "titulo": "With hinged lid",
+        "valor": "No"
+      },
+      {
+        "titulo": "Degree of protection (IP)",
+        "valor": "IP20"
+      },
+      {
+        "titulo": "Impact strength",
+        "valor": "Other"
+      },
+      {
+        "titulo": "Type of fastening",
+        "valor": "Clamp mounting"
+      },
+      {
+        "titulo": "Width",
+        "valor": "90,00 mm"
+      },
+      {
+        "titulo": "Height",
+        "valor": "90,00 mm"
+      },
+      {
+        "titulo": "Depth",
+        "valor": "7,150 mm"
+      },
+      {
+        "titulo": "Outer diameter",
+        "valor": "0,00 mm"
+      },
+      {
+        "titulo": "Inner diameter",
+        "valor": "0,00 mm"
+      },
+      {
+        "titulo": "Built-in width",
+        "valor": "90,00 mm"
+      },
+      {
+        "titulo": "Built-in height",
+        "valor": "3,00 mm"
+      },
+      {
+        "titulo": "Diameter bore hole (opening)",
+        "valor": "0,00 mm"
+      }
+    ],
+    "pedido_minimo": "5 NR",
+    "ean": "8007352830110",
+    "embalajes": [
+      {
+        "ean": "8007352830110",
+        "cantidad": "1 NR",
+        "medidas": "9,5x9,5x1,4 [cm]",
+        "peso": "150 [g]"
+      },
+      {
+        "ean": "8007352830127",
+        "cantidad": "5 NR",
+        "medidas": "10,3x8x10,4 [cm]",
+        "peso": "795,2 [g]"
+      }
+    ],
+    "relacionados": [],
+    "url": "https://www.vimar.com/es/int/catalog/product/index/code/22692.90"
+  },
+  {
+    "codigo": "22692.RN.90",
+    "nombre": "Placa 2Mx4 Tondo gun metal",
+    "descripcion": "Placa 2 módulos para cuatro mandos Tondo, metal, gun metal cepillado",
+    "ruta": "Series residenciales / Series resid. tradicionales / EIKON / Placas",
+    "estado": "3 - Activo",
+    "imagen": "https://www.vimar.com/irj/go/km/docs/z_catalogo/MAIN_IMAGE/22692_rn_90-vimar-eikon-placca-2mx4-tondo-gun-metal.116063.jpg",
+    "ficha_pdf": "https://www.vimar.com/es/int/catalog/product/download-pdf/code/22692.RN.90?type=.pdf",
+    "dibujos": [
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGESIZE/DI_22692.105866.RN.01.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGESIZE/DI_22692.105867.RN.01.DXF"
+      },
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGEREAR/VP_22692.105852.RN.01.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGEREAR/VP_22692.105853.RN.01.DXF"
+      },
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/3DIMAGE/EA_22692.105786.RN.01.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/3DIMAGE/EA_22692.105787.RN.01.DXF"
+      }
+    ],
+    "certificados": [],
+    "etim": [
+      {
+        "titulo": "Class group",
+        "valor": "Domestic switching devices"
+      },
+      {
+        "titulo": "Class",
+        "valor": "Cover frame for domestic switching devices"
+      },
+      {
+        "titulo": "Number of units",
+        "valor": "4"
+      },
+      {
+        "titulo": "Mounting direction",
+        "valor": "Horizontal and vertical"
+      },
+      {
+        "titulo": "Number of device inserts horizontal",
+        "valor": "2"
+      },
+      {
+        "titulo": "Number of device inserts vertical",
+        "valor": "2"
+      },
+      {
+        "titulo": "Number of modules horizontal (module system)",
+        "valor": "2"
+      },
+      {
+        "titulo": "Number of modules vertical (module system)",
+        "valor": "1"
+      },
+      {
+        "titulo": "With mounting grid",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Flush-mounted installation",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Suitable for subfloor installation duct box",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Suitable for wall duct",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Suitable for built-in installation",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Label space/information surface",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Material",
+        "valor": "Metal"
+      },
+      {
+        "titulo": "Material quality",
+        "valor": "Other"
+      },
+      {
+        "titulo": "Halogen free",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Anti-bacterial treatment",
+        "valor": "No"
+      },
+      {
+        "titulo": "Surface protection",
+        "valor": "Metallic"
+      },
+      {
+        "titulo": "Surface finishing",
+        "valor": "Matt"
+      },
+      {
+        "titulo": "Colour",
+        "valor": "Anthracite"
+      },
+      {
+        "titulo": "RAL-number (similar)",
+        "valor": "7011"
+      },
+      {
+        "titulo": "Transparent",
+        "valor": "No"
+      },
+      {
+        "titulo": "With hinged lid",
+        "valor": "No"
+      },
+      {
+        "titulo": "Degree of protection (IP)",
+        "valor": "IP00"
+      },
+      {
+        "titulo": "Impact strength",
+        "valor": "Other"
+      },
+      {
+        "titulo": "Type of fastening",
+        "valor": "Clamp mounting"
+      },
+      {
+        "titulo": "Width",
+        "valor": "90,00 mm"
+      },
+      {
+        "titulo": "Height",
+        "valor": "90,00 mm"
+      },
+      {
+        "titulo": "Depth",
+        "valor": "10,150 mm"
+      },
+      {
+        "titulo": "Outer diameter",
+        "valor": "0,00 mm"
+      },
+      {
+        "titulo": "Inner diameter",
+        "valor": "0,00 mm"
+      },
+      {
+        "titulo": "Built-in width",
+        "valor": "90,00 mm"
+      },
+      {
+        "titulo": "Built-in height",
+        "valor": "3,00 mm"
+      },
+      {
+        "titulo": "Diameter bore hole (opening)",
+        "valor": "0,00 mm"
+      }
+    ],
+    "pedido_minimo": "1 NR",
+    "ean": "8007352830196",
+    "embalajes": [
+      {
+        "ean": "8007352830196",
+        "cantidad": "1 NR",
+        "medidas": "9,5x9,5x1,4 [cm]",
+        "peso": "150 [g]"
+      },
+      {
+        "ean": "8007352830202",
+        "cantidad": "5 NR",
+        "medidas": "10,3x8x10,4 [cm]",
+        "peso": "795,2 [g]"
+      }
+    ],
+    "relacionados": [],
+    "url": "https://www.vimar.com/es/int/catalog/product/index/code/22692.RN.90"
+  },
+  {
+    "codigo": "22692.91",
+    "nombre": "Placa 2Mx4 Flat bronce",
+    "descripcion": "Placa 2 módulos para cuatro mandos Flat, metal, bronce cepillado",
+    "ruta": "Series residenciales / Series resid. tradicionales / EIKON / Placas",
+    "estado": "3 - Activo",
+    "imagen": "https://www.vimar.com/irj/go/km/docs/z_catalogo/MAIN_IMAGE/22692_91-vimar-eikon-placca-2mx4-flat-bronzo.116060.jpg",
+    "ficha_pdf": "https://www.vimar.com/es/int/catalog/product/download-pdf/code/22692.91?type=.pdf",
+    "dibujos": [
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGESIZE/DI_22692.107314.01.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGESIZE/DI_22692.107315.01.DXF"
+      },
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGEREAR/VP_22692.85089.01.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGEREAR/VP_22692.85090.01.DXF"
+      },
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/3DIMAGE/EA_22692.107238.01.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/3DIMAGE/EA_22692.107239.01.DXF"
+      }
+    ],
+    "certificados": [],
+    "etim": [
+      {
+        "titulo": "Class group",
+        "valor": "Domestic switching devices"
+      },
+      {
+        "titulo": "Class",
+        "valor": "Cover frame for domestic switching devices"
+      },
+      {
+        "titulo": "Number of units",
+        "valor": "4"
+      },
+      {
+        "titulo": "Mounting direction",
+        "valor": "Horizontal and vertical"
+      },
+      {
+        "titulo": "Number of device inserts horizontal",
+        "valor": "2"
+      },
+      {
+        "titulo": "Number of device inserts vertical",
+        "valor": "2"
+      },
+      {
+        "titulo": "Number of modules horizontal (module system)",
+        "valor": "2"
+      },
+      {
+        "titulo": "Number of modules vertical (module system)",
+        "valor": "1"
+      },
+      {
+        "titulo": "With mounting grid",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Flush-mounted installation",
+        "valor": "No"
+      },
+      {
+        "titulo": "Suitable for subfloor installation duct box",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Suitable for wall duct",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Suitable for built-in installation",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Label space/information surface",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Material",
+        "valor": "Metal"
+      },
+      {
+        "titulo": "Material quality",
+        "valor": "Other"
+      },
+      {
+        "titulo": "Halogen free",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Anti-bacterial treatment",
+        "valor": "No"
+      },
+      {
+        "titulo": "Surface protection",
+        "valor": "Metallic"
+      },
+      {
+        "titulo": "Surface finishing",
+        "valor": "Matt"
+      },
+      {
+        "titulo": "Colour",
+        "valor": "Bronze"
+      },
+      {
+        "titulo": "RAL-number (similar)",
+        "valor": "7013"
+      },
+      {
+        "titulo": "Transparent",
+        "valor": "No"
+      },
+      {
+        "titulo": "With hinged lid",
+        "valor": "No"
+      },
+      {
+        "titulo": "Degree of protection (IP)",
+        "valor": "IP00"
+      },
+      {
+        "titulo": "Impact strength",
+        "valor": "Other"
+      },
+      {
+        "titulo": "Type of fastening",
+        "valor": "Clamp mounting"
+      },
+      {
+        "titulo": "Width",
+        "valor": "90,00 mm"
+      },
+      {
+        "titulo": "Height",
+        "valor": "90,00 mm"
+      },
+      {
+        "titulo": "Depth",
+        "valor": "7,150 mm"
+      },
+      {
+        "titulo": "Outer diameter",
+        "valor": "0,00 mm"
+      },
+      {
+        "titulo": "Inner diameter",
+        "valor": "0,00 mm"
+      },
+      {
+        "titulo": "Built-in width",
+        "valor": "90,00 mm"
+      },
+      {
+        "titulo": "Built-in height",
+        "valor": "3,00 mm"
+      },
+      {
+        "titulo": "Diameter bore hole (opening)",
+        "valor": "0,00 mm"
+      }
+    ],
+    "pedido_minimo": "5 NR",
+    "ean": "8007352830134",
+    "embalajes": [
+      {
+        "ean": "8007352830134",
+        "cantidad": "1 NR",
+        "medidas": "9,5x9,5x1,4 [cm]",
+        "peso": "150 [g]"
+      },
+      {
+        "ean": "8007352830141",
+        "cantidad": "5 NR",
+        "medidas": "10,3x8x10,4 [cm]",
+        "peso": "795,2 [g]"
+      }
+    ],
+    "relacionados": [],
+    "url": "https://www.vimar.com/es/int/catalog/product/index/code/22692.91"
+  },
+  {
+    "codigo": "22692.RN.91",
+    "nombre": "Placa 2Mx4 Tondo bronce",
+    "descripcion": "Placa 2 módulos para cuatro mandos Flat, metal, bronce cepillado",
+    "ruta": "Series residenciales / Series resid. tradicionales / EIKON / Placas",
+    "estado": "3 - Activo",
+    "imagen": "https://www.vimar.com/irj/go/km/docs/z_catalogo/MAIN_IMAGE/22692_rn_91-vimar-eikon-placca-2mx4-tondo-bronzo.116064.jpg",
+    "ficha_pdf": "https://www.vimar.com/es/int/catalog/product/download-pdf/code/22692.RN.91?type=.pdf",
+    "dibujos": [
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGESIZE/DI_22692.105866.RN.01.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGESIZE/DI_22692.105867.RN.01.DXF"
+      },
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGEREAR/VP_22692.105852.RN.01.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGEREAR/VP_22692.105853.RN.01.DXF"
+      },
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/3DIMAGE/EA_22692.105786.RN.01.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/3DIMAGE/EA_22692.105787.RN.01.DXF"
+      }
+    ],
+    "certificados": [],
+    "etim": [
+      {
+        "titulo": "Class group",
+        "valor": "Domestic switching devices"
+      },
+      {
+        "titulo": "Class",
+        "valor": "Cover frame for domestic switching devices"
+      },
+      {
+        "titulo": "Number of units",
+        "valor": "4"
+      },
+      {
+        "titulo": "Mounting direction",
+        "valor": "Horizontal and vertical"
+      },
+      {
+        "titulo": "Number of device inserts horizontal",
+        "valor": "2"
+      },
+      {
+        "titulo": "Number of device inserts vertical",
+        "valor": "2"
+      },
+      {
+        "titulo": "Number of modules horizontal (module system)",
+        "valor": "2"
+      },
+      {
+        "titulo": "Number of modules vertical (module system)",
+        "valor": "1"
+      },
+      {
+        "titulo": "With mounting grid",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Flush-mounted installation",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Suitable for subfloor installation duct box",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Suitable for wall duct",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Suitable for built-in installation",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Label space/information surface",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Material",
+        "valor": "Metal"
+      },
+      {
+        "titulo": "Material quality",
+        "valor": "Other"
+      },
+      {
+        "titulo": "Halogen free",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Anti-bacterial treatment",
+        "valor": "No"
+      },
+      {
+        "titulo": "Surface protection",
+        "valor": "Metallic"
+      },
+      {
+        "titulo": "Surface finishing",
+        "valor": "Matt"
+      },
+      {
+        "titulo": "Colour",
+        "valor": "Bronze"
+      },
+      {
+        "titulo": "RAL-number (similar)",
+        "valor": "7013"
+      },
+      {
+        "titulo": "Transparent",
+        "valor": "No"
+      },
+      {
+        "titulo": "With hinged lid",
+        "valor": "No"
+      },
+      {
+        "titulo": "Degree of protection (IP)",
+        "valor": "IP00"
+      },
+      {
+        "titulo": "Impact strength",
+        "valor": "Other"
+      },
+      {
+        "titulo": "Type of fastening",
+        "valor": "Clamp mounting"
+      },
+      {
+        "titulo": "Width",
+        "valor": "90,00 mm"
+      },
+      {
+        "titulo": "Height",
+        "valor": "90,00 mm"
+      },
+      {
+        "titulo": "Depth",
+        "valor": "10,150 mm"
+      },
+      {
+        "titulo": "Outer diameter",
+        "valor": "0,00 mm"
+      },
+      {
+        "titulo": "Inner diameter",
+        "valor": "0,00 mm"
+      },
+      {
+        "titulo": "Built-in width",
+        "valor": "90,00 mm"
+      },
+      {
+        "titulo": "Built-in height",
+        "valor": "3,00 mm"
+      },
+      {
+        "titulo": "Diameter bore hole (opening)",
+        "valor": "0,00 mm"
+      }
+    ],
+    "pedido_minimo": "1 NR",
+    "ean": "8007352830219",
+    "embalajes": [
+      {
+        "ean": "8007352830219",
+        "cantidad": "1 NR",
+        "medidas": "9,5x9,5x1,4 [cm]",
+        "peso": "150 [g]"
+      },
+      {
+        "ean": "8007352830226",
+        "cantidad": "5 NR",
+        "medidas": "10,3x8x10,4 [cm]",
+        "peso": "795,2 [g]"
+      }
+    ],
+    "relacionados": [],
+    "url": "https://www.vimar.com/es/int/catalog/product/index/code/22692.RN.91"
   }
 ]

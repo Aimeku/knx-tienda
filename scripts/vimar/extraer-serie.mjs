@@ -111,9 +111,9 @@ const codigos = listaFija ? [...listaFija] : [];
 for (let pagina = 1; !listaFija && pagina < 200; pagina++) {
   let html;
   try {
-    html = await descargar(`${BASE}/es/int/catalog/product/index/liv/${nodo}?page=${pagina}`, 1);
+    html = await descargar(`${BASE}/es/int/catalog/product/index/liv/${nodo}?page=${pagina}`, 3);
   } catch {
-    break; // después de la última página Vimar responde 404
+    break; // después de la última página Vimar responde 404 (3 intentos para no cortar por un error puntual)
   }
   const nuevos = unicos([...html.matchAll(new RegExp(`href="/es/int/catalog/product/index/code/([^"?]+)\\?node=${nodo}"`, 'g'))].map((m) => decodeURIComponent(m[1]))).filter(
     (c) => !codigos.includes(c)

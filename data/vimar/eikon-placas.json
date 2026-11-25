@@ -1,5 +1,184 @@
 [
   {
+    "codigo": "20642.C02",
+    "nombre": "Placa Classic 2M Bright blanco antiguo",
+    "descripcion": "Placa Classic 2 módulos, barniz de metal Bright y marco cromado, blanco antiguo",
+    "ruta": "Series residenciales / Series resid. tradicionales / EIKON / Placas",
+    "estado": "2 - Será eliminado",
+    "imagen": "https://www.vimar.com/irj/go/km/docs/z_catalogo/MAIN_IMAGE/20642_c02-vimar-eikon-placca-classic-2m-bianco-antico.61031.jpg",
+    "ficha_pdf": "https://www.vimar.com/es/int/catalog/product/download-pdf/code/20642.C02?type=.pdf",
+    "dibujos": [
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGESIZE/DI_20642.73439.C01.png"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGESIZE/DI_20642.32163.C01.DXF"
+      },
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGEREAR/VP_20642.70200.C01.png"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGEREAR/VP_20642.32143.C01.DXF"
+      },
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/3DIMAGE/EA_20642.81712.C01.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/3DIMAGE/EA_20642.81713.C01.DXF"
+      }
+    ],
+    "certificados": [],
+    "etim": [
+      {
+        "titulo": "Class group",
+        "valor": "Domestic switching devices"
+      },
+      {
+        "titulo": "Class",
+        "valor": "Cover frame for domestic switching devices"
+      },
+      {
+        "titulo": "Number of units",
+        "valor": "2"
+      },
+      {
+        "titulo": "Mounting direction",
+        "valor": "Horizontal and vertical"
+      },
+      {
+        "titulo": "Number of device inserts horizontal",
+        "valor": "2"
+      },
+      {
+        "titulo": "Number of device inserts vertical",
+        "valor": "1"
+      },
+      {
+        "titulo": "Number of modules horizontal (module system)",
+        "valor": "2"
+      },
+      {
+        "titulo": "Number of modules vertical (module system)",
+        "valor": "1"
+      },
+      {
+        "titulo": "With mounting grid",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Suitable for subfloor installation duct box",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Suitable for wall duct",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Suitable for built-in installation",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Label space/information surface",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Material",
+        "valor": "Metal"
+      },
+      {
+        "titulo": "Material quality",
+        "valor": "Other"
+      },
+      {
+        "titulo": "Halogen free",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Surface protection",
+        "valor": "Lacquered"
+      },
+      {
+        "titulo": "Surface finishing",
+        "valor": "Glossy"
+      },
+      {
+        "titulo": "Colour",
+        "valor": "White"
+      },
+      {
+        "titulo": "RAL-number (similar)",
+        "valor": "9010"
+      },
+      {
+        "titulo": "Transparent",
+        "valor": "No"
+      },
+      {
+        "titulo": "With hinged lid",
+        "valor": "No"
+      },
+      {
+        "titulo": "Degree of protection (IP)",
+        "valor": "IP00"
+      },
+      {
+        "titulo": "Type of fastening",
+        "valor": "Clamp mounting"
+      },
+      {
+        "titulo": "Width",
+        "valor": "84,80 mm"
+      },
+      {
+        "titulo": "Height",
+        "valor": "84,80 mm"
+      },
+      {
+        "titulo": "Depth",
+        "valor": "9,000 mm"
+      },
+      {
+        "titulo": "Built-in width",
+        "valor": "84,80 mm"
+      },
+      {
+        "titulo": "Built-in height",
+        "valor": "84,80 mm"
+      },
+      {
+        "titulo": "Diameter bore hole (opening)",
+        "valor": "0,00 mm"
+      }
+    ],
+    "pedido_minimo": "1 NR",
+    "ean": "8007352476905",
+    "embalajes": [
+      {
+        "ean": "8007352476905",
+        "cantidad": "1 NR",
+        "medidas": "9,6x9,6x1,7 [cm]",
+        "peso": "77,4 [g]"
+      },
+      {
+        "ean": "8007352476912",
+        "cantidad": "5 NR",
+        "medidas": "10,2x10x10,4 [cm]",
+        "peso": "430,4 [g]"
+      }
+    ],
+    "relacionados": [
+      "21602",
+      "21603"
+    ],
+    "url": "https://www.vimar.com/es/int/catalog/product/index/code/20642.C02"
+  },
+  {
     "codigo": "20642.C31",
     "nombre": "Placa Classic 2M Wood wengé africano",
     "descripcion": "Placa Classic 2 módulos, madera maciza Wood y marco cromado, wengé africano",
