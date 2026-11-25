@@ -7,7 +7,7 @@ import { esAdmin } from '../../lib/admin';
 
 const user = Astro.locals.user;
 if (!user || !esAdmin(user.email)) {
-  return Astro.redirect('/cuenta');
+  return Astro.redirect('/cuenta?volver=/admin/solicitudes');
 }
 
 const { data: perfiles } = await supabaseAdmin

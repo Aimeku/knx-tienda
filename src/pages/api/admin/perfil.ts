@@ -6,6 +6,16 @@ import { createServerSupabase } from '../../../lib/supabase-server';
 import { esAdmin } from '../../../lib/admin';
 import { enviarEmail } from '../../../lib/email';
 
+// ¿La sesión actual es de un administrador? (lo usa el login de /cuenta).
+export const GET: APIRoute = async ({ request, cookies }) => {
+  const supabase = createServerSupabase(request, cookies);
+  const { data } = await supabase.auth.getUser();
+  return new Response(JSON.stringify({ admin: esAdmin(data.user?.email) }), {
+    status: 200,
+    headers: { 'Content-Type': 'application/json', 'Cache-Control': 'no-store' },
+  });
+};
+
 export const POST: APIRoute = async ({ request, cookies }) => {
   const supabase = createServerSupabase(request, cookies);
   const { data } = await supabase.auth.getUser();

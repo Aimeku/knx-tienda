@@ -4,6 +4,7 @@ export const prerender = false;
 
 import Base from '../layouts/Base.astro';
 import { supabaseAdmin } from '../lib/supabase';
+import { esAdmin } from '../lib/admin';
 
 const tiposProfesional = [
   { value: 'integrador-pro', label: 'Integradores PRO' },
@@ -16,6 +17,14 @@ const tiposProfesional = [
 const user = Astro.locals.user;
 let perfil: { estado: string; nombre: string } | null = null;
 
+const admin = esAdmin(user?.email);
+// Volver a la página que pidió iniciar sesión (solo rutas internas).
+const volver = Astro.url.searchParams.get('volver') ?? '';
+const destino = /^\/(?!\/)[\w\-/]*$/.test(volver) ? volver : '';
+if (user && destino && (admin || !destino.startsWith('/admin'))) {
+  return Astro.redirect(destino);
+}
+
 if (user) {
   const { data } = await supabaseAdmin.from('perfiles').select('estado, nombre').eq('id', user.id).single();
   perfil = data;
@@ -25,7 +34,13 @@ if (user) {
   <section class="cuenta">
     {user ? (
       <div class="tarjeta tarjeta-estado">
-        {perfil?.estado === 'aprobado' ? (
+        {admin ? (
+          <>
+            <p class="estado-titulo">Administrador</p>
+            <p class="estado-detalle">{user.email}</p>
+            <a href="/admin/solicitudes" class="enviar enviar-panel">Solicitudes de cuenta</a>
+          </>
+        ) : perfil?.estado === 'aprobado' ? (
           <>
             <p class="estado-titulo">Has iniciado sesión</p>
             <p class="estado-detalle">{user.email}</p>
@@ -209,7 +224,13 @@ if (user) {
         .eq('id', data.user.id)
         .single();
 
-      if (perfil?.estado !== 'aprobado') {
+      // Los administradores entran aunque no tengan ficha de cliente aprobada.
+      const esAdmin = await fetch('/api/admin/perfil', { cache: 'no-store' })
+        .then((r) => r.json())
+        .then((r) => r.admin === true)
+        .catch(() => false);
+
+      if (perfil?.estado !== 'aprobado' && !esAdmin) {
         await supabaseBrowser.auth.signOut();
         setCargando(boton, false, 'Iniciar sesión');
         mostrarMensaje(
@@ -222,7 +243,10 @@ if (user) {
         return;
       }
 
-      window.location.reload();
+      // Vuelve a la página que pidió el login (?volver=...), o recarga /cuenta.
+      const volver = new URLSearchParams(window.location.search).get('volver') ?? '';
+      if (/^\/(?!\/)[\w\-/]*$/.test(volver)) window.location.href = volver;
+      else window.location.reload();
     });
 
     document.getElementById('form-registro')?.addEventListener('submit', async (e) => {
@@ -288,6 +312,7 @@ if (user) {
     .estado-detalle { color: var(--color-muted); margin: 0 0 1.5rem; line-height: 1.6; }
     .estado-detalle a { color: var(--color-text); }
     .tarjeta-estado .enviar { background: var(--color-text); }
+    .enviar-panel { display: inline-block; text-decoration: none; text-align: center; margin-bottom: 0.75rem; }
 
     .tabs { display: flex; gap: 0.5rem; margin-bottom: 2rem; max-width: 380px; }
     .tab {
