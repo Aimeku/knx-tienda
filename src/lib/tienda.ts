@@ -18,6 +18,13 @@ export const COMPRAS_ACTIVAS = true;
 // Los precios de Supabase (productos.precio) son PVP SIN IVA. En la web y en
 // el cobro se muestran y se cobran con el IVA incluido.
 export const IVA = 0.21;
+
+// Envío (IVA incluido): tarifa plana hasta ENVIO_GRATIS_DESDE; a partir de
+// ahí, gratis. Se mira el importe de los productos ya con el descuento.
+export const ENVIO_TARIFA = 15;
+export const ENVIO_GRATIS_DESDE = 1000;
+export const gastosEnvio = (importeProductos: number) =>
+  importeProductos >= ENVIO_GRATIS_DESDE ? 0 : ENVIO_TARIFA;
 export const conIva = (base: number) => Math.round(base * (1 + IVA) * 100) / 100;
 export const formatoPrecio = (n: number) =>
   n.toLocaleString('es-ES', { style: 'currency', currency: 'EUR', minimumFractionDigits: 2 });

@@ -1,7 +1,7 @@
 export const prerender = false;
 
 // Pedidos con pago por transferencia bancaria.
-//   POST { accion: 'calcular', items, codigo }  -> resumen (subtotal, descuento, total)
+//   POST { accion: 'calcular', items, codigo }  -> resumen (subtotal, descuento, envío, total)
 //   POST { accion: 'confirmar', items, codigo, telefono, direccion, notas } -> crea el pedido
 import type { APIRoute } from 'astro';
 import { supabaseAdmin } from '../../lib/supabase';
@@ -35,6 +35,7 @@ export const POST: APIRoute = async ({ request, cookies }) => {
     lineas: calculo.lineas.map((l) => ({ nombre: l.nombre, sku: l.sku, precio: l.precio, cantidad: l.cantidad })),
     subtotal: calculo.subtotal,
     descuento: calculo.descuento,
+    envio: calculo.envio,
     total: calculo.total,
     codigo: calculo.codigo,
     avisoCodigo: calculo.avisoCodigo,
@@ -70,6 +71,7 @@ export const POST: APIRoute = async ({ request, cookies }) => {
       subtotal: calculo.subtotal,
       descuento: calculo.descuento,
       codigo_descuento: calculo.codigo,
+      envio: calculo.envio,
       total: calculo.total,
     })
     .select('id, numero')
@@ -98,6 +100,7 @@ export const POST: APIRoute = async ({ request, cookies }) => {
     <table cellpadding="6" style="border-collapse:collapse">
       ${calculo.lineas.map((l) => `<tr><td>${e(l.nombre)}${l.sku ? ` <small>(Ref. ${e(l.sku)})</small>` : ''}</td><td>x${l.cantidad}</td><td align="right">${formatoPrecio(l.precio * l.cantidad)}</td></tr>`).join('')}
       ${calculo.descuento ? `<tr><td colspan="2">Descuento (${e(calculo.codigo)})</td><td align="right">-${formatoPrecio(calculo.descuento)}</td></tr>` : ''}
+      <tr><td colspan="2">Envío</td><td align="right">${calculo.envio ? formatoPrecio(calculo.envio) : 'Gratis'}</td></tr>
       <tr><td colspan="2"><strong>Total (IVA incluido)</strong></td><td align="right"><strong>${formatoPrecio(calculo.total)}</strong></td></tr>
     </table>`;
   const datosPago = `

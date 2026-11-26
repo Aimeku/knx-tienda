@@ -3,6 +3,7 @@
 export const prerender = false;
 import Base from '../layouts/Base.astro';
 import { supabaseAdmin } from '../lib/supabase';
+import { ENVIO_TARIFA, ENVIO_GRATIS_DESDE } from '../lib/tienda';
 
 const usuario = Astro.locals.user;
 let aprobado = false;
@@ -39,8 +40,10 @@ if (usuario) {
           <div class="resumen">
             <p>Subtotal <span id="subtotal"></span></p>
             <p id="fila-descuento" class="descuento" hidden>Descuento <span id="codigo-aplicado"></span> <span id="descuento"></span></p>
+            <p>Envío <span id="envio"></span></p>
             <p class="total">Total <strong id="total"></strong></p>
-            <p class="nota">IVA (21 %) incluido. Los gastos de envío se confirman con el pedido.</p>
+            <p class="nota">IVA (21 %) incluido.</p>
+            <p id="falta-envio" class="nota envio-gratis"></p>
           </div>
 
           <form id="form-pedido" class="envio">
@@ -72,7 +75,7 @@ if (usuario) {
       ) : (
         <div class="resumen">
           <p class="total">Total <strong id="total"></strong></p>
-          <p class="nota">IVA (21 %) incluido.</p>
+          <p class="nota">IVA (21 %) incluido. Envío {ENVIO_TARIFA} €, gratis a partir de {ENVIO_GRATIS_DESDE.toLocaleString('es-ES')} €.</p>
           <a href="/cuenta" class="boton boton--gris">
             {usuario ? 'Tu cuenta está pendiente de aprobación' : 'Inicia sesión para comprar'}
           </a>
@@ -82,6 +85,7 @@ if (usuario) {
   </section>
 
   <script>
+    import { ENVIO_GRATIS_DESDE } from '../lib/tienda';
     type Linea = { id: string; productoId: string; varianteId: string | null; nombre: string; precio: number; cantidad: number };
 
     const euros = (n: number) => n.toLocaleString('es-ES', { style: 'currency', currency: 'EUR', minimumFractionDigits: 2 });
@@ -137,6 +141,11 @@ if (usuario) {
       $('fila-descuento')!.hidden = !datos.descuento;
       $('codigo-aplicado')!.textContent = datos.codigo ? `(${datos.codigo})` : '';
       $('descuento')!.textContent = `-${euros(datos.descuento)}`;
+      $('envio')!.textContent = datos.envio ? euros(datos.envio) : 'Gratis';
+      const productos = datos.subtotal - datos.descuento;
+      $('falta-envio')!.textContent = datos.envio
+        ? `Te faltan ${euros(ENVIO_GRATIS_DESDE - productos)} para el envío gratis.`
+        : '¡Tienes el envío gratis!';
       aviso.hidden = !datos.avisoCodigo && !datos.codigo;
       aviso.textContent = datos.avisoCodigo || (datos.codigo ? `Código ${datos.codigo} aplicado.` : '');
       aviso.classList.toggle('aviso--ok', !datos.avisoCodigo);
@@ -232,6 +241,7 @@ if (usuario) {
     .resumen { text-align: right; }
     .resumen p { margin: 0.2rem 0; }
     .resumen .descuento { color: #1b7a3a; }
+    .envio-gratis { color: #1b7a3a; font-weight: 600; }
     .total { font-size: 1.4rem; margin-top: 0.5rem !important; }
     .nota { color: var(--color-muted); font-size: 0.9rem; }
 

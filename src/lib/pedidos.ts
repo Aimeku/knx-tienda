@@ -1,7 +1,7 @@
 // Cálculo de un pedido en servidor: precios desde Supabase (nunca los que
 // manda el navegador), IVA y código de descuento.
 import { supabaseAdmin } from './supabase';
-import { conIva } from './tienda';
+import { conIva, gastosEnvio } from './tienda';
 
 export type LineaPedido = {
   productoId: string;
@@ -24,7 +24,7 @@ export type CodigoDescuento = {
 };
 
 export type ResultadoPedido =
-  | { ok: true; lineas: LineaPedido[]; subtotal: number; descuento: number; total: number; codigo: string | null; avisoCodigo: string | null }
+  | { ok: true; lineas: LineaPedido[]; subtotal: number; descuento: number; envio: number; total: number; codigo: string | null; avisoCodigo: string | null }
   | { ok: false; error: string };
 
 const redondear = (n: number) => Math.round(n * 100) / 100;
@@ -91,7 +91,8 @@ export async function calcularPedido(items: unknown, codigoBruto: unknown): Prom
     }
   }
 
-  return { ok: true, lineas, subtotal, descuento, total: redondear(subtotal - descuento), codigo, avisoCodigo };
+  const envio = gastosEnvio(redondear(subtotal - descuento));
+  return { ok: true, lineas, subtotal, descuento, envio, total: redondear(subtotal - descuento + envio), codigo, avisoCodigo };
 }
 
 // Datos para la transferencia (variables de entorno de Vercel).
