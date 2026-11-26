@@ -280,24 +280,6 @@ const nombreCategoria = (slug: string) => {
   return c.seccion && c.seccion !== 'Otros' ? `${c.seccion} · ${c.nombre}` : c.nombre;
 };
 
-// Número de productos de cada categoría y marca (con los demás filtros puestos),
-// para mostrarlo junto a cada opción del panel de filtros.
-const cuentaCategoria = new Map<string, number>();
-const cuentaMarca = new Map<string, number>();
-{
-  const slugPorId = new Map((categoriasDb ?? []).map((c) => [c.id, c.slug]));
-  const [{ data: porCategoria }, { data: porMarca }] = await Promise.all([
-    consultaFiltrada('categoria_id', undefined, { categoria: true }).range(0, 4999),
-    consultaFiltrada('marca', undefined, { marca: true }).range(0, 4999),
-  ]);
-  for (const r of (porCategoria ?? []) as unknown as { categoria_id: string | null }[]) {
-    const slug = r.categoria_id ? slugPorId.get(r.categoria_id) : undefined;
-    if (slug) cuentaCategoria.set(slug, (cuentaCategoria.get(slug) ?? 0) + 1);
-  }
-  for (const r of (porMarca ?? []) as unknown as { marca: string | null }[]) {
-    if (r.marca) cuentaMarca.set(r.marca, (cuentaMarca.get(r.marca) ?? 0) + 1);
-  }
-}
 const textoTotal = total === 1 ? '1 producto' : `${total.toLocaleString('es-ES')} productos`;
 
 // Título de la página según lo que se esté viendo.
@@ -343,10 +325,10 @@ const paginasVisibles = [...new Set([1, pagina - 1, pagina, pagina + 1, totalPag
         {tiendaMenu.map((grupo) => {
           const seleccionadas = grupo.categorias.filter((c) => categoriasSeleccionadas.includes(c.slug)).length;
           const todas = seleccionadas === grupo.categorias.length;
-          const totalGrupo = grupo.categorias.reduce((n, c) => n + (cuentaCategoria.get(c.slug) ?? 0), 0);
-          // Abiertas por defecto; si el cliente cierra una, se recuerda (ver script).
+          // Cerradas por defecto (abierta si tiene algo marcado). Lo que el
+          // cliente abre o cierra se recuerda mientras navega (ver script).
           return (
-            <details class="filtro-grupo" open data-filtro={grupo.titulo}>
+            <details class="filtro-grupo" open={seleccionadas > 0} data-filtro={grupo.titulo}>
               <summary>
                 <span>{grupo.titulo}</span>
                 {seleccionadas > 0 && <span class="contador">{seleccionadas}</span>}
@@ -355,22 +337,16 @@ const paginasVisibles = [...new Set([1, pagina - 1, pagina, pagina + 1, totalPag
                 <label class="check-item check-todos">
                   <input type="checkbox" class="grupo-checkbox" checked={todas} />
                   <span class="check-texto">Todo</span>
-                  <span class="cuenta">{totalGrupo}</span>
                 </label>
                 {seccionesDe(grupo).map((s) => (
                   <div class="filtro-seccion">
                     {s.seccion && <p class="filtro-seccion-titulo">{s.seccion}</p>}
-                    {s.categorias.map((c) => {
-                      const n = cuentaCategoria.get(c.slug) ?? 0;
-                      const marcada = categoriasSeleccionadas.includes(c.slug);
-                      return (
-                        <label class:list={['check-item', { 'check-item--vacio': n === 0 && !marcada }]}>
-                          <input type="checkbox" name="categoria" value={c.slug} checked={marcada} />
-                          <span class="check-texto">{c.nombre}</span>
-                          <span class="cuenta">{n}</span>
-                        </label>
-                      );
-                    })}
+                    {s.categorias.map((c) => (
+                      <label class="check-item">
+                        <input type="checkbox" name="categoria" value={c.slug} checked={categoriasSeleccionadas.includes(c.slug)} />
+                        <span class="check-texto">{c.nombre}</span>
+                      </label>
+                    ))}
                   </div>
                 ))}
               </div>
@@ -378,23 +354,18 @@ const paginasVisibles = [...new Set([1, pagina - 1, pagina, pagina + 1, totalPag
           );
         })}
 
-        <details class="filtro-grupo" open data-filtro="Marca">
+        <details class="filtro-grupo" open={marcasSeleccionadas.length > 0} data-filtro="Marca">
           <summary>
             <span>Marca</span>
             {marcasSeleccionadas.length > 0 && <span class="contador">{marcasSeleccionadas.length}</span>}
           </summary>
           <div class="filtro-cuerpo">
-            {marcasBase.map((marca) => {
-              const n = cuentaMarca.get(marca) ?? 0;
-              const marcada = marcasSeleccionadas.includes(marca);
-              return (
-                <label class:list={['check-item', { 'check-item--vacio': n === 0 && !marcada }]}>
-                  <input type="checkbox" name="marca" value={marca} checked={marcada} />
-                  <span class="check-texto">{marca}</span>
-                  <span class="cuenta">{n}</span>
-                </label>
-              );
-            })}
+            {marcasBase.map((marca) => (
+              <label class="check-item">
+                <input type="checkbox" name="marca" value={marca} checked={marcasSeleccionadas.includes(marca)} />
+                <span class="check-texto">{marca}</span>
+              </label>
+            ))}
           </div>
         </details>
 
@@ -408,11 +379,13 @@ const paginasVisibles = [...new Set([1, pagina - 1, pagina, pagina + 1, totalPag
     </aside>
     <div class="filtros-fondo" aria-hidden="true"></div>
     <script is:inline>
-      // Antes de pintar: deja cerradas las secciones del filtro que el cliente cerró.
+      // Antes de pintar: deja cada sección del filtro como el cliente la dejó.
       try {
-        var cerradas = JSON.parse(sessionStorage.getItem('filtros-cerrados') || '[]');
+        var estado = JSON.parse(sessionStorage.getItem('filtros-secciones') || '{}');
         document.querySelectorAll('#form-filtros details[data-filtro]').forEach(function (d) {
-          if (cerradas.indexOf(d.getAttribute('data-filtro')) >= 0) d.removeAttribute('open');
+          var abierta = estado[d.getAttribute('data-filtro')];
+          if (abierta === true) d.setAttribute('open', '');
+          if (abierta === false) d.removeAttribute('open');
         });
       } catch (e) {}
     </script>
@@ -605,12 +578,12 @@ const paginasVisibles = [...new Set([1, pagina - 1, pagina, pagina + 1, totalPag
     });
     form?.addEventListener('submit', (e) => { e.preventDefault(); cargar(urlFiltros()); });
 
-    // Recordar qué secciones del panel están cerradas (toggle no burbujea: captura).
+    // Recordar qué secciones del panel están abiertas o cerradas (toggle no burbujea: captura).
     form?.addEventListener('toggle', () => {
       try {
-        const cerradas = [...(form.querySelectorAll<HTMLDetailsElement>('details[data-filtro]'))]
-          .filter((d) => !d.open).map((d) => d.dataset.filtro);
-        sessionStorage.setItem('filtros-cerrados', JSON.stringify(cerradas));
+        const estado: Record<string, boolean> = {};
+        form.querySelectorAll<HTMLDetailsElement>('details[data-filtro]').forEach((d) => { estado[d.dataset.filtro ?? ''] = d.open; });
+        sessionStorage.setItem('filtros-secciones', JSON.stringify(estado));
       } catch {}
     }, true);
 
@@ -663,7 +636,7 @@ const paginasVisibles = [...new Set([1, pagina - 1, pagina, pagina + 1, totalPag
     }
 
     /* ---------- Filtros ---------- */
-    .filtros { position: sticky; top: 100px; max-height: calc(100vh - 120px); overflow-y: auto; padding-right: 0.25rem; }
+    .filtros { position: sticky; top: 100px; max-height: calc(100vh - 120px); overflow-y: auto; overflow-x: hidden; padding-right: 0.25rem; }
     .filtros-cabecera { display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.5rem; }
     .filtros-cabecera h2 { font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-muted); margin: 0; }
     .cerrar-filtros { display: none; background: none; border: none; font-size: 1.8rem; line-height: 1; cursor: pointer; color: var(--color-text); }
@@ -706,7 +679,7 @@ const paginasVisibles = [...new Set([1, pagina - 1, pagina, pagina + 1, totalPag
       justify-content: center;
       padding: 0 0.35rem;
     }
-    .filtro-cuerpo { padding: 0 0 0.9rem; }
+    .filtro-cuerpo { padding: 0 0.5rem 0.9rem; }
     .filtro-seccion + .filtro-seccion { margin-top: 0.5rem; }
     .filtro-seccion-titulo {
       margin: 0.5rem 0 0.1rem;
@@ -752,16 +725,6 @@ const paginasVisibles = [...new Set([1, pagina - 1, pagina, pagina + 1, totalPag
     }
     .check-item input:focus-visible { outline: 2px solid var(--color-text); outline-offset: 2px; }
     .check-item input:checked ~ .check-texto { font-weight: 600; color: var(--color-text); }
-    .cuenta {
-      font-size: 0.75rem;
-      color: var(--color-muted);
-      background: #f2f2f2;
-      border-radius: 999px;
-      padding: 0.1rem 0.5rem;
-      min-width: 1.6rem;
-      text-align: center;
-    }
-    .check-item--vacio { opacity: 0.45; }
     .check-todos { font-weight: 600; color: var(--color-text); }
     .aplicar {
       margin-top: 1rem;
