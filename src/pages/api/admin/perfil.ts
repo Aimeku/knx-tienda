@@ -5,7 +5,7 @@ import { supabaseAdmin } from '../../../lib/supabase';
 import { createServerSupabase } from '../../../lib/supabase-server';
 import { esAdmin } from '../../../lib/admin';
 import { enviarEmail } from '../../../lib/email';
-import { normalizarCodigo } from '../../../lib/pedidos';
+import { normalizarCodigo, escaparHtml } from '../../../lib/pedidos';
 
 // ¿La sesión actual es de un administrador? (lo usa el login de /cuenta).
 export const GET: APIRoute = async ({ request, cookies }) => {
@@ -61,8 +61,8 @@ export const POST: APIRoute = async ({ request, cookies }) => {
     subject: nuevoEstado === 'aprobado' ? 'Tu cuenta en avci.es ya está activa' : 'Sobre tu solicitud de cuenta en avci.es',
     html:
       nuevoEstado === 'aprobado'
-        ? `<p>Hola ${perfil.nombre},</p><p>Tu cuenta ya ha sido aprobada. Ya puedes iniciar sesión en <a href="https://avci.es/cuenta">avci.es/cuenta</a>.</p>`
-        : `<p>Hola ${perfil.nombre},</p><p>Hemos revisado tu solicitud de cuenta y, de momento, no ha sido aprobada. Si crees que es un error, escríbenos a info@avci.es.</p>`,
+        ? `<p>Hola ${escaparHtml(perfil.nombre)},</p><p>Tu cuenta ya ha sido aprobada. Ya puedes iniciar sesión en <a href="https://avci.es/cuenta">avci.es/cuenta</a>.</p>`
+        : `<p>Hola ${escaparHtml(perfil.nombre)},</p><p>Hemos revisado tu solicitud de cuenta y, de momento, no ha sido aprobada. Si crees que es un error, escríbenos a info@avci.es.</p>`,
   });
 
   return new Response(JSON.stringify({ ok: true }), { status: 200 });

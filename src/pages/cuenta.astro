@@ -104,20 +104,20 @@ if (user) {
           <div class="grid-2">
             <label class="campo">
               <span>Nombre <span class="req">*</span></span>
-              <input type="text" name="nombre" required />
+              <input type="text" name="nombre" required maxlength="80" />
             </label>
             <label class="campo">
               <span>Nombre de la empresa <span class="req">*</span></span>
-              <input type="text" name="empresa" required />
+              <input type="text" name="empresa" required maxlength="120" />
             </label>
 
             <label class="campo">
               <span>Apellidos <span class="req">*</span></span>
-              <input type="text" name="apellidos" required />
+              <input type="text" name="apellidos" required maxlength="80" />
             </label>
             <label class="campo">
               <span>CIF/NIF <span class="req">*</span></span>
-              <input type="text" name="cifNif" required />
+              <input type="text" name="cifNif" required maxlength="20" />
             </label>
 
             <label class="campo">
@@ -129,17 +129,22 @@ if (user) {
             </label>
             <label class="campo">
               <span>Dirección <span class="req">*</span></span>
-              <input type="text" name="direccion" required />
+              <input type="text" name="direccion" required maxlength="300" />
             </label>
 
             <label class="campo">
               <span>Correo electrónico <span class="req">*</span></span>
-              <input type="email" name="email" required />
+              <input type="email" name="email" required maxlength="254" />
             </label>
             <label class="campo">
               <span>Contraseña <span class="req">*</span></span>
-              <input type="password" name="password" required minlength="8" />
+              <input type="password" name="password" required minlength="8" maxlength="72" />
             </label>
+          </div>
+
+          <!-- Campo trampa para bots: una persona no lo ve ni lo rellena. -->
+          <div class="trampa" aria-hidden="true">
+            <label>Página web <input type="text" name="web" tabindex="-1" autocomplete="off" /></label>
           </div>
 
           <label class="privacidad">
@@ -265,6 +270,9 @@ if (user) {
       else window.location.reload();
     });
 
+    // Momento en que se abrió el formulario (los bots lo envían al instante).
+    const formularioAbierto = Date.now();
+
     document.getElementById('form-registro')?.addEventListener('submit', async (e) => {
       e.preventDefault();
       const form = e.currentTarget as HTMLFormElement;
@@ -285,6 +293,8 @@ if (user) {
           direccion: datos.get('direccion'),
           email: datos.get('email'),
           password: datos.get('password'),
+          web: datos.get('web'),
+          abierto: formularioAbierto,
         }),
       });
       const respuesta = await res.json();
@@ -381,6 +391,7 @@ if (user) {
     .campo { display: flex; flex-direction: column; gap: 0.5rem; font-size: 0.9rem; font-weight: 600; }
     .req { color: #d33; }
 
+    .trampa { position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden; }
     .privacidad {
       display: flex;
       align-items: flex-start;
