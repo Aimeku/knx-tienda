@@ -73,7 +73,15 @@ const resueltos = (perfiles ?? []).filter((p) => p.estado !== 'pendiente');
                 {esAdmin(p.email) ? (
                   <span class="admin-etiqueta">Admin</span>
                 ) : (
+                  <>
+                  {p.estado === 'aprobado' && (
+                    <button type="button" class="boton-tabla inhabilitar" data-id={p.id} data-nombre={`${p.nombre} ${p.apellidos} (${p.email})`}>Inhabilitar</button>
+                  )}
+                  {p.estado === 'inhabilitado' && (
+                    <button type="button" class="boton-tabla reactivar" data-id={p.id} data-nombre={`${p.nombre} ${p.apellidos} (${p.email})`}>Reactivar</button>
+                  )}
                   <button type="button" class="eliminar eliminar--tabla" data-id={p.id} data-nombre={`${p.nombre} ${p.apellidos} (${p.email})`}>Eliminar</button>
+                  </>
                 )}
               </td>
             </tr>
@@ -131,6 +139,35 @@ const resueltos = (perfiles ?? []).filter((p) => p.estado !== 'pendiente');
       });
     });
 
+    async function cambiarHabilitada(btn: HTMLButtonElement, accion: 'inhabilitar' | 'reactivar') {
+      const ok = confirm(accion === 'inhabilitar'
+        ? `¿Inhabilitar la cuenta de ${btn.dataset.nombre}?
+
+No podrá iniciar sesión, ver precios ni comprar hasta que la reactives. No se borra nada.`
+        : `¿Reactivar la cuenta de ${btn.dataset.nombre}?
+
+Volverá a poder iniciar sesión, ver precios y comprar.`);
+      if (!ok) return;
+      btn.disabled = true;
+      const res = await fetch('/api/admin/perfil', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ id: btn.dataset.id, accion }),
+      });
+      const r = await res.json().catch(() => ({}));
+      if (res.ok) window.location.reload();
+      else {
+        btn.disabled = false;
+        alert(r.error || 'No se pudo cambiar el estado de la cuenta.');
+      }
+    }
+    document.querySelectorAll<HTMLButtonElement>('.inhabilitar').forEach((btn) => {
+      btn.addEventListener('click', () => cambiarHabilitada(btn, 'inhabilitar'));
+    });
+    document.querySelectorAll<HTMLButtonElement>('.reactivar').forEach((btn) => {
+      btn.addEventListener('click', () => cambiarHabilitada(btn, 'reactivar'));
+    });
+
     document.getElementById('logout')?.addEventListener('click', async () => {
       await supabaseBrowser.auth.signOut();
       window.location.href = '/cuenta';
@@ -181,7 +218,9 @@ const resueltos = (perfiles ?? []).filter((p) => p.estado !== 'pendiente');
     .aprobar { background: var(--color-text); color: #fff; }
     .rechazar { background: #fff; color: var(--color-text); border: 1px solid var(--color-border) !important; }
     .eliminar { background: #fff; color: #a00; border: 1px solid #e6b3b3 !important; }
-    .eliminar--tabla {
+    .celda-accion { white-space: nowrap; }
+    .celda-accion button + button { margin-left: 0.4rem; }
+    .boton-tabla, .eliminar--tabla {
       cursor: pointer;
       padding: 0.35rem 0.9rem;
       border-radius: 999px;
@@ -199,5 +238,9 @@ const resueltos = (perfiles ?? []).filter((p) => p.estado !== 'pendiente');
     .estado { text-transform: capitalize; font-weight: 600; }
     .estado-aprobado { color: #1a7f37; }
     .estado-rechazado { color: #a00; }
+    .estado-inhabilitado { color: #b26a00; }
+    .inhabilitar { background: #fff; color: #b26a00; border: 1px solid #ecd2a8; }
+    .reactivar { background: var(--color-text); color: #fff; border: 1px solid var(--color-text); }
+    .boton-tabla:disabled { opacity: 0.5; cursor: wait; }
   </style>
 </Base>

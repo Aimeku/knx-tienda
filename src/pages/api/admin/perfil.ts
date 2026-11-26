@@ -29,6 +29,9 @@ export const POST: APIRoute = async ({ request, cookies }) => {
   if (accion === 'eliminar' && typeof id === 'string') {
     return eliminarCuenta(id, data.user!.id);
   }
+  if ((accion === 'inhabilitar' || accion === 'reactivar') && typeof id === 'string') {
+    return cambiarHabilitada(id, data.user!.id, accion === 'reactivar');
+  }
 
   if (!id || (accion !== 'aprobar' && accion !== 'rechazar')) {
     return new Response(JSON.stringify({ error: 'Petición inválida.' }), { status: 400 });
@@ -85,6 +88,35 @@ async function eliminarCuenta(id: string, adminId: string) {
   }
   // El perfil se borra solo con el usuario (on delete cascade); por si acaso:
   await supabaseAdmin.from('perfiles').delete().eq('id', id);
+
+  return responder({ ok: true }, 200);
+}
+
+// Inhabilita una cuenta (estado 'inhabilitado' + bloqueo de inicio de sesión
+// en Supabase Auth) o la reactiva (vuelve a 'aprobado' y se quita el bloqueo).
+async function cambiarHabilitada(id: string, adminId: string, reactivar: boolean) {
+  const responder = (cuerpo: unknown, status: number) =>
+    new Response(JSON.stringify(cuerpo), { status, headers: { 'Content-Type': 'application/json' } });
+
+  if (id === adminId) return responder({ error: 'No puedes inhabilitar tu propia cuenta.' }, 400);
+  const { data: perfil } = await supabaseAdmin.from('perfiles').select('email').eq('id', id).maybeSingle();
+  if (!perfil) return responder({ error: 'Esa cuenta no existe.' }, 404);
+  if (esAdmin(perfil.email)) return responder({ error: 'No se puede inhabilitar una cuenta de administrador.' }, 400);
+
+  const { error } = await supabaseAdmin
+    .from('perfiles')
+    .update({ estado: reactivar ? 'aprobado' : 'inhabilitado', updated_at: new Date().toISOString() })
+    .eq('id', id);
+  if (error) {
+    console.error('[admin] Error cambiando estado:', error);
+    return responder({ error: 'No se pudo cambiar el estado. ¿Has ejecutado sql/009_perfiles_inhabilitado.sql?' }, 500);
+  }
+
+  // Bloqueo en Supabase Auth: impide iniciar sesión y renovar la sesión abierta.
+  const { error: errorBloqueo } = await supabaseAdmin.auth.admin.updateUserById(id, {
+    ban_duration: reactivar ? 'none' : '876000h', // ~100 años = hasta que se reactive
+  });
+  if (errorBloqueo) console.error('[admin] Error con el bloqueo de inicio de sesión:', errorBloqueo);
 
   return responder({ ok: true }, 200);
 }

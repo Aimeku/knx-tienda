@@ -45,6 +45,14 @@ if (user) {
             <p class="estado-titulo">Has iniciado sesión</p>
             <p class="estado-detalle">{user.email}</p>
           </>
+        ) : perfil?.estado === 'inhabilitado' ? (
+          <>
+            <p class="estado-titulo">Cuenta inhabilitada</p>
+            <p class="estado-detalle">
+              Tu cuenta está inhabilitada temporalmente. Si necesitas más información,
+              <a href="/contacto">contacta con nosotros</a>.
+            </p>
+          </>
         ) : perfil?.estado === 'rechazado' ? (
           <>
             <p class="estado-titulo">Solicitud rechazada</p>
@@ -214,7 +222,13 @@ if (user) {
 
       if (error || !data.user) {
         setCargando(boton, false, 'Iniciar sesión');
-        mostrarMensaje(form, 'Correo o contraseña incorrectos.', 'error');
+        mostrarMensaje(
+          form,
+          error && /banned/i.test(error.message)
+            ? 'Tu cuenta está inhabilitada. Si necesitas más información, contacta con nosotros.'
+            : 'Correo o contraseña incorrectos.',
+          'error'
+        );
         return;
       }
 
@@ -235,7 +249,9 @@ if (user) {
         setCargando(boton, false, 'Iniciar sesión');
         mostrarMensaje(
           form,
-          perfil?.estado === 'rechazado'
+          perfil?.estado === 'inhabilitado'
+            ? 'Tu cuenta está inhabilitada. Si necesitas más información, contacta con nosotros.'
+            : perfil?.estado === 'rechazado'
             ? 'Tu solicitud de cuenta ha sido rechazada.'
             : 'Tu cuenta todavía está pendiente de aprobación. Te avisaremos por email.',
           'error'
