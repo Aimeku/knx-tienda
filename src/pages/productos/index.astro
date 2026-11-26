@@ -14,11 +14,12 @@ if (COMPRAS_ACTIVAS && usuario) {
   const { data: perfil } = await supabaseAdmin.from('perfiles').select('estado').eq('id', usuario.id).single();
   aprobado = perfil?.estado === 'aprobado';
 }
-const textoPrecio = (p: { precio?: number | null; precio_oferta?: number | null }) => {
-  if (!COMPRAS_ACTIVAS) return 'Precio bajo consulta';
-  if (!aprobado) return 'Inicia sesión para ver los precios';
+// Precio de la tarjeta: el importe con IVA, o un texto si no se puede mostrar.
+const precioTarjeta = (p: { precio?: number | null; precio_oferta?: number | null }): { importe?: string; texto?: string } => {
+  if (!COMPRAS_ACTIVAS) return { texto: 'Precio bajo consulta' };
+  if (!aprobado) return { texto: 'Inicia sesión para ver precios' };
   const base = Number(p.precio_oferta ?? p.precio);
-  return base > 0 ? `${formatoPrecio(conIva(base))} IVA incl.` : 'Precio bajo consulta';
+  return base > 0 ? { importe: formatoPrecio(conIva(base)) } : { texto: 'Precio bajo consulta' };
 };
 import { tiendaMenu, categorias as categoriasPlano, marcasBase, seccionesDe } from '../../lib/categorias';
 
@@ -406,8 +407,17 @@ const paginasVisibles = [...new Set([1, pagina - 1, pagina, pagina + 1, totalPag
               </div>
               <p class="card-meta">{[c.p.marca, c.p.sku && `Ref. ${c.p.sku}`].filter(Boolean).join(' · ')}</p>
               <h3>{c.p.nombre}</h3>
-              <p class:list={['card-precio', { 'card-precio--real': aprobado }]}>{textoPrecio(c.p)}</p>
-              <span class="card-cta">Ver ficha</span>
+              <div class="card-pie">
+                {(() => {
+                  const precio = precioTarjeta(c.p);
+                  return precio.importe ? (
+                    <p class="card-precio"><strong>{precio.importe}</strong> <span>IVA incl.</span></p>
+                  ) : (
+                    <p class="card-precio card-precio--texto">{precio.texto}</p>
+                  );
+                })()}
+                <span class="card-cta">Ver ficha</span>
+              </div>
             </a>
           ))}
         </div>
@@ -661,15 +671,28 @@ const paginasVisibles = [...new Set([1, pagina - 1, pagina, pagina + 1, totalPag
     .sin-imagen { width: 100%; height: 100%; background: #f5f5f5; border-radius: 8px; }
     .card-meta { margin: 0; font-size: 0.75rem; color: var(--color-muted); letter-spacing: 0.02em; }
     .card h3 { font-size: 0.95rem; font-weight: 700; margin: 0; line-height: 1.35; }
-    .card-precio { margin: 0.2rem 0 0; font-size: 0.82rem; color: var(--color-muted); }
-    .card-precio--real { font-size: 0.95rem; font-weight: 700; color: var(--color-text); }
-    .card-cta {
+    /* Pie de la tarjeta: precio a la izquierda y "Ver ficha" a la derecha. */
+    .card-pie {
       margin-top: auto;
       padding-top: 0.75rem;
-      font-size: 0.8rem;
+      border-top: 1px solid #f0f0f0;
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+    .card-precio { margin: 0; display: flex; align-items: baseline; gap: 0.35rem; white-space: nowrap; }
+    .card-precio strong { font-size: 1.15rem; font-weight: 800; letter-spacing: -0.01em; }
+    .card-precio span { font-size: 0.72rem; color: var(--color-muted); }
+    .card-precio--texto { font-size: 0.8rem; color: var(--color-muted); white-space: normal; }
+    .card-cta {
+      margin-left: auto;
+      font-size: 0.75rem;
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.04em;
+      white-space: nowrap;
     }
     .card-cta::after { content: ' →'; }
 
@@ -716,6 +739,7 @@ const paginasVisibles = [...new Set([1, pagina - 1, pagina, pagina + 1, totalPag
       /* En el móvil (2 por fila) las filas de 3 no se centran: solo empiezan línea nueva. */
       .grid > .inicio-3, .grid > .inicio-2, .grid > .inicio-1 { grid-column: 1 / span 2; }
       .card { padding: 0.9rem; }
+      .card-precio strong { font-size: 1rem; }
       .paginacion { flex-wrap: wrap; justify-content: center; }
     }
   </style>
