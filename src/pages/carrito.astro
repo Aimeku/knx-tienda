@@ -75,7 +75,7 @@ if (usuario) {
       ) : (
         <div class="resumen">
           <p class="total">Total <strong id="total"></strong></p>
-          <p class="nota">IVA (21 %) incluido. Envío {ENVIO_BASE} € + IVA, gratis a partir de {ENVIO_GRATIS_DESDE.toLocaleString('es-ES')} €.</p>
+          <p class="nota">IVA (21 %) incluido. Envío {ENVIO_BASE} € + IVA, gratis a partir de {ENVIO_GRATIS_DESDE.toLocaleString('es-ES')} € + IVA.</p>
           <a href="/cuenta" class="boton boton--gris">
             {usuario ? 'Tu cuenta está pendiente de aprobación' : 'Inicia sesión para comprar'}
           </a>
@@ -85,7 +85,7 @@ if (usuario) {
   </section>
 
   <script>
-    import { ENVIO_GRATIS_DESDE } from '../lib/tienda';
+    import { ENVIO_GRATIS_DESDE, conIva } from '../lib/tienda';
     type Linea = { id: string; productoId: string; varianteId: string | null; nombre: string; precio: number; cantidad: number };
 
     const euros = (n: number) => n.toLocaleString('es-ES', { style: 'currency', currency: 'EUR', minimumFractionDigits: 2 });
@@ -144,7 +144,7 @@ if (usuario) {
       $('envio')!.textContent = datos.envio ? euros(datos.envio) : 'Gratis';
       const productos = datos.subtotal - datos.descuento;
       $('falta-envio')!.textContent = datos.envio
-        ? `Te faltan ${euros(ENVIO_GRATIS_DESDE - productos)} para el envío gratis.`
+        ? `Te faltan ${euros(conIva(ENVIO_GRATIS_DESDE) - productos)} (IVA incl.) para el envío gratis (pedidos desde ${ENVIO_GRATIS_DESDE.toLocaleString('es-ES')} € + IVA).`
         : '¡Tienes el envío gratis!';
       aviso.hidden = !datos.avisoCodigo && !datos.codigo;
       aviso.textContent = datos.avisoCodigo || (datos.codigo ? `Código ${datos.codigo} aplicado.` : '');
