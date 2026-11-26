@@ -405,19 +405,16 @@ const paginasVisibles = [...new Set([1, pagina - 1, pagina, pagina + 1, totalPag
                   <div class="sin-imagen" />
                 )}
               </div>
-              <p class="card-meta">{[c.p.marca, c.p.sku && `Ref. ${c.p.sku}`].filter(Boolean).join(' · ')}</p>
               <h3>{c.p.nombre}</h3>
-              <div class="card-pie">
-                {(() => {
-                  const precio = precioTarjeta(c.p);
-                  return precio.importe ? (
-                    <p class="card-precio"><strong>{precio.importe}</strong> <span>+ IVA</span></p>
-                  ) : (
-                    <p class="card-precio card-precio--texto">{precio.texto}</p>
-                  );
-                })()}
-                <span class="card-cta">Ver ficha</span>
-              </div>
+              <p class="card-meta">{[c.p.marca, c.p.sku && `Ref. ${c.p.sku}`].filter(Boolean).join(' · ')}</p>
+              {(() => {
+                const precio = precioTarjeta(c.p);
+                return precio.importe ? (
+                  <p class="card-precio">{precio.importe} <span>+ IVA</span></p>
+                ) : (
+                  <p class="card-precio card-precio--texto">{precio.texto}</p>
+                );
+              })()}
             </a>
           ))}
         </div>
@@ -645,56 +642,41 @@ const paginasVisibles = [...new Set([1, pagina - 1, pagina, pagina + 1, totalPag
          tarjeta ocupa 2, así las filas de 3 (placas y teclas) se pueden centrar
          dejando media tarjeta a cada lado. */
       grid-template-columns: repeat(8, minmax(0, 1fr));
-      gap: 1.25rem;
+      gap: 2.25rem 1.25rem;
     }
     .grid > * { grid-column: span 2; }
     .grid > .inicio-3 { grid-column: 2 / span 2; }
     .grid > .inicio-2 { grid-column: 3 / span 2; }
     .grid > .inicio-1 { grid-column: 4 / span 2; }
+    /* Tarjeta: la foto en un recuadro redondeado y el texto debajo, fuera. */
     .card {
-      background: #fff;
-      border: 1px solid #eee;
-      border-radius: 14px;
-      padding: 1.25rem;
       display: flex;
       flex-direction: column;
-      gap: 0.4rem;
+      gap: 0.2rem;
       text-decoration: none;
       color: var(--color-text);
-      transition: box-shadow 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
     }
-    .card:hover { box-shadow: 0 10px 28px rgba(0, 0, 0, 0.08); transform: translateY(-2px); border-color: transparent; }
     /* Recuadro cuadrado fijo: todas las fotos ocupan el mismo hueco con el
        mismo margen, sean altas (teclas 1M), cuadradas o anchas (placas 8M). */
-    .card-imagen { position: relative; aspect-ratio: 1; overflow: hidden; margin-bottom: 0.5rem; }
-    .card-imagen img { position: absolute; inset: 6%; width: 88%; height: 88%; object-fit: contain; }
-    .sin-imagen { width: 100%; height: 100%; background: #f5f5f5; border-radius: 8px; }
-    .card-meta { margin: 0; font-size: 0.75rem; color: var(--color-muted); letter-spacing: 0.02em; }
-    .card h3 { font-size: 0.95rem; font-weight: 700; margin: 0; line-height: 1.35; }
-    /* Pie de la tarjeta: precio a la izquierda y "Ver ficha" a la derecha. */
-    .card-pie {
-      margin-top: auto;
-      padding-top: 0.75rem;
-      border-top: 1px solid #f0f0f0;
-      display: flex;
-      align-items: baseline;
-      justify-content: space-between;
-      gap: 0.5rem;
-      flex-wrap: wrap;
+    .card-imagen {
+      position: relative;
+      aspect-ratio: 1;
+      overflow: hidden;
+      margin-bottom: 0.75rem;
+      background: #fff;
+      border: 1px solid #e6e6e6;
+      border-radius: 16px;
+      transition: box-shadow 0.2s ease, border-color 0.2s ease;
     }
-    .card-precio { margin: 0; display: flex; align-items: baseline; gap: 0.35rem; white-space: nowrap; }
-    .card-precio strong { font-size: 1.15rem; font-weight: 800; letter-spacing: -0.01em; }
-    .card-precio span { font-size: 0.72rem; color: var(--color-muted); }
-    .card-precio--texto { font-size: 0.8rem; color: var(--color-muted); white-space: normal; }
-    .card-cta {
-      margin-left: auto;
-      font-size: 0.75rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
-      white-space: nowrap;
-    }
-    .card-cta::after { content: ' →'; }
+    .card-imagen img { position: absolute; inset: 8%; width: 84%; height: 84%; object-fit: contain; transition: transform 0.3s ease; }
+    .card:hover .card-imagen { box-shadow: 0 10px 28px rgba(0, 0, 0, 0.08); border-color: transparent; }
+    .card:hover .card-imagen img { transform: scale(1.03); }
+    .sin-imagen { width: 100%; height: 100%; background: #f5f5f5; }
+    .card h3 { font-size: 1rem; font-weight: 700; margin: 0; line-height: 1.3; }
+    .card-meta { margin: 0; font-size: 0.85rem; color: var(--color-muted); }
+    .card-precio { margin: 0.15rem 0 0; font-size: 1rem; font-weight: 800; }
+    .card-precio span { font-size: 0.8rem; font-weight: 600; color: var(--color-muted); }
+    .card-precio--texto { font-size: 0.85rem; font-weight: 400; color: var(--color-muted); }
 
     .sin-resultados { padding: 3rem 0; color: var(--color-muted); }
 
@@ -735,11 +717,12 @@ const paginasVisibles = [...new Set([1, pagina - 1, pagina, pagina + 1, totalPag
       :global(body.filtros-abiertos) .filtros { transform: none; }
       :global(body.filtros-abiertos) .filtros-fondo { display: block; position: fixed; inset: 0; background: rgba(0, 0, 0, 0.4); z-index: 55; }
       .orden span { display: none; }
-      .grid { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0.75rem; }
+      .grid { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1.5rem 0.75rem; }
       /* En el móvil (2 por fila) las filas de 3 no se centran: solo empiezan línea nueva. */
       .grid > .inicio-3, .grid > .inicio-2, .grid > .inicio-1 { grid-column: 1 / span 2; }
-      .card { padding: 0.9rem; }
-      .card-precio strong { font-size: 1rem; }
+      .card h3 { font-size: 0.9rem; }
+      .card-meta { font-size: 0.78rem; }
+      .card-precio { font-size: 0.95rem; }
       .paginacion { flex-wrap: wrap; justify-content: center; }
     }
   </style>
