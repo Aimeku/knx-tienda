@@ -47,6 +47,7 @@ const resueltos = (perfiles ?? []).filter((p) => p.estado !== 'pendiente');
             <div class="acciones">
               <button type="button" class="aprobar" data-id={p.id}>Aprobar</button>
               <button type="button" class="rechazar" data-id={p.id}>Rechazar</button>
+              <button type="button" class="eliminar" data-id={p.id} data-nombre={`${p.nombre} ${p.apellidos} (${p.email})`}>Eliminar</button>
             </div>
           </div>
         ))}
@@ -59,7 +60,7 @@ const resueltos = (perfiles ?? []).filter((p) => p.estado !== 'pendiente');
     ) : (
       <table class="historial">
         <thead>
-          <tr><th>Nombre</th><th>Empresa</th><th>Email</th><th>Estado</th></tr>
+          <tr><th>Nombre</th><th>Empresa</th><th>Email</th><th>Estado</th><th></th></tr>
         </thead>
         <tbody>
           {resueltos.map((p) => (
@@ -68,6 +69,13 @@ const resueltos = (perfiles ?? []).filter((p) => p.estado !== 'pendiente');
               <td>{p.empresa}</td>
               <td>{p.email}</td>
               <td><span class={`estado estado-${p.estado}`}>{p.estado}</span></td>
+              <td class="celda-accion">
+                {esAdmin(p.email) ? (
+                  <span class="admin-etiqueta">Admin</span>
+                ) : (
+                  <button type="button" class="eliminar eliminar--tabla" data-id={p.id} data-nombre={`${p.nombre} ${p.apellidos} (${p.email})`}>Eliminar</button>
+                )}
+              </td>
             </tr>
           ))}
         </tbody>
@@ -96,6 +104,31 @@ const resueltos = (perfiles ?? []).filter((p) => p.estado !== 'pendiente');
     });
     document.querySelectorAll<HTMLButtonElement>('.rechazar').forEach((btn) => {
       btn.addEventListener('click', () => actualizar(btn.dataset.id!, 'rechazar'));
+    });
+
+    document.querySelectorAll<HTMLButtonElement>('.eliminar').forEach((btn) => {
+      btn.addEventListener('click', async () => {
+        const ok = confirm(
+          `¿Eliminar la cuenta de ${btn.dataset.nombre}?
+
+` +
+          'Se borrarán su usuario y sus datos de registro, y ya no podrá iniciar sesión. ' +
+          'Sus pedidos se conservan. Esta acción no se puede deshacer.'
+        );
+        if (!ok) return;
+        btn.disabled = true;
+        const res = await fetch('/api/admin/perfil', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ id: btn.dataset.id, accion: 'eliminar' }),
+        });
+        const r = await res.json().catch(() => ({}));
+        if (res.ok) window.location.reload();
+        else {
+          btn.disabled = false;
+          alert(r.error || 'No se pudo eliminar la cuenta.');
+        }
+      });
     });
 
     document.getElementById('logout')?.addEventListener('click', async () => {
@@ -147,6 +180,19 @@ const resueltos = (perfiles ?? []).filter((p) => p.estado !== 'pendiente');
     }
     .aprobar { background: var(--color-text); color: #fff; }
     .rechazar { background: #fff; color: var(--color-text); border: 1px solid var(--color-border) !important; }
+    .eliminar { background: #fff; color: #a00; border: 1px solid #e6b3b3 !important; }
+    .eliminar--tabla {
+      cursor: pointer;
+      padding: 0.35rem 0.9rem;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+    .eliminar:disabled { opacity: 0.5; cursor: wait; }
+    .celda-accion { text-align: right; }
+    .admin-etiqueta { font-size: 0.75rem; color: var(--color-muted); font-weight: 600; }
 
     .historial { width: 100%; border-collapse: collapse; }
     .historial th, .historial td { text-align: left; padding: 0.6rem 0.5rem; border-bottom: 1px solid var(--color-border); font-size: 0.9rem; }

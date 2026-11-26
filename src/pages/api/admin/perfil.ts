@@ -25,6 +25,11 @@ export const POST: APIRoute = async ({ request, cookies }) => {
   }
 
   const { id, accion } = (await request.json()) ?? {};
+
+  if (accion === 'eliminar' && typeof id === 'string') {
+    return eliminarCuenta(id, data.user!.id);
+  }
+
   if (!id || (accion !== 'aprobar' && accion !== 'rechazar')) {
     return new Response(JSON.stringify({ error: 'Petición inválida.' }), { status: 400 });
   }
@@ -53,3 +58,33 @@ export const POST: APIRoute = async ({ request, cookies }) => {
 
   return new Response(JSON.stringify({ ok: true }), { status: 200 });
 };
+
+// Borra la cuenta por completo (usuario de Supabase Auth + su perfil). Los
+// pedidos que tuviera se conservan, solo se desvinculan de la cuenta.
+async function eliminarCuenta(id: string, adminId: string) {
+  const responder = (cuerpo: unknown, status: number) =>
+    new Response(JSON.stringify(cuerpo), { status, headers: { 'Content-Type': 'application/json' } });
+
+  if (id === adminId) return responder({ error: 'No puedes eliminar tu propia cuenta.' }, 400);
+
+  const { data: perfil } = await supabaseAdmin.from('perfiles').select('email').eq('id', id).maybeSingle();
+  const { data: usuario } = await supabaseAdmin.auth.admin.getUserById(id);
+  const email = usuario?.user?.email ?? perfil?.email;
+  if (!perfil && !usuario?.user) return responder({ error: 'Esa cuenta ya no existe.' }, 404);
+  if (esAdmin(email)) return responder({ error: 'No se puede eliminar una cuenta de administrador.' }, 400);
+
+  const { error: errorPedidos } = await supabaseAdmin.from('pedidos').update({ usuario_id: null }).eq('usuario_id', id);
+  if (errorPedidos) console.error('[admin] No se pudieron desvincular los pedidos:', errorPedidos);
+
+  if (usuario?.user) {
+    const { error } = await supabaseAdmin.auth.admin.deleteUser(id);
+    if (error) {
+      console.error('[admin] Error eliminando usuario:', error);
+      return responder({ error: 'No se pudo eliminar la cuenta.' }, 500);
+    }
+  }
+  // El perfil se borra solo con el usuario (on delete cascade); por si acaso:
+  await supabaseAdmin.from('perfiles').delete().eq('id', id);
+
+  return responder({ ok: true }, 200);
+}
