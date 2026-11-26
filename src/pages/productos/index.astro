@@ -5,7 +5,7 @@ export const prerender = false;
 
 import Base from '../../layouts/Base.astro';
 import { supabase, supabaseAdmin } from '../../lib/supabase';
-import { COMPRAS_ACTIVAS, conIva, formatoPrecio } from '../../lib/tienda';
+import { COMPRAS_ACTIVAS, formatoPrecio } from '../../lib/tienda';
 
 // Los precios solo se pintan para cuentas aprobadas (comprobado en servidor).
 const usuario = Astro.locals.user;
@@ -14,12 +14,12 @@ if (COMPRAS_ACTIVAS && usuario) {
   const { data: perfil } = await supabaseAdmin.from('perfiles').select('estado').eq('id', usuario.id).single();
   aprobado = perfil?.estado === 'aprobado';
 }
-// Precio de la tarjeta: el importe con IVA, o un texto si no se puede mostrar.
+// Precio de la tarjeta: el importe sin IVA (neto), o un texto si no se puede mostrar.
 const precioTarjeta = (p: { precio?: number | null; precio_oferta?: number | null }): { importe?: string; texto?: string } => {
   if (!COMPRAS_ACTIVAS) return { texto: 'Precio bajo consulta' };
   if (!aprobado) return { texto: 'Inicia sesión para ver precios' };
   const base = Number(p.precio_oferta ?? p.precio);
-  return base > 0 ? { importe: formatoPrecio(conIva(base)) } : { texto: 'Precio bajo consulta' };
+  return base > 0 ? { importe: formatoPrecio(base) } : { texto: 'Precio bajo consulta' };
 };
 import { tiendaMenu, categorias as categoriasPlano, marcasBase, seccionesDe } from '../../lib/categorias';
 
@@ -411,7 +411,7 @@ const paginasVisibles = [...new Set([1, pagina - 1, pagina, pagina + 1, totalPag
                 {(() => {
                   const precio = precioTarjeta(c.p);
                   return precio.importe ? (
-                    <p class="card-precio"><strong>{precio.importe}</strong> <span>IVA incl.</span></p>
+                    <p class="card-precio"><strong>{precio.importe}</strong> <span>+ IVA</span></p>
                   ) : (
                     <p class="card-precio card-precio--texto">{precio.texto}</p>
                   );
