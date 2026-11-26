@@ -19,12 +19,12 @@ export const COMPRAS_ACTIVAS = true;
 // el cobro se muestran y se cobran con el IVA incluido.
 export const IVA = 0.21;
 
-// Envío (IVA incluido): tarifa plana hasta ENVIO_GRATIS_DESDE; a partir de
-// ahí, gratis. Se mira el importe de los productos ya con el descuento.
-export const ENVIO_TARIFA = 15;
+// Envío: tarifa plana de 15 € + IVA hasta ENVIO_GRATIS_DESDE; a partir de
+// ahí, gratis. Se mira el importe de los productos (IVA incl.) ya con el descuento.
+export const ENVIO_BASE = 15; // sin IVA
 export const ENVIO_GRATIS_DESDE = 1000;
 export const gastosEnvio = (importeProductos: number) =>
-  importeProductos >= ENVIO_GRATIS_DESDE ? 0 : ENVIO_TARIFA;
+  importeProductos >= ENVIO_GRATIS_DESDE ? 0 : conIva(ENVIO_BASE);
 export const conIva = (base: number) => Math.round(base * (1 + IVA) * 100) / 100;
 export const formatoPrecio = (n: number) =>
   n.toLocaleString('es-ES', { style: 'currency', currency: 'EUR', minimumFractionDigits: 2 });

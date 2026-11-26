@@ -3,7 +3,7 @@
 export const prerender = false;
 import Base from '../layouts/Base.astro';
 import { supabaseAdmin } from '../lib/supabase';
-import { ENVIO_TARIFA, ENVIO_GRATIS_DESDE } from '../lib/tienda';
+import { ENVIO_BASE, ENVIO_GRATIS_DESDE } from '../lib/tienda';
 
 const usuario = Astro.locals.user;
 let aprobado = false;
@@ -75,7 +75,7 @@ if (usuario) {
       ) : (
         <div class="resumen">
           <p class="total">Total <strong id="total"></strong></p>
-          <p class="nota">IVA (21 %) incluido. Envío {ENVIO_TARIFA} €, gratis a partir de {ENVIO_GRATIS_DESDE.toLocaleString('es-ES')} €.</p>
+          <p class="nota">IVA (21 %) incluido. Envío {ENVIO_BASE} € + IVA, gratis a partir de {ENVIO_GRATIS_DESDE.toLocaleString('es-ES')} €.</p>
           <a href="/cuenta" class="boton boton--gris">
             {usuario ? 'Tu cuenta está pendiente de aprobación' : 'Inicia sesión para comprar'}
           </a>
