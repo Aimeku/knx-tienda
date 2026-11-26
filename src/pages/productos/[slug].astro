@@ -43,6 +43,9 @@ const tienePrecio = Number(precioBase) > 0;
 const precioIva = tienePrecio ? conIva(Number(precioBase)) : 0;
 // Descuento de la cuenta: se enseña aquí; el carrito lo recalcula en servidor.
 const precioIvaDescuento = descuento ? conDescuento(precioIva, descuento.porcentaje) : null;
+// Lo que se muestra en grande: el precio neto (sin IVA), como en el catálogo.
+const precioNeto = tienePrecio ? Number(precioBase) : 0;
+const precioNetoDescuento = descuento ? conDescuento(precioNeto, descuento.porcentaje) : null;
 
 const variantes = producto.producto_variantes ?? [];
 
@@ -102,16 +105,19 @@ const documentos: Documento[] =
       {!COMPRAS_ACTIVAS ? (
         <p class="precio-oculto">Ref. {producto.sku} · Precio bajo consulta</p>
       ) : aprobado && tienePrecio ? (
-        <p class="precio-real">
-          {precioIvaDescuento !== null ? (
-            <>
-              <s class="precio-antes">{formatoPrecio(precioIva)}</s>
-              <span class="precio-rebajado">{formatoPrecio(precioIvaDescuento)}</span>
-            </>
-          ) : formatoPrecio(precioIva)}
-          <span class="precio-iva">IVA incluido</span>
-          {descuento && <span class="etiqueta-descuento">-{descuento.porcentaje.toLocaleString('es-ES')} %</span>}
-        </p>
+        <div class="precio-bloque">
+          <p class="precio-real">
+            {precioNetoDescuento !== null ? (
+              <>
+                <s class="precio-antes">{formatoPrecio(precioNeto)}</s>
+                <span class="precio-rebajado">{formatoPrecio(precioNetoDescuento)}</span>
+              </>
+            ) : formatoPrecio(precioNeto)}
+            <span class="precio-iva">+ IVA</span>
+            {descuento && <span class="etiqueta-descuento">-{descuento.porcentaje.toLocaleString('es-ES')} %</span>}
+          </p>
+          <p class="precio-con-iva">{formatoPrecio(precioIvaDescuento ?? precioIva)} IVA incluido</p>
+        </div>
       ) : aprobado ? (
         <p class="precio-oculto">Ref. {producto.sku} · Precio bajo consulta</p>
       ) : (
@@ -272,6 +278,9 @@ const documentos: Documento[] =
       border-radius: 999px;
       vertical-align: middle;
     }
+    .precio-bloque { margin: 0 0 1.5rem; }
+    .precio-bloque .precio-real { margin: 0; }
+    .precio-con-iva { margin: 0.25rem 0 0; font-size: 0.9rem; color: var(--color-muted); }
     .precio-iva {
       font-size: 0.85rem;
       font-weight: 500;
