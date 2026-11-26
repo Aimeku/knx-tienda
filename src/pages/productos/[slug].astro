@@ -121,7 +121,7 @@ const documentos: Documento[] =
       ) : aprobado ? (
         <p class="precio-oculto">Ref. {producto.sku} · Precio bajo consulta</p>
       ) : (
-        <p class="precio-oculto">Inicia sesión para ver los precios</p>
+        <p class="precio-oculto precio-oculto--login">Inicia sesión para ver los precios</p>
       )}
       {producto.descripcion_corta && <p class="descripcion-corta">{producto.descripcion_corta}</p>}
 
@@ -286,6 +286,7 @@ const documentos: Documento[] =
       font-weight: 500;
       color: var(--color-muted);
     }
+    .precio-oculto.precio-oculto--login { color: #d0021b; background: #fdecee; }
     .precio-oculto {
       display: inline-block;
       color: var(--color-muted);
