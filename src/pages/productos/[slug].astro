@@ -4,18 +4,23 @@
 export const prerender = false;
 
 import Base from '../../layouts/Base.astro';
-import { supabase, supabaseAdmin } from '../../lib/supabase';
+import { supabaseAdmin } from '../../lib/supabase';
 import type { Documento, Especificacion, Producto, ProductoVariante } from '../../lib/supabase';
 import { COMPRAS_ACTIVAS, conIva, formatoPrecio } from '../../lib/tienda';
 import { descuentoDeCuenta, conDescuento, type DescuentoCuenta } from '../../lib/pedidos';
 
 const { slug } = Astro.params;
 
-const { data: producto } = await supabase
+// Se lee con el cliente de servidor porque los precios no son públicos (la
+// clave pública de Supabase no puede leer precio/precio_oferta/precio_extra).
+// Por eso el filtro "solo productos activos" va aquí a mano. Los precios solo
+// se pintan más abajo si la cuenta está aprobada.
+const { data: producto } = await supabaseAdmin
   .from('productos')
   .select('*, producto_variantes(id, nombre, sku_variante, precio_extra, stock, atributos)')
   .eq('slug', slug)
-  .single<Producto & { producto_variantes: ProductoVariante[] }>();
+  .eq('activo', true)
+  .maybeSingle<Producto & { producto_variantes: ProductoVariante[] }>();
 
 if (!producto) {
   return Astro.redirect('/404');

@@ -76,7 +76,9 @@ type Casilla = { p: Producto; inicio?: number } | null;
 // En la rejilla, una fila centrada empieza con este marcador seguido de sus
 // productos; el marcador ocupa la 4.ª casilla de la fila (no se pinta).
 type Celda = string | null | { centrar: number };
-const CAMPOS = 'id, nombre, slug, imagen_principal, marca, sku, precio, precio_oferta';
+// Sin precios: la clave pública de Supabase no puede leerlos. Los precios se
+// piden aparte, con el cliente de servidor, solo para cuentas aprobadas.
+const CAMPOS = 'id, nombre, slug, imagen_principal, marca, sku';
 
 let casillas: Casilla[] = [];
 let total = 0;
@@ -128,6 +130,23 @@ if (orden === 'recomendado' && !busqueda) {
   casillas = ((data ?? []) as unknown as Producto[]).map((p) => ({ p }));
   total = count ?? 0;
   totalPaginas = Math.max(1, Math.ceil(total / POR_PAGINA));
+}
+
+// Precios de los productos de esta página (solo cuentas aprobadas).
+if (aprobado) {
+  const idsPagina = [...new Set(casillas.flatMap((c) => (c ? [c.p.id] : [])))];
+  if (idsPagina.length) {
+    const { data: precios } = await supabaseAdmin
+      .from('productos')
+      .select('id, precio, precio_oferta')
+      .in('id', idsPagina)
+      .eq('activo', true);
+    const precioPorId = new Map((precios ?? []).map((x) => [x.id, x]));
+    for (const c of casillas) {
+      const x = c && precioPorId.get(c.p.id);
+      if (c && x) Object.assign(c.p, { precio: x.precio, precio_oferta: x.precio_oferta });
+    }
+  }
 }
 
 // Rejilla de Vimar Linea · Mecanismos (y KNX · Mecanismos Linea) en filas de 4
