@@ -107,9 +107,20 @@ export function seccionesDe(grupo: GrupoTienda): { seccion?: string; categorias:
   return salida;
 }
 
+// Tarjetas del menú "Tienda": foto y frase de cada sección. Las secciones
+// que no estén aquí salen igual, con la lista de sus categorías como frase.
+export const destacadosSeccion: Record<string, { foto: string; texto: string }> = {
+  'Vimar Linea': { foto: '/productos/vimar/30643-01-400.webp', texto: 'Mecanismos, placas y teclas de diseño' },
+  'KNX · Linea': { foto: '/productos/vimar/30580-400.webp', texto: 'Mandos y teclas KNX para la serie Linea' },
+  'KNX · Eikon': { foto: '/productos/vimar/22692-rn-82-400.webp', texto: 'Táctil, Vintage, Flat y Tondo' },
+  'KNX · Componentes comunes': { foto: '/productos/vimar/01500-2-400.webp', texto: 'Aparatos DIN y módulos KNX' },
+};
+
 // URL del catálogo filtrado por un grupo, una categoría o una marca.
 export const hrefCategoria = (slug: string) => `/productos?categoria=${encodeURIComponent(slug)}`;
 export const hrefMarca = (marca: string) => `/productos?marca=${encodeURIComponent(marca)}`;
+export const hrefCategorias = (lista: CategoriaTienda[]) =>
+  lista.length ? `/productos?${lista.map((c) => `categoria=${encodeURIComponent(c.slug)}`).join('&')}` : '/productos';
 export function hrefGrupoTienda(grupo: GrupoTienda): string {
   if (grupo.categorias.length === 0) return '/productos';
   return `/productos?${grupo.categorias.map((c) => `categoria=${encodeURIComponent(c.slug)}`).join('&')}`;

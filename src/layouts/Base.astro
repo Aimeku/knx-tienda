@@ -1,5 +1,5 @@
 ---
-import { tiendaMenu, marcasBase, seccionesDe, hrefCategoria, hrefMarca, hrefGrupoTienda } from '../lib/categorias';
+import { tiendaMenu, marcasBase, seccionesDe, hrefCategoria, hrefMarca, hrefGrupoTienda, hrefCategorias, destacadosSeccion } from '../lib/categorias';
 import { getLangFromUrl, getSwitcherHref, useTranslations } from '../i18n/ui';
 import { TIENDA_ACTIVA, COMPRAS_ACTIVAS, hrefTienda } from '../lib/tienda';
 
@@ -67,27 +67,56 @@ const hrefProyecto = (slug: string) => (lang === 'en' ? `/en/proyectos/${slug}` 
       {TIENDA_ACTIVA && <div class="nav-item has-dropdown">
         <button class="nav-trigger" aria-haspopup="true">{t('nav.tienda')}</button>
         <div class="mega-menu mega-menu--tienda">
-          <div class="tienda-grid">
-            {tiendaMenu.map((grupo) => (
-              <div class="tienda-columna">
-                <a class="tienda-grupo" href={hrefGrupoTienda(grupo)}>{grupo.titulo}</a>
-                {seccionesDe(grupo).map((s) => (
-                  <div class="tienda-seccion">
-                    {s.seccion && <p class="tienda-seccion-titulo">{s.seccion}</p>}
-                    {s.categorias.map((c) => (
-                      <a href={hrefCategoria(c.slug)}>{c.nombre}</a>
-                    ))}
-                  </div>
+          <div class="tienda-panel">
+            <div class="tienda-intro">
+              <p class="tienda-intro-titulo">Descubre nuestra tienda<span class="punto">.</span></p>
+              <p class="tienda-intro-texto">Mecanismos y domótica de Vimar</p>
+              <div class="tienda-grupos" role="tablist">
+                {tiendaMenu.map((grupo, i) => (
+                  <a
+                    href={hrefGrupoTienda(grupo)}
+                    class:list={['tienda-grupo-tab', { activo: i === 0 }]}
+                    data-grupo={i}
+                    role="tab"
+                    aria-selected={i === 0 ? 'true' : 'false'}
+                  >
+                    {grupo.titulo}
+                  </a>
                 ))}
               </div>
-            ))}
-            <div class="tienda-columna tienda-columna--marcas">
-              <p class="tienda-grupo">Marcas</p>
-              {marcasBase.map((m) => (
-                <a href={hrefMarca(m)}>{m}</a>
-              ))}
-              <a href="/productos" class="tienda-ver-todo">{t('nav.verTodoCatalogo')}</a>
+              <a href="/productos" class="tienda-boton">{t('nav.verTodoCatalogo').replace(/\s*→$/, '')}</a>
             </div>
+
+            {tiendaMenu.map((grupo, i) => (
+              <div class="tienda-contenido" data-grupo={i} hidden={i !== 0}>
+                <div class="tienda-destacados">
+                  {seccionesDe(grupo).map((s) => {
+                    const destacado = s.seccion ? destacadosSeccion[s.seccion] : undefined;
+                    return (
+                      <a href={hrefCategorias(s.categorias)} class="tienda-destacado">
+                        <span class="tienda-destacado-foto">
+                          {destacado && <img src={destacado.foto} alt="" loading="lazy" width="400" height="400" />}
+                        </span>
+                        <span class="tienda-destacado-texto">
+                          <strong>{s.seccion ?? grupo.titulo}</strong>
+                          <span>{destacado?.texto ?? s.categorias.map((c) => c.nombre).join(', ')}</span>
+                        </span>
+                      </a>
+                    );
+                  })}
+                </div>
+                <div class="tienda-enlaces">
+                  {seccionesDe(grupo).map((s) => (
+                    <div class="tienda-enlaces-seccion">
+                      {s.seccion && <p class="tienda-enlaces-titulo">{s.seccion}</p>}
+                      {s.categorias.map((c) => (
+                        <a href={hrefCategoria(c.slug)}>{c.nombre}</a>
+                      ))}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </div>}
@@ -326,6 +355,24 @@ const hrefProyecto = (slug: string) => (lang === 'en' ? `/en/proyectos/${slug}` 
     // El panel de "Tienda" está anclado a la ventana (position: fixed), separado
     // del botón que lo abre, así que el :hover de CSS se pierde si el ratón
     // cruza ese hueco en diagonal. Este margen de tolerancia evita que se cierre.
+    // Menú "Tienda": al pasar el ratón (o el foco) por un grupo, se muestra su contenido.
+    document.querySelectorAll<HTMLAnchorElement>('.tienda-grupo-tab').forEach((tab) => {
+      const activar = () => {
+        const panel = tab.closest('.tienda-panel');
+        if (!panel) return;
+        panel.querySelectorAll<HTMLAnchorElement>('.tienda-grupo-tab').forEach((t) => {
+          const activo = t === tab;
+          t.classList.toggle('activo', activo);
+          t.setAttribute('aria-selected', String(activo));
+        });
+        panel.querySelectorAll<HTMLElement>('.tienda-contenido').forEach((c) => {
+          c.hidden = c.dataset.grupo !== tab.dataset.grupo;
+        });
+      };
+      tab.addEventListener('mouseenter', activar);
+      tab.addEventListener('focus', activar);
+    });
+
     document.querySelectorAll<HTMLElement>('.has-dropdown').forEach((item) => {
       let closeTimer: ReturnType<typeof setTimeout>;
       const menu = item.querySelector<HTMLElement>(':scope > .mega-menu');
@@ -559,60 +606,111 @@ const hrefProyecto = (slug: string) => (lang === 'en' ? `/en/proyectos/${slug}` 
       .proyectos-intro-titulo { border: none; padding: 0; margin: 0; }
       .proyectos-intro-texto { margin: 0; }
     }
-    .tienda-grid {
+    /* Panel de "Tienda": intro + grupos | tarjetas con foto | enlaces */
+    .mega-menu.mega-menu--tienda { padding: 0; }
+    .tienda-panel {
       display: grid;
-      /* columnas de ancho fijo: sirve igual con 1 grupo visible que con 4 */
-      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-      gap: 0 2.5rem;
+      grid-template-columns: minmax(240px, 320px) 1fr;
       max-width: 1400px;
       margin: 0 auto;
+      min-height: 340px;
     }
-    .mega-menu--tienda .tienda-columna a {
-      display: block;
-      padding: 0.35rem 0;
-      white-space: normal;
-      font-size: 0.92rem;
-      color: #444;
-    }
-    .mega-menu--tienda .tienda-columna a:hover { background: none; color: var(--color-text); text-decoration: underline; text-underline-offset: 3px; }
-    .mega-menu--tienda .tienda-grupo {
-      display: block;
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
+    .tienda-intro { padding: 2.25rem 2.5rem 2.25rem 2.5rem; border-right: 1px solid #eee; }
+    .tienda-intro-titulo { margin: 0; font-size: 1.45rem; font-weight: 800; line-height: 1.2; letter-spacing: -0.01em; }
+    .tienda-intro-titulo .punto { color: #c9a227; }
+    .tienda-intro-texto { margin: 0.35rem 0 1.5rem; font-size: 1rem; color: #555; }
+    .tienda-grupos { display: flex; flex-direction: column; gap: 0.25rem; margin-bottom: 1.75rem; }
+    .mega-menu--tienda a.tienda-grupo-tab {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.6rem 0.9rem;
+      border-radius: 10px;
+      font-size: 1rem;
       font-weight: 700;
-      font-size: 0.85rem;
-      color: var(--color-text);
-      margin: 0 0 0.75rem;
-      padding: 0 0 0.6rem;
-      border-bottom: 2px solid var(--color-text);
+      color: #555;
+      white-space: normal;
+      transition: background 0.15s ease, color 0.15s ease;
     }
-    .mega-menu--tienda a.tienda-grupo::after { content: ' →'; opacity: 0; transition: opacity 0.15s ease; }
-    .mega-menu--tienda a.tienda-grupo:hover { text-decoration: none; }
-    .mega-menu--tienda a.tienda-grupo:hover::after { opacity: 1; }
-    .tienda-seccion + .tienda-seccion { margin-top: 0.9rem; }
-    .tienda-seccion-titulo {
-      margin: 0 0 0.2rem;
+    .mega-menu--tienda a.tienda-grupo-tab::after { content: '→'; opacity: 0; transform: translateX(-4px); transition: opacity 0.15s ease, transform 0.15s ease; }
+    .mega-menu--tienda a.tienda-grupo-tab.activo { background: #f3f3f3; color: var(--color-text); }
+    .mega-menu--tienda a.tienda-grupo-tab.activo::after { opacity: 1; transform: none; }
+    .mega-menu--tienda a.tienda-boton {
+      display: inline-block;
+      padding: 0.75rem 1.5rem;
+      border-radius: 999px;
+      border: 1.5px solid var(--color-text);
+      background: var(--color-text);
+      color: #fff;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      transition: background 0.15s ease, color 0.15s ease;
+    }
+    .mega-menu--tienda a.tienda-boton:hover { background: #fff; color: var(--color-text); }
+
+    .tienda-contenido { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); }
+    .tienda-contenido[hidden] { display: none; }
+    .tienda-destacados {
+      padding: 1.75rem 2rem;
+      border-right: 1px solid #eee;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0.5rem;
+      align-content: start;
+    }
+    .mega-menu--tienda a.tienda-destacado {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+      padding: 0.75rem;
+      border-radius: 14px;
+      white-space: normal;
+      transition: background 0.15s ease;
+    }
+    .mega-menu--tienda a.tienda-destacado:hover { background: #f6f6f6; }
+    .tienda-destacado-foto {
+      flex: 0 0 96px;
+      height: 96px;
+      border-radius: 12px;
+      background: #fff;
+      border: 1px solid #eee;
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+    }
+    .tienda-destacado-foto img { width: 82%; height: 82%; object-fit: contain; transition: transform 0.25s ease; }
+    .tienda-destacado:hover .tienda-destacado-foto img { transform: scale(1.06); }
+    .tienda-destacado-texto { display: flex; flex-direction: column; gap: 0.2rem; }
+    .tienda-destacado-texto strong { font-size: 1.05rem; font-weight: 800; color: var(--color-text); }
+    .tienda-destacado-texto span { font-size: 0.92rem; font-weight: 400; color: #555; line-height: 1.4; }
+
+    .tienda-enlaces { padding: 2rem 2.5rem; display: flex; flex-direction: column; gap: 1.25rem; }
+    .tienda-enlaces-titulo {
+      margin: 0 0 0.35rem;
       font-size: 0.72rem;
       font-weight: 700;
       letter-spacing: 0.08em;
       text-transform: uppercase;
       color: var(--color-muted);
     }
-    .tienda-columna--marcas {
-      background: #f6f6f6;
-      border-radius: 12px;
-      padding: 1.25rem 1.5rem;
-      align-self: start;
-    }
-    .mega-menu--tienda .tienda-ver-todo {
-      margin-top: 1rem;
-      padding-top: 0.9rem !important;
-      border-top: 1px solid var(--color-border);
+    .mega-menu--tienda .tienda-enlaces a {
+      display: block;
+      padding: 0.3rem 0;
+      font-size: 1.02rem;
       font-weight: 700;
-      color: var(--color-text) !important;
+      color: var(--color-text);
+      white-space: normal;
     }
+    .mega-menu--tienda .tienda-enlaces a:hover { background: none; text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 2px; }
+
     @media (max-width: 1100px) {
-      .tienda-grid { gap: 2rem 2rem; }
+      .tienda-panel { grid-template-columns: 240px 1fr; }
+      .tienda-intro { padding: 1.75rem 1.5rem; }
+      .tienda-contenido { grid-template-columns: 1fr; }
+      .tienda-destacados { border-right: none; border-bottom: 1px solid #eee; grid-template-columns: 1fr 1fr; padding: 1.25rem 1.5rem; }
+      .tienda-enlaces { padding: 1.25rem 1.5rem; flex-direction: row; flex-wrap: wrap; gap: 1rem 2.5rem; }
     }
 
     .header-icons { display: flex; align-items: center; gap: 1.5rem; }
