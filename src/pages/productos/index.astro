@@ -50,14 +50,16 @@ const { data: categoriasDb } = await supabase.from('categorias').select('id, slu
 const idPorSlug = new Map((categoriasDb ?? []).map((c) => [c.slug, c.id]));
 
 // Consulta de productos con los filtros de la URL aplicados.
-function consultaFiltrada(campos: string, opciones?: { count: 'exact' }) {
+// sinCategoria / sinMarca: para contar cuántos productos hay en cada opción del
+// filtro teniendo en cuenta los demás filtros (pero no el suyo).
+function consultaFiltrada(campos: string, opciones?: { count: 'exact' }, sin: { categoria?: boolean; marca?: boolean } = {}) {
   let consulta = supabase.from('productos').select(campos, opciones).eq('activo', true);
-  if (categoriasSeleccionadas.length > 0) {
+  if (categoriasSeleccionadas.length > 0 && !sin.categoria) {
     const ids = categoriasSeleccionadas.map((slug) => idPorSlug.get(slug)).filter((id): id is string => Boolean(id));
     // Si ninguna categoría existe todavía en la base de datos, no debe salir nada.
     consulta = ids.length > 0 ? consulta.in('categoria_id', ids) : consulta.eq('id', '00000000-0000-0000-0000-000000000000');
   }
-  if (marcasSeleccionadas.length > 0) {
+  if (marcasSeleccionadas.length > 0 && !sin.marca) {
     consulta = consulta.in('marca', marcasSeleccionadas);
   }
   if (busqueda) {
@@ -278,6 +280,26 @@ const nombreCategoria = (slug: string) => {
   return c.seccion && c.seccion !== 'Otros' ? `${c.seccion} · ${c.nombre}` : c.nombre;
 };
 
+// Número de productos de cada categoría y marca (con los demás filtros puestos),
+// para mostrarlo junto a cada opción del panel de filtros.
+const cuentaCategoria = new Map<string, number>();
+const cuentaMarca = new Map<string, number>();
+{
+  const slugPorId = new Map((categoriasDb ?? []).map((c) => [c.id, c.slug]));
+  const [{ data: porCategoria }, { data: porMarca }] = await Promise.all([
+    consultaFiltrada('categoria_id', undefined, { categoria: true }).range(0, 4999),
+    consultaFiltrada('marca', undefined, { marca: true }).range(0, 4999),
+  ]);
+  for (const r of (porCategoria ?? []) as unknown as { categoria_id: string | null }[]) {
+    const slug = r.categoria_id ? slugPorId.get(r.categoria_id) : undefined;
+    if (slug) cuentaCategoria.set(slug, (cuentaCategoria.get(slug) ?? 0) + 1);
+  }
+  for (const r of (porMarca ?? []) as unknown as { marca: string | null }[]) {
+    if (r.marca) cuentaMarca.set(r.marca, (cuentaMarca.get(r.marca) ?? 0) + 1);
+  }
+}
+const textoTotal = total === 1 ? '1 producto' : `${total.toLocaleString('es-ES')} productos`;
+
 // Título de la página según lo que se esté viendo.
 const grupoCompleto = tiendaMenu.find(
   (g) => g.categorias.length === categoriasSeleccionadas.length && g.categorias.every((c) => categoriasSeleccionadas.includes(c.slug))
@@ -321,8 +343,10 @@ const paginasVisibles = [...new Set([1, pagina - 1, pagina, pagina + 1, totalPag
         {tiendaMenu.map((grupo) => {
           const seleccionadas = grupo.categorias.filter((c) => categoriasSeleccionadas.includes(c.slug)).length;
           const todas = seleccionadas === grupo.categorias.length;
+          const totalGrupo = grupo.categorias.reduce((n, c) => n + (cuentaCategoria.get(c.slug) ?? 0), 0);
+          // Abiertas por defecto; si el cliente cierra una, se recuerda (ver script).
           return (
-            <details class="filtro-grupo" open={seleccionadas > 0}>
+            <details class="filtro-grupo" open data-filtro={grupo.titulo}>
               <summary>
                 <span>{grupo.titulo}</span>
                 {seleccionadas > 0 && <span class="contador">{seleccionadas}</span>}
@@ -330,17 +354,23 @@ const paginasVisibles = [...new Set([1, pagina - 1, pagina, pagina + 1, totalPag
               <div class="filtro-cuerpo">
                 <label class="check-item check-todos">
                   <input type="checkbox" class="grupo-checkbox" checked={todas} />
-                  Todo
+                  <span class="check-texto">Todo</span>
+                  <span class="cuenta">{totalGrupo}</span>
                 </label>
                 {seccionesDe(grupo).map((s) => (
                   <div class="filtro-seccion">
                     {s.seccion && <p class="filtro-seccion-titulo">{s.seccion}</p>}
-                    {s.categorias.map((c) => (
-                      <label class="check-item">
-                        <input type="checkbox" name="categoria" value={c.slug} checked={categoriasSeleccionadas.includes(c.slug)} />
-                        {c.nombre}
-                      </label>
-                    ))}
+                    {s.categorias.map((c) => {
+                      const n = cuentaCategoria.get(c.slug) ?? 0;
+                      const marcada = categoriasSeleccionadas.includes(c.slug);
+                      return (
+                        <label class:list={['check-item', { 'check-item--vacio': n === 0 && !marcada }]}>
+                          <input type="checkbox" name="categoria" value={c.slug} checked={marcada} />
+                          <span class="check-texto">{c.nombre}</span>
+                          <span class="cuenta">{n}</span>
+                        </label>
+                      );
+                    })}
                   </div>
                 ))}
               </div>
@@ -348,27 +378,46 @@ const paginasVisibles = [...new Set([1, pagina - 1, pagina, pagina + 1, totalPag
           );
         })}
 
-        <details class="filtro-grupo" open>
+        <details class="filtro-grupo" open data-filtro="Marca">
           <summary>
             <span>Marca</span>
             {marcasSeleccionadas.length > 0 && <span class="contador">{marcasSeleccionadas.length}</span>}
           </summary>
           <div class="filtro-cuerpo">
-            {marcasBase.map((marca) => (
-              <label class="check-item">
-                <input type="checkbox" name="marca" value={marca} checked={marcasSeleccionadas.includes(marca)} />
-                {marca}
-              </label>
-            ))}
+            {marcasBase.map((marca) => {
+              const n = cuentaMarca.get(marca) ?? 0;
+              const marcada = marcasSeleccionadas.includes(marca);
+              return (
+                <label class:list={['check-item', { 'check-item--vacio': n === 0 && !marcada }]}>
+                  <input type="checkbox" name="marca" value={marca} checked={marcada} />
+                  <span class="check-texto">{marca}</span>
+                  <span class="cuenta">{n}</span>
+                </label>
+              );
+            })}
           </div>
         </details>
 
         <noscript><button type="submit" class="aplicar">Aplicar filtros</button></noscript>
       </form>
+
+      <!-- Móvil: botón fijo para cerrar el panel y ver el resultado. -->
+      <div class="filtros-pie">
+        <button type="button" class="ver-resultados">Ver {textoTotal}</button>
+      </div>
     </aside>
     <div class="filtros-fondo" aria-hidden="true"></div>
+    <script is:inline>
+      // Antes de pintar: deja cerradas las secciones del filtro que el cliente cerró.
+      try {
+        var cerradas = JSON.parse(sessionStorage.getItem('filtros-cerrados') || '[]');
+        document.querySelectorAll('#form-filtros details[data-filtro]').forEach(function (d) {
+          if (cerradas.indexOf(d.getAttribute('data-filtro')) >= 0) d.removeAttribute('open');
+        });
+      } catch (e) {}
+    </script>
 
-    <div class="resultados">
+    <div class="resultados" id="resultados">
       <div class="resultados-cabecera">
         <h1>{titulo}</h1>
         <form class="buscador" method="get" action="/productos" role="search">
@@ -386,7 +435,7 @@ const paginasVisibles = [...new Set([1, pagina - 1, pagina, pagina + 1, totalPag
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 6H20M7 12H17M10 18H14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
           Filtros{chips.length > 0 && ` (${chips.length})`}
         </button>
-        <p class="total">{total === 1 ? '1 producto' : `${total.toLocaleString('es-ES')} productos`}</p>
+        <p class="total">{textoTotal}</p>
         <label class="orden">
           <span>Ordenar por</span>
           <select name="orden" form="form-filtros">
@@ -477,31 +526,130 @@ const paginasVisibles = [...new Set([1, pagina - 1, pagina, pagina + 1, totalPag
   </div>
 
   <script>
+    // Catálogo sin recargar la página: al cambiar un filtro, el orden, la
+    // búsqueda o la página, se pide la misma página al servidor y solo se
+    // cambian los resultados (y los números del panel). El panel de filtros no
+    // se toca, así que las secciones se quedan como el cliente las dejó.
     const form = document.getElementById('form-filtros') as HTMLFormElement | null;
-    const enviar = () => form?.requestSubmit();
+    const resultados = document.getElementById('resultados');
+    let peticion: AbortController | null = null;
 
-    // Los filtros se aplican al marcarlos, sin botón "Aplicar".
-    form?.querySelectorAll<HTMLInputElement>('input[name="categoria"], input[name="marca"]').forEach((input) => {
-      input.addEventListener('change', enviar);
-    });
-    document.querySelector<HTMLSelectElement>('select[name="orden"]')?.addEventListener('change', enviar);
+    // URL con los filtros que hay marcados ahora mismo en el panel.
+    function urlFiltros(cambios: { q?: string | null } = {}) {
+      const actual = new URL(window.location.href).searchParams;
+      const p = new URLSearchParams();
+      const q = 'q' in cambios ? cambios.q : actual.get('q');
+      if (q) p.set('q', q);
+      form?.querySelectorAll<HTMLInputElement>('input[name="categoria"]:checked').forEach((i) => p.append('categoria', i.value));
+      form?.querySelectorAll<HTMLInputElement>('input[name="marca"]:checked').forEach((i) => p.append('marca', i.value));
+      const orden = document.querySelector<HTMLSelectElement>('select[name="orden"]')?.value ?? 'recomendado';
+      if (orden !== 'recomendado') p.set('orden', orden);
+      const qs = p.toString();
+      return qs ? `/productos?${qs}` : '/productos';
+    }
 
-    // "Todo" marca o desmarca todas las categorías del grupo de una vez.
-    form?.querySelectorAll<HTMLElement>('.filtro-grupo').forEach((grupo) => {
-      const todo = grupo.querySelector<HTMLInputElement>('.grupo-checkbox');
-      const hijos = grupo.querySelectorAll<HTMLInputElement>('input[name="categoria"]');
-      todo?.addEventListener('change', () => {
-        hijos.forEach((h) => { h.checked = todo.checked; });
-        enviar();
-      });
+    async function cargar(url: string, { historial = true, subir = false } = {}) {
+      if (!resultados || !form) { window.location.href = url; return; }
+      peticion?.abort();
+      peticion = new AbortController();
+      resultados.classList.add('cargando');
+      try {
+        const res = await fetch(url, { signal: peticion.signal, headers: { Accept: 'text/html' } });
+        if (!res.ok) throw new Error(String(res.status));
+        const doc = new DOMParser().parseFromString(await res.text(), 'text/html');
+        const nuevos = doc.getElementById('resultados');
+        const nuevoForm = doc.getElementById('form-filtros');
+        if (!nuevos || !nuevoForm) throw new Error('respuesta inesperada');
+
+        // Resultados nuevos.
+        resultados.innerHTML = nuevos.innerHTML;
+        document.title = doc.title;
+        if (historial) history.pushState({ catalogo: true }, '', url);
+
+        // Panel: marcas, contadores y números, sin abrir ni cerrar secciones.
+        const abiertas = new Map<string, boolean>();
+        form.querySelectorAll<HTMLDetailsElement>('details[data-filtro]').forEach((d) => abiertas.set(d.dataset.filtro ?? '', d.open));
+        form.innerHTML = nuevoForm.innerHTML;
+        form.querySelectorAll<HTMLDetailsElement>('details[data-filtro]').forEach((d) => {
+          const abierta = abiertas.get(d.dataset.filtro ?? '');
+          if (abierta !== undefined) d.open = abierta;
+        });
+        const verNuevo = doc.querySelector('.ver-resultados');
+        const ver = document.querySelector('.ver-resultados');
+        if (ver && verNuevo) ver.textContent = verNuevo.textContent;
+
+        // Si los resultados han quedado por encima de la pantalla, sube hasta ellos.
+        const arriba = resultados.getBoundingClientRect().top;
+        const enMovilConPanel = document.body.classList.contains('filtros-abiertos');
+        if (!enMovilConPanel && (subir || arriba < 0)) {
+          window.scrollTo({ top: window.scrollY + arriba - 110, behavior: 'smooth' });
+        }
+      } catch (err) {
+        if ((err as Error).name === 'AbortError') return;
+        window.location.href = url; // si algo falla, carga la página normal
+        return;
+      }
+      resultados.classList.remove('cargando');
+    }
+
+    // Casillas del panel (delegado en el formulario: su contenido se renueva).
+    form?.addEventListener('change', (e) => {
+      const input = e.target as HTMLInputElement;
+      if (input.classList.contains('grupo-checkbox')) {
+        // "Todo" marca o desmarca todas las categorías del grupo.
+        input.closest('.filtro-grupo')?.querySelectorAll<HTMLInputElement>('input[name="categoria"]').forEach((h) => { h.checked = input.checked; });
+      }
+      if (input.name === 'categoria' || input.name === 'marca' || input.classList.contains('grupo-checkbox')) {
+        cargar(urlFiltros());
+      }
     });
+    form?.addEventListener('submit', (e) => { e.preventDefault(); cargar(urlFiltros()); });
+
+    // Recordar qué secciones del panel están cerradas (toggle no burbujea: captura).
+    form?.addEventListener('toggle', () => {
+      try {
+        const cerradas = [...(form.querySelectorAll<HTMLDetailsElement>('details[data-filtro]'))]
+          .filter((d) => !d.open).map((d) => d.dataset.filtro);
+        sessionStorage.setItem('filtros-cerrados', JSON.stringify(cerradas));
+      } catch {}
+    }, true);
+
+    // Orden, búsqueda, etiquetas de filtros y paginación (están en los resultados,
+    // que se renuevan: se escuchan en el documento).
+    document.addEventListener('change', (e) => {
+      const el = e.target as HTMLElement;
+      if (el instanceof HTMLSelectElement && el.name === 'orden') cargar(urlFiltros());
+    });
+    document.addEventListener('submit', (e) => {
+      const f = e.target as HTMLFormElement;
+      if (!f.classList.contains('buscador')) return;
+      e.preventDefault();
+      const q = (f.querySelector<HTMLInputElement>('input[name="q"]')?.value ?? '').trim();
+      cargar(urlFiltros({ q: q || null }), { subir: true });
+    });
+    document.addEventListener('click', (e) => {
+      if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+      const a = (e.target as HTMLElement).closest<HTMLAnchorElement>('#resultados .chips a, #resultados .sin-resultados a, #resultados .paginacion a');
+      if (!a || !a.href.startsWith(window.location.origin + '/productos')) return;
+      e.preventDefault();
+      cargar(a.href, { subir: Boolean(a.closest('.paginacion')) });
+    });
+
+    // Atrás / adelante del navegador.
+    window.addEventListener('popstate', () => cargar(window.location.href, { historial: false }));
 
     // Móvil: el panel de filtros se abre como un cajón lateral.
     const panel = document.getElementById('panel-filtros');
     const abrir = () => document.body.classList.add('filtros-abiertos');
-    const cerrar = () => document.body.classList.remove('filtros-abiertos');
-    document.querySelector('.abrir-filtros')?.addEventListener('click', abrir);
+    const cerrar = () => {
+      document.body.classList.remove('filtros-abiertos');
+      resultados?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    };
+    document.addEventListener('click', (e) => {
+      if ((e.target as HTMLElement).closest('.abrir-filtros')) abrir();
+    });
     panel?.querySelector('.cerrar-filtros')?.addEventListener('click', cerrar);
+    panel?.querySelector('.ver-resultados')?.addEventListener('click', cerrar);
     document.querySelector('.filtros-fondo')?.addEventListener('click', cerrar);
   </script>
 
@@ -532,14 +680,19 @@ const paginasVisibles = [...new Set([1, pagina - 1, pagina, pagina + 1, totalPag
       cursor: pointer;
     }
     .filtro-grupo summary::-webkit-details-marker { display: none; }
+    /* Flecha que gira al abrir/cerrar la sección. */
     .filtro-grupo summary::after {
-      content: '+';
+      content: '';
       margin-left: auto;
-      font-weight: 400;
-      font-size: 1.2rem;
-      color: var(--color-muted);
+      width: 8px;
+      height: 8px;
+      border-right: 2px solid var(--color-muted);
+      border-bottom: 2px solid var(--color-muted);
+      transform: rotate(45deg) translateY(-3px);
+      transition: transform 0.2s ease;
     }
-    .filtro-grupo[open] summary::after { content: '–'; }
+    .filtro-grupo[open] summary::after { transform: rotate(-135deg) translateY(-1px); }
+    .filtro-grupo summary:hover::after { border-color: var(--color-text); }
     .contador {
       background: var(--color-text);
       color: #fff;
@@ -566,14 +719,49 @@ const paginasVisibles = [...new Set([1, pagina - 1, pagina, pagina + 1, totalPag
     .check-item {
       display: flex;
       align-items: center;
-      gap: 0.6rem;
+      gap: 0.65rem;
       font-size: 0.92rem;
       color: #333;
-      padding: 0.35rem 0;
+      padding: 0.42rem 0.5rem;
+      margin: 0 -0.5rem;
+      border-radius: 8px;
       cursor: pointer;
+      transition: background 0.15s ease;
     }
-    .check-item:hover { color: var(--color-text); }
-    .check-item input { accent-color: var(--color-primary); width: 16px; height: 16px; margin: 0; }
+    .check-item:hover { color: var(--color-text); background: #f6f6f6; }
+    .check-texto { flex: 1; }
+    /* Casilla propia: cuadrada redondeada, negra con ✓ blanco al marcarla. */
+    .check-item input {
+      appearance: none;
+      -webkit-appearance: none;
+      flex: 0 0 18px;
+      width: 18px;
+      height: 18px;
+      margin: 0;
+      border: 1.5px solid #b8b8b8;
+      border-radius: 5px;
+      background: #fff center / 12px no-repeat;
+      cursor: pointer;
+      transition: background-color 0.15s ease, border-color 0.15s ease;
+    }
+    .check-item:hover input { border-color: var(--color-text); }
+    .check-item input:checked {
+      background-color: var(--color-text);
+      border-color: var(--color-text);
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M2.5 6.2l2.3 2.3 4.7-4.9' fill='none' stroke='%23fff' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    }
+    .check-item input:focus-visible { outline: 2px solid var(--color-text); outline-offset: 2px; }
+    .check-item input:checked ~ .check-texto { font-weight: 600; color: var(--color-text); }
+    .cuenta {
+      font-size: 0.75rem;
+      color: var(--color-muted);
+      background: #f2f2f2;
+      border-radius: 999px;
+      padding: 0.1rem 0.5rem;
+      min-width: 1.6rem;
+      text-align: center;
+    }
+    .check-item--vacio { opacity: 0.45; }
     .check-todos { font-weight: 600; color: var(--color-text); }
     .aplicar {
       margin-top: 1rem;
@@ -587,6 +775,11 @@ const paginasVisibles = [...new Set([1, pagina - 1, pagina, pagina + 1, totalPag
       cursor: pointer;
     }
     .filtros-fondo { display: none; }
+    .filtros-pie { display: none; }
+
+    /* Mientras llegan los resultados nuevos. */
+    .resultados { transition: opacity 0.2s ease; }
+    .resultados.cargando { opacity: 0.45; pointer-events: none; }
 
     /* ---------- Cabecera de resultados ---------- */
     .resultados-cabecera { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem 2rem; margin-bottom: 1.25rem; }
@@ -747,6 +940,33 @@ const paginasVisibles = [...new Set([1, pagina - 1, pagina, pagina + 1, totalPag
         transition: transform 0.25s ease;
       }
       .cerrar-filtros { display: block; }
+      .filtros { padding-bottom: 6rem; }
+      .filtros-pie {
+        display: block;
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        width: min(340px, 88vw);
+        padding: 0.9rem 1.25rem calc(0.9rem + env(safe-area-inset-bottom));
+        background: #fff;
+        border-top: 1px solid var(--color-border);
+        transform: translateX(-100%);
+        transition: transform 0.25s ease;
+        z-index: 61;
+      }
+      :global(body.filtros-abiertos) .filtros-pie { transform: none; }
+      .ver-resultados {
+        width: 100%;
+        padding: 0.9rem;
+        border: none;
+        border-radius: 999px;
+        background: var(--color-text);
+        color: #fff;
+        font: inherit;
+        font-weight: 700;
+        font-size: 0.95rem;
+        cursor: pointer;
+      }
       :global(body.filtros-abiertos) .filtros { transform: none; }
       :global(body.filtros-abiertos) .filtros-fondo { display: block; position: fixed; inset: 0; background: rgba(0, 0, 0, 0.4); z-index: 55; }
       .orden span { display: none; }
