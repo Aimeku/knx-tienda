@@ -6,20 +6,27 @@ export const prerender = false;
 import Base from '../../layouts/Base.astro';
 import { supabase, supabaseAdmin } from '../../lib/supabase';
 import { COMPRAS_ACTIVAS, formatoPrecio } from '../../lib/tienda';
+import { descuentoDeCuenta, conDescuento, type DescuentoCuenta } from '../../lib/pedidos';
 
 // Los precios solo se pintan para cuentas aprobadas (comprobado en servidor).
 const usuario = Astro.locals.user;
 let aprobado = false;
+let descuento: DescuentoCuenta | null = null;
 if (COMPRAS_ACTIVAS && usuario) {
-  const { data: perfil } = await supabaseAdmin.from('perfiles').select('estado').eq('id', usuario.id).single();
+  const { data: perfil } = await supabaseAdmin.from('perfiles').select('estado, codigo_descuento').eq('id', usuario.id).single();
   aprobado = perfil?.estado === 'aprobado';
+  if (aprobado) descuento = await descuentoDeCuenta(perfil?.codigo_descuento);
 }
 // Precio de la tarjeta: el importe sin IVA (neto), o un texto si no se puede mostrar.
-const precioTarjeta = (p: { precio?: number | null; precio_oferta?: number | null }): { importe?: string; texto?: string } => {
+const precioTarjeta = (p: { precio?: number | null; precio_oferta?: number | null }): { importe?: string; antes?: string; texto?: string } => {
   if (!COMPRAS_ACTIVAS) return { texto: 'Precio bajo consulta' };
   if (!aprobado) return { texto: 'Inicia sesión para ver precios' };
   const base = Number(p.precio_oferta ?? p.precio);
-  return base > 0 ? { importe: formatoPrecio(base) } : { texto: 'Precio bajo consulta' };
+  if (!(base > 0)) return { texto: 'Precio bajo consulta' };
+  // Con descuento de cuenta: el precio normal tachado y el nuevo en rojo.
+  return descuento
+    ? { importe: formatoPrecio(conDescuento(base, descuento.porcentaje)), antes: formatoPrecio(base) }
+    : { importe: formatoPrecio(base) };
 };
 import { tiendaMenu, categorias as categoriasPlano, marcasBase, seccionesDe } from '../../lib/categorias';
 
@@ -410,7 +417,11 @@ const paginasVisibles = [...new Set([1, pagina - 1, pagina, pagina + 1, totalPag
               {(() => {
                 const precio = precioTarjeta(c.p);
                 return precio.importe ? (
-                  <p class="card-precio">{precio.importe} <span>+ IVA</span></p>
+                  <p class="card-precio">
+                    {precio.antes && <s class="precio-antes">{precio.antes}</s>}
+                    <span class:list={['precio-ahora', { 'precio-ahora--rebajado': precio.antes }]}>{precio.importe}</span>
+                    <span class="precio-iva">+ IVA</span>
+                  </p>
                 ) : (
                   <p class="card-precio card-precio--texto">{precio.texto}</p>
                 );
@@ -675,7 +686,9 @@ const paginasVisibles = [...new Set([1, pagina - 1, pagina, pagina + 1, totalPag
     .card h3 { font-size: 1rem; font-weight: 700; margin: 0; line-height: 1.3; }
     .card-meta { margin: 0; font-size: 0.85rem; color: var(--color-muted); }
     .card-precio { margin: 0.15rem 0 0; font-size: 1rem; font-weight: 800; }
-    .card-precio span { font-size: 0.8rem; font-weight: 600; color: var(--color-muted); }
+    .card-precio .precio-iva { font-size: 0.8rem; font-weight: 600; color: var(--color-muted); }
+    .card-precio .precio-antes { font-size: 0.85rem; font-weight: 500; color: var(--color-muted); margin-right: 0.3rem; }
+    .card-precio .precio-ahora--rebajado { color: #d0021b; }
     .card-precio--texto { font-size: 0.85rem; font-weight: 400; color: var(--color-muted); }
 
     .sin-resultados { padding: 3rem 0; color: var(--color-muted); }

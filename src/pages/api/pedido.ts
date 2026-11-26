@@ -6,7 +6,7 @@ export const prerender = false;
 import type { APIRoute } from 'astro';
 import { supabaseAdmin } from '../../lib/supabase';
 import { createServerSupabase } from '../../lib/supabase-server';
-import { calcularPedido, datosTransferencia, referenciaPedido, escaparHtml as e } from '../../lib/pedidos';
+import { calcularPedido, normalizarCodigo, datosTransferencia, referenciaPedido, escaparHtml as e } from '../../lib/pedidos';
 import { formatoPrecio } from '../../lib/tienda';
 import { enviarEmail } from '../../lib/email';
 
@@ -22,28 +22,32 @@ export const POST: APIRoute = async ({ request, cookies }) => {
   if (!sesion.user) return json({ error: 'Debes iniciar sesión para comprar.' }, 401);
   const { data: perfil } = await supabaseAdmin
     .from('perfiles')
-    .select('estado, nombre, apellidos, empresa, cif_nif, email')
+    .select('estado, nombre, apellidos, empresa, cif_nif, email, codigo_descuento')
     .eq('id', sesion.user.id)
     .single();
   if (perfil?.estado !== 'aprobado') return json({ error: 'Tu cuenta todavía no ha sido aprobada.' }, 403);
 
   const cuerpo = await request.json().catch(() => ({}));
-  const calculo = await calcularPedido(cuerpo.items, cuerpo.codigo);
+  const calculo = await calcularPedido(cuerpo.items, cuerpo.codigo, perfil.codigo_descuento);
   if (!calculo.ok) return json({ error: calculo.error }, 400);
 
   const resumen = {
-    lineas: calculo.lineas.map((l) => ({ nombre: l.nombre, sku: l.sku, precio: l.precio, cantidad: l.cantidad })),
+    lineas: calculo.lineas.map((l) => ({ productoId: l.productoId, varianteId: l.varianteId, nombre: l.nombre, sku: l.sku, precio: l.precio, cantidad: l.cantidad })),
     subtotal: calculo.subtotal,
     descuento: calculo.descuento,
     envio: calculo.envio,
     total: calculo.total,
     codigo: calculo.codigo,
     avisoCodigo: calculo.avisoCodigo,
+    porcentaje: calculo.porcentaje,
+    codigoEsDeCuenta: calculo.codigoEsDeCuenta,
   };
   if (cuerpo.accion !== 'confirmar') return json(resumen);
 
   // --- Confirmar pedido ---
-  if (calculo.avisoCodigo) return json({ error: calculo.avisoCodigo }, 400);
+  // Un código escrito que no vale bloquea el pedido (el cliente debe quitarlo);
+  // el de la cuenta, si no llega al mínimo, simplemente no se aplica.
+  if (calculo.avisoCodigo && normalizarCodigo(cuerpo.codigo)) return json({ error: calculo.avisoCodigo }, 400);
   const direccion = texto(cuerpo.direccion, 400);
   const telefono = texto(cuerpo.telefono, 30);
   const notas = texto(cuerpo.notas, 1000);

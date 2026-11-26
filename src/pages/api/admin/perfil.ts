@@ -5,6 +5,7 @@ import { supabaseAdmin } from '../../../lib/supabase';
 import { createServerSupabase } from '../../../lib/supabase-server';
 import { esAdmin } from '../../../lib/admin';
 import { enviarEmail } from '../../../lib/email';
+import { normalizarCodigo } from '../../../lib/pedidos';
 
 // ¿La sesión actual es de un administrador? (lo usa el login de /cuenta).
 export const GET: APIRoute = async ({ request, cookies }) => {
@@ -24,7 +25,12 @@ export const POST: APIRoute = async ({ request, cookies }) => {
     return new Response(JSON.stringify({ error: 'No autorizado.' }), { status: 403 });
   }
 
-  const { id, accion } = (await request.json()) ?? {};
+  const cuerpo = (await request.json().catch(() => ({}))) ?? {};
+  const { id, accion } = cuerpo;
+
+  if (accion === 'crear_codigo') return crearCodigo(cuerpo);
+  if (accion === 'activar_codigo') return activarCodigo(cuerpo);
+  if (accion === 'asignar_codigo' && typeof id === 'string') return asignarCodigo(id, cuerpo.codigo);
 
   if (accion === 'eliminar' && typeof id === 'string') {
     return eliminarCuenta(id, data.user!.id);
@@ -119,4 +125,46 @@ async function cambiarHabilitada(id: string, adminId: string, reactivar: boolean
   if (errorBloqueo) console.error('[admin] Error con el bloqueo de inicio de sesión:', errorBloqueo);
 
   return responder({ ok: true }, 200);
+}
+
+// ---------- Códigos de descuento ----------
+const responderJson = (cuerpo: unknown, status = 200) =>
+  new Response(JSON.stringify(cuerpo), { status, headers: { 'Content-Type': 'application/json' } });
+
+// Crea un código de porcentaje (p. ej. INSTALADOR15 = 15 %).
+async function crearCodigo(cuerpo: Record<string, unknown>) {
+  const codigo = normalizarCodigo(cuerpo.codigo);
+  const valor = Math.round(Number(cuerpo.porcentaje) * 100) / 100;
+  const caduca = typeof cuerpo.caduca === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(cuerpo.caduca) ? `${cuerpo.caduca}T23:59:59` : null;
+  const descripcion = String(cuerpo.descripcion ?? '').trim().slice(0, 200) || null;
+  if (codigo.length < 3) return responderJson({ error: 'El código debe tener al menos 3 letras o números.' }, 400);
+  if (!(valor > 0 && valor <= 100)) return responderJson({ error: 'El porcentaje tiene que estar entre 0,01 y 100.' }, 400);
+
+  const { error } = await supabaseAdmin.from('codigos_descuento').insert({ codigo, tipo: 'porcentaje', valor, caduca, descripcion });
+  if (error) {
+    return responderJson({ error: error.code === '23505' ? `Ya existe un código ${codigo}.` : 'No se pudo crear el código.' }, 400);
+  }
+  return responderJson({ ok: true });
+}
+
+async function activarCodigo(cuerpo: Record<string, unknown>) {
+  const codigo = normalizarCodigo(cuerpo.codigo);
+  const { error } = await supabaseAdmin.from('codigos_descuento').update({ activo: cuerpo.activo === true }).eq('codigo', codigo);
+  return error ? responderJson({ error: 'No se pudo cambiar el código.' }, 500) : responderJson({ ok: true });
+}
+
+// Asigna (o quita, con codigo vacío) el código de descuento de una cuenta.
+async function asignarCodigo(id: string, codigoBruto: unknown) {
+  const codigo = normalizarCodigo(codigoBruto) || null;
+  if (codigo) {
+    const { data } = await supabaseAdmin.from('codigos_descuento').select('tipo').eq('codigo', codigo).maybeSingle();
+    if (!data) return responderJson({ error: 'Ese código no existe.' }, 400);
+    if (data.tipo !== 'porcentaje') return responderJson({ error: 'A una cuenta solo se le pueden asignar códigos de porcentaje.' }, 400);
+  }
+  const { error } = await supabaseAdmin.from('perfiles').update({ codigo_descuento: codigo }).eq('id', id);
+  if (error) {
+    console.error('[admin] Error asignando código:', error);
+    return responderJson({ error: 'No se pudo asignar el código. ¿Has ejecutado sql/010_descuento_por_cuenta.sql?' }, 500);
+  }
+  return responderJson({ ok: true });
 }

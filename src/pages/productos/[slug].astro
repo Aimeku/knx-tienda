@@ -7,6 +7,7 @@ import Base from '../../layouts/Base.astro';
 import { supabase, supabaseAdmin } from '../../lib/supabase';
 import type { Documento, Especificacion, Producto, ProductoVariante } from '../../lib/supabase';
 import { COMPRAS_ACTIVAS, conIva, formatoPrecio } from '../../lib/tienda';
+import { descuentoDeCuenta, conDescuento, type DescuentoCuenta } from '../../lib/pedidos';
 
 const { slug } = Astro.params;
 
@@ -24,15 +25,19 @@ if (!producto) {
 // está aprobada — comprobado en servidor, no basta con que Astro.locals.user exista.
 const usuario = Astro.locals.user;
 let aprobado = false;
+let descuento: DescuentoCuenta | null = null;
 // En modo solo catálogo no hay precios ni compra: ni siquiera consultamos el perfil.
 if (COMPRAS_ACTIVAS && usuario) {
-  const { data: perfil } = await supabaseAdmin.from('perfiles').select('estado').eq('id', usuario.id).single();
+  const { data: perfil } = await supabaseAdmin.from('perfiles').select('estado, codigo_descuento').eq('id', usuario.id).single();
   aprobado = perfil?.estado === 'aprobado';
+  if (aprobado) descuento = await descuentoDeCuenta(perfil?.codigo_descuento);
 }
 // Precio en Supabase sin IVA; en la web, con el 21 % incluido.
 const precioBase = producto.precio_oferta ?? producto.precio;
 const tienePrecio = Number(precioBase) > 0;
 const precioIva = tienePrecio ? conIva(Number(precioBase)) : 0;
+// Descuento de la cuenta: se enseña aquí; el carrito lo recalcula en servidor.
+const precioIvaDescuento = descuento ? conDescuento(precioIva, descuento.porcentaje) : null;
 
 const variantes = producto.producto_variantes ?? [];
 
@@ -92,7 +97,16 @@ const documentos: Documento[] =
       {!COMPRAS_ACTIVAS ? (
         <p class="precio-oculto">Ref. {producto.sku} · Precio bajo consulta</p>
       ) : aprobado && tienePrecio ? (
-        <p class="precio-real">{formatoPrecio(precioIva)} <span class="precio-iva">IVA incluido</span></p>
+        <p class="precio-real">
+          {precioIvaDescuento !== null ? (
+            <>
+              <s class="precio-antes">{formatoPrecio(precioIva)}</s>
+              <span class="precio-rebajado">{formatoPrecio(precioIvaDescuento)}</span>
+            </>
+          ) : formatoPrecio(precioIva)}
+          <span class="precio-iva">IVA incluido</span>
+          {descuento && <span class="etiqueta-descuento">-{descuento.porcentaje.toLocaleString('es-ES')} %</span>}
+        </p>
       ) : aprobado ? (
         <p class="precio-oculto">Ref. {producto.sku} · Precio bajo consulta</p>
       ) : (
@@ -239,6 +253,19 @@ const documentos: Documento[] =
       font-size: 1.5rem;
       font-weight: 800;
       margin: 0 0 1.5rem;
+    }
+    .precio-antes { font-size: 1.05rem; font-weight: 500; color: var(--color-muted); margin-right: 0.5rem; }
+    .precio-rebajado { color: #d0021b; }
+    .etiqueta-descuento {
+      display: inline-block;
+      margin-left: 0.5rem;
+      background: #d0021b;
+      color: #fff;
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 0.15rem 0.5rem;
+      border-radius: 999px;
+      vertical-align: middle;
     }
     .precio-iva {
       font-size: 0.85rem;

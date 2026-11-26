@@ -12,8 +12,16 @@ if (!user || !esAdmin(user.email)) {
 
 const { data: perfiles } = await supabaseAdmin
   .from('perfiles')
-  .select('id, email, nombre, apellidos, empresa, cif_nif, tipo_profesional, direccion, estado, created_at')
+  .select('id, email, nombre, apellidos, empresa, cif_nif, tipo_profesional, direccion, estado, created_at, codigo_descuento')
   .order('created_at', { ascending: false });
+
+const { data: codigos } = await supabaseAdmin
+  .from('codigos_descuento')
+  .select('codigo, tipo, valor, usos, usos_max, caduca, activo, descripcion')
+  .order('created_at', { ascending: false });
+const codigosPorcentaje = (codigos ?? []).filter((c) => c.tipo === 'porcentaje');
+const textoCodigo = (c: { codigo: string; tipo: string; valor: number }) =>
+  `${c.codigo} (${c.tipo === 'porcentaje' ? `-${Number(c.valor).toLocaleString('es-ES')} %` : `-${Number(c.valor).toLocaleString('es-ES')} €`})`;
 
 const etiquetasTipo: Record<string, string> = {
   'integrador-pro': 'Integrador PRO',
@@ -60,7 +68,7 @@ const resueltos = (perfiles ?? []).filter((p) => p.estado !== 'pendiente');
     ) : (
       <table class="historial">
         <thead>
-          <tr><th>Nombre</th><th>Empresa</th><th>Email</th><th>Estado</th><th></th></tr>
+          <tr><th>Nombre</th><th>Empresa</th><th>Email</th><th>Estado</th><th>Descuento</th><th></th></tr>
         </thead>
         <tbody>
           {resueltos.map((p) => (
@@ -69,6 +77,18 @@ const resueltos = (perfiles ?? []).filter((p) => p.estado !== 'pendiente');
               <td>{p.empresa}</td>
               <td>{p.email}</td>
               <td><span class={`estado estado-${p.estado}`}>{p.estado}</span></td>
+              <td>
+                {p.estado === 'aprobado' && !esAdmin(p.email) ? (
+                  <select class="asignar-codigo" data-id={p.id} aria-label={`Descuento de ${p.nombre}`}>
+                    <option value="">Sin descuento</option>
+                    {codigosPorcentaje.map((c) => (
+                      <option value={c.codigo} selected={c.codigo === p.codigo_descuento}>
+                        {textoCodigo(c)}{c.activo ? '' : ' · inactivo'}
+                      </option>
+                    ))}
+                  </select>
+                ) : p.codigo_descuento ? <span class="detalle-codigo">{p.codigo_descuento}</span> : null}
+              </td>
               <td class="celda-accion">
                 {esAdmin(p.email) ? (
                   <span class="admin-etiqueta">Admin</span>
@@ -83,6 +103,41 @@ const resueltos = (perfiles ?? []).filter((p) => p.estado !== 'pendiente');
                   <button type="button" class="eliminar eliminar--tabla" data-id={p.id} data-nombre={`${p.nombre} ${p.apellidos} (${p.email})`}>Eliminar</button>
                   </>
                 )}
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    )}
+
+    <h2>Códigos de descuento</h2>
+    <form id="form-codigo" class="form-codigo">
+      <label>Código<input name="codigo" required minlength="3" maxlength="40" placeholder="INSTALADOR15" /></label>
+      <label>Descuento %<input name="porcentaje" type="number" required min="0.01" max="100" step="0.01" placeholder="15" /></label>
+      <label>Caduca (opcional)<input name="caduca" type="date" /></label>
+      <label class="ancho">Nota (opcional)<input name="descripcion" maxlength="200" placeholder="Para instaladores habituales" /></label>
+      <button type="submit" class="boton-crear">Crear código</button>
+    </form>
+    <p class="ayuda">Un código se puede dar al cliente para que lo escriba en el carrito, o asignarlo a su cuenta (columna «Descuento» de arriba): entonces verá todos los precios rebajados automáticamente.</p>
+    {(codigos ?? []).length === 0 ? (
+      <p class="vacio">Todavía no hay códigos.</p>
+    ) : (
+      <table class="historial">
+        <thead>
+          <tr><th>Código</th><th>Descuento</th><th>Usos</th><th>Caduca</th><th>Cuentas</th><th></th></tr>
+        </thead>
+        <tbody>
+          {(codigos ?? []).map((c) => (
+            <tr class:list={{ 'codigo-inactivo': !c.activo }}>
+              <td><strong>{c.codigo}</strong>{c.descripcion && <span class="detalle-codigo"><br />{c.descripcion}</span>}</td>
+              <td>{c.tipo === 'porcentaje' ? `${Number(c.valor).toLocaleString('es-ES')} %` : `${Number(c.valor).toLocaleString('es-ES')} €`}</td>
+              <td>{c.usos}{c.usos_max != null && ` / ${c.usos_max}`}</td>
+              <td>{c.caduca ? new Date(c.caduca).toLocaleDateString('es-ES') : '—'}</td>
+              <td>{(perfiles ?? []).filter((p) => p.codigo_descuento === c.codigo).length}</td>
+              <td class="celda-accion">
+                <button type="button" class="boton-tabla activar-codigo" data-codigo={c.codigo} data-activo={c.activo ? '0' : '1'}>
+                  {c.activo ? 'Desactivar' : 'Activar'}
+                </button>
               </td>
             </tr>
           ))}
@@ -168,6 +223,45 @@ Volverá a poder iniciar sesión, ver precios y comprar.`);
       btn.addEventListener('click', () => cambiarHabilitada(btn, 'reactivar'));
     });
 
+    async function llamar(cuerpo: Record<string, unknown>) {
+      const res = await fetch('/api/admin/perfil', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(cuerpo),
+      });
+      const r = await res.json().catch(() => ({}));
+      if (!res.ok) alert(r.error || 'No se pudo guardar.');
+      return res.ok;
+    }
+
+    document.querySelectorAll<HTMLSelectElement>('.asignar-codigo').forEach((sel) => {
+      let anterior = sel.value;
+      sel.addEventListener('change', async () => {
+        sel.disabled = true;
+        const ok = await llamar({ accion: 'asignar_codigo', id: sel.dataset.id, codigo: sel.value });
+        sel.disabled = false;
+        if (!ok) { sel.value = anterior; return; }
+        anterior = sel.value;
+        sel.classList.add('guardado');
+        setTimeout(() => sel.classList.remove('guardado'), 1200);
+      });
+    });
+
+    document.getElementById('form-codigo')?.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const form = e.currentTarget as HTMLFormElement;
+      const datos = Object.fromEntries(new FormData(form));
+      if (await llamar({ accion: 'crear_codigo', ...datos })) window.location.reload();
+    });
+
+    document.querySelectorAll<HTMLButtonElement>('.activar-codigo').forEach((btn) => {
+      btn.addEventListener('click', async () => {
+        btn.disabled = true;
+        if (await llamar({ accion: 'activar_codigo', codigo: btn.dataset.codigo, activo: btn.dataset.activo === '1' })) window.location.reload();
+        else btn.disabled = false;
+      });
+    });
+
     document.getElementById('logout')?.addEventListener('click', async () => {
       await supabaseBrowser.auth.signOut();
       window.location.href = '/cuenta';
@@ -239,6 +333,18 @@ Volverá a poder iniciar sesión, ver precios y comprar.`);
     .estado-aprobado { color: #1a7f37; }
     .estado-rechazado { color: #a00; }
     .estado-inhabilitado { color: #b26a00; }
+    .asignar-codigo { font: inherit; font-size: 0.85rem; padding: 0.3rem 0.4rem; border: 1px solid var(--color-border); border-radius: 6px; max-width: 12rem; transition: border-color 0.3s; }
+    .asignar-codigo.guardado { border-color: #1a7f37; }
+    .detalle-codigo { font-size: 0.8rem; color: var(--color-muted); }
+    .form-codigo { display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: flex-end; margin-bottom: 0.75rem; }
+    .form-codigo label { display: flex; flex-direction: column; gap: 0.3rem; font-size: 0.8rem; font-weight: 600; }
+    .form-codigo input { font: inherit; font-size: 0.9rem; padding: 0.5rem 0.6rem; border: 1px solid var(--color-border); border-radius: 6px; }
+    .form-codigo input[name='codigo'] { text-transform: uppercase; width: 11rem; }
+    .form-codigo input[name='porcentaje'] { width: 6rem; }
+    .form-codigo .ancho { flex: 1; min-width: 12rem; }
+    .boton-crear { background: var(--color-text); color: #fff; border: none; border-radius: 999px; padding: 0.6rem 1.25rem; font-weight: 700; font-size: 0.8rem; text-transform: uppercase; cursor: pointer; }
+    .ayuda { color: var(--color-muted); font-size: 0.85rem; margin: 0 0 1rem; }
+    .codigo-inactivo td { color: var(--color-muted); }
     .inhabilitar { background: #fff; color: #b26a00; border: 1px solid #ecd2a8; }
     .reactivar { background: var(--color-text); color: #fff; border: 1px solid var(--color-text); }
     .boton-tabla:disabled { opacity: 0.5; cursor: wait; }

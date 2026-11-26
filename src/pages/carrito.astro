@@ -95,6 +95,13 @@ if (usuario) {
     };
     const escapar = (t: string) => t.replace(/[&<>"']/g, (c) => `&#${c.charCodeAt(0)};`);
     let codigo = '';
+    let porcentaje: number | null = null; // descuento en % del código aplicado (para tachar precios)
+    const conDescuento = (precio: number) =>
+      porcentaje ? Math.round(precio * (1 - porcentaje / 100) * 100) / 100 : precio;
+    const importeHtml = (importe: number, rebajado: number) =>
+      rebajado < importe
+        ? `<s class="antes">${euros(importe)}</s> <span class="rebajado">${euros(rebajado)}</span>`
+        : euros(importe);
 
     function guardar(carrito: Linea[]) {
       localStorage.setItem('carrito', JSON.stringify(carrito));
@@ -107,18 +114,21 @@ if (usuario) {
       $('carrito-vacio')!.hidden = carrito.length > 0;
       $('carrito-lleno')!.hidden = carrito.length === 0;
       if (!carrito.length) return;
-
-      $('lineas')!.innerHTML = carrito.map((l, i) => `
-        <li class="linea">
-          <span class="nombre">${escapar(l.nombre)}</span>
-          <span class="unidad">${euros(l.precio)}</span>
-          <input type="number" min="1" max="9999" value="${l.cantidad}" data-i="${i}" aria-label="Cantidad" />
-          <span class="importe">${euros(l.precio * l.cantidad)}</span>
-          <button type="button" class="quitar" data-quitar="${i}" aria-label="Quitar">×</button>
-        </li>`).join('');
+      pintarLineas(carrito);
       // Total provisional al instante; el servidor lo confirma justo después.
       $('total')!.textContent = euros(carrito.reduce((s, l) => s + l.precio * l.cantidad, 0));
       recalcular();
+    }
+
+    function pintarLineas(carrito: Linea[]) {
+      $('lineas')!.innerHTML = carrito.map((l, i) => `
+        <li class="linea">
+          <span class="nombre">${escapar(l.nombre)}</span>
+          <span class="unidad">${importeHtml(l.precio, conDescuento(l.precio))}</span>
+          <input type="number" min="1" max="9999" value="${l.cantidad}" data-i="${i}" aria-label="Cantidad" />
+          <span class="importe">${importeHtml(l.precio * l.cantidad, conDescuento(l.precio) * l.cantidad)}</span>
+          <button type="button" class="quitar" data-quitar="${i}" aria-label="Quitar">×</button>
+        </li>`).join('');
     }
 
     // El resumen (precios, descuento y total) lo calcula siempre el servidor.
@@ -136,6 +146,15 @@ if (usuario) {
         aviso.hidden = false;
         return;
       }
+      // Precios del servidor (por si han cambiado) y descuento en % para tacharlos.
+      const carrito = leer();
+      for (const l of carrito) {
+        const s = datos.lineas.find((x: any) => x.productoId === l.productoId && (x.varianteId ?? null) === (l.varianteId ?? null));
+        if (s) l.precio = s.precio;
+      }
+      localStorage.setItem('carrito', JSON.stringify(carrito));
+      porcentaje = datos.porcentaje ?? null;
+      pintarLineas(carrito);
       $('subtotal')!.textContent = euros(datos.subtotal);
       $('total')!.textContent = euros(datos.total);
       $('fila-descuento')!.hidden = !datos.descuento;
@@ -147,7 +166,11 @@ if (usuario) {
         ? `Te faltan ${euros(conIva(ENVIO_GRATIS_DESDE) - productos)} (IVA incl.) para el envío gratis (pedidos desde ${ENVIO_GRATIS_DESDE.toLocaleString('es-ES')} € + IVA).`
         : '¡Tienes el envío gratis!';
       aviso.hidden = !datos.avisoCodigo && !datos.codigo;
-      aviso.textContent = datos.avisoCodigo || (datos.codigo ? `Código ${datos.codigo} aplicado.` : '');
+      aviso.textContent = datos.avisoCodigo || (datos.codigo
+        ? datos.codigoEsDeCuenta
+          ? `Descuento de tu cuenta aplicado: ${datos.codigo}${datos.porcentaje ? ` (-${datos.porcentaje.toLocaleString('es-ES')} %)` : ''}.`
+          : `Código ${datos.codigo} aplicado.`
+        : '');
       aviso.classList.toggle('aviso--ok', !datos.avisoCodigo);
       if (datos.avisoCodigo) codigo = '';
     }
@@ -229,6 +252,8 @@ if (usuario) {
     :global(.linea .unidad) { color: var(--color-muted); font-size: 0.9rem; }
     :global(.linea .importe) { text-align: right; font-weight: 700; }
     :global(.linea input) { width: 100%; padding: 0.35rem; border: 1px solid var(--color-border); border-radius: 6px; }
+    :global(.linea .antes) { color: var(--color-muted); font-weight: 400; font-size: 0.85em; }
+    :global(.linea .rebajado) { color: #d0021b; font-weight: 700; }
     :global(.linea .quitar) { border: none; background: none; font-size: 1.4rem; cursor: pointer; color: var(--color-muted); }
 
     .pie { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem 2.5rem; margin-top: 1.5rem; }
@@ -240,7 +265,7 @@ if (usuario) {
 
     .resumen { text-align: right; }
     .resumen p { margin: 0.2rem 0; }
-    .resumen .descuento { color: #1b7a3a; }
+    .resumen .descuento { color: #d0021b; }
     .envio-gratis { color: #1b7a3a; font-weight: 600; }
     .total { font-size: 1.4rem; margin-top: 0.5rem !important; }
     .nota { color: var(--color-muted); font-size: 0.9rem; }

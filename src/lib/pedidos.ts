@@ -24,7 +24,7 @@ export type CodigoDescuento = {
 };
 
 export type ResultadoPedido =
-  | { ok: true; lineas: LineaPedido[]; subtotal: number; descuento: number; envio: number; total: number; codigo: string | null; avisoCodigo: string | null }
+  | { ok: true; lineas: LineaPedido[]; subtotal: number; descuento: number; envio: number; total: number; codigo: string | null; avisoCodigo: string | null; porcentaje: number | null; codigoEsDeCuenta: boolean }
   | { ok: false; error: string };
 
 const redondear = (n: number) => Math.round(n * 100) / 100;
@@ -32,7 +32,27 @@ const redondear = (n: number) => Math.round(n * 100) / 100;
 export const normalizarCodigo = (codigo: unknown) =>
   String(codigo ?? '').trim().toUpperCase().replace(/[^A-Z0-9_-]/g, '').slice(0, 40);
 
-export async function calcularPedido(items: unknown, codigoBruto: unknown): Promise<ResultadoPedido> {
+// Motivo por el que un código no se puede usar ahora (sin mirar el mínimo), o null si vale.
+function codigoNoValido(c: CodigoDescuento | null): string | null {
+  if (!c || !c.activo) return 'Ese código de descuento no existe.';
+  if (c.caduca && new Date(c.caduca) < new Date()) return 'Ese código de descuento ha caducado.';
+  if (c.usos_max != null && c.usos >= c.usos_max) return 'Ese código de descuento ya se ha agotado.';
+  return null;
+}
+
+// Descuento asignado a la cuenta (solo códigos de porcentaje y válidos).
+export type DescuentoCuenta = { codigo: string; porcentaje: number };
+export async function descuentoDeCuenta(codigoPerfil: string | null | undefined): Promise<DescuentoCuenta | null> {
+  if (!codigoPerfil) return null;
+  const { data } = await supabaseAdmin.from('codigos_descuento').select('*').eq('codigo', codigoPerfil).maybeSingle<CodigoDescuento>();
+  if (!data || data.tipo !== 'porcentaje' || codigoNoValido(data)) return null;
+  return { codigo: data.codigo, porcentaje: Number(data.valor) };
+}
+
+// Precio con el porcentaje de descuento aplicado (redondeado a céntimos).
+export const conDescuento = (precio: number, porcentaje: number) => redondear(precio * (1 - porcentaje / 100));
+
+export async function calcularPedido(items: unknown, codigoBruto: unknown, codigoCuenta?: string | null): Promise<ResultadoPedido> {
   if (!Array.isArray(items) || items.length === 0) return { ok: false, error: 'Tu carrito está vacío.' };
   if (items.length > 200) return { ok: false, error: 'Demasiadas líneas en el carrito.' };
 
@@ -77,22 +97,34 @@ export async function calcularPedido(items: unknown, codigoBruto: unknown): Prom
   let descuento = 0;
   let codigo: string | null = null;
   let avisoCodigo: string | null = null;
-  const pedido = normalizarCodigo(codigoBruto);
+  let porcentaje: number | null = null;
+  // El código que escribe el cliente; si no escribe ninguno, el de su cuenta.
+  const escrito = normalizarCodigo(codigoBruto);
+  const pedido = escrito || normalizarCodigo(codigoCuenta);
+  const codigoEsDeCuenta = !escrito && Boolean(pedido);
   if (pedido) {
     const { data } = await supabaseAdmin.from('codigos_descuento').select('*').eq('codigo', pedido).maybeSingle<CodigoDescuento>();
-    if (!data || !data.activo) avisoCodigo = 'Ese código de descuento no existe.';
-    else if (data.caduca && new Date(data.caduca) < new Date()) avisoCodigo = 'Ese código de descuento ha caducado.';
-    else if (data.usos_max != null && data.usos >= data.usos_max) avisoCodigo = 'Ese código de descuento ya se ha agotado.';
-    else if (subtotal < Number(data.minimo)) avisoCodigo = `Ese código es para pedidos a partir de ${Number(data.minimo).toFixed(2).replace('.', ',')} €.`;
-    else {
+    const motivo = codigoNoValido(data);
+    if (motivo || !data) {
+      // Si el de la cuenta ya no vale, se compra sin descuento y sin avisos.
+      if (!codigoEsDeCuenta) avisoCodigo = motivo;
+    } else if (subtotal < Number(data.minimo)) {
+      avisoCodigo = `El código ${data.codigo} es para pedidos a partir de ${Number(data.minimo).toFixed(2).replace('.', ',')} €.`;
+    } else {
       codigo = data.codigo;
-      descuento = data.tipo === 'porcentaje' ? (subtotal * Number(data.valor)) / 100 : Number(data.valor);
+      if (data.tipo === 'porcentaje') {
+        // Línea a línea, para que cuadre con los precios en rojo que ve el cliente.
+        porcentaje = Number(data.valor);
+        descuento = lineas.reduce((s, l) => s + (l.precio - conDescuento(l.precio, porcentaje!)) * l.cantidad, 0);
+      } else {
+        descuento = Number(data.valor);
+      }
       descuento = redondear(Math.min(descuento, subtotal));
     }
   }
 
   const envio = gastosEnvio(redondear(subtotal - descuento));
-  return { ok: true, lineas, subtotal, descuento, envio, total: redondear(subtotal - descuento + envio), codigo, avisoCodigo };
+  return { ok: true, lineas, subtotal, descuento, envio, total: redondear(subtotal - descuento + envio), codigo, avisoCodigo, porcentaje, codigoEsDeCuenta };
 }
 
 // Datos para la transferencia (variables de entorno de Vercel).
