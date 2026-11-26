@@ -329,9 +329,10 @@ const documentos: Documento[] =
     .compra button,
     .compra .cta-login {
       display: inline-block;
-      background: var(--color-muted);
+      background: var(--color-text);
       color: #fff;
-      border: none;
+      border: 1.5px solid var(--color-text);
+      transition: background 0.15s ease, color 0.15s ease;
       padding: 0.75rem 2rem;
       border-radius: 999px;
       cursor: pointer;
@@ -341,6 +342,9 @@ const documentos: Documento[] =
       font-size: 0.85rem;
       text-decoration: none;
     }
+
+    .compra button:hover,
+    .compra .cta-login:hover { background: #fff; color: var(--color-text); }
 
     .tabs { padding: 0 2rem 3rem; }
     .tab-botones { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 0; }
