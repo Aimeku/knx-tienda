@@ -82,6 +82,9 @@ type Celda = string | null | { centrar: number };
 // piden aparte, con el cliente de servidor, solo para cuentas aprobadas.
 const CAMPOS = 'id, nombre, slug, imagen_principal, marca, sku';
 
+// Termostato rotatorio KNX Linea (30571.B/C/G): con el soporte 2M 30603 delante.
+const COMUN_DE_OTRA_CATEGORIA: Record<string, string> = { '30571': '30603' };
+
 let casillas: Casilla[] = [];
 let total = 0;
 let totalPaginas = 1;
@@ -106,7 +109,15 @@ if (orden === 'recomendado' && !busqueda) {
       }
     }
   }
-  const rejilla = montarRejilla(filas,[...['vimar-linea-mecanismos', 'vimar-linea-enchufes', 'vimar-linea-usb', 'vimar-linea-tomas-tv', 'vimar-linea-otros'].map((s) => idPorSlug.get(s)), idPorSlug.get('vimar-knx-linea')], [idPorSlug.get('vimar-linea-placas'), idPorSlug.get('vimar-linea-teclas'), idPorSlug.get('vimar-linea-tapas-ciegas'), idPorSlug.get('vimar-knx-eikon'), idPorSlug.get('vimar-knx-eikon-vintage'), idPorSlug.get('vimar-knx-eikon-flat-tondo')]);
+  // Mecanismos que van con un producto de otra categoría al principio de su
+  // fila (aunque ese producto salga también en su sitio): referencia -> SKU.
+  const extras = new Map<string, string>();
+  for (const [fam, sku] of Object.entries(COMUN_DE_OTRA_CATEGORIA)) {
+    if (!filas.some((f) => f.sku?.startsWith(`${fam}.`))) continue;
+    const { data: extra } = await supabase.from('productos').select('id').eq('sku', sku).eq('activo', true).maybeSingle();
+    if (extra) extras.set(sku, extra.id);
+  }
+  const rejilla = montarRejilla(extras, filas,[...['vimar-linea-mecanismos', 'vimar-linea-enchufes', 'vimar-linea-usb', 'vimar-linea-tomas-tv', 'vimar-linea-otros'].map((s) => idPorSlug.get(s)), idPorSlug.get('vimar-knx-linea')], [idPorSlug.get('vimar-linea-placas'), idPorSlug.get('vimar-linea-teclas'), idPorSlug.get('vimar-linea-tapas-ciegas'), idPorSlug.get('vimar-knx-eikon'), idPorSlug.get('vimar-knx-eikon-vintage'), idPorSlug.get('vimar-knx-eikon-flat-tondo')]);
   totalPaginas = Math.max(1, Math.ceil(rejilla.length / POR_PAGINA));
   const trozo = rejilla.slice((pagina - 1) * POR_PAGINA, pagina * POR_PAGINA);
   const ids = [...new Set(trozo.filter((c): c is string => typeof c === 'string'))];
@@ -164,14 +175,15 @@ if (aprobado) {
 // Teclas y tapas ciegas: cada fila es una referencia en blanco, cáñamo y negro.
 // El resto de categorías van seguidas, sin huecos.
 function montarRejilla(
+  extras: Map<string, string>,
   lista: { id: string; sku: string | null; categoria_id: string | null }[],
   idsMecanismos: (string | undefined)[] = [],
   idsCentradas: (string | undefined)[] = [],
 ): Celda[] {
   const centradas = new Set(idsCentradas.filter(Boolean));
   const mecanismos = new Set(idsMecanismos.filter(Boolean));
-  const COMUN_ESPECIAL: Record<string, string> = { '30010': '30008' };
-  const idPorSku = new Map(lista.map((p) => [p.sku ?? '', p.id]));
+  const COMUN_ESPECIAL: Record<string, string> = { '30010': '30008', ...COMUN_DE_OTRA_CATEGORIA };
+  const idPorSku = new Map([...extras, ...lista.map((p) => [p.sku ?? '', p.id] as [string, string])]);
   // "30000.B" -> "30000", "30000.2B" -> "30000.2", "30203.R" -> "30203"; sin color, igual.
   // Productos distintos que van juntos en la misma fila.
   // Luz de emergencia y mando de 4 pulsadores, en la fila de la lámpara LED.
@@ -251,7 +263,11 @@ function montarRejilla(
     const comun = conMecanismo ? null : comunDe(fam);
     const fila: (string | null)[] = grupo.map((s) => idPorSku.get(s)!);
     if (comun && idPorSku.has(comun)) fila.unshift(idPorSku.get(comun)!);
-    else if (!conMecanismo && fila.length === 3) fila.unshift(null);
+    else if (fila.length === 3) {
+      // Tres productos sin mecanismo (blanco, cáñamo y negro): fila centrada.
+      salida.push({ centrar: 3 }, ...fila);
+      continue;
+    }
     while (fila.length % 4 !== 0) fila.push(null);
     salida.push(...fila);
   }
