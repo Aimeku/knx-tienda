@@ -31,13 +31,21 @@ const SERIES = {
   linea: {
     serie: 'Linea',
     categorias: {
-      Dispositivos: { slug: 'vimar-linea-mecanismos', nombre: 'Linea · Mecanismos', orden: 100 },
+      Dispositivos: { slug: 'vimar-linea-mecanismos', nombre: 'Linea · Interruptores y pulsadores', orden: 100 },
       Placas: { slug: 'vimar-linea-placas', nombre: 'Linea · Placas', orden: 101 },
       Botones: { slug: 'vimar-linea-teclas', nombre: 'Linea · Teclas y botones', orden: 102 },
       'Tapa ciega': { slug: 'vimar-linea-tapas-ciegas', nombre: 'Linea · Tapas ciegas', orden: 104 },
       Soportes: { slug: 'vimar-linea-accesorios', nombre: 'Linea · Accesorios y soportes', orden: 103 },
       Accesorios: { slug: 'vimar-linea-accesorios', nombre: 'Linea · Accesorios y soportes', orden: 103 },
     },
+    // Los mecanismos ("Dispositivos") se reparten por referencia; lo que no
+    // esté aquí va a Interruptores y pulsadores.
+    porCodigo: [
+      [/^(30208|30290)\./, { slug: 'vimar-linea-enchufes', nombre: 'Linea · Enchufes', orden: 100 }],
+      [/^(30292|30295|30298)\./, { slug: 'vimar-linea-usb', nombre: 'Linea · USB y cargadores', orden: 100 }],
+      [/^(3030[023]|30313|3031[89]|30320|30346)\./, { slug: 'vimar-linea-tomas-tv', nombre: 'Linea · Tomas TV, teléfono y HDMI', orden: 100 }],
+      [/^(30046|30134|30135|30181|30186|30370|30373|30389|30390|30397|30398|30403|30406|30433|30440)(\.|$)/, { slug: 'vimar-linea-otros', nombre: 'Linea · Reguladores, timbres y otros', orden: 100 }],
+    ],
   },
   'knx-linea': {
     serie: 'KNX',

@@ -106,7 +106,7 @@ if (orden === 'recomendado' && !busqueda) {
       }
     }
   }
-  const rejilla = montarRejilla(filas,[idPorSlug.get('vimar-linea-mecanismos'), idPorSlug.get('vimar-knx-linea')], [idPorSlug.get('vimar-linea-placas'), idPorSlug.get('vimar-linea-teclas'), idPorSlug.get('vimar-linea-tapas-ciegas'), idPorSlug.get('vimar-knx-eikon'), idPorSlug.get('vimar-knx-eikon-vintage'), idPorSlug.get('vimar-knx-eikon-flat-tondo')]);
+  const rejilla = montarRejilla(filas,[...['vimar-linea-mecanismos', 'vimar-linea-enchufes', 'vimar-linea-usb', 'vimar-linea-tomas-tv', 'vimar-linea-otros'].map((s) => idPorSlug.get(s)), idPorSlug.get('vimar-knx-linea')], [idPorSlug.get('vimar-linea-placas'), idPorSlug.get('vimar-linea-teclas'), idPorSlug.get('vimar-linea-tapas-ciegas'), idPorSlug.get('vimar-knx-eikon'), idPorSlug.get('vimar-knx-eikon-vintage'), idPorSlug.get('vimar-knx-eikon-flat-tondo')]);
   totalPaginas = Math.max(1, Math.ceil(rejilla.length / POR_PAGINA));
   const trozo = rejilla.slice((pagina - 1) * POR_PAGINA, pagina * POR_PAGINA);
   const ids = [...new Set(trozo.filter((c): c is string => typeof c === 'string'))];

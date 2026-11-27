@@ -9,7 +9,13 @@
 //   blanco -> cáñamo -> negro.
 
 const ORDEN_CATEGORIA = {
+  // Los mecanismos de Linea comparten tramo: el orden entre ellos lo dan los
+  // bloques de BLOQUES_MECANISMOS.
   'vimar-linea-mecanismos': 1,
+  'vimar-linea-enchufes': 1,
+  'vimar-linea-usb': 1,
+  'vimar-linea-tomas-tv': 1,
+  'vimar-linea-otros': 1,
   'vimar-linea-placas': 2,
   'vimar-linea-teclas': 3,
   'vimar-linea-tapas-ciegas': 4,
@@ -63,20 +69,26 @@ export function ordenProducto(codigo, slugCategoria, posicion) {
   return base + bloqueMecanismo(codigo, slugCategoria) * 10000 + posicion * 4 + (color === undefined ? 0 : color + 1);
 }
 
-// Mecanismos: primero interruptores,
-// cruzamientos y conmutadores (normales, 2M, cableado rápido y axiales),
-// luego el resto y al final el adaptador de toma TV-RD-SAT, la lámpara LED
-// extraíble, la luz de emergencia y el mando de 4 pulsadores.
+// Mecanismos de Linea (todas sus subcategorías): primero interruptores,
+// cruzamientos, conmutadores y pulsadores (normales, 2M, cableado rápido y
+// axiales), luego enchufes y USB, el resto de interruptores y pulsadores, las
+// tomas de TV/teléfono/HDMI (con el adaptador TV-RD-SAT al final) y por último
+// reguladores, timbres y otros (con la lámpara LED extraíble, la luz de
+// emergencia y el mando de 4 pulsadores al final).
+const MECANISMOS_LINEA = new Set(['vimar-linea-mecanismos', 'vimar-linea-enchufes', 'vimar-linea-usb', 'vimar-linea-tomas-tv', 'vimar-linea-otros']);
 const BLOQUES_MECANISMOS = [
   [/^30000/, 1], // interruptor 1P 10AX
   [/^30012/, 2], // interruptor cruzado
   [/^30004/, 3], // conmutador
-  [/^30319/, 9], // adaptador toma TV-RD-SAT
-  [/^(3039[78]|30406)$/, 9], // lámpara LED, luz de emergencia y mando 4 pulsadores (detrás del adaptador)
+  [/^(30008|30010)/, 4], // pulsador e inversor
 ];
+const BLOQUES_CATEGORIA = { 'vimar-linea-mecanismos': 7, 'vimar-linea-enchufes': 5, 'vimar-linea-usb': 6, 'vimar-linea-tomas-tv': 8, 'vimar-linea-otros': 9 };
 function bloqueMecanismo(codigo, slugCategoria) {
-  if (slugCategoria !== 'vimar-linea-mecanismos') return 0;
-  return BLOQUES_MECANISMOS.find(([re]) => re.test(codigo))?.[1] ?? 5;
+  if (!MECANISMOS_LINEA.has(slugCategoria)) return 0;
+  if (/^30319/.test(codigo)) return 8.5; // adaptador toma TV-RD-SAT
+  if (/^(3039[78]|30406)$/.test(codigo)) return 9.5; // lámpara LED, luz de emergencia y mando 4 pulsadores
+  if (slugCategoria === 'vimar-linea-mecanismos') return BLOQUES_MECANISMOS.find(([re]) => re.test(codigo))?.[1] ?? 7;
+  return BLOQUES_CATEGORIA[slugCategoria];
 }
 
 // Familia de un mecanismo/tecla: el código sin la letra de color final.

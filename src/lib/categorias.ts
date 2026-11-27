@@ -28,7 +28,11 @@ export const tiendaCompleta: GrupoTienda[] = [
     grupo: 'Interruptores/Mecanismos',
     titulo: 'Estándar',
     categorias: [
-      { nombre: 'Mecanismos', slug: 'vimar-linea-mecanismos', seccion: 'Vimar Linea' },
+      { nombre: 'Interruptores y pulsadores', slug: 'vimar-linea-mecanismos', seccion: 'Vimar Linea' },
+      { nombre: 'Enchufes', slug: 'vimar-linea-enchufes', seccion: 'Vimar Linea' },
+      { nombre: 'USB y cargadores', slug: 'vimar-linea-usb', seccion: 'Vimar Linea' },
+      { nombre: 'Tomas TV, teléfono y HDMI', slug: 'vimar-linea-tomas-tv', seccion: 'Vimar Linea' },
+      { nombre: 'Reguladores, timbres y otros', slug: 'vimar-linea-otros', seccion: 'Vimar Linea' },
       { nombre: 'Placas', slug: 'vimar-linea-placas', seccion: 'Vimar Linea' },
       { nombre: 'Teclas y botones', slug: 'vimar-linea-teclas', seccion: 'Vimar Linea' },
       { nombre: 'Tapas ciegas', slug: 'vimar-linea-tapas-ciegas', seccion: 'Vimar Linea' },
