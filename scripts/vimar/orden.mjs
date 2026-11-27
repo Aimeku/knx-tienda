@@ -21,6 +21,10 @@ const ORDEN_CATEGORIA = {
   'vimar-knx-dispositivos': 10,
   'vimar-knx-din': 11,
   'vimar-knx-software': 12,
+  'vimar-iot-linea': 13,
+  'vimar-iot-eikon': 14,
+  'vimar-iot-modulos': 15,
+  'vimar-iot-termostatos': 16,
 };
 
 // Placas: familia -> [orientación (0 horizontal, 1 vertical), tamaño]

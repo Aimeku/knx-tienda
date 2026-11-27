@@ -40,7 +40,7 @@ export const tiendaCompleta: GrupoTienda[] = [
     grupo: 'Domótica', // la tarjeta "Smart Homes" de la home enlaza aquí
     titulo: 'Smart Home',
     categorias: [
-      // Tres sistemas de Vimar: KNX, ByMe y View Wireless. Cada sistema se
+      // Tres sistemas de Vimar: KNX, ByMe y View Wireless (IoT). Cada sistema se
       // reparte en secciones "Sistema · Serie"; las que no tienen productos
       // (visible: false) no salen en el menú ni en los filtros.
       // KNX
@@ -51,7 +51,12 @@ export const tiendaCompleta: GrupoTienda[] = [
       { nombre: 'Aparatos DIN y módulos', slug: 'vimar-knx-din', seccion: 'KNX · Componentes comunes' },
       { nombre: 'Mandos y termostatos', slug: 'vimar-knx-dispositivos', seccion: 'KNX · Componentes comunes', visible: false }, // sin productos por ahora
       { nombre: 'Software', slug: 'vimar-knx-software', seccion: 'KNX · Componentes comunes', visible: false }, // sin productos por ahora
-      // ByMe y View Wireless: se añadirán aquí con sus secciones.
+      // IoT (View Wireless: Bluetooth / Zigbee)
+      { nombre: 'Mecanismos', slug: 'vimar-iot-linea', seccion: 'IoT · Linea' },
+      { nombre: 'Mecanismos', slug: 'vimar-iot-eikon', seccion: 'IoT · Eikon' },
+      { nombre: 'Gateways, módulos y sensores', slug: 'vimar-iot-modulos', seccion: 'IoT · Componentes comunes' },
+      { nombre: 'Termostatos', slug: 'vimar-iot-termostatos', seccion: 'IoT · Componentes comunes' },
+      // ByMe: se añadirá aquí con sus secciones.
       // Categorías antiguas, sin productos por ahora
       { nombre: 'Actuadores', slug: 'actuadores', visible: false },
       { nombre: 'Paneles táctiles', slug: 'paneles-tactiles-knx', visible: false },
@@ -114,6 +119,9 @@ export const destacadosSeccion: Record<string, { foto: string; texto: string }> 
   'KNX · Linea': { foto: '/productos/vimar/30580-400.webp', texto: 'Mandos y teclas KNX para la serie Linea' },
   'KNX · Eikon': { foto: '/productos/vimar/22692-rn-82-400.webp', texto: 'Táctil, Vintage, Flat y Tondo' },
   'KNX · Componentes comunes': { foto: '/productos/vimar/01500-2-400.webp', texto: 'Aparatos DIN y módulos KNX' },
+  'IoT · Linea': { foto: '/productos/vimar/30807-b-400.webp', texto: 'Mecanismos conectados IoT para la serie Linea' },
+  'IoT · Eikon': { foto: '/productos/vimar/20597-n-400.webp', texto: 'Mecanismos conectados IoT para la serie Eikon' },
+  'IoT · Componentes comunes': { foto: '/productos/vimar/03980-400.webp', texto: 'Gateways, módulos, sensores y termostatos' },
 };
 
 // URL del catálogo filtrado por un grupo, una categoría o una marca.

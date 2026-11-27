@@ -1,0 +1,2075 @@
+[
+  {
+    "codigo": "01817",
+    "nombre": "Tarjeta transponder Mifare",
+    "descripcion": "Tarjeta con transponder Mifare DesFire EV3",
+    "ruta": "Series residenciales / Series resid. View Wireless / Componentes comunes / Accesorios",
+    "estado": "3 - Activo",
+    "imagen": "https://www.vimar.com/irj/go/km/docs/z_catalogo/MAIN_IMAGE/01817-vimar-apparecchi-da-parete-carta-a-transponder.90950.jpg",
+    "ficha_pdf": "https://www.vimar.com/es/int/catalog/product/download-pdf/code/01817?type=.pdf",
+    "dibujos": [],
+    "certificados": [
+      {
+        "titulo": "99. Directiva RAEE",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/CERTIFICATE/IndicazioniRAEE2024.109839.pdf"
+      }
+    ],
+    "etim": [
+      {
+        "titulo": "Class group",
+        "valor": "Alarm installations, emergency call and signalling"
+      },
+      {
+        "titulo": "Class",
+        "valor": "Switchgear for danger detection system"
+      },
+      {
+        "titulo": "Engaging mechanical",
+        "valor": "No"
+      },
+      {
+        "titulo": "Engaging biometrical",
+        "valor": "No"
+      },
+      {
+        "titulo": "Engaging indication",
+        "valor": "No"
+      },
+      {
+        "titulo": "Material",
+        "valor": "Plastic"
+      }
+    ],
+    "pedido_minimo": "1 NR",
+    "ean": "8007352661776",
+    "embalajes": [
+      {
+        "ean": "8007352661776",
+        "cantidad": "1 NR",
+        "medidas": "8,5x5,5x0,1 [cm]",
+        "peso": "5,4 [g]"
+      },
+      {
+        "ean": "8007352661783",
+        "cantidad": "5 NR",
+        "medidas": "12,2x7,9x3,3 [cm]",
+        "peso": "47,8 [g]"
+      }
+    ],
+    "relacionados": [],
+    "url": "https://www.vimar.com/es/int/catalog/product/index/code/01817"
+  },
+  {
+    "codigo": "02692",
+    "nombre": "Detector radar conectado IoT de techo",
+    "descripcion": "Sensor radar UWB, tecnología IoT con protocolo estándar Bluetooth 5.0 para realización de sistema mesh VIEW Wireless, 1 salida en estado sólido para mandos de tensión muy baja (SELV y no SELV), 1 entrada para pulsador externo para activación de salida o escenario, alimentación 100-240 V 50/60 Hz, montaje en falso techo",
+    "ruta": "Series residenciales / Series resid. View Wireless / Componentes comunes / Componentes no modulares",
+    "estado": "3 - Activo",
+    "imagen": "https://www.vimar.com/irj/go/km/docs/z_catalogo/MAIN_IMAGE/02692-vimar-serie-civili-view-wireless-sensore-radar-connesso-iot-contro-soffitto.112047.jpg",
+    "ficha_pdf": "https://www.vimar.com/es/int/catalog/product/download-pdf/code/02692?type=.pdf",
+    "dibujos": [
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGESIZE/DI_02692.99657.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGESIZE/DI_02692.99658.DXF"
+      },
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGEREAR/VP_02692.107945.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGEREAR/VP_02692.107946.DXF"
+      },
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/3DIMAGE/EA_02692.107939.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/3DIMAGE/EA_02692.107940.DXF"
+      }
+    ],
+    "certificados": [
+      {
+        "titulo": "00. Marcado CE - UE",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/CERTIFICATE/XX179-SensoreradarIoT.116616.pdf"
+      },
+      {
+        "titulo": "01. IMQ - Italia",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/CERTIFICATE/IMQ_CA02.108169.06939_2024-02-12.pdf"
+      },
+      {
+        "titulo": "46. UK PSTI compliance",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/CERTIFICATE/ZAT01748.108581.00.pdf"
+      },
+      {
+        "titulo": "99. Directiva RAEE",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/CERTIFICATE/IndicazioniRAEE2024.109839.pdf"
+      }
+    ],
+    "etim": [
+      {
+        "titulo": "Class group",
+        "valor": "Domestic switching devices"
+      },
+      {
+        "titulo": "Class",
+        "valor": "Movement sensor/presence detector complete"
+      },
+      {
+        "titulo": "Model",
+        "valor": "Movement sensor"
+      },
+      {
+        "titulo": "Constant light control",
+        "valor": "No"
+      },
+      {
+        "titulo": "HVAC-control",
+        "valor": "No"
+      },
+      {
+        "titulo": "Forced switch on",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Forced switch off",
+        "valor": "No"
+      },
+      {
+        "titulo": "Animal zone",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Creep-under protection",
+        "valor": "No"
+      },
+      {
+        "titulo": "Networkable",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Scan angle",
+        "valor": "90"
+      },
+      {
+        "titulo": "Staircase light controller",
+        "valor": "No"
+      },
+      {
+        "titulo": "Bridging switch",
+        "valor": "No"
+      },
+      {
+        "titulo": "Max. presence range",
+        "valor": "28 m2"
+      },
+      {
+        "titulo": "Max. reach frontally",
+        "valor": "4 m"
+      },
+      {
+        "titulo": "Diameter reach on floor",
+        "valor": "6,00 m"
+      },
+      {
+        "titulo": "Suitable for wireless transmission",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Remote operation",
+        "valor": "Si"
+      },
+      {
+        "titulo": "With remote control",
+        "valor": "No"
+      },
+      {
+        "titulo": "Response value sensitivity adjustable",
+        "valor": "Si"
+      },
+      {
+        "titulo": "With signal unit",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Teach-function for response value luminosity",
+        "valor": "No"
+      },
+      {
+        "titulo": "Dim function with dimmer basic element",
+        "valor": "No"
+      },
+      {
+        "titulo": "Mounting method",
+        "valor": "Other"
+      },
+      {
+        "titulo": "Suitable for ceiling mounting",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Connection type",
+        "valor": "Screwed terminal"
+      },
+      {
+        "titulo": "Material",
+        "valor": "Plastic"
+      },
+      {
+        "titulo": "Material quality",
+        "valor": "Thermoplastic"
+      },
+      {
+        "titulo": "Halogen free",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Surface protection",
+        "valor": "Untreated"
+      },
+      {
+        "titulo": "Surface finishing",
+        "valor": "Matt"
+      },
+      {
+        "titulo": "Anti-bacterial treatment",
+        "valor": "No"
+      },
+      {
+        "titulo": "Colour",
+        "valor": "Other"
+      },
+      {
+        "titulo": "RAL-number (similar)",
+        "valor": "9003"
+      },
+      {
+        "titulo": "Transparent",
+        "valor": "No"
+      },
+      {
+        "titulo": "Degree of protection (IP)",
+        "valor": "IP40"
+      },
+      {
+        "titulo": "Voltage type",
+        "valor": "AC"
+      },
+      {
+        "titulo": "Frequency",
+        "valor": "50 - 60 HZ"
+      },
+      {
+        "titulo": "Min. switch-on time",
+        "valor": "70 s"
+      },
+      {
+        "titulo": "Switch-off delay",
+        "valor": "1.080 s"
+      },
+      {
+        "titulo": "Max. switching power",
+        "valor": "960,00 W"
+      },
+      {
+        "titulo": "Number of switching zones",
+        "valor": "1"
+      },
+      {
+        "titulo": "Min. starting current",
+        "valor": "0 A"
+      },
+      {
+        "titulo": "Substation input",
+        "valor": "No"
+      },
+      {
+        "titulo": "With alarm function",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Width",
+        "valor": "90,00 mm"
+      },
+      {
+        "titulo": "Height",
+        "valor": "90,00 mm"
+      },
+      {
+        "titulo": "Depth",
+        "valor": "71,60 mm"
+      },
+      {
+        "titulo": "Diameter",
+        "valor": "90,00 mm"
+      },
+      {
+        "titulo": "Built-in depth",
+        "valor": "68,30 mm"
+      },
+      {
+        "titulo": "Built-in length",
+        "valor": "54,50 mm"
+      },
+      {
+        "titulo": "Built-in diameter",
+        "valor": "54,50 mm"
+      },
+      {
+        "titulo": "Compatible with Apple HomeKit",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Compatible with Google Assistant",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Compatible with Amazon Alexa",
+        "valor": "Si"
+      }
+    ],
+    "pedido_minimo": "1 NR",
+    "ean": "8007352709492",
+    "embalajes": [
+      {
+        "ean": "8007352709492",
+        "cantidad": "1 NR",
+        "medidas": "11x8x7,7 [cm]",
+        "peso": "111 [g]"
+      },
+      {
+        "ean": "8007352709508",
+        "cantidad": "20 NR",
+        "medidas": "43,5x33x12 [cm]",
+        "peso": "2.714 [g]"
+      }
+    ],
+    "relacionados": [
+      "14597",
+      "19597",
+      "20597",
+      "30807.G",
+      "02692.S.1"
+    ],
+    "url": "https://www.vimar.com/es/int/catalog/product/index/code/02692"
+  },
+  {
+    "codigo": "02692.S.1",
+    "nombre": "Adaptador redondo de techo sensor radar",
+    "descripcion": "Adaptador de sección redonda para montaje en techo de sensor radar conectado IoT 02692",
+    "ruta": "Series residenciales / Series resid. View Wireless / Componentes comunes / Componentes no modulares",
+    "estado": "3 - Activo",
+    "imagen": "https://www.vimar.com/irj/go/km/docs/z_catalogo/MAIN_IMAGE/02692_s_1-vimar-apparecchi-da-parete-adattatore-tondo-soffitto-sensore-radar.100050.jpg",
+    "ficha_pdf": "https://www.vimar.com/es/int/catalog/product/download-pdf/code/02692.S.1?type=.pdf",
+    "dibujos": [
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGESIZE/DI_02692.100645.S.1.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGESIZE/DI_02692.100646.S.1.DXF"
+      },
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGEREAR/VP_02692.100643.S.1.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGEREAR/VP_02692.100644.S.1.DXF"
+      },
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/3DIMAGE/EA_02692.100641.S.1.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/3DIMAGE/EA_02692.100642.S.1.DXF"
+      }
+    ],
+    "certificados": [],
+    "etim": [
+      {
+        "titulo": "Class group",
+        "valor": "Domestic switching devices"
+      },
+      {
+        "titulo": "Class",
+        "valor": "Accessories/spare parts for movement sensor"
+      },
+      {
+        "titulo": "Type of accessory/spare part",
+        "valor": "Other"
+      },
+      {
+        "titulo": "Accessory",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Spare part",
+        "valor": "No"
+      },
+      {
+        "titulo": "Colour",
+        "valor": "White"
+      }
+    ],
+    "pedido_minimo": "1 NR",
+    "ean": "8007352709515",
+    "embalajes": [
+      {
+        "ean": "8007352709515",
+        "cantidad": "1 NR",
+        "medidas": "7,5x7x10,5 [cm]",
+        "peso": "106 [g]"
+      },
+      {
+        "ean": "8007352709522",
+        "cantidad": "30 NR",
+        "medidas": "44,5x27,5x24 [cm]",
+        "peso": "3.180 [g]"
+      }
+    ],
+    "relacionados": [
+      "02692"
+    ],
+    "url": "https://www.vimar.com/es/int/catalog/product/index/code/02692.S.1"
+  },
+  {
+    "codigo": "02963",
+    "nombre": "Energy meter conectado IoT monofásico",
+    "descripcion": "Dispositivo conectado View Wireless para medir el consumo/producción de energía eléctrica istantánea y histórica (modalidad horaria, diaria, mensual,anual), función control de cargas (máx. 8 cargas), 1 entrada para el sensor de corriente toroidal, potencias detectables 25 W-10 kW, alimentación monofásica 100-240 V 50/60 Hz, Bluetooth® wireless technology 5.0 para sistema mesh View Wireless, montaje en carril DIN (60715 TH35), ocupa 1 módulode 17,5 mm",
+    "ruta": "Series residenciales / Series resid. View Wireless / Componentes comunes / Aparatos DIN",
+    "estado": "3 - Activo",
+    "imagen": "https://www.vimar.com/irj/go/km/docs/z_catalogo/MAIN_IMAGE/02963-vimar-apparecchi-da-parete-energy-meter-connesso-iot-monofase.90017.jpg",
+    "ficha_pdf": "https://www.vimar.com/es/int/catalog/product/download-pdf/code/02963?type=.pdf",
+    "dibujos": [
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGESIZE/DI_02963.100273.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGESIZE/DI_02963.100274.DXF"
+      },
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGEREAR/VP_02963.89718.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGEREAR/VP_02963.89719.DXF"
+      },
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/3DIMAGE/EA_02963.89702.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/3DIMAGE/EA_02963.89703.DXF"
+      }
+    ],
+    "certificados": [
+      {
+        "titulo": "00. Marcado CE - UE",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/CERTIFICATE/02963.98818.pdf"
+      },
+      {
+        "titulo": "01. IMQ - Italia",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/CERTIFICATE/IMQ_CA09.99412.00432.pdf"
+      },
+      {
+        "titulo": "06. SUBTEL - Chile",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/CERTIFICATE/CertificatoSUBTEL10820_VIMAR02963.108504.pdf"
+      },
+      {
+        "titulo": "46. UK PSTI compliance",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/CERTIFICATE/ZAT01748.108581.00.pdf"
+      },
+      {
+        "titulo": "99. Directiva RAEE",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/CERTIFICATE/IndicazioniRAEE2024.109839.pdf"
+      }
+    ],
+    "etim": [
+      {
+        "titulo": "Class group",
+        "valor": "Installation bus systems"
+      },
+      {
+        "titulo": "Class",
+        "valor": "Energy management for bus system"
+      },
+      {
+        "titulo": "Bus system KNX",
+        "valor": "No"
+      },
+      {
+        "titulo": "Bus system KNX-RF (Radio Frequency)",
+        "valor": "No"
+      },
+      {
+        "titulo": "Bus system radio frequency",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Bus system LON",
+        "valor": "No"
+      },
+      {
+        "titulo": "Bus system Powernet",
+        "valor": "No"
+      },
+      {
+        "titulo": "Other bus systems",
+        "valor": "Other"
+      },
+      {
+        "titulo": "Radio frequency bidirectional",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Model",
+        "valor": "Other"
+      },
+      {
+        "titulo": "Connection type",
+        "valor": "Direct"
+      },
+      {
+        "titulo": "Tariff switch",
+        "valor": "No"
+      }
+    ],
+    "pedido_minimo": "1 NR",
+    "ean": "8007352648487",
+    "embalajes": [
+      {
+        "ean": "8007352648487",
+        "cantidad": "1 NR",
+        "medidas": "14,2x6,2x5,6 [cm]",
+        "peso": "127,4 [g]"
+      }
+    ],
+    "relacionados": [
+      "14597",
+      "19597",
+      "20597",
+      "30807.B",
+      "20597.B",
+      "20597.N",
+      "30807.C",
+      "30807.G",
+      "19597.B",
+      "19597.M",
+      "14597.SL"
+    ],
+    "url": "https://www.vimar.com/es/int/catalog/product/index/code/02963"
+  },
+  {
+    "codigo": "02973.M",
+    "nombre": "Termostato rotatorio IoT 2M Metal",
+    "descripcion": "Termostato con mando giratorio, salida de relé NO 5(2) A 240 V~, tecnología IoT con estándar Bluetooth technology 5.0 para realización de sistema mesh View Wireless, 1 entrada para sensor de temperatura exterior, calefacción y aire acondicionado en modo ON/OFF y PID, dispositivo de control de temperatura de clase I (aportación 1%) en modo ON/OFF, de clase IV (aportación 2%) en modo PID, retroiluminación blanca de LED con regulación de intensidad, alimentación 100-240 V 50/60 Hz, Metal - 2 módulos. Se completa con placas Eikon, Arké, Plana. Para Idea se puede montar con soporte específico 16723",
+    "ruta": "Series residenciales / Series resid. View Wireless / Componentes comunes / Dispositivos",
+    "estado": "2 - Será eliminado",
+    "imagen": "https://www.vimar.com/irj/go/km/docs/z_catalogo/MAIN_IMAGE/02973_m-apparecchi-da-parete-termostato-rotella-connesso-iot-2m-metal.97516.jpg",
+    "ficha_pdf": "https://www.vimar.com/es/int/catalog/product/download-pdf/code/02973.M?type=.pdf",
+    "dibujos": [],
+    "certificados": [
+      {
+        "titulo": "00. Marcado CE - UE",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/CERTIFICATE/30810-02973-09473.108927.pdf"
+      },
+      {
+        "titulo": "46. UK PSTI compliance",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/CERTIFICATE/ZAT01748.108581.00.pdf"
+      },
+      {
+        "titulo": "99. Directiva RAEE",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/CERTIFICATE/IndicazioniRAEE2024.109839.pdf"
+      }
+    ],
+    "etim": [
+      {
+        "titulo": "Class group",
+        "valor": "Stats, switches and controllers"
+      },
+      {
+        "titulo": "Class",
+        "valor": "Room thermostat"
+      },
+      {
+        "titulo": "Model",
+        "valor": "On/Off"
+      },
+      {
+        "titulo": "Type of power supply",
+        "valor": "230 V AC"
+      },
+      {
+        "titulo": "Connection",
+        "valor": "3-/4-wire"
+      },
+      {
+        "titulo": "With receiver",
+        "valor": "No"
+      },
+      {
+        "titulo": "External sensor",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Thermal feedback",
+        "valor": "Parallel"
+      },
+      {
+        "titulo": "Control characteristic",
+        "valor": "PID"
+      },
+      {
+        "titulo": "Suitable for heating",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Number of heater outputs",
+        "valor": "1"
+      },
+      {
+        "titulo": "Number of cooler outputs",
+        "valor": "1"
+      },
+      {
+        "titulo": "Differential value",
+        "valor": "0,00 - 1,00 k"
+      },
+      {
+        "titulo": "Adjustable differential",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Temperature readable",
+        "valor": "Si"
+      },
+      {
+        "titulo": "With sound indicator",
+        "valor": "No"
+      },
+      {
+        "titulo": "Sensor/feeler type",
+        "valor": "Resistance sensor"
+      },
+      {
+        "titulo": "Mounting method",
+        "valor": "Flush-mounted"
+      },
+      {
+        "titulo": "Number of modules (module system)",
+        "valor": "2"
+      },
+      {
+        "titulo": "With display",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Operation",
+        "valor": "Turn"
+      },
+      {
+        "titulo": "With tap water circuit",
+        "valor": "No"
+      },
+      {
+        "titulo": "Max. contact voltage",
+        "valor": "230 V"
+      },
+      {
+        "titulo": "Max. contact load",
+        "valor": "5 A"
+      },
+      {
+        "titulo": "Explosion-proof",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Colour",
+        "valor": "Silver"
+      },
+      {
+        "titulo": "RAL-number",
+        "valor": "0"
+      },
+      {
+        "titulo": "Diameter",
+        "valor": "0,00 mm"
+      },
+      {
+        "titulo": "Class of the temperature control",
+        "valor": "IV"
+      }
+    ],
+    "pedido_minimo": "1 NR",
+    "ean": "8007352688599",
+    "embalajes": [
+      {
+        "ean": "8007352688599",
+        "cantidad": "1 NR",
+        "medidas": "5,7x5,3x7,7 [cm]",
+        "peso": "38 [g]"
+      },
+      {
+        "ean": "8007352746480",
+        "cantidad": "60 NR",
+        "medidas": "37,5x30x13,5 [cm]",
+        "peso": "2.520 [g]"
+      }
+    ],
+    "relacionados": [
+      "03981",
+      "03983",
+      "19597.M"
+    ],
+    "url": "https://www.vimar.com/es/int/catalog/product/index/code/02973.M"
+  },
+  {
+    "codigo": "02974",
+    "nombre": "Termostato rotatorio IoT FAN 2M gris",
+    "descripcion": "Termostato con mando giratorio, salida de relé NO 5(2) A 240 V~, mando fan-coil de 3 velocidades y proporcional, tecnología IoT con estándar Bluetooth technology 5.0 para realización de sistema mesh View Wireless, 1 entrada para sensor de temperatura exterior, calefacción y aire acondicionado en modo ON/OFF y PID, dispositivo de control de temperatura de clase I (aportación 1%) en modo ON/OFF, de clase IV (aportación 2%) en modo PID, retroiluminación blanca de LED con regulación de intensidad, alimentación 100-240 V 50/60 Hz, gris - 2 módulos. Se completa con placas Eikon, Arké, Plana. Para Idea se puede montar con soporte específico 16723",
+    "ruta": "Series residenciales / Series resid. View Wireless / Componentes comunes / Dispositivos",
+    "estado": "3 - Activo",
+    "imagen": "https://www.vimar.com/irj/go/km/docs/z_catalogo/MAIN_IMAGE/02974-vimar-serie-civili-view-wireless-termostato-rotella-connesso-iot-2m-grigio.112048.jpg",
+    "ficha_pdf": "https://www.vimar.com/es/int/catalog/product/download-pdf/code/02974?type=.pdf",
+    "dibujos": [
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGESIZE/DI_02974.108084.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGESIZE/DI_02974.108085.DXF"
+      },
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGEREAR/VP_02974.108076.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGEREAR/VP_02974.108077.DXF"
+      },
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/3DIMAGE/EA_02974.108068.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/3DIMAGE/EA_02974.108069.DXF"
+      }
+    ],
+    "certificados": [
+      {
+        "titulo": "00. Marcado CE - UE",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/CERTIFICATE/ZAT01922_00.114024.pdf"
+      },
+      {
+        "titulo": "46. UK PSTI compliance",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/CERTIFICATE/P639Termoregolazione.112002.pdf"
+      },
+      {
+        "titulo": "96. Experto electrotécnico",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/CERTIFICATE/Espertoelettrotecnico.116413.pdf"
+      },
+      {
+        "titulo": "99. Directiva RAEE",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/CERTIFICATE/IndicazioniRAEE2024.109839.pdf"
+      }
+    ],
+    "etim": [
+      {
+        "titulo": "Class group",
+        "valor": "Stats, switches and controllers"
+      },
+      {
+        "titulo": "Class",
+        "valor": "Room thermostat"
+      },
+      {
+        "titulo": "Colour",
+        "valor": "Grey"
+      }
+    ],
+    "pedido_minimo": "1 NR",
+    "ean": "8007352754461",
+    "embalajes": [
+      {
+        "ean": "8007352754461",
+        "cantidad": "1 NR",
+        "medidas": "6x5,4x5,2 [cm]",
+        "peso": "62,8 [g]"
+      },
+      {
+        "ean": "8007352754478",
+        "cantidad": "60 NR",
+        "medidas": "37,5x30x13,5 [cm]",
+        "peso": "4.128 [g]"
+      }
+    ],
+    "relacionados": [],
+    "url": "https://www.vimar.com/es/int/catalog/product/index/code/02974"
+  },
+  {
+    "codigo": "02974.B",
+    "nombre": "Termostato rotatorio IoT FAN 2M blanco",
+    "descripcion": "Termostato con mando giratorio, salida de relé NO 5(2) A 240 V~, mando fan-coil de 3 velocidades y proporcional, tecnología IoT con estándar Bluetooth technology 5.0 para realización de sistema mesh View Wireless, 1 entrada para sensor de temperatura exterior, calefacción y aire acondicionado en modo ON/OFF y PID, dispositivo de control de temperatura de clase I (aportación 1%) en modo ON/OFF, de clase IV (aportación 2%) en modo PID, retroiluminación blanca de LED con regulación de intensidad, alimentación 100-240 V 50/60 Hz, blanco - 2 módulos. Se completa con placas Eikon, Arké, Plana. Para Idea se puede montar con soporte específico 16723",
+    "ruta": "Series residenciales / Series resid. View Wireless / Componentes comunes / Dispositivos",
+    "estado": "3 - Activo",
+    "imagen": "https://www.vimar.com/irj/go/km/docs/z_catalogo/MAIN_IMAGE/02974_b-vimar-serie-civili-view-wireless-termostato-rotella-connesso-iot-2m-bianco.112049.jpg",
+    "ficha_pdf": "https://www.vimar.com/es/int/catalog/product/download-pdf/code/02974.B?type=.pdf",
+    "dibujos": [
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGESIZE/DI_02974.108084.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGESIZE/DI_02974.108085.DXF"
+      },
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGEREAR/VP_02974.108076.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGEREAR/VP_02974.108077.DXF"
+      },
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/3DIMAGE/EA_02974.108068.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/3DIMAGE/EA_02974.108069.DXF"
+      }
+    ],
+    "certificados": [
+      {
+        "titulo": "00. Marcado CE - UE",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/CERTIFICATE/ZAT01922_00.114024.pdf"
+      },
+      {
+        "titulo": "46. UK PSTI compliance",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/CERTIFICATE/P639Termoregolazione.112002.pdf"
+      },
+      {
+        "titulo": "96. Experto electrotécnico",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/CERTIFICATE/Espertoelettrotecnico.116413.pdf"
+      },
+      {
+        "titulo": "99. Directiva RAEE",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/CERTIFICATE/IndicazioniRAEE2024.109839.pdf"
+      }
+    ],
+    "etim": [
+      {
+        "titulo": "Class group",
+        "valor": "Stats, switches and controllers"
+      },
+      {
+        "titulo": "Class",
+        "valor": "Room thermostat"
+      },
+      {
+        "titulo": "Colour",
+        "valor": "White"
+      }
+    ],
+    "pedido_minimo": "1 NR",
+    "ean": "8007352754423",
+    "embalajes": [
+      {
+        "ean": "8007352754423",
+        "cantidad": "1 NR",
+        "medidas": "6x5,4x5,2 [cm]",
+        "peso": "62,8 [g]"
+      },
+      {
+        "ean": "8007352754430",
+        "cantidad": "60 NR",
+        "medidas": "37,5x30x13,5 [cm]",
+        "peso": "4.128 [g]"
+      }
+    ],
+    "relacionados": [],
+    "url": "https://www.vimar.com/es/int/catalog/product/index/code/02974.B"
+  },
+  {
+    "codigo": "02974.M",
+    "nombre": "Termostato rotatorio IoT FAN 2M Metal",
+    "descripcion": "Termostato con mando giratorio, salida de relé NO 5(2) A 240 V~, mando fan-coil de 3 velocidades y proporcional, tecnología IoT con estándar Bluetooth technology 5.0 para realización de sistema mesh View Wireless, 1 entrada para sensor de temperatura exterior, calefacción y aire acondicionado en modo ON/OFF y PID, dispositivo de control de temperatura de clase I (aportación 1%) en modo ON/OFF, de clase IV (aportación 2%) en modo PID, retroiluminación blanca de LED con regulación de intensidad, alimentación 100-240 V 50/60 Hz, metal - 2 módulos. Se completa con placas Eikon, Arké, Plana. Para Idea se puede montar con soporte específico 16723",
+    "ruta": "Series residenciales / Series resid. View Wireless / Componentes comunes / Dispositivos",
+    "estado": "3 - Activo",
+    "imagen": "https://www.vimar.com/irj/go/km/docs/z_catalogo/MAIN_IMAGE/02974_m-vimar-serie-civili-view-wireless-termostato-rotella-connesso-iot-2m-metal.112050.jpg",
+    "ficha_pdf": "https://www.vimar.com/es/int/catalog/product/download-pdf/code/02974.M?type=.pdf",
+    "dibujos": [
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGESIZE/DI_02974.108084.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGESIZE/DI_02974.108085.DXF"
+      },
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGEREAR/VP_02974.108076.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGEREAR/VP_02974.108077.DXF"
+      },
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/3DIMAGE/EA_02974.108068.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/3DIMAGE/EA_02974.108069.DXF"
+      }
+    ],
+    "certificados": [
+      {
+        "titulo": "00. Marcado CE - UE",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/CERTIFICATE/ZAT01922_00.114024.pdf"
+      },
+      {
+        "titulo": "46. UK PSTI compliance",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/CERTIFICATE/P639Termoregolazione.112002.pdf"
+      },
+      {
+        "titulo": "96. Experto electrotécnico",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/CERTIFICATE/Espertoelettrotecnico.116413.pdf"
+      },
+      {
+        "titulo": "99. Directiva RAEE",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/CERTIFICATE/IndicazioniRAEE2024.109839.pdf"
+      }
+    ],
+    "etim": [
+      {
+        "titulo": "Class group",
+        "valor": "Stats, switches and controllers"
+      },
+      {
+        "titulo": "Class",
+        "valor": "Room thermostat"
+      },
+      {
+        "titulo": "Colour",
+        "valor": "Silver"
+      }
+    ],
+    "pedido_minimo": "1 NR",
+    "ean": "8007352754447",
+    "embalajes": [
+      {
+        "ean": "8007352754447",
+        "cantidad": "1 NR",
+        "medidas": "6x5,4x5,2 [cm]",
+        "peso": "38 [g]"
+      },
+      {
+        "ean": "8007352754454",
+        "cantidad": "60 NR",
+        "medidas": "37,5x30x13,5 [cm]",
+        "peso": "2.520 [g]"
+      }
+    ],
+    "relacionados": [],
+    "url": "https://www.vimar.com/es/int/catalog/product/index/code/02974.M"
+  },
+  {
+    "codigo": "02974.N",
+    "nombre": "Termostato rotatorio IoT FAN 2M Next",
+    "descripcion": "Termostato con mando giratorio, salida de relé NO 5(2) A 240 V~, mando fan-coil de 3 velocidades y proporcional, tecnología IoT con estándar Bluetooth technology 5.0 para realización de sistema mesh View Wireless, 1 entrada para sensor de temperatura exterior, calefacción y aire acondicionado en modo ON/OFF y PID, dispositivo de control de temperatura de clase I (aportación 1%) en modo ON/OFF, de clase IV (aportación 2%) en modo PID, retroiluminación blanca de LED con regulación de intensidad, alimentación 100-240 V 50/60 Hz, Next - 2 módulos. Se completa con placas Eikon, Arké, Plana. Para Idea se puede montar con soporte específico 16723",
+    "ruta": "Series residenciales / Series resid. View Wireless / Componentes comunes / Dispositivos",
+    "estado": "3 - Activo",
+    "imagen": "https://www.vimar.com/irj/go/km/docs/z_catalogo/MAIN_IMAGE/02974_n-vimar-serie-civili-view-wireless-termostato-rotella-connesso-iot-2m-next.112051.jpg",
+    "ficha_pdf": "https://www.vimar.com/es/int/catalog/product/download-pdf/code/02974.N?type=.pdf",
+    "dibujos": [
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGESIZE/DI_02974.108084.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGESIZE/DI_02974.108085.DXF"
+      },
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGEREAR/VP_02974.108076.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGEREAR/VP_02974.108077.DXF"
+      },
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/3DIMAGE/EA_02974.108068.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/3DIMAGE/EA_02974.108069.DXF"
+      }
+    ],
+    "certificados": [
+      {
+        "titulo": "00. Marcado CE - UE",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/CERTIFICATE/ZAT01922_00.114024.pdf"
+      },
+      {
+        "titulo": "46. UK PSTI compliance",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/CERTIFICATE/P639Termoregolazione.112002.pdf"
+      },
+      {
+        "titulo": "96. Experto electrotécnico",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/CERTIFICATE/Espertoelettrotecnico.116413.pdf"
+      },
+      {
+        "titulo": "99. Directiva RAEE",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/CERTIFICATE/IndicazioniRAEE2024.109839.pdf"
+      }
+    ],
+    "etim": [
+      {
+        "titulo": "Class group",
+        "valor": "Stats, switches and controllers"
+      },
+      {
+        "titulo": "Class",
+        "valor": "Room thermostat"
+      },
+      {
+        "titulo": "Colour",
+        "valor": "Silver"
+      }
+    ],
+    "pedido_minimo": "1 NR",
+    "ean": "8007352754409",
+    "embalajes": [
+      {
+        "ean": "8007352754409",
+        "cantidad": "1 NR",
+        "medidas": "6x5,4x5,2 [cm]",
+        "peso": "71,2 [g]"
+      },
+      {
+        "ean": "8007352754416",
+        "cantidad": "60 NR",
+        "medidas": "37,5x30x13,5 [cm]",
+        "peso": "4.579,2 [g]"
+      }
+    ],
+    "relacionados": [],
+    "url": "https://www.vimar.com/es/int/catalog/product/index/code/02974.N"
+  },
+  {
+    "codigo": "03981",
+    "nombre": "Módulo relé conectado IoT",
+    "descripcion": "Actuador electrónico conectado View Wireless con salida de relé NO 100-240 V 50/60 Hz para lámparas incandescentes 500 W, lámparas de LED 100 W,transformadores electrónicos 250 VA, lámparas fluorescentes 120 W, control de remoto, 1 entrada para el mando hilar de elección escenario, doble tecnologíaestándar Bluetooth® wireless technology 5.0 para sistema mesh View Wireless y estándar Zigbee 3.0, alimentación 100-240 V 50/60 Hz, montaje de empotrar(detrás de otro aparato)",
+    "ruta": "Series residenciales / Series resid. View Wireless / Componentes comunes / Componentes no modulares",
+    "estado": "3 - Activo",
+    "imagen": "https://www.vimar.com/irj/go/km/docs/z_catalogo/MAIN_IMAGE/03981-vimar-apparecchi-da-parete-modulo-rele-connesso-iot.90808.jpg",
+    "ficha_pdf": "https://www.vimar.com/es/int/catalog/product/download-pdf/code/03981?type=.pdf",
+    "dibujos": [
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGESIZE/DI_03981.89726.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGESIZE/DI_03981.89727.DXF"
+      },
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGEREAR/VP_03981.89720.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGEREAR/VP_03981.89721.DXF"
+      },
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/3DIMAGE/EA_03981.89704.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/3DIMAGE/EA_03981.89705.DXF"
+      }
+    ],
+    "certificados": [
+      {
+        "titulo": "00. Marcado CE - UE",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/CERTIFICATE/ZAT00996_00-CE-03981-03982.90125.pdf"
+      },
+      {
+        "titulo": "01. IMQ - Italia",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/CERTIFICATE/IMQ_CA02.109748.06532.pdf"
+      },
+      {
+        "titulo": "06. SUBTEL - Chile",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/CERTIFICATE/Aprobado03981.108553.iot16666_VIMAR.pdf"
+      },
+      {
+        "titulo": "46. UK PSTI compliance",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/CERTIFICATE/ZAT01748.108581.00.pdf"
+      },
+      {
+        "titulo": "99. Directiva RAEE",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/CERTIFICATE/IndicazioniRAEE2024.109839.pdf"
+      }
+    ],
+    "etim": [
+      {
+        "titulo": "Class group",
+        "valor": "Installation bus systems"
+      },
+      {
+        "titulo": "Class",
+        "valor": "Switch actuator for bus system"
+      },
+      {
+        "titulo": "Bus system KNX",
+        "valor": "No"
+      },
+      {
+        "titulo": "Bus system KNX-RF (Radio Frequency)",
+        "valor": "No"
+      },
+      {
+        "titulo": "Bus system radio frequency",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Bus system LON",
+        "valor": "No"
+      },
+      {
+        "titulo": "Bus system Powernet",
+        "valor": "No"
+      },
+      {
+        "titulo": "Other bus systems",
+        "valor": "Zigbee"
+      },
+      {
+        "titulo": "Radio frequency bidirectional",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Mounting method",
+        "valor": "Surface mounted/flush mounted/built-in"
+      },
+      {
+        "titulo": "Width in number of modular spacings",
+        "valor": "0"
+      },
+      {
+        "titulo": "Local operation/hand operation",
+        "valor": "No"
+      },
+      {
+        "titulo": "With LED indication",
+        "valor": "No"
+      }
+    ],
+    "pedido_minimo": "1 NR",
+    "ean": "8007352648494",
+    "embalajes": [
+      {
+        "ean": "8007352648494",
+        "cantidad": "1 NR",
+        "medidas": "5,2x3,5x5,3 [cm]",
+        "peso": "41 [g]"
+      },
+      {
+        "ean": "8007352648500",
+        "cantidad": "60 NR",
+        "medidas": "27x23x12,5 [cm]",
+        "peso": "2.658 [g]"
+      }
+    ],
+    "relacionados": [
+      "14597",
+      "19597",
+      "09597.CM",
+      "09597",
+      "20597",
+      "30807.B",
+      "14591.0",
+      "19591.0",
+      "30801",
+      "20591.0"
+    ],
+    "url": "https://www.vimar.com/es/int/catalog/product/index/code/03981"
+  },
+  {
+    "codigo": "03982",
+    "nombre": "Módulo persiana conectado IoT",
+    "descripcion": "Actuador electrónico conectado View Wireless para 1 persiana con orientación de láminas con salida de relé conmutada para motor cosφ 0,6 2 A 100-240V~ 50/60 Hz, control de remoto, doble tecnología estándar Bluetooth® wireless technology 5.0 para realización de sistema mesh View Wireless y estándarZigbee 3.0, alimentación 100-240 V 50/60 Hz, montaje de empotrar (detrás de otro aparato)",
+    "ruta": "Series residenciales / Series resid. View Wireless / Componentes comunes / Componentes no modulares",
+    "estado": "3 - Activo",
+    "imagen": "https://www.vimar.com/irj/go/km/docs/z_catalogo/MAIN_IMAGE/03982-vimar-apparecchi-da-parete-modulo-tapparella-connesso-iot.90809.jpg",
+    "ficha_pdf": "https://www.vimar.com/es/int/catalog/product/download-pdf/code/03982?type=.pdf",
+    "dibujos": [
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGESIZE/DI_03982.89728.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGESIZE/DI_03982.89729.DXF"
+      },
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGEREAR/VP_03982.89722.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGEREAR/VP_03982.89723.DXF"
+      },
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/3DIMAGE/EA_03982.89706.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/3DIMAGE/EA_03982.89707.DXF"
+      }
+    ],
+    "certificados": [
+      {
+        "titulo": "00. Marcado CE - UE",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/CERTIFICATE/ZAT00996_00-CE-03981-03982.90125.pdf"
+      },
+      {
+        "titulo": "01. IMQ - Italia",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/CERTIFICATE/IMQ_CA02.109625.06534.pdf"
+      },
+      {
+        "titulo": "06. SUBTEL - Chile",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/CERTIFICATE/Aprobado03982.108554.iot16667_VIMAR.pdf"
+      },
+      {
+        "titulo": "46. UK PSTI compliance",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/CERTIFICATE/ZAT01748.108581.00.pdf"
+      },
+      {
+        "titulo": "99. Directiva RAEE",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/CERTIFICATE/IndicazioniRAEE2024.109839.pdf"
+      }
+    ],
+    "etim": [
+      {
+        "titulo": "Class group",
+        "valor": "Installation bus systems"
+      },
+      {
+        "titulo": "Class",
+        "valor": "Shutting actuator for bus system"
+      },
+      {
+        "titulo": "Bus system KNX",
+        "valor": "No"
+      },
+      {
+        "titulo": "Bus system KNX-RF (Radio Frequency)",
+        "valor": "No"
+      },
+      {
+        "titulo": "Bus system radio frequency",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Bus system LON",
+        "valor": "No"
+      },
+      {
+        "titulo": "Bus system Powernet",
+        "valor": "No"
+      },
+      {
+        "titulo": "Other bus systems",
+        "valor": "Zigbee"
+      },
+      {
+        "titulo": "Mounting method",
+        "valor": "Built-in"
+      },
+      {
+        "titulo": "Width in number of modular spacings",
+        "valor": "0"
+      },
+      {
+        "titulo": "Local operation/hand operation",
+        "valor": "Si"
+      },
+      {
+        "titulo": "With LED indication",
+        "valor": "Si"
+      }
+    ],
+    "pedido_minimo": "1 NR",
+    "ean": "8007352648517",
+    "embalajes": [
+      {
+        "ean": "8007352648517",
+        "cantidad": "1 NR",
+        "medidas": "5,2x3,5x5,3 [cm]",
+        "peso": "45,1 [g]"
+      },
+      {
+        "ean": "8007352648524",
+        "cantidad": "60 NR",
+        "medidas": "27x23x12,5 [cm]",
+        "peso": "2.897,9 [g]"
+      }
+    ],
+    "relacionados": [
+      "14597",
+      "19597",
+      "09597.CM",
+      "09597",
+      "20597",
+      "30807.B",
+      "14591.0",
+      "19591.0",
+      "30801",
+      "20591.0"
+    ],
+    "url": "https://www.vimar.com/es/int/catalog/product/index/code/03982"
+  },
+  {
+    "codigo": "03983",
+    "nombre": "Módulo 3IN 1OUT conectado IoT",
+    "descripcion": "Módulo electrónico VIEW inalámbrico con 3 entradas digitales programables para contactos libres de potencial, 1 salida de relé NO/NC programable para contacto libre de tensión SELV, tecnología IoT con estándar Bluetooth 5.0 para realización de sistema mesh VIEW inalámbrico, alimentación 100-240 V 50/60 Hz, montaje de empotrar (montaje detrás de otro dispositivo)",
+    "ruta": "Series residenciales / Series resid. View Wireless / Componentes comunes / Componentes no modulares",
+    "estado": "3 - Activo",
+    "imagen": "https://www.vimar.com/irj/go/km/docs/z_catalogo/MAIN_IMAGE/03983-vimar-serie-civili-view-wireless-modulo-3in-1out-connesso-iot.112212.jpg",
+    "ficha_pdf": "https://www.vimar.com/es/int/catalog/product/download-pdf/code/03983?type=.pdf",
+    "dibujos": [
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGESIZE/DI_03983.111510.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGESIZE/DI_03983.111511.DXF"
+      },
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGEREAR/VP_03983.111494.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGEREAR/VP_03983.111495.DXF"
+      },
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/3DIMAGE/EA_03983.111476.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/3DIMAGE/EA_03983.111477.DXF"
+      }
+    ],
+    "certificados": [
+      {
+        "titulo": "00. Marcado CE - UE",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/CERTIFICATE/03983.112325.pdf"
+      },
+      {
+        "titulo": "46. UK PSTI compliance",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/CERTIFICATE/P639Termoregolazione.112002.pdf"
+      }
+    ],
+    "etim": [
+      {
+        "titulo": "Class group",
+        "valor": "Relays"
+      },
+      {
+        "titulo": "Class",
+        "valor": "Switching relay"
+      },
+      {
+        "titulo": "Type of electric connection",
+        "valor": "Screw connection"
+      },
+      {
+        "titulo": "Complete with socket",
+        "valor": "Si"
+      },
+      {
+        "titulo": "With detachable clamps",
+        "valor": "No"
+      },
+      {
+        "titulo": "With LED indication",
+        "valor": "No"
+      },
+      {
+        "titulo": "Voltage type for actuating",
+        "valor": "AC"
+      },
+      {
+        "titulo": "Drive, polarization",
+        "valor": "Polarity free"
+      },
+      {
+        "titulo": "Degree of protection (IP)",
+        "valor": "IP20"
+      },
+      {
+        "titulo": "Width",
+        "valor": "55,10 mm"
+      },
+      {
+        "titulo": "Height",
+        "valor": "54,30 mm"
+      },
+      {
+        "titulo": "Depth",
+        "valor": "23,00 mm"
+      }
+    ],
+    "pedido_minimo": "1 NR",
+    "ean": "8007352761254",
+    "embalajes": [
+      {
+        "ean": "8007352761254",
+        "cantidad": "1 NR",
+        "medidas": "6x5,4x5,2 [cm]",
+        "peso": "49 [g]"
+      },
+      {
+        "ean": "8007352761261",
+        "cantidad": "60 NR",
+        "medidas": "37,5x30x13,5 [cm]",
+        "peso": "3.300 [g]"
+      }
+    ],
+    "relacionados": [
+      "14597",
+      "19597",
+      "09597.CM",
+      "09597",
+      "20597",
+      "30807.B",
+      "14591.0",
+      "19591.0",
+      "30801",
+      "20591.0",
+      "03895"
+    ],
+    "url": "https://www.vimar.com/es/int/catalog/product/index/code/03983"
+  },
+  {
+    "codigo": "03985",
+    "nombre": "Actuador multif. 4out relé conectado IoT",
+    "descripcion": "Actuador de mando electrónico VIEW inalámbrico con 4 salidas de relé 16 A 240 V~, NO/NC programables con función de control luces, persianas con orientación de láminas, fan-coil, climatización, accesos, pulsadores para control local, tecnología IoT con estándar Bluetooth 5.0 para realización de sistema mesh VIEW inalámbrico, alimentación 100-240 V 50/60 Hz, montaje sobre guía DIN (60715 TH35), ocupa 4 módulos de 17,5 mm",
+    "ruta": "Series residenciales / Series resid. View Wireless / Componentes comunes / Aparatos DIN",
+    "estado": "3 - Activo",
+    "imagen": "https://www.vimar.com/irj/go/km/docs/z_catalogo/MAIN_IMAGE/03985-vimar-serie-civili-view-wireless-attuatore-multif-4out-rele-connesso-iot.109684.jpg",
+    "ficha_pdf": "https://www.vimar.com/es/int/catalog/product/download-pdf/code/03985?type=.pdf",
+    "dibujos": [
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGESIZE/DI_03985.109639.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGESIZE/DI_03985.109640.DXF"
+      },
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGEREAR/VP_03985.109635.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGEREAR/VP_03985.109636.DXF"
+      },
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/3DIMAGE/EA_03985.109631.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/3DIMAGE/EA_03985.109632.DXF"
+      }
+    ],
+    "certificados": [
+      {
+        "titulo": "00. Marcado CE - UE",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/CERTIFICATE/03985.112326.pdf"
+      },
+      {
+        "titulo": "46. UK PSTI compliance",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/CERTIFICATE/P639Termoregolazione.112002.pdf"
+      }
+    ],
+    "etim": [
+      {
+        "titulo": "Class group",
+        "valor": "Installation bus systems"
+      },
+      {
+        "titulo": "Class",
+        "valor": "Switch actuator for bus system"
+      },
+      {
+        "titulo": "Bus system KNX",
+        "valor": "No"
+      },
+      {
+        "titulo": "Bus system KNX-RF (Radio Frequency)",
+        "valor": "No"
+      },
+      {
+        "titulo": "Bus system radio frequency",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Bus system LON",
+        "valor": "No"
+      },
+      {
+        "titulo": "Bus system Powernet",
+        "valor": "No"
+      },
+      {
+        "titulo": "Other bus systems",
+        "valor": "None"
+      },
+      {
+        "titulo": "Radio frequency bidirectional",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Mounting method",
+        "valor": "DRA (DIN-rail adaptor)"
+      },
+      {
+        "titulo": "Width in number of modular spacings",
+        "valor": "4"
+      },
+      {
+        "titulo": "Local operation/hand operation",
+        "valor": "Si"
+      },
+      {
+        "titulo": "With LED indication",
+        "valor": "Si"
+      }
+    ],
+    "pedido_minimo": "1 NR",
+    "ean": "8007352767416",
+    "embalajes": [
+      {
+        "ean": "8007352767416",
+        "cantidad": "1 NR",
+        "medidas": "11,7x10,8x7,1 [cm]",
+        "peso": "241,7 [g]"
+      },
+      {
+        "ean": "8007352767423",
+        "cantidad": "60 NR",
+        "medidas": "59x38,5x30 [cm]",
+        "peso": "15.225 [g]"
+      }
+    ],
+    "relacionados": [
+      "14597",
+      "19597",
+      "09597.CM",
+      "09597",
+      "20597",
+      "30807.B",
+      "14591.0",
+      "19591.0",
+      "30801",
+      "20591.0"
+    ],
+    "url": "https://www.vimar.com/es/int/catalog/product/index/code/03985"
+  },
+  {
+    "codigo": "03986",
+    "nombre": "Actuador 0/1-10Vdc + relé conectado IoT",
+    "descripcion": "Actuador de mando electrónico VIEW inalámbrico con 1 salida analógica proporcional 0/1-10 V con tensión regulable, 1 salida de relé 10 AX 100-240 V~ 50/60 Hz, NO/NC programable con función de control luces, fan-coil, climatización, accesos, tecnología IoT con estándar Bluetooth 5.0 para realización de sistema mesh VIEW inalámbrico, alimentación 100-240 V 50/60 Hz, montaje sobre guía DIN (60715 TH35), ocupa 2 módulos de 17,5 mm",
+    "ruta": "Series residenciales / Series resid. View Wireless / Componentes comunes / Aparatos DIN",
+    "estado": "3 - Activo",
+    "imagen": "https://www.vimar.com/irj/go/km/docs/z_catalogo/MAIN_IMAGE/03986-vimar-serie-civili-view-wireless-attuatore-0_1-10vdc-rele-connesso-iot.109685.jpg",
+    "ficha_pdf": "https://www.vimar.com/es/int/catalog/product/download-pdf/code/03986?type=.pdf",
+    "dibujos": [
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGESIZE/DI_03986.109641.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGESIZE/DI_03986.109642.DXF"
+      },
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGEREAR/VP_03986.109637.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGEREAR/VP_03986.109638.DXF"
+      },
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/3DIMAGE/EA_03986.109633.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/3DIMAGE/EA_03986.109634.DXF"
+      }
+    ],
+    "certificados": [
+      {
+        "titulo": "00. Marcado CE - UE",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/CERTIFICATE/03986.112327.pdf"
+      },
+      {
+        "titulo": "46. UK PSTI compliance",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/CERTIFICATE/P639Termoregolazione.112002.pdf"
+      }
+    ],
+    "etim": [
+      {
+        "titulo": "Class group",
+        "valor": "Installation bus systems"
+      },
+      {
+        "titulo": "Class",
+        "valor": "Dimming actuator for bus system"
+      },
+      {
+        "titulo": "Bus system KNX",
+        "valor": "No"
+      },
+      {
+        "titulo": "Bus system KNX-RF (Radio Frequency)",
+        "valor": "No"
+      },
+      {
+        "titulo": "Bus system radio frequency",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Bus system LON",
+        "valor": "No"
+      },
+      {
+        "titulo": "Bus system Powernet",
+        "valor": "No"
+      },
+      {
+        "titulo": "Other bus systems",
+        "valor": "Other"
+      },
+      {
+        "titulo": "Radio frequency bidirectional",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Model",
+        "valor": "Dimming actuator"
+      },
+      {
+        "titulo": "Mounting method",
+        "valor": "Other"
+      },
+      {
+        "titulo": "Width in number of modular spacings",
+        "valor": "2"
+      },
+      {
+        "titulo": "Local operation/hand operation",
+        "valor": "Si"
+      },
+      {
+        "titulo": "With LED indication",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Number of outputs",
+        "valor": "2"
+      },
+      {
+        "titulo": "Type of load",
+        "valor": "Universal"
+      },
+      {
+        "titulo": "Max. control current",
+        "valor": "10.000 mA"
+      },
+      {
+        "titulo": "Degree of protection (IP)",
+        "valor": "IP40"
+      }
+    ],
+    "pedido_minimo": "1 NR",
+    "ean": "8007352767430",
+    "embalajes": [
+      {
+        "ean": "8007352767430",
+        "cantidad": "1 NR",
+        "medidas": "14,2x6,2x5,6 [cm]",
+        "peso": "134 [g]"
+      },
+      {
+        "ean": "8007352767447",
+        "cantidad": "40 NR",
+        "medidas": "37x28,5x25 [cm]",
+        "peso": "5.700 [g]"
+      }
+    ],
+    "relacionados": [
+      "14597",
+      "19597",
+      "09597.CM",
+      "09597",
+      "20597",
+      "30807.B",
+      "14591.0",
+      "19591.0",
+      "30801",
+      "20591.0"
+    ],
+    "url": "https://www.vimar.com/es/int/catalog/product/index/code/03986"
+  },
+  {
+    "codigo": "03989",
+    "nombre": "Cabezal termostático conectado IoT",
+    "descripcion": "Cabezal termostático, tecnología IoT, estándar Bluetooth technology 5.0 para realización de sistema mesh View Wireless, calefacción en modo PI, aparato de control de temperatura de clase IV (aportación 2%), pantalla con retroiluminación de LEDs blancos, alimentación con pilas alcalinas (no recargables), montaje en radiadores con válvulas de regulación de caudal. Adaptadores mecánicos suministrados para la compatibilidad con las principales válvulas: RA Danfoss, RAV Danfoss, RAVL, Danfoss, Giacomini, Caleffi, M28x1.5, FAR.",
+    "ruta": "Series residenciales / Series resid. View Wireless / Componentes comunes / Dispositivos",
+    "estado": "3 - Activo",
+    "imagen": "https://www.vimar.com/irj/go/km/docs/z_catalogo/MAIN_IMAGE/03989-vimar-serie-civili-view-wireless-testina-termostatica-connessa-iot.112108.jpg",
+    "ficha_pdf": "https://www.vimar.com/es/int/catalog/product/download-pdf/code/03989?type=.pdf",
+    "dibujos": [
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGESIZE/DI_03989.112368.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGESIZE/DI_03989.112369.DXF"
+      },
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGEREAR/VP_03989.112362.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGEREAR/VP_03989.112363.DXF"
+      },
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/3DIMAGE/EA_03989.112356.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/3DIMAGE/EA_03989.112357.DXF"
+      }
+    ],
+    "certificados": [
+      {
+        "titulo": "00. Marcado CE - UE",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/CERTIFICATE/03989.112328.pdf"
+      },
+      {
+        "titulo": "46. UK PSTI compliance",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/CERTIFICATE/P639Termoregolazione.112002.pdf"
+      }
+    ],
+    "etim": [
+      {
+        "titulo": "Class group",
+        "valor": "Stats, switches and controllers"
+      },
+      {
+        "titulo": "Class",
+        "valor": "Room thermostat"
+      },
+      {
+        "titulo": "Colour",
+        "valor": "White"
+      }
+    ],
+    "pedido_minimo": "1 NR",
+    "ean": "8007352753877",
+    "embalajes": [
+      {
+        "ean": "8007352753877",
+        "cantidad": "1 NR",
+        "medidas": "14x8,3x6,5 [cm]",
+        "peso": "223 [g]"
+      },
+      {
+        "ean": "8007352761278",
+        "cantidad": "24 NR",
+        "medidas": "30,5x27,5x26,5 [cm]",
+        "peso": "5.352 [g]"
+      }
+    ],
+    "relacionados": [],
+    "url": "https://www.vimar.com/es/int/catalog/product/index/code/03989"
+  },
+  {
+    "codigo": "0K14597.01",
+    "nombre": "Gateway 2M riel DIN blanco",
+    "descripcion": "Gateway IoT Bluetooth Wi-Fi para integración, configuración, supervisión de View Wireless, a través de la nube y aplicación para smartphone, Tablet, alimentación 100-240 V 50/60 Hz, instalación en riel DIN (60715 TH35), ocupa 2 módulos de 17,5 mm",
+    "ruta": "Series residenciales / Series resid. View Wireless / Componentes comunes / Aparatos DIN",
+    "estado": "3 - Activo",
+    "imagen": "https://www.vimar.com/irj/go/km/docs/z_catalogo/MAIN_IMAGE/0K14597_01-vimar-apparecchi-da-parete-gateway-connesso-iot-2m-barra-din.93021.jpg",
+    "ficha_pdf": "https://www.vimar.com/es/int/catalog/product/download-pdf/code/0K14597.01?type=.pdf",
+    "dibujos": [],
+    "certificados": [
+      {
+        "titulo": "00. Marcado CE - UE",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/CERTIFICATE/p3.111277.pdf"
+      },
+      {
+        "titulo": "01. IMQ - Italia",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/CERTIFICATE/CA09.105409.00422_2022-12-14.pdf"
+      },
+      {
+        "titulo": "41. Wi-Fi CERTIFIED",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/CERTIFICATE/Certificate_WFA92204.114256.pdf"
+      },
+      {
+        "titulo": "46. UK PSTI compliance",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/CERTIFICATE/ZAT01748.108581.00.pdf"
+      },
+      {
+        "titulo": "96. Experto electrotécnico",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/CERTIFICATE/Espertoelettrotecnico.116413.pdf"
+      },
+      {
+        "titulo": "99. Directiva RAEE",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/CERTIFICATE/IndicazioniRAEE2024.109839.pdf"
+      }
+    ],
+    "etim": [
+      {
+        "titulo": "Class group",
+        "valor": "Installation bus systems"
+      },
+      {
+        "titulo": "Class",
+        "valor": "System interface/media gateway for bus system"
+      },
+      {
+        "titulo": "Bus system KNX",
+        "valor": "No"
+      },
+      {
+        "titulo": "Bus system KNX-RF (Radio Frequency)",
+        "valor": "No"
+      },
+      {
+        "titulo": "Bus system radio frequency",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Bus system LON",
+        "valor": "No"
+      },
+      {
+        "titulo": "Bus system Powernet",
+        "valor": "No"
+      },
+      {
+        "titulo": "Other bus systems",
+        "valor": "Other"
+      },
+      {
+        "titulo": "Radio frequency bidirectional",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Model",
+        "valor": "Bluetooth interface"
+      },
+      {
+        "titulo": "Mounting method",
+        "valor": "DRA (DIN-rail adaptor)"
+      },
+      {
+        "titulo": "Width in number of modular spacings",
+        "valor": "2"
+      },
+      {
+        "titulo": "Demounting protection",
+        "valor": "No"
+      },
+      {
+        "titulo": "With LED indication",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Updateable",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Protocol",
+        "valor": "Other"
+      },
+      {
+        "titulo": "Provider dependent",
+        "valor": "No"
+      },
+      {
+        "titulo": "Visualization",
+        "valor": "No"
+      },
+      {
+        "titulo": "Web-Server",
+        "valor": "Si"
+      },
+      {
+        "titulo": "Radio interface",
+        "valor": "Si"
+      },
+      {
+        "titulo": "IR interface",
+        "valor": "No"
+      }
+    ],
+    "pedido_minimo": "1 NR",
+    "ean": "8007352668218",
+    "embalajes": [
+      {
+        "ean": "8007352668218",
+        "cantidad": "1 NR",
+        "medidas": "11,7x10,8x7,1 [cm]",
+        "peso": "119,2 [g]"
+      }
+    ],
+    "relacionados": [
+      "14597",
+      "19597",
+      "20597",
+      "30807.B",
+      "02963",
+      "20597.B",
+      "20597.N",
+      "30807.C",
+      "30807.G",
+      "19597.B",
+      "19597.M",
+      "14597.SL"
+    ],
+    "url": "https://www.vimar.com/es/int/catalog/product/index/code/0K14597.01"
+  },
+  {
+    "codigo": "03980",
+    "nombre": "Contacto magnético conectado",
+    "descripcion": "Contacto megnético connectado para puertas y ventanas, View Wireless, estándar Bluetooth 5.0 para la realización sistema mesh, 1 entrada para contacto limpio, alimentación por baterías AA LR6 1,5 V (no suministradas), blanco. Utilizable como accesorio del termostato conectado o con gateway IoT, como sensor de notificación abertura/cierre del contacto.",
+    "ruta": "Series residenciales / Series resid. View Wireless / Componentes de superficie / Componentes no modulares",
+    "estado": "3 - Activo",
+    "imagen": "https://www.vimar.com/irj/go/km/docs/z_catalogo/MAIN_IMAGE/03980-vimar-apparecchi-da-parete-contatto-magn-connesso-iot-a-batteria.91222.jpg",
+    "ficha_pdf": "https://www.vimar.com/es/int/catalog/product/download-pdf/code/03980?type=.pdf",
+    "dibujos": [
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGESIZE/DI_03980.90871.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGESIZE/DI_03980.90872.DXF"
+      },
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGEREAR/VP_03980.90869.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/2DIMAGEREAR/VP_03980.90870.DXF"
+      },
+      {
+        "tipo": "PNG",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/3DIMAGE/EA_03980.90867.PNG"
+      },
+      {
+        "tipo": "DXF",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/3DIMAGE/EA_03980.90868.DXF"
+      }
+    ],
+    "certificados": [
+      {
+        "titulo": "00. Marcado CE - UE",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/CERTIFICATE/03980.98819.pdf"
+      },
+      {
+        "titulo": "06. SUBTEL - Chile",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/CERTIFICATE/Aprobado03980.108552.iot16665_VIMAR.pdf"
+      },
+      {
+        "titulo": "46. UK PSTI compliance",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/CERTIFICATE/ZAT01748.108581.00.pdf"
+      },
+      {
+        "titulo": "99. Directiva RAEE",
+        "url": "https://www.vimar.com/irj/go/km/docs/z_catalogo/CERTIFICATE/IndicazioniRAEE2024.109839.pdf"
+      }
+    ],
+    "etim": [
+      {
+        "titulo": "Class group",
+        "valor": "Alarm installations, emergency call and signalling"
+      },
+      {
+        "titulo": "Class",
+        "valor": "Opening detector for danger detection system"
+      },
+      {
+        "titulo": "Mounting method",
+        "valor": "Surface mounting"
+      },
+      {
+        "titulo": "Colour",
+        "valor": "Other"
+      },
+      {
+        "titulo": "Width sensor",
+        "valor": "25,80 mm"
+      },
+      {
+        "titulo": "Height of sensor",
+        "valor": "108,00 mm"
+      }
+    ],
+    "pedido_minimo": "1 NR",
+    "ean": "8007352657564",
+    "embalajes": [
+      {
+        "ean": "8007352657564",
+        "cantidad": "1 NR",
+        "medidas": "12,2x7,9x3,3 [cm]",
+        "peso": "152,8 [g]"
+      }
+    ],
+    "relacionados": [
+      "14597",
+      "19597",
+      "20597",
+      "30807.B"
+    ],
+    "url": "https://www.vimar.com/es/int/catalog/product/index/code/03980"
+  }
+]

@@ -69,6 +69,34 @@ const SERIES = {
       [/^(2268[12]|22692)\./, { slug: 'vimar-knx-eikon-flat-tondo', nombre: 'KNX · Eikon · Flat / Tondo', orden: 115 }],
     ],
   },
+  // IoT = sistema View Wireless de Vimar (Bluetooth / Zigbee).
+  'iot-linea': {
+    serie: 'IoT',
+    nombreSerie: 'View Wireless (IoT)',
+    categorias: {
+      Dispositivos: { slug: 'vimar-iot-linea', nombre: 'IoT · Mecanismos Linea', orden: 116 },
+      Botones: { slug: 'vimar-iot-linea', nombre: 'IoT · Mecanismos Linea', orden: 116 },
+    },
+  },
+  'iot-eikon': {
+    serie: 'IoT',
+    nombreSerie: 'View Wireless (IoT)',
+    categorias: {
+      Dispositivos: { slug: 'vimar-iot-eikon', nombre: 'IoT · Mecanismos Eikon', orden: 117 },
+      Botones: { slug: 'vimar-iot-eikon', nombre: 'IoT · Mecanismos Eikon', orden: 117 },
+    },
+  },
+  'iot-comunes': {
+    serie: 'IoT',
+    nombreSerie: 'View Wireless (IoT)',
+    categorias: {
+      'Aparatos DIN': { slug: 'vimar-iot-modulos', nombre: 'IoT · Gateways, módulos y sensores', orden: 118 },
+      'Componentes no modulares': { slug: 'vimar-iot-modulos', nombre: 'IoT · Gateways, módulos y sensores', orden: 118 },
+      // Tarjeta transponder para los lectores RFID/NFC.
+      Accesorios: { slug: 'vimar-iot-modulos', nombre: 'IoT · Gateways, módulos y sensores', orden: 118 },
+      Dispositivos: { slug: 'vimar-iot-termostatos', nombre: 'IoT · Termostatos', orden: 119 },
+    },
+  },
   knx: {
     serie: 'KNX',
     categorias: {
@@ -85,7 +113,7 @@ if (!SERIES[serieArg]) {
   console.error(`Serie desconocida: ${serieArg} (válidas: ${Object.keys(SERIES).join(', ')})`);
   process.exit(1);
 }
-const { serie: SERIE, categorias: CATEGORIAS, porCodigo: POR_CODIGO = [] } = SERIES[serieArg];
+const { serie: SERIE, nombreSerie: NOMBRE_SERIE = SERIE, categorias: CATEGORIAS, porCodigo: POR_CODIGO = [] } = SERIES[serieArg];
 // Categoría de un producto: primero por referencia (si la serie lo define) y
 // si no, por el último tramo de la ruta de Vimar.
 const categoriaDe = (p) => POR_CODIGO.find(([re]) => re.test(p.codigo))?.[1] ?? CATEGORIAS[p.ruta.split(' / ').pop()];
@@ -130,7 +158,7 @@ function infoAdicional(p) {
   const filas = [
     { titulo: 'Referencia Vimar', valor: p.codigo },
     { titulo: 'EAN', valor: p.ean },
-    { titulo: 'Serie', valor: `Vimar ${SERIE}` },
+    { titulo: 'Serie', valor: `Vimar ${NOMBRE_SERIE}` },
     { titulo: 'Tipo', valor: categoriaDe(p).nombre.replace(`${SERIE} · `, '') },
   ];
   if (p.pedido_minimo) filas.push({ titulo: 'Pedido mínimo', valor: p.pedido_minimo.replace(/ NR$/, ' uds.') });

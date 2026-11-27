@@ -89,7 +89,7 @@ const hrefProyecto = (slug: string) => (lang === 'en' ? `/en/proyectos/${slug}` 
 
             {tiendaMenu.map((grupo, i) => (
               <div class="tienda-contenido" data-grupo={i} hidden={i !== 0}>
-                <div class="tienda-destacados">
+                <div class:list={['tienda-destacados', { 'tienda-destacados--muchos': seccionesDe(grupo).length > 4 }]} style={`--filas: ${Math.ceil(seccionesDe(grupo).length / 2)}`}>
                   {seccionesDe(grupo).map((s) => {
                     const destacado = s.seccion ? destacadosSeccion[s.seccion] : undefined;
                     return (
@@ -516,6 +516,9 @@ const hrefProyecto = (slug: string) => (lang === 'en' ? `/en/proyectos/${slug}` 
       min-width: 0;
       padding: 2.5rem 2.5rem 2rem;
       transform: translateY(8px);
+      /* En pantallas bajas el panel no se sale por abajo: se desplaza dentro */
+      max-height: calc(100vh - 81px);
+      overflow-y: auto;
     }
     .has-dropdown:hover .mega-menu.mega-menu--tienda,
     .has-dropdown:focus-within .mega-menu.mega-menu--tienda,
@@ -670,6 +673,13 @@ const hrefProyecto = (slug: string) => (lang === 'en' ? `/en/proyectos/${slug}` 
       transition: background 0.15s ease;
     }
     .mega-menu--tienda a.tienda-destacado:hover { background: #f6f6f6; }
+    /* Con muchas secciones (Smart Home: KNX + IoT), tarjetas en 2 columnas y más compactas */
+    /* Por columnas: cada sistema (KNX, IoT) en su columna */
+    .tienda-destacados--muchos { grid-template-columns: 1fr 1fr; grid-template-rows: repeat(var(--filas), auto); grid-auto-flow: column; gap: 0.25rem 0.75rem; padding: 1.5rem 1.5rem; }
+    .mega-menu--tienda .tienda-destacados--muchos a.tienda-destacado { gap: 1rem; padding: 0.6rem; }
+    .tienda-destacados--muchos .tienda-destacado-foto { flex-basis: 76px; height: 76px; }
+    .tienda-destacados--muchos .tienda-destacado-texto strong { font-size: 1rem; }
+    .tienda-destacados--muchos .tienda-destacado-texto span { font-size: 0.86rem; }
     .tienda-destacado-foto {
       flex: 0 0 96px;
       height: 96px;
